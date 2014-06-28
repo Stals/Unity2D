@@ -15,8 +15,12 @@ public class PlayerControls : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector2 v = rigidbody2D.velocity;
+		updateMovment();
+	}
 
+	void updateMovment(){
+		Vector2 v = rigidbody2D.velocity;
+		
 		if (Input.GetKey (moveUp)) 
 		{
 			v.y = speed;
@@ -30,5 +34,6 @@ public class PlayerControls : MonoBehaviour {
 			v.y = 0;
 		}
 		rigidbody2D.velocity = v;
+
 	}
 }
