@@ -15,9 +15,10 @@ public class BallControl : MonoBehaviour {
 
 	}
 
-	void onCollisionEnter2D(Collision2D colInfo) {
+	void OnCollisionEnter2D (Collision2D colInfo) {
 		if(colInfo.collider.tag == "Player") {
-			Debug.Log("collided with player");
+			//rigidbody2D.velocity.y = rigidbody2D.velocity.y / 2 + colInfo.collider.rigidbody2D.velocity.y / 3;
+			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y / 2 + colInfo.collider.rigidbody2D.velocity.y / 3);
 		}
 	}
 }
