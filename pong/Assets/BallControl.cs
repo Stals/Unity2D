@@ -14,9 +14,10 @@ public class BallControl : MonoBehaviour {
 		}
 
 	}
-	
-	// Update is called once per frame
-	void Update() {
-	
+
+	void onCollisionEnter2D(Collision2D colInfo) {
+		if(colInfo.collider.tag == "Player") {
+			Debug.Log("collided with player");
+		}
 	}
 }

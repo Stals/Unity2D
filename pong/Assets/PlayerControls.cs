@@ -19,7 +19,7 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	void updateMovment(){
-		Vector2 v = rigidbody2D.velocity;
+		Vector2 v = new Vector2(0f, 0f);
 		
 		if (Input.GetKey (moveUp)) 
 		{
