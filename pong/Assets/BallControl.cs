@@ -5,14 +5,33 @@ public class BallControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-		int rnd = Random.Range(0, 2);
+		Debug.Log("Start");
+		//StartCoroutine(StartDelaied());
+		StartDelaied();
+	}
 
+	/*IEnumerator StartDelaied()
+	{
+		Debug.Log("StartDelaied");
+		yield return new WaitForSeconds(2);
+		GoBall();
+	}
+	 */
+	void StartDelaied()
+	{
+		Invoke("GoBall", 2);
+	}
+
+	void GoBall()
+	{
+		Debug.Log("StartDelaied");
+		int rnd = Random.Range(0, 2);
+		
 		if(rnd == 0) {
 			rigidbody2D.AddForce(new Vector2(80, 10));
 		} else {
 			rigidbody2D.AddForce(new Vector2(-80, -10));
 		}
-
 	}
 
 	void OnCollisionEnter2D (Collision2D colInfo) {
