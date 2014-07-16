@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jetpackForce: 75
+  forwardMovementSpeed: 3
 --- !u!1 &1391433394
 GameObject:
   m_ObjectHideFlags: 0
