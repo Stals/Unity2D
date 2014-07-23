@@ -14,13 +14,15 @@ public class GeneratorScript : MonoBehaviour {
 	void Start () {
 		float height = 2.0f * Camera.main.orthographicSize;
 		screenWidthInPoints = height * Camera.main.aspect;
-
-		getRoomWidth (availableRooms [0]);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	void FixedUpdate () 
+	{    
+		GenerateRoomIfRequired();
 	}
 
 	float getRoomWidth(GameObject room)
@@ -83,7 +85,7 @@ public class GeneratorScript : MonoBehaviour {
 		foreach(var room in currentRooms)
 		{
 			//7
-			float roomWidth = room.transform.FindChild("floor").localScale.x;
+			float roomWidth = getRoomWidth(room);
 			float roomStartX = room.transform.position.x - (roomWidth * 0.5f);    
 			float roomEndX = roomStartX + roomWidth;                            
 			
