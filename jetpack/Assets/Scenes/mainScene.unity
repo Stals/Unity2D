@@ -562,7 +562,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableRooms:
   - {fileID: 100000, guid: 3059f7f79f0d2014793eff580c3ec2f9, type: 2}
-  currentRooms: []
+  currentRooms:
+  - {fileID: 1181683660}
 --- !u!1 &1181683660
 GameObject:
   m_ObjectHideFlags: 0
