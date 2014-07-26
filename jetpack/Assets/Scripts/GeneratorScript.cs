@@ -25,15 +25,35 @@ public class GeneratorScript : MonoBehaviour {
 		GenerateRoomIfRequired();
 	}
 
+	// http://stackoverflow.com/questions/11949463/how-to-get-size-of-parent-game-object
 	float getRoomWidth(GameObject room)
 	{
-		Bounds bounds = new Bounds ();
+		// First find a center for your bounds.
+		Vector3 center = Vector3.zero;
+		
+		foreach (Transform child in room.transform)
+		{
+			center += child.gameObject.renderer.bounds.center;   
+		}
+		center /= room.transform.childCount; //center is average center of children
+		
+		//Now you have a center, calculate the bounds by creating a zero sized 'Bounds', 
+		Bounds bounds = new Bounds(center,Vector3.zero); 
+		
+		foreach (Transform child in room.transform)
+		{
+			bounds.Encapsulate(child.gameObject.renderer.bounds);   
+		}
+
+		return bounds.size.x;
+
+		/*Bounds bounds = new Bounds ();
 		foreach (Transform child in room.transform)
 		{
 			bounds.Encapsulate(child.gameObject.renderer.bounds);
 		}
 
-		return bounds.size.x;
+		return bounds.size.x;*/
 	}
 
 	void AddRoom(float farhtestRoomEndX)
