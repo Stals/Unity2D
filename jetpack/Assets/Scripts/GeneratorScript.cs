@@ -27,31 +27,13 @@ public class GeneratorScript : MonoBehaviour {
 
 	float getRoomWidth(GameObject room)
 	{
-		Transform[] objects = room.GetComponentsInChildren<Transform> ();
-		if (objects.Length == 0) {
-			return 0;
+		Bounds bounds = new Bounds ();
+		foreach (Transform child in room.transform)
+		{
+			bounds.Encapsulate(child.gameObject.renderer.bounds);
 		}
 
-		float lowestX = 9999;
-		float highestX = -9999;
-
-		float leftX = 0;
-		float rightX = 0;
-		foreach (Transform goTransform in objects) {
-
-			//float width = goTransform.gameObject.GetComponent<Renderer>().bounds.size.x;
-			leftX = goTransform.localPosition.x - goTransform.lossyScale.x / 2;
-			if(leftX < lowestX){
-				lowestX = leftX;
-			}
-
-			rightX = goTransform.localPosition.x + goTransform.lossyScale.x / 2;//goTransform.localScale.x;
-			if(rightX > highestX){
-				highestX = rightX;
-			}
-		}
-
-		return highestX - lowestX;
+		return bounds.size.x;
 	}
 
 	void AddRoom(float farhtestRoomEndX)
