@@ -35,13 +35,17 @@ public class GeneratorScript : MonoBehaviour {
 		float lowestX = 9999;
 		float highestX = -9999;
 
+		float leftX = 0;
 		float rightX = 0;
 		foreach (Transform goTransform in objects) {
-			if(goTransform.localPosition.x < lowestX){
-				lowestX = goTransform.localPosition.x;
+
+			//float width = goTransform.gameObject.GetComponent<Renderer>().bounds.size.x;
+			leftX = goTransform.localPosition.x - goTransform.lossyScale.x / 2;
+			if(leftX < lowestX){
+				lowestX = leftX;
 			}
 
-			rightX = goTransform.localPosition.x + goTransform.localScale.x;
+			rightX = goTransform.localPosition.x + goTransform.lossyScale.x / 2;//goTransform.localScale.x;
 			if(rightX > highestX){
 				highestX = rightX;
 			}
