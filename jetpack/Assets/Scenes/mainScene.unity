@@ -164,6 +164,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 904227182}
   m_RootOrder: 0
+--- !u!1 &214867784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 214867785}
+  m_Layer: 0
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &214867785
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 214867784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -.699999988, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1165410411}
+  m_RootOrder: 1
 --- !u!1 &307375342
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +200,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 307375344}
   - 61: {fileID: 307375343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bottomWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,6 +536,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1754815767}
+  - {fileID: 214867785}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!50 &1165410412
@@ -550,6 +578,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jetpackForce: 75
   forwardMovementSpeed: 3
+  groundCheckTransform: {fileID: 214867785}
+  groundCheckLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1165410415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,8 +608,8 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d68adf382e180104fae88ea38868f504, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
 --- !u!1 &1181683660
 GameObject:
