@@ -9,8 +9,18 @@ public class MouseController : MonoBehaviour {
 	public Transform groundCheckTransform;
 	private bool grounded;
 	public LayerMask groundCheckLayerMask;
+
+	private bool jetpackActive = false;
 	
 	Animator animator;
+
+	public ParticleSystem jetpack;
+
+	void AdjustJetpack (bool jetpackActive)
+	{
+		jetpack.enableEmission = !grounded;
+		jetpack.emissionRate = jetpackActive ? 300.0f : 75.0f; 
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -37,11 +47,12 @@ public class MouseController : MonoBehaviour {
 		updateHorizontalSpeed();
 
 		UpdateGroundedStatus();
+		AdjustJetpack(jetpackActive);
 	}
 
 	void updateVerticalSpeed()
 	{
-		bool jetpackActive = Input.GetButton("Fire1");
+		jetpackActive = Input.GetButton("Fire1");
 		
 		if (jetpackActive){
 			rigidbody2D.AddForce(new Vector2(0, jetpackForce));
