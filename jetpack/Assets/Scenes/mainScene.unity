@@ -468,6 +468,7 @@ GameObject:
   - 50: {fileID: 1165410412}
   - 114: {fileID: 1165410414}
   - 114: {fileID: 1165410415}
+  - 95: {fileID: 1165410416}
   m_Layer: 0
   m_Name: mouse
   m_TagString: Untagged
@@ -564,6 +565,20 @@ MonoBehaviour:
   - {fileID: 100000, guid: 3059f7f79f0d2014793eff580c3ec2f9, type: 2}
   currentRooms:
   - {fileID: 1181683660}
+--- !u!95 &1165410416
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1165410409}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d68adf382e180104fae88ea38868f504, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
 --- !u!1 &1181683660
 GameObject:
   m_ObjectHideFlags: 0
