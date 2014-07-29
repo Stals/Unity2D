@@ -358,7 +358,7 @@ MonoBehaviour:
   laserOnSprite: {fileID: 21300000, guid: 23dd7e32f85d3f843803560ab905a79a, type: 3}
   laserOffSprite: {fileID: 21300000, guid: 731563b51d924b047a68c9bcd5c279e7, type: 3}
   interval: .5
-  rotationSpeed: 0
+  rotationSpeed: 90
 --- !u!1 &804524539
 GameObject:
   m_ObjectHideFlags: 0
