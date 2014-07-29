@@ -290,6 +290,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 530046528}
   - 212: {fileID: 530046527}
+  - 114: {fileID: 530046530}
+  - 61: {fileID: 530046529}
   m_Layer: 0
   m_Name: laser
   m_TagString: Untagged
@@ -315,7 +317,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2310009927
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 23dd7e32f85d3f843803560ab905a79a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -331,6 +333,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!61 &530046529
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 530046526}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .180000007, y: 3.0999999}
+  m_Center: {x: 0, y: 0}
+--- !u!114 &530046530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 530046526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0fa43ab0a0f4904db1f17b872e1e4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserOnSprite: {fileID: 21300000, guid: 23dd7e32f85d3f843803560ab905a79a, type: 3}
+  laserOffSprite: {fileID: 21300000, guid: 731563b51d924b047a68c9bcd5c279e7, type: 3}
+  interval: .5
+  rotationSpeed: 0
 --- !u!1 &804524539
 GameObject:
   m_ObjectHideFlags: 0
