@@ -16,6 +16,8 @@ public class MouseController : MonoBehaviour {
 
 	public ParticleSystem jetpack;
 
+	private bool dead = false;
+
 	void AdjustJetpack (bool jetpackActive)
 	{
 		jetpack.enableEmission = !grounded;
@@ -53,7 +55,7 @@ public class MouseController : MonoBehaviour {
 	void updateVerticalSpeed()
 	{
 		jetpackActive = Input.GetButton("Fire1");
-		
+		jetpackActive = jetpackActive && !dead;
 		if (jetpackActive){
 			rigidbody2D.AddForce(new Vector2(0, jetpackForce));
 		}
@@ -61,9 +63,22 @@ public class MouseController : MonoBehaviour {
 
 	void updateHorizontalSpeed()
 	{
-		Vector2 newVelocity = rigidbody2D.velocity;
-		newVelocity.x = forwardMovementSpeed;
-		rigidbody2D.velocity = newVelocity;
+		if (!dead) {
+			Vector2 newVelocity = rigidbody2D.velocity;
+			newVelocity.x = forwardMovementSpeed;
+			rigidbody2D.velocity = newVelocity;
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		HitByLaser(collider);
+	}
+	
+	void HitByLaser(Collider2D laserCollider)
+	{
+		dead = true;
+		animator.SetBool("dead", true);
 	}
 
 }

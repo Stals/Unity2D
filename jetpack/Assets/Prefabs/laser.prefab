@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserOnSprite: {fileID: 21300000, guid: 23dd7e32f85d3f843803560ab905a79a, type: 3}
   laserOffSprite: {fileID: 21300000, guid: 731563b51d924b047a68c9bcd5c279e7, type: 3}
-  interval: .5
+  interval: 11.6700001
   rotationSpeed: 30
 --- !u!212 &21200000
 SpriteRenderer:

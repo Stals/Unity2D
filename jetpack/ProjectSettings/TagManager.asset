@@ -45,13 +45,13 @@ TagManager:
     userID: 2
     uniqueID: 3919229547
     locked: 0
-  - name: Objects
-    userID: 3
-    uniqueID: 2310009927
-    locked: 0
   - name: Player
     userID: 4
     uniqueID: 398662393
+    locked: 0
+  - name: Objects
+    userID: 3
+    uniqueID: 2310009927
     locked: 0
   - name: Default
     userID: 0
