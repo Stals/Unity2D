@@ -18,6 +18,8 @@ public class MouseController : MonoBehaviour {
 
 	private bool dead = false;
 
+	private uint coins = 0;
+
 	void AdjustJetpack (bool jetpackActive)
 	{
 		jetpack.enableEmission = !grounded;
@@ -72,13 +74,24 @@ public class MouseController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		HitByLaser(collider);
+		if (collider.gameObject.CompareTag ("Coins")) {
+			CollectCoin (collider);
+		}else {
+			HitByLaser (collider);
+		}
 	}
 	
 	void HitByLaser(Collider2D laserCollider)
 	{
 		dead = true;
 		animator.SetBool("dead", true);
+	}
+
+	void CollectCoin(Collider2D coinCollider)
+	{
+		coins++;
+		
+		Destroy(coinCollider.gameObject);
 	}
 
 }
