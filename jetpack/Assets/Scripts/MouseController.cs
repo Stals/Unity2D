@@ -20,6 +20,11 @@ public class MouseController : MonoBehaviour {
 
 	private uint coins = 0;
 
+    public uint getCointsCount()
+    {
+        return coins;
+    }
+
 	void AdjustJetpack (bool jetpackActive)
 	{
 		jetpack.enableEmission = !grounded;

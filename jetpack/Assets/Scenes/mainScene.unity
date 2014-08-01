@@ -497,6 +497,7 @@ GameObject:
   - 114: {fileID: 1165410415}
   - 95: {fileID: 1165410416}
   - 114: {fileID: 1165410417}
+  - 114: {fileID: 1165410418}
   m_Layer: 0
   m_Name: mouse
   m_TagString: Untagged
@@ -636,6 +637,19 @@ MonoBehaviour:
   objectsMaxY: 1.39999998
   objectsMinRotation: -45
   objectsMaxRotation: 45
+--- !u!114 &1165410418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1165410409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1a7b96ed918a440ab42cc9039299ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseController: {fileID: 1165410414}
+  coinIconTexture: {fileID: 2800000, guid: 02bd8affdddfd6c4d8dc57ce33db4e8a, type: 3}
 --- !u!1 &1181683660
 GameObject:
   m_ObjectHideFlags: 0
