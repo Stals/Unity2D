@@ -88,8 +88,14 @@ public class MouseController : MonoBehaviour {
 	
 	void HitByLaser(Collider2D laserCollider)
 	{
-		dead = true;
+        if (!dead)
+        {
+            laserCollider.gameObject.audio.Play();
+        }
+
+        dead = true;
 		animator.SetBool("dead", true);
+
 	}
 
 	void CollectCoin(Collider2D coinCollider)
