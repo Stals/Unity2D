@@ -21,6 +21,8 @@ public class MouseController : MonoBehaviour {
 	private uint coins = 0;
 
     public AudioClip coinCollectSound;
+    public AudioSource jetpackAudio;    
+    public AudioSource footstepsAudio;
 
     public uint getCointsCount()
     {
@@ -59,6 +61,7 @@ public class MouseController : MonoBehaviour {
 
 		UpdateGroundedStatus();
 		AdjustJetpack(jetpackActive);
+        AdjustFootstepsAndJetpackSound(jetpackActive);
 	}
 
 	void updateVerticalSpeed()
@@ -125,4 +128,13 @@ public class MouseController : MonoBehaviour {
             };
         }
     }
+
+    void AdjustFootstepsAndJetpackSound(bool jetpackActive)    
+    {
+        footstepsAudio.enabled = !dead && grounded;
+        
+        jetpackAudio.enabled =  !dead && !grounded;
+        jetpackAudio.volume = jetpackActive ? 1.0f : 0.5f;        
+    }
+
 }
