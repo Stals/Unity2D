@@ -585,6 +585,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jetpack: {fileID: 1754815766}
+  coinCollectSound: {fileID: 8300000, guid: 211fb0cc26b209545a6a5bb020cc4b1a, type: 3}
 --- !u!114 &1165410415
 MonoBehaviour:
   m_ObjectHideFlags: 0

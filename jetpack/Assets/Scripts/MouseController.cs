@@ -20,6 +20,8 @@ public class MouseController : MonoBehaviour {
 
 	private uint coins = 0;
 
+    public AudioClip coinCollectSound;
+
     public uint getCointsCount()
     {
         return coins;
@@ -103,6 +105,7 @@ public class MouseController : MonoBehaviour {
 		coins++;
 		
 		Destroy(coinCollider.gameObject);
+        AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
 	}
 
 
