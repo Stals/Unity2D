@@ -383,6 +383,7 @@ MonoBehaviour:
   foreground: {fileID: 1275247334}
   backgroundSpeed: .0199999996
   foregroundSpeed: .0599999987
+  offset: 0
 --- !u!1 &804524539
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +639,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1165410409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.53999996, y: 0, z: 0}
+  m_LocalPosition: {x: -3.5999999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1754815767}
@@ -692,6 +693,7 @@ MonoBehaviour:
   coinCollectSound: {fileID: 8300000, guid: 211fb0cc26b209545a6a5bb020cc4b1a, type: 3}
   jetpackAudio: {fileID: 1165410419}
   footstepsAudio: {fileID: 1165410420}
+  parallax: {fileID: 505287588}
 --- !u!114 &1165410415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,7 +2367,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3059f7f79f0d2014793eff580c3ec2f9, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 3059f7f79f0d2014793eff580c3ec2f9, type: 2}
       propertyPath: m_LocalPosition.y
