@@ -5,49 +5,31 @@ public class ShapesRenderer : MonoBehaviour {
 
 	public Color c1 = Color.yellow;
 	public Color c2 = Color.red;
-	public int lengthOfLineRenderer = 20;
 	private LineRenderer lineRenderer;
-	private float theta_scale = 0.1f; 
 
-	private int size;
+	private float radius = 4.0f;
+	//private int size;
+
+	private int vertexCount = 60;
 
 	void Start() {
-		/*LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-		lineRenderer.SetColors(c1, c2);
-		lineRenderer.SetWidth(0.2F, 0.2F);
-		lineRenderer.SetVertexCount(lengthOfLineRenderer);*/
-
-		            //Set lower to add more points
-		size = (int)((2f * Mathf.PI) / theta_scale); //Total number of points in circle.
 
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
 		lineRenderer.SetColors(c1, c2);
 		lineRenderer.SetWidth(0.1f, 0.1f);
-		lineRenderer.SetVertexCount(size);
+		lineRenderer.SetVertexCount(vertexCount+1);
 
 	}
 	void Update() {
-		const float r = 4.0f;
 
-
-		
-		/*LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-		lineRenderer.SetColors(c1, c2);
-		lineRenderer.SetWidth(0.2f, 0.2f);
-		lineRenderer.SetVertexCount(size);
-*/
 		float x, y = 0.0f;
 
-		for(int i = 0; i < size; ++i){
+		for(int i = 0; i < vertexCount + 1; ++i){
 
-		//for(float theta = 0; theta < (float)(2.f * Mathf.PI); theta += theta_scale) {
-			x = r * Mathf.Cos(theta_scale * i);
-			y = r * Mathf.Sin(theta_scale * i);
-			
-			Vector3 pos = new Vector3(x, y, 0);
+			float angle = ((i / (float)vertexCount) * (Mathf.PI * 2));
+
+			Vector3 pos = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
 			lineRenderer.SetPosition(i, pos);
 
 		}
