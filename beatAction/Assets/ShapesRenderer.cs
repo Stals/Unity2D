@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// TODO!!! 
+// http://www.starscenesoftware.com/vectrosity.html
 public class ShapesRenderer : MonoBehaviour {
 
 	public Color c1 = Color.yellow;
@@ -17,7 +19,7 @@ public class ShapesRenderer : MonoBehaviour {
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
 		lineRenderer.SetColors(c1, c2);
-		lineRenderer.SetWidth(0.1f, 0.1f);
+		lineRenderer.SetWidth(2f, 2f);
 		lineRenderer.SetVertexCount(vertexCount+1);
 
 	}

@@ -157,7 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   c1: {r: 1, g: .921568632, b: .0156862754, a: 1}
   c2: {r: 1, g: 0, b: 0, a: 1}
-  lengthOfLineRenderer: 20
 --- !u!81 &1731006757
 AudioListener:
   m_ObjectHideFlags: 0
