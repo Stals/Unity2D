@@ -17,6 +17,6 @@ public class Rotator : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		//GetComponent<ElipseRenderer>.pointRotation += speedPerTick;
+		GetComponent<ElipseRenderer>().pointRotation += speedPerTick;
 	}
 }

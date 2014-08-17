@@ -161,8 +161,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 560061002}
-  - 114: {fileID: 560061001}
   - 114: {fileID: 560061003}
+  - 114: {fileID: 560061001}
   m_Layer: 0
   m_Name: InnerCircle
   m_TagString: Untagged
@@ -176,16 +176,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 560061000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6740d4388054c89ea4385bb91e36c472, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d5bad907da337841bdbb1fe79c8d458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineMaterial: {fileID: 2100000, guid: 5df4ac13799467615f7c23991ee03ddc, type: 2}
-  xRadius: 120
-  yRadius: 120
-  segments: 80
-  pointRotation: 0
+  speedPerTick: .100000001
 --- !u!4 &560061002
 Transform:
   m_ObjectHideFlags: 0
@@ -210,8 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineMaterial: {fileID: 2100000, guid: 5df4ac13799467615f7c23991ee03ddc, type: 2}
-  xRadius: 120
-  yRadius: 120
+  xRadius: 200
+  yRadius: 200
   segments: 80
   pointRotation: 0
 --- !u!1 &1731006755
@@ -368,8 +364,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1893310706}
-  - 114: {fileID: 1893310707}
   - 114: {fileID: 1893310708}
+  - 114: {fileID: 1893310707}
   m_Layer: 0
   m_Name: OuterCircle
   m_TagString: Untagged
@@ -395,16 +391,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1893310705}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6740d4388054c89ea4385bb91e36c472, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d5bad907da337841bdbb1fe79c8d458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineMaterial: {fileID: 2100000, guid: 5df4ac13799467615f7c23991ee03ddc, type: 2}
-  xRadius: 125
-  yRadius: 125
-  segments: 80
-  pointRotation: 0
+  speedPerTick: -.100000001
 --- !u!114 &1893310708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineMaterial: {fileID: 2100000, guid: 5df4ac13799467615f7c23991ee03ddc, type: 2}
-  xRadius: 125
-  yRadius: 125
+  xRadius: 205
+  yRadius: 205
   segments: 80
   pointRotation: 0
