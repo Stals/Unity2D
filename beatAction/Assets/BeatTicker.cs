@@ -23,13 +23,13 @@ public class BeatTicker : MonoBehaviour {
 	
 	}
 
-	void begin(Song song)
+	public void begin(Song song)
 	{
 		currentSong = song;
 		scheduleBeat ();
 	}
 
-	void end()
+	public void end()
 	{
        // StopAction(onTimeElapsed);
 	}

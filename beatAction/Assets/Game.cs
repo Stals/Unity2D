@@ -22,6 +22,7 @@ public class Game  {
 	private static Game instance;
 
 	List<Song> songs;
+    BeatTicker beatTicker;
 
 	private Game() {}
 	public static Game Instance
@@ -36,9 +37,9 @@ public class Game  {
 		}
 	}
 
-	public void init(){
+	public void init(BeatTicker _beatTicker){
+        beatTicker = _beatTicker;
 		setupSongs ();
-
 	}
 
 	private void setupSongs(){
@@ -50,4 +51,9 @@ public class Game  {
 	{
 		return songs[0];
 	}
+
+    public BeatTicker getBeatTicker()
+    {
+        return beatTicker;
+    }
 }
