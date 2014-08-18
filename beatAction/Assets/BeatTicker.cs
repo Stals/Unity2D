@@ -36,7 +36,8 @@ public class BeatTicker : MonoBehaviour {
 
 	void scheduleBeat()
 	{
-        InvokeAction(onTimeElapsed, 60f / currentSong.tempo);
+        RepeateAction("onTimeElapsed",  60f / currentSong.tempo);
+        //InvokeAction(onTimeElapsed, 60f / currentSong.tempo);
 	}
 
 	void onTimeElapsed(){
@@ -55,14 +56,18 @@ public class BeatTicker : MonoBehaviour {
 		if (currentBeat == currentSong.beatsPerBar) {
 			currentBeat = 0;
 		}
-
-        scheduleBeat();
 	}
 
 	protected void InvokeAction(Action action, float t)
 	{
 		StartCoroutine(InvokeActionRoutine(action, t));
 	}
+
+    protected void RepeateAction(string method, float t)
+    {
+        InvokeRepeating(method, 0f, t);
+    }
+
    /* protected void StopAction(Action action)
     {
         StopCoroutine(action);
