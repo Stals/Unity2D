@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+// Note: первый бит ударный
 public class Song{
 
-	public Song(string _path, int _tempo, int _beat, int _beatsPerBar){
+	public Song(string _path, int _tempo, int _beatsPerBar, int _beat){
 		path = _path;
-		tempo = _tempo;
-		beat = _beat;
+		tempo = _tempo; // beats per minute
 		beatsPerBar = _beatsPerBar;
-	}
+		beat = _beat;}
 
 	string path; // later
 
