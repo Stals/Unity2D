@@ -21,6 +21,10 @@ public class ElipseRenderer : MonoBehaviour {
 		
 		// Make a VectorLine object using the above points and a material as defined in the inspector, with a width of 3 pixels
 		line = new VectorLine( "Line", linePoints, lineMaterial, 3.0f, Vectrosity.LineType.Continuous);
+
+        // TODO remot - adde for testing
+        Game.Instance.getBeatTicker().onBeat += onBeat;
+        Game.Instance.getBeatTicker().onBigBeat += onBigBeat;
 	}
 	
 	// Update is called once per frame
@@ -34,4 +38,18 @@ public class ElipseRenderer : MonoBehaviour {
 
 		//float f = Screen.width / 2;
 	}
+
+    void onBeat(){
+        xRadius += 5;
+        yRadius += 5;
+
+        Debug.Log("onBeat");
+    }
+
+    void onBigBeat(){
+        xRadius += 15;
+        yRadius += 15;
+        
+        Debug.Log("onBigBeat");
+    }
 }
