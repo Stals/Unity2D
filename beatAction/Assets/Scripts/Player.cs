@@ -8,6 +8,9 @@ public enum PlayerDirection{
 
 public class Player : MonoBehaviour {
 
+    [SerializeField]
+    Camera mainCamera;
+
 	[SerializeField]
 	UIButton buttonLeft;
     bool buttonLeftPressed;
@@ -15,6 +18,9 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	UIButton buttonRight;
     bool buttonRightPressed;
+
+    [SerializeField]
+    ElipseRenderer innerCircle;
 
     private float currentAngle = 0;
 
@@ -31,6 +37,7 @@ public class Player : MonoBehaviour {
 	void FixedUpdate()
 	{
         updateMove();
+        updateRotation();
 	}
 
     void updatePosition()
@@ -38,6 +45,16 @@ public class Player : MonoBehaviour {
         float currentRadius = getRadius();
         transform.position = new Vector3(currentRadius * Mathf.Cos(currentAngle), 
                                          currentRadius * Mathf.Sin(currentAngle));
+    }
+
+    void updateRotation()
+    {
+        // update rotation
+        float degrees = (currentAngle / Mathf.PI) * 180.0f;
+        //Debug.Log(degrees);
+        Vector3 angles = transform.eulerAngles;
+        angles.z = degrees;
+        transform.eulerAngles = angles;
     }
 
     void updateMove()
@@ -77,11 +94,11 @@ public class Player : MonoBehaviour {
         if (direction == PlayerDirection.Right)
         {
             currentAngle += getSpeed();
-            Debug.Log("LEFT");
+           // Debug.Log("LEFT");
         } else
         {
             currentAngle -= getSpeed();
-            Debug.Log("RIGHT");
+           // Debug.Log("RIGHT");
         }
 
         // TODO помня текущий радиус
@@ -114,7 +131,9 @@ public class Player : MonoBehaviour {
 
     float getRadius()
     {
-        return 2f;//innerCircle.radiusX += 5;
+        Vector3 convertedRadius = mainCamera.ScreenToWorldPoint(new Vector3(innerCircle.xRadius, innerCircle.yRadius));
+        //Debug.Log(convertedRadius.x);
+        return convertedRadius.x;//innerCircle.radiusX += 5;
     }
 
     float getSpeed()
