@@ -280,6 +280,7 @@ GameObject:
   - 4: {fileID: 499253574}
   - 212: {fileID: 499253573}
   - 114: {fileID: 499253575}
+  - 114: {fileID: 499253576}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -336,6 +337,23 @@ MonoBehaviour:
   buttonLeft: {fileID: 114430895}
   buttonRight: {fileID: 1619322691}
   innerCircle: {fileID: 560061003}
+  gunner: {fileID: 499253576}
+--- !u!114 &499253576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 499253572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88073e48ac7f94686b4225e52afff58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunOffset: {x: 0, y: 0}
+  bulletSpeed: .200000003
+  shotDelay: .5
+  shotTimeElapsed: 0
+  bulletPrefab: {fileID: 100000, guid: 39ff47e17ee714a74bb959d7dff2fae9, type: 2}
 --- !u!1 &526447916
 GameObject:
   m_ObjectHideFlags: 0

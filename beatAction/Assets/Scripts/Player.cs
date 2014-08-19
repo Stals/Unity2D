@@ -24,6 +24,9 @@ public class Player : MonoBehaviour {
 
     private float currentAngle = 0;
 
+    [SerializeField]
+    private Gunner gunner;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -87,6 +90,7 @@ public class Player : MonoBehaviour {
 
 	void shoot()
 	{
+        gunner.shoot();
 	}
 
     void move(PlayerDirection direction)
