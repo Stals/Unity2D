@@ -52,13 +52,13 @@ public class ElipseRenderer : MonoBehaviour {
         xRadius = initialRadiusX + 5;
         yRadius = initialRadiusY + 5;
 
-        Debug.Log("onBeat");
+      //  Debug.Log("onBeat");
     }
 
     void onBigBeat(){
         xRadius = initialRadiusX + 15;
         yRadius = initialRadiusY + 15;
         
-        Debug.Log("onBigBeat");
+        //Debug.Log("onBigBeat");
     }
 }
