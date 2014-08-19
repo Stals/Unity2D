@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 	UIButton buttonRight;
     bool buttonRightPressed;
 
+    private float currentAngle = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -24,25 +25,36 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        updatePosition();
 	}
 
 	void FixedUpdate()
 	{
-		bool isLeft = isLeftDirectionActive ();
-		bool isRight = isRightDirectionActive ();
-
-		if (isLeft && isRight) {
-			shoot ();
-		} else if (isLeft) {
-            move(PlayerDirection.Left);
-		
-		} else if (isRight) {
-            move(PlayerDirection.Right);
-		}
-
-		
+        updateMove();
 	}
+
+    void updatePosition()
+    {
+        float currentRadius = getRadius();
+        transform.position = new Vector3(currentRadius * Mathf.Cos(currentAngle), 
+                                         currentRadius * Mathf.Sin(currentAngle));
+    }
+
+    void updateMove()
+    {
+        bool isLeft = isLeftDirectionActive ();
+        bool isRight = isRightDirectionActive ();
+        
+        if (isLeft && isRight) {
+            shoot ();
+
+        } else if (isLeft) {
+            move(PlayerDirection.Left);
+            
+        } else if (isRight) {
+            move(PlayerDirection.Right);
+        }
+    }
 
 	bool isLeftDirectionActive()
 	{
@@ -64,9 +76,11 @@ public class Player : MonoBehaviour {
     {
         if (direction == PlayerDirection.Right)
         {
+            currentAngle += getSpeed();
             Debug.Log("LEFT");
         } else
         {
+            currentAngle -= getSpeed();
             Debug.Log("RIGHT");
         }
 
@@ -96,5 +110,15 @@ public class Player : MonoBehaviour {
         } else if (button == buttonRight){
             buttonRightPressed = false;
         }
+    }
+
+    float getRadius()
+    {
+        return 2f;//innerCircle.radiusX += 5;
+    }
+
+    float getSpeed()
+    {
+        return 0.05f;
     }
 }
