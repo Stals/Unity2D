@@ -1151,6 +1151,14 @@ Prefab:
       propertyPath: aspectRatio
       value: .201704547
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fece8912cc52b40c99f0c7551b3280e6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: fece8912cc52b40c99f0c7551b3280e6, type: 2}
+      propertyPath: mPivot
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fece8912cc52b40c99f0c7551b3280e6, type: 2}
   m_RootGameObject: {fileID: 114430892}

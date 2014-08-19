@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 	UIButton buttonRight;
     bool buttonRightPressed;
 
+
 	// Use this for initialization
 	void Start () {
 	
