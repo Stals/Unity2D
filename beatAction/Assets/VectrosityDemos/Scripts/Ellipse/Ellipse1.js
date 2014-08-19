@@ -22,8 +22,8 @@ function Update()
 {
 	// Create an ellipse in the VectorLine object, where the origin is the center of the screen
 	// If xRadius and yRadius are the same, you can use MakeCircleInLine instead, which needs just one radius value instead of two
-	line.MakeEllipse (Vector2(Screen.width/2, Screen.height/2), xRadius, yRadius, segments, pointRotation);
+//	line.MakeEllipse (Vector2(Screen.width/2, Screen.height/2), xRadius, yRadius, segments, pointRotation);
 	
 	// Draw the line
-	line.Draw();
+//	line.Draw();
 }
