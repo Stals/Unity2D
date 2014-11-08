@@ -23,6 +23,8 @@ public class BoardManager : MonoBehaviour {
 
 	List<Block> selectedBlocks;
 
+	Board currentBoard;
+
 	// Use this for initialization
 	void Start () {
 		Vector3 size = objectPrefabs [0].GetComponentInChildren<SpriteRenderer> ().bounds.size;
@@ -52,28 +54,56 @@ public class BoardManager : MonoBehaviour {
 		// mouse just released
 		if(Input.GetMouseButtonUp(0)){
 			foreach(Block block in selectedBlocks){
-				block.gameObject.SetActive(false);
+				removeBlock(block);
+			}
+			updateBlocksPosition();
+			positionBoard();
+
+			//TODO with lerp later.
+		}
+	}
+
+	void updateBlocksPosition()
+	{
+		for (int x = 0; x < width; ++x) {
+			for (int y = 0; y < height; ++y) {
+				Block block = currentBoard.at(x, y).block;
+				if(block != null){
+					block.updatePosition();
+				}
 			}
 		}
+	}
+
+	void removeBlock(Block block)
+	{
+		// update indexes and positions of the top ones
+		// set empty ids to the top ones. like -1
+		// without a gameobject
+		// this movement should be put into Board class probably
+		currentBoard.removeAt (block.x, block.y);
+		block.gameObject.SetActive(false);
 	}
 
 	void createBoard()
 	{
-		Board board = generator.generateBoard ();
+		currentBoard = generator.generateBoard ();
 
 		for (int x = 0; x < width; ++x) {
 			for(int y = 0; y < height; ++y){
-				BoardObject boardObject = board.at(x, y);
+				BoardObject boardObject = currentBoard.at(x, y);
 				int id = boardObject.id;
 				GameObject obj = (GameObject)Instantiate(objectPrefabs[id], getPosition(x, y), Quaternion.identity);
 				obj.transform.parent = transform;
 
-				boardObject.setGO(obj);
+				Block block = obj.GetComponent<Block>();
+				block.setIDs(x, y);
+				boardObject.setBlock(block);
 			}
 		}
 	}
 
-	Vector3 getPosition(int x, int y){
+	public Vector3 getPosition(int x, int y){
 		float xPos = 0;
 		if(x != 0){
 			xPos = (objectWidth * x) + (paddingX * x);

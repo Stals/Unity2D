@@ -5,9 +5,18 @@ public class Block : MonoBehaviour {
 
 	bool isTriggered = false;
 
+	public int x;
+	public int y;
+
 	// Use this for initialization
 	void Start () {
 	
+	}
+
+	public void setIDs(int _x, int _y)
+	{
+		x = _x;
+		y = _y;
 	}
 
 	// Update is called once per frame
@@ -38,5 +47,10 @@ public class Block : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	public void updatePosition()
+	{
+		transform.position = Game.Instance.getBoardManager ().getPosition (x, y);
 	}
 }

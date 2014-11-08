@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class BoardObject{
 	public int id;
-	public GameObject go;
+	public Block block;
 
 	public BoardObject(){
 		id = 0;
@@ -16,8 +16,8 @@ public class BoardObject{
 	}
 
 	// TODo change to setting the Block class?
-	public void setGO(GameObject _go){
-		go = _go;
+	public void setBlock(Block _block){
+		block = _block;
 	}
 }
 
@@ -50,6 +50,20 @@ public class Board
 
 	public BoardObject at(int x, int y){
 		return rows [y].objects [x];
+	}
+
+	public void removeAt(int x, int y)
+	{
+		// TODO - move all blocks on to 1 lower
+
+		// TODo dont forget to update x, y and obly change GO and what x, y they have inside.!!
+
+		int height = rows.Count;
+		for (; y < height - 1; ++y) {
+			// swap
+			at (x, y).setBlock( at (x, y + 1).block );
+			at (x, y + 1).setBlock( null );
+		}
 	}
 };
 
