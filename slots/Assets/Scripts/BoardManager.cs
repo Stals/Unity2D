@@ -21,15 +21,21 @@ public class BoardManager : MonoBehaviour {
 	float objectWidth;
 	float objectHeight;
 
+	List<Block> selectedBlocks;
+
 	// Use this for initialization
 	void Start () {
 		Vector3 size = objectPrefabs [0].GetComponentInChildren<SpriteRenderer> ().bounds.size;
 		objectWidth = size.x;
 		objectHeight = size.y;
 
+		selectedBlocks = new List<Block> ();
+
 		generator = new BoardGenerator (objectPrefabs.Count, width, height);
 		createBoard ();
 		positionBoard ();
+
+		Game.Instance.setBoardManager (this);
 	}
 
 
@@ -43,7 +49,12 @@ public class BoardManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
+		// mouse just released
+		if(Input.GetMouseButtonUp(0)){
+			foreach(Block block in selectedBlocks){
+				block.gameObject.SetActive(false);
+			}
+		}
 	}
 
 	void createBoard()
@@ -74,5 +85,9 @@ public class BoardManager : MonoBehaviour {
 		}
 
 		return new Vector3(xPos, yPos, 0);
+	}
+
+	public void onBlockTrigger(Block _block){
+		selectedBlocks.Add (_block);
 	}
 }

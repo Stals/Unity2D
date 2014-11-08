@@ -3,15 +3,22 @@ using System.Collections;
 
 public class Block : MonoBehaviour {
 
+	bool isTriggered = false;
+
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (isMouseOver ()) {
-			gameObject.SetActive(false);
+			if(!isTriggered){
+				Game.Instance.getBoardManager ().onBlockTrigger (this);
+				isTriggered = true;
+			}
+		} else {
+			isTriggered = false;		
 		}
 	}
 
@@ -28,7 +35,6 @@ public class Block : MonoBehaviour {
 				{
 					return true;
 				}
-				
 			}
 		}
 		return false;
