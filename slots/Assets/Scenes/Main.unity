@@ -251,7 +251,7 @@ Transform:
   m_Children:
   - {fileID: 1861891577}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!1 &127032407
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ Transform:
   m_Children:
   - {fileID: 1222745403}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!1 &141624898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,7 @@ Transform:
   m_Children:
   - {fileID: 983570200}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1 &495122769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2303,7 @@ Transform:
   m_Children:
   - {fileID: 1930435161}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1 &1033395393
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,7 +3409,7 @@ Transform:
   m_Children:
   - {fileID: 1949911042}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 7
+  m_RootOrder: 5
 --- !u!1 &1658486017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3676,7 +3676,7 @@ Transform:
   m_Children:
   - {fileID: 1070467508}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 0
+  m_RootOrder: 6
 --- !u!1 &1795328274
 GameObject:
   m_ObjectHideFlags: 0
@@ -4021,7 +4021,7 @@ Transform:
   m_Children:
   - {fileID: 997547342}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!1 &1861891576
 GameObject:
   m_ObjectHideFlags: 0
@@ -4684,7 +4684,7 @@ Transform:
   m_Children:
   - {fileID: 1102296289}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 1
+  m_RootOrder: 7
 --- !u!1 &2094179882
 GameObject:
   m_ObjectHideFlags: 0
@@ -4908,16 +4908,16 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2146730591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.59162021, y: .251523644, z: 0}
+  m_LocalPosition: {x: -1.40411615, y: 2.34261775, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1786535123}
-  - {fileID: 2063745831}
   - {fileID: 97167268}
   - {fileID: 491470548}
   - {fileID: 1028993026}
   - {fileID: 130673796}
   - {fileID: 1836216248}
   - {fileID: 1637719143}
+  - {fileID: 1786535123}
+  - {fileID: 2063745831}
   m_Father: {fileID: 0}
   m_RootOrder: 0

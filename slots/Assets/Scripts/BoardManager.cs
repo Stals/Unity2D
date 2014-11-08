@@ -29,8 +29,17 @@ public class BoardManager : MonoBehaviour {
 
 		generator = new BoardGenerator (objectPrefabs.Count, width, height);
 		createBoard ();
+		positionBoard ();
 	}
-	
+
+
+	void positionBoard()
+	{
+		float boardWidth = objectWidth * width + paddingX * (width - 1);
+		float boardHeight = objectHeight * height + paddingY * (height - 1);
+
+		transform.position = new Vector3( -boardWidth / 2, -boardHeight / 2, transform.position.z);
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -43,9 +52,12 @@ public class BoardManager : MonoBehaviour {
 
 		for (int x = 0; x < width; ++x) {
 			for(int y = 0; y < height; ++y){
-				int id = board.at(x, y).id;
+				BoardObject boardObject = board.at(x, y);
+				int id = boardObject.id;
 				GameObject obj = (GameObject)Instantiate(objectPrefabs[id], getPosition(x, y), Quaternion.identity);
 				obj.transform.parent = transform;
+
+				boardObject.setGO(obj);
 			}
 		}
 	}

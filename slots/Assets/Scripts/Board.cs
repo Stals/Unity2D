@@ -5,12 +5,19 @@ using System.Collections.Generic;
 
 public class BoardObject{
 	public int id;
+	public GameObject go;
+
 	public BoardObject(){
 		id = 0;
 	}
 
 	public BoardObject(int _id){
 		id = _id;
+	}
+
+	// TODo change to setting the Block class?
+	public void setGO(GameObject _go){
+		go = _go;
 	}
 }
 
