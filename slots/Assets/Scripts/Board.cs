@@ -61,8 +61,12 @@ public class Board
 		int height = rows.Count;
 		for (; y < height - 1; ++y) {
 			// swap
-			at (x, y).setBlock( at (x, y + 1).block );
+			Block dropingBlock = at (x, y + 1).block;
+			at (x, y).setBlock( dropingBlock );
 			at (x, y + 1).setBlock( null );
+			if(dropingBlock != null){
+				dropingBlock.setIDs(x, y);
+			}
 		}
 	}
 };

@@ -51,15 +51,17 @@ public class BoardManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		updateBlocksPosition();
+
 		// mouse just released
 		if(Input.GetMouseButtonUp(0)){
-			foreach(Block block in selectedBlocks){
-				removeBlock(block);
+			if(selectedBlocks.Count >= 3){
+				foreach(Block block in selectedBlocks){
+					removeBlock(block);
+				}
+				//TODO with lerp later.
+				updateBlocksPosition();
 			}
-			updateBlocksPosition();
-			positionBoard();
-
-			//TODO with lerp later.
 		}
 	}
 
