@@ -18,10 +18,16 @@ public class BoardGenerator {
 
 		for (int y = 0; y < height; ++y) {
 			for(int x = 0; x < width; ++x){
-				board.at(x, y).id = y*x;
+				board.at(x, y).id = getRandomObject();
 			}
 		}
 
 		return board;
+	}
+
+	int getRandomObject()
+	{
+		// todo add weighted random later
+		return Random.Range (0, objectTypes);
 	}
 }
