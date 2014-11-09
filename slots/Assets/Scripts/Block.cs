@@ -10,9 +10,11 @@ public class Block : MonoBehaviour {
 
     bool selected = false;
 
+    Vector3 targetPosition;
+
 	// Use this for initialization
 	void Start () {
-	
+        targetPosition = transform.position;
 	}
 
 	public void setIDs(int _x, int _y)
@@ -23,6 +25,14 @@ public class Block : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        Vector2 newPos;
+
+        newPos.x = Mathf.Lerp(transform.localPosition.x, targetPosition.x, Time.deltaTime * 8f);
+        newPos.y = Mathf.Lerp(transform.localPosition.y, targetPosition.y, Time.deltaTime * 8f);
+
+        transform.localPosition = newPos;
+
+
 		if (isMouseOver ()) {
 			if(!isTriggered){
 				Game.Instance.getBoardManager ().onBlockTrigger (this);
@@ -53,7 +63,7 @@ public class Block : MonoBehaviour {
 
 	public void updatePosition()
 	{
-		transform.localPosition = Game.Instance.getBoardManager ().getPosition (x, y);
+        targetPosition = Game.Instance.getBoardManager ().getPosition (x, y);
 	}
 
     public string getImageName()
