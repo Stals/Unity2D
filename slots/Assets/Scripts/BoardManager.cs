@@ -170,16 +170,26 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public void onBlockTrigger(Block _block){
-		if (sameColorAsPrevious (_block) &&
-			nearPrevious (_block) &&
-            (!alreadySelected(_block))){
+        // check for backtracking//
+        if (alreadySelected(_block))
+        {
+            // deselect last
+            if(selectedBlocks.Count >= 2){
+                if(selectedBlocks[selectedBlocks.Count - 2] == _block){
+                    Block lastBlock = getLastSelectedBlock();
+                    lastBlock.setSelected(false);
+                    selectedBlocks.RemoveAt(selectedBlocks.Count - 1);
+                }
+            }
+        }
+
+        // check for adding new
+		else if (sameColorAsPrevious (_block) &&
+			nearPrevious (_block)){
 
 				selectedBlocks.Add (_block);
                 _block.setSelected(true);
 		}
-
-		// При наведении, добавлять только если тотже цвет или там пусто!!!!!
-		// Добавлять только если вокруг предведущий.
 	}
 
 	Block getLastSelectedBlock()
