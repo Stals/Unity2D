@@ -281,7 +281,7 @@ Transform:
   m_Children:
   - {fileID: 1861891577}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!50 &97167269
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ Transform:
   m_Children:
   - {fileID: 1222745403}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!50 &130673797
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -706,6 +706,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 253077952}
   - 114: {fileID: 253077953}
+  - 54: {fileID: 253077954}
   m_Layer: 5
   m_Name: TotalBetPanel
   m_TagString: Untagged
@@ -770,6 +771,21 @@ MonoBehaviour:
   mDepth: 2
   mSortingOrder: 0
   mClipOffset: {x: 0, y: 0}
+--- !u!54 &253077954
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253077951}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &277901196
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +955,11 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1713678766}
+    mMethodName: nextBet
+    mParameters: []
+    oneShot: 0
 --- !u!114 &332293432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1514,7 +1534,7 @@ Transform:
   m_Children:
   - {fileID: 983570200}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!50 &491470549
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2559,6 +2579,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1596178738}
     m_Modifications:
+    - target: {fileID: 11400000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 400
@@ -2634,6 +2658,14 @@ Prefab:
     - target: {fileID: 11400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: aspectRatio
       value: 2.53571439
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 1713678766}
+    - target: {fileID: 11400000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: spin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
@@ -2883,7 +2915,11 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1713678766}
+    mMethodName: spin
+    mParameters: []
+    oneShot: 0
 --- !u!114 &998196052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3152,7 +3188,7 @@ Transform:
   m_Children:
   - {fileID: 1930435161}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!50 &1028993027
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -4834,7 +4870,7 @@ Transform:
   m_Children:
   - {fileID: 1949911042}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!50 &1637719144
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -5459,7 +5495,11 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1713678766}
+    mMethodName: prevLines
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1758093669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5631,7 +5671,7 @@ Transform:
   m_Children:
   - {fileID: 1070467508}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 6
+  m_RootOrder: 0
 --- !u!50 &1786535124
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -6021,7 +6061,7 @@ Transform:
   m_Children:
   - {fileID: 997547342}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!50 &1836216249
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -6741,7 +6781,11 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1713678766}
+    mMethodName: prevBet
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1956436622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7063,7 +7107,11 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1713678766}
+    mMethodName: nextLines
+    mParameters: []
+    oneShot: 0
 --- !u!114 &2021304550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7226,7 +7274,7 @@ Transform:
   m_Children:
   - {fileID: 1102296289}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 7
+  m_RootOrder: 1
 --- !u!50 &2063745832
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -7495,13 +7543,13 @@ Transform:
   m_LocalPosition: {x: -1.40411615, y: 2.34261775, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1786535123}
+  - {fileID: 2063745831}
   - {fileID: 97167268}
   - {fileID: 491470548}
   - {fileID: 1028993026}
   - {fileID: 130673796}
   - {fileID: 1836216248}
   - {fileID: 1637719143}
-  - {fileID: 1786535123}
-  - {fileID: 2063745831}
   m_Father: {fileID: 0}
   m_RootOrder: 1

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Game  {
 	private static Game instance;
 	private Game() {
+        // create player
 	}
 	public static Game Instance
 	{
