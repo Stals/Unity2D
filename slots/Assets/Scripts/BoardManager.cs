@@ -10,6 +10,9 @@ public class BoardManager : MonoBehaviour {
 
 	BoardGenerator generator;
 	
+    [SerializeField]
+    GameObject exampleObject;
+
 	[SerializeField]
 	List<GameObject> objectPrefabs;
 
@@ -37,7 +40,7 @@ public class BoardManager : MonoBehaviour {
     
     // Use this for initialization
 	void Start () {
-		Vector3 size = objectPrefabs [0].GetComponentInChildren<SpriteRenderer> ().bounds.size;
+        Vector3 size = exampleObject.GetComponentInChildren<SpriteRenderer> ().bounds.size;
 		objectWidth = size.x;
 		objectHeight = size.y;
 
@@ -152,6 +155,8 @@ public class BoardManager : MonoBehaviour {
     public void clearBoard()
     {
         foreach(Transform child in transform) {
+            iTween.Stop(child.gameObject);
+            //Destroy(child.gameObject.GetComponent<iTween>());
             Destroy(child.gameObject);
         }
     }
