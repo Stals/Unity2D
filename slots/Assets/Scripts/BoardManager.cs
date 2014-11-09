@@ -155,8 +155,9 @@ public class BoardManager : MonoBehaviour {
 			for(int y = 0; y < height; ++y){
 				BoardObject boardObject = currentBoard.at(x, y);
 				int id = boardObject.id;
-				GameObject obj = (GameObject)Instantiate(objectPrefabs[id], getPosition(x, y), Quaternion.identity);
+				GameObject obj = (GameObject)Instantiate(objectPrefabs[id], Vector3.zero, Quaternion.identity);
 				obj.transform.parent = transform;
+                obj.transform.localPosition = getPosition(x, y);
 
 				Block block = obj.GetComponent<Block>();
 				block.setIDs(x, y);
