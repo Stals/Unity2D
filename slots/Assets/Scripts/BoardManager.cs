@@ -171,7 +171,8 @@ public class BoardManager : MonoBehaviour {
 
 	public void onBlockTrigger(Block _block){
 		if (sameColorAsPrevious (_block) &&
-			nearPrevious (_block)) {
+			nearPrevious (_block) &&
+            (!alreadySelected(_block))){
 
 				selectedBlocks.Add (_block);
                 _block.setSelected(true);
@@ -216,4 +217,8 @@ public class BoardManager : MonoBehaviour {
         }
 	}
 
+    bool alreadySelected(Block block)
+    {
+        return block.isSelected();
+    }
 }

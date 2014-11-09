@@ -8,6 +8,8 @@ public class Block : MonoBehaviour {
 	public int x;
 	public int y;
 
+    bool selected = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -59,9 +61,14 @@ public class Block : MonoBehaviour {
         return GetComponentInChildren<SpriteRenderer>().sprite.name;
     }
 
-    public void setSelected(bool selected){
+    public void setSelected(bool _selected){
         // start rotating if true
         // 
+        selected = _selected;
+    }
 
+    public bool isSelected()
+    {
+        return selected;
     }
 }
