@@ -50,16 +50,11 @@ public class BoardManager : MonoBehaviour {
         selectedBlocks = new List<Block> ();
 
 		generator = new BoardGenerator (objectPrefabs.Count, width, height);
-		createBoard ();
+        Game.Instance.setBoardManager (this);
+
+        createBoard ();
 		positionBoard ();
 
-        //lineVector = new Vector3[25];
-        //line = new VectorLine("LineRenderer", lineVector, lineMaterial, 5.0f, Vectrosity.LineType.Continuous);
-
-		Game.Instance.setBoardManager (this);
-
-
-        //-4.5
         gameObject.RotateBy(new Vector3(0, 0, -0.005f), 0.5f, 0, EaseType.easeInOutSine, LoopType.pingPong);
 	}
 
@@ -171,14 +166,21 @@ public class BoardManager : MonoBehaviour {
 				int id = boardObject.id;
 				GameObject obj = (GameObject)Instantiate(objectPrefabs[id], Vector3.zero, Quaternion.identity);
 				obj.transform.parent = transform;
-                obj.transform.localPosition = getPosition(x, y);
+                Vector3 startPos = getPosition(x, y);
+                startPos.y += ((y + 1) *( objectHeight * Random.Range(1, 3) )) + objectHeight * 7;
+                obj.transform.localPosition = startPos;
+
+                // делать немного выше и вызывать update position
+
                 obj.transform.localEulerAngles = new Vector3(0, 0, -4.5f);
 
 				Block block = obj.GetComponent<Block>();
 				block.setIDs(x, y);
 				boardObject.setBlock(block);
-			}
+             }
 		}
+
+        updateBlocksPosition();
 	}
 
 	public Vector3 getPosition(int x, int y){
