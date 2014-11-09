@@ -89,11 +89,11 @@ public class BoardManager : MonoBehaviour {
 
     void updateSelectedLine()
     {
+        clearDisplayedLine();
+
         int pointsCount = selectedBlocks.Count;
         if (pointsCount < 2)
             return;
-
-        clearDisplayedLine();
 
         Vector3[] points = new Vector3[selectedBlocks.Count];
         for(int i = 0; i < pointsCount; ++i){
