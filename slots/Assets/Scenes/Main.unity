@@ -281,7 +281,7 @@ Transform:
   m_Children:
   - {fileID: 1861891577}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!50 &97167269
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ Transform:
   m_Children:
   - {fileID: 1222745403}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!50 &130673797
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -957,7 +957,7 @@ MonoBehaviour:
   pixelSnap: 0
   onClick:
   - mTarget: {fileID: 1713678766}
-    mMethodName: nextBet
+    mMethodName: nextLines
     mParameters: []
     oneShot: 0
 --- !u!114 &332293432
@@ -1534,7 +1534,7 @@ Transform:
   m_Children:
   - {fileID: 983570200}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!50 &491470549
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2076,7 +2076,7 @@ GameObject:
   - 4: {fileID: 689387243}
   - 114: {fileID: 689387244}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3188,7 +3188,7 @@ Transform:
   m_Children:
   - {fileID: 1930435161}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!50 &1028993027
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -3753,7 +3753,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1151171637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1934031109}
@@ -3788,13 +3788,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 148
-  mHeight: 136
+  mWidth: 95
+  mHeight: 130
   mDepth: 6
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.08823526
+  aspectRatio: .730769217
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11400000, guid: 29056518aafb01b49a5b08faf8e30cff, type: 2}
@@ -4760,7 +4760,7 @@ GameObject:
   - 4: {fileID: 1601789922}
   - 114: {fileID: 1601789923}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4818,7 +4818,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11400000, guid: 29056518aafb01b49a5b08faf8e30cff, type: 2}
-  mText: Bet
+  mText: Bet Per Line
   mFontSize: 40
   mFontStyle: 0
   mAlignment: 0
@@ -4870,7 +4870,7 @@ Transform:
   m_Children:
   - {fileID: 1949911042}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 7
+  m_RootOrder: 1
 --- !u!50 &1637719144
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -5014,7 +5014,7 @@ GameObject:
   - 4: {fileID: 1657690652}
   - 114: {fileID: 1657690653}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5283,9 +5283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5766e881be84c02b5083577b7d0b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPrizeLabel: {fileID: 0}
-  currentLinesLabel: {fileID: 0}
-  currentBetLabel: {fileID: 0}
+  currentPrizeLabel: {fileID: 1730814911}
+  currentLinesLabel: {fileID: 468597911}
+  currentBetLabel: {fileID: 1151171639}
+  moneyLabel: {fileID: 1595666314}
+  totalBetLabel: {fileID: 1770562469}
 --- !u!1 &1730814909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5497,7 +5499,7 @@ MonoBehaviour:
   pixelSnap: 0
   onClick:
   - mTarget: {fileID: 1713678766}
-    mMethodName: prevLines
+    mMethodName: prevBet
     mParameters: []
     oneShot: 0
 --- !u!114 &1758093669
@@ -5671,7 +5673,7 @@ Transform:
   m_Children:
   - {fileID: 1070467508}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!50 &1786535124
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -6061,7 +6063,7 @@ Transform:
   m_Children:
   - {fileID: 997547342}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 6
+  m_RootOrder: 0
 --- !u!50 &1836216249
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -6783,7 +6785,7 @@ MonoBehaviour:
   pixelSnap: 0
   onClick:
   - mTarget: {fileID: 1713678766}
-    mMethodName: prevBet
+    mMethodName: prevLines
     mParameters: []
     oneShot: 0
 --- !u!114 &1956436622
@@ -7109,7 +7111,7 @@ MonoBehaviour:
   pixelSnap: 0
   onClick:
   - mTarget: {fileID: 1713678766}
-    mMethodName: nextLines
+    mMethodName: nextBet
     mParameters: []
     oneShot: 0
 --- !u!114 &2021304550
@@ -7274,7 +7276,7 @@ Transform:
   m_Children:
   - {fileID: 1102296289}
   m_Father: {fileID: 2146730592}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!50 &2063745832
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -7543,13 +7545,13 @@ Transform:
   m_LocalPosition: {x: -1.40411615, y: 2.34261775, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1836216248}
+  - {fileID: 1637719143}
   - {fileID: 1786535123}
   - {fileID: 2063745831}
   - {fileID: 97167268}
   - {fileID: 491470548}
   - {fileID: 1028993026}
   - {fileID: 130673796}
-  - {fileID: 1836216248}
-  - {fileID: 1637719143}
   m_Father: {fileID: 0}
   m_RootOrder: 1
