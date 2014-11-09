@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
         totalBetLabel.text = getTotalBet().ToString();
 
         float baseMoney = Game.Instance.getBoardManager().getSelectedCount() * perBlock;
-        currentPrizeLabel.text = string.Format("{0} x {1} = {2}", baseMoney, getCurrentBet(), baseMoney * getCurrentBet());
+        currentPrizeLabel.text = string.Format("{0} x {1} = {2}", getCurrentBet(), baseMoney, baseMoney * getCurrentBet());
 	}
 
     public int getCurrentBet()
