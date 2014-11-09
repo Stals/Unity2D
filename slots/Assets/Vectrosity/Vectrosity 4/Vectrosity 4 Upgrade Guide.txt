@@ -1,0 +1,142 @@
+VECTROSITY 4.0:
+
+Vectrosity now uses the canvas system in Unity 4.6. This means Vectrosity 4.0 and higher won't run on versions of Unity below 4.6. The major changes are: The VectorCam is no longer created for VectorLines using Draw, lines are no longer meshes, the array used for creating lines is no longer referenced after the line is created, and the array of points used for drawing lines is now a generic List of Vector2 or Vector3 points rather than a fixed-size array.
+
+• VectorLine.SetCamera is removed, so delete any code that calls this function. One use for SetCamera was manually polling for screen resolution changes and calling SetCamera if needed, since this fixed already-drawn lines when the resolution changed, but this is no longer necessary.
+
+• VectorLine.GetCamera is also removed, so again delete any code that calls this function.
+
+• Any code using VectorLine.SetVectorCamDepth should be deleted.
+
+• VectorLine.SetCamera3D is still used for setting the camera that lines are oriented to, if using world-space Vector3 lines, even when using Draw instead of Draw3D. If you're not using a camera tagged MainCamera (AKA Camera.main), then call SetCamera3D with the appropriate camera. Otherwise it's automatically set to Camera.main, if such a camera exists. SetCamera3D is not used for Vector2 lines.
+
+• Since the array of points used to create a VectorLine is no longer referenced after the line is created, use VectorLine.points2 (for Vector2 lines) or VectorLine.points3 (for Vector3 lines) instead. So if you had code like this:
+
+	var myPoints = new Vector2[100];
+	var line = new VectorLine("Line", myPoints, null, 2.0f);
+	myPoints[0] = new Vector2(10, 10);
+
+Change it to this:
+
+	var myPoints = new Vector2[100];
+	var line = new VectorLine("Line", myPoints, null, 2.0f);
+	line.points2[0] = new Vector2(10, 10);
+
+Since the points array is no longer referenced, you may prefer to declare it inline:
+
+	var line = new VectorLine("Line", new Vector2[100], null, 2.0f);
+
+• The contents of the array used to declare a VectorLine are copied to a generic List associated with that line. List<Vector2> is used for Vector2 arrays and List<Vector3> is used for Vector3 arrays. This means that VectorLine.points2/points3 are now Lists instead of arrays, so any code like this:
+
+	Debug.Log (line.points2.Length);
+
+Should be changed to:
+
+	Debug.Log (line.points2.Count);
+
+• Since Lists are now used instead of arrays, VectorLines can also be declared with Lists:
+
+	var line = new VectorLine("Line", new List.<Vector2>(), null, 2.0f);	// Unityscript
+	var line = new VectorLine("Line", new List<Vector2>(), null, 2.0f);	// C#
+
+Again, any existing content of the List is copied to the VectorLine and the original List is no longer referenced. The List can be Vector2 or Vector3.
+
+This also means that you can use List functions such as Add, RemoveAt, etc.
+
+	line.points2.Add (new Vector2(10, 10));
+	line.points2.Add (new Vector2(20, 20));
+	line.points2.RemoveAt (0);
+
+All of this means it's no longer necessary to pre-allocate maximum array sizes and fiddle with minDrawIndex/maxDrawIndex if you're dynamically changing the sizes of lines. See the DrawLinesMouse/DrawLinesTouch scripts for an example.
+
+• VectorLine.minDrawIndex and VectorLine.maxDrawIndex are removed. If you have a dynamic line where part of it always remains the same (such as line-drawing scripts similar to the DrawLinesMouse example), you can use VectorLine.endPointsUpdate as an optimization instead. This refers to the number of points from the end of the line that are actually updated, and the rest are untouched. Again, see DrawLinesMouse/DrawLinesTouch.
+
+• VectorLine.Resize only accepts an integer now, not arrays. As mentioned above, you can use List functions to resize the line, but Resize can be a convenient way to set the number of points to a specific size without having to use AddRange and RemoveRange.
+
+• Colors and color arrays are no longer used when declaring VectorLines, in the interest of streamlining the parameters in the VectorLine constructor. So if you had code like this:
+
+	var line = new VectorLine("Line", myPoints, Color.green, null, 2.0f);
+
+Change it to this:
+
+	var line = new VectorLine("Line", myPoints, null, 2.0f);
+	line.color = Color.green;
+
+If you had code like this:
+
+	var lineColors = new Color[50];
+	var line = new VectorLine("Line", myPoints, myColors, null, 2.0f);
+
+Change it to this:
+
+	var lineColors = new Color[50];
+	var line = new VectorLine("Line", myPoints, null, 2.0f);
+	line.SetColors (lineColors);
+
+You can use a List<Color> instead of a fixed-length Color array when using SetColors. Similarly, you can use a List<int> or List<float> when setting line widths with SetWidths.
+
+• VectorLine.color is no longer read-only, so it can be used to set the color of all line segments, as shown above, instead of having to use SetColor.
+
+• Since lines are no longer meshes, layers are no longer used. Any code using VectorLine.vectorLayer and VectorLine.vectorLayer3D should be deleted. You can set the GameObject layer of the canvas instead:
+
+	VectorLine.canvas.gameObject.layer = LayerMask.NameToLayer ("Water");
+
+The default layer is "UI".
+
+• Also related to lines no longer being meshes, hardware 1-pixel line drawing is no longer supported. Any code using VectorLine.useMeshLines and VectorLine.useMeshPoints should be deleted.
+
+• VectorLine.SetCameraRenderTexture is removed. Instead, you can use VectorLine.SetCanvasCamera with a camera that's rendering to a texture. This will set the canvas to RenderMode.OverlayCamera and will set the canvas.worldCamera to the specified camera.
+
+• VectorLine.depth is removed. Line drawing order is initially determined by the order in which VectorLines are created (newest lines are drawn on top of older lines). Also, VectorLine.drawDepth can be used to change drawing order after lines are created, where higher numbers are drawn on top of lower numbers. Note that changing drawDepth for one line will potentially change the drawDepth for other lines (basically this uses SetSiblingIndex and GetSiblingIndex behind the scenes). Another possibility is to create empty GameObjects and make them the children of VectorLine.canvas.transform, and use VectorLine.rectTransform.parent to make lines the child of one of those empty GameObjects. This way you can control the drawing order of groups of lines by changing the sibling index of the empty GameObjects.
+
+• Any code using VectorLine.SetDepth should be deleted.
+
+• Any code using VectorLine.mesh should be deleted.
+
+• VectorLine.vectorObject is removed. VectorLine.rectTransform can be used in some cases. For example, this:
+
+	myLine.vectorObject.transform.position = new Vector2(10, 10);
+
+Could be:
+
+	myLine.rectTransform.position = new Vector2(10, 10);
+
+Although, in general, passing a transform into Draw or Draw3D is preferable to directly manipulating a VectorLine.
+
+• VectorLine.sortingOrder and VectorLine.sortingLayerID are removed. You can potentially set these properties on the canvas that's drawing the VectorLines by using VectorLine.canvas and/or VectorLine.canvas3D, though that will set the sorting order for all VectorLines.
+
+• VectorLine.MakeLine and VectorLine.SetLineParameters are removed. Code using these should be deleted. If you are creating many VectorLines using the same basic parameters and don't want to create each one "the long way", you can create your own function which sets the desired parameters and returns a VectorLine. When MakeLine and SetLineParameters were created (in Vectrosity 1.0), there were far fewer parameters, so these functions are less useful now and are better served by your own custom functions if needed.
+
+• VectorLine.ResetTextureScale is removed. Instead you can set VectorLine.textureScale to 0 and re-draw the line.  So if you had code like this:
+
+	myLine.ResetTextureScale();
+
+Change it to this:
+
+	myLine.textureScale = 0;
+	myLine.Draw();
+
+• VectorLine.ZeroPoints is removed. Instead you can use List.Clear on the points array and re-draw the line. If you had code like this:
+
+	myLine.ZeroPoints();
+
+Change it to this:
+
+	myLine.points2.Clear();
+	myLine.Draw();
+
+• Lines drawn with a material that uses lighting, and therefore requires VectorLine.AddNormals, seem to be invisible with the default canvas, which uses RenderMode.Overlay. They will appear if the canvas is set to RenderMode.OverlayCamera and the canvas.worldCamera is set appropriately, which can be done using SetCanvasCamera as a shortcut:
+
+	VectorLine.SetCanvasCamera (Camera.main);
+
+This only applies to lines drawn with Draw; lines drawn with Draw3D use a canvas set to RenderMode.World by default anyway and therefore don't have this issue.
+
+Note that you will no longer get "shader wants normals" warnings from Unity if you supply a line material that uses lighting but neglect to use normals. (So if lines don't react to lighting and you expected that they would, make sure to use VectorLine.AddNormals as usual.)
+
+• Code that uses VectorLine.MakeRect, when passing in a Rect, draws from the bottom-up now to be consistent with screen-space coordinates. So code like this, which would have drawn a 100-pixel square where the bottom-left corner was at (50, 50) and the top-right corner was at (150, 150):
+
+	myLine.MakeRect (new Rect(50, 150, 100, 100));
+
+Should be changed to this:
+
+	myLine.MakeRect (new Rect(50, 50, 100, 100));

@@ -29,7 +29,8 @@ public class BoardManager : MonoBehaviour {
     [SerializeField]
     Material lineMaterial;
 
-    VectorLine line;
+    VectorLine line = null;
+    Vector3[] lineVector;
     
     // Use this for initialization
 	void Start () {
@@ -43,7 +44,8 @@ public class BoardManager : MonoBehaviour {
 		createBoard ();
 		positionBoard ();
 
-        line = new VectorLine("LineRenderer", new Vector3[2], lineMaterial, 10.0f, Vectrosity.LineType.Continuous);
+        //lineVector = new Vector3[25];
+        //line = new VectorLine("LineRenderer", lineVector, lineMaterial, 5.0f, Vectrosity.LineType.Continuous);
 
 		Game.Instance.setBoardManager (this);
 	}
@@ -82,22 +84,35 @@ public class BoardManager : MonoBehaviour {
             block.setSelected(false);
         }
         selectedBlocks.Clear();
+        clearDisplayedLine();
     }
 
     void updateSelectedLine()
     {
-        // TODO startRotating
-        /*
-        Vector3 startPoint = new Vector3(0.5f, 0.5f);
-        startPoint.z = -1;
-        Vector3 endPoint = new Vector3(2.5f, 2.5f);
-        endPoint.z = -1;
-        
-        line.points3 [0] = startPoint;
-        line.points3 [1] = endPoint;
-        
-        line.Draw3D (); // pass local transform?
-        */
+        int pointsCount = selectedBlocks.Count;
+        if (pointsCount < 2)
+            return;
+
+        clearDisplayedLine();
+
+        Vector3[] points = new Vector3[selectedBlocks.Count];
+        for(int i = 0; i < pointsCount; ++i){
+            Vector3 pos = selectedBlocks[i].transform.position;
+            pos.z = -5;
+            points[i] = pos;
+        }
+
+        line = new VectorLine("LineRenderer", points, lineMaterial, 5.0f, Vectrosity.LineType.Continuous);
+        line.Draw3D();
+    }
+
+    void clearDisplayedLine()
+    {
+        if (line != null)
+        {
+            Destroy(line.vectorObject);
+            line = null;
+        }
     }
 
 	void updateBlocksPosition()
