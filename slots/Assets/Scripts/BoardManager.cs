@@ -140,7 +140,14 @@ public class BoardManager : MonoBehaviour {
 		block.gameObject.SetActive(false);
 	}
 
-	void createBoard()
+    public void clearBoard()
+    {
+        foreach(Transform child in transform) {
+            Destroy(child.gameObject);
+        }
+    }
+
+	public void createBoard()
 	{
 		currentBoard = generator.generateBoard ();
 

@@ -90,5 +90,7 @@ public class GameManager : MonoBehaviour {
 
     public void spin()
     {
+        Game.Instance.getBoardManager().clearBoard();
+        Game.Instance.getBoardManager().createBoard();
     }
 }
