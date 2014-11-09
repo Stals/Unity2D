@@ -53,4 +53,9 @@ public class Block : MonoBehaviour {
 	{
 		transform.localPosition = Game.Instance.getBoardManager ().getPosition (x, y);
 	}
+
+    public string getImageName()
+    {
+        return GetComponentInChildren<SpriteRenderer>().sprite.name;
+    }
 }

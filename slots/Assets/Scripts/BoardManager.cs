@@ -148,8 +148,7 @@ public class BoardManager : MonoBehaviour {
             return true;
         } else
         {
-            // TODO replace with real stuff
-            return true;
+            return string.Equals(lastBlock.getImageName(), block.getImageName());
         }
 	}
 
