@@ -102,7 +102,7 @@ public class BoardManager : MonoBehaviour {
             points[i] = pos;
         }
 
-        line = new VectorLine("LineRenderer", points, lineMaterial, 5.0f, Vectrosity.LineType.Continuous);
+        line = new VectorLine("LineRenderer", points, lineMaterial, 10.0f, Vectrosity.LineType.Continuous, Joins.Fill);
         line.Draw3D();
     }
 
