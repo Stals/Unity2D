@@ -24,10 +24,6 @@ public class Block : MonoBehaviour {
         if (selected)
         {
             gameObject.RotateBy(new Vector3(0, 0, 1f), 0.3f, 0, EaseType.easeInOutSine);
-        } else
-        {
-            iTween.Stop(gameObject);
-            gameObject.RotateTo(new Vector3(0, 0, 0), 0.2f, 0);
         }
     }
 
@@ -95,6 +91,12 @@ public class Block : MonoBehaviour {
     }
 
     public void setSelected(bool _selected){
+        if (!_selected && selected)
+        {
+            iTween.Stop(gameObject);
+            gameObject.RotateTo(new Vector3(0, 0, 0), 0.2f, 0);
+        }
+        
         selected = _selected;
     }
 

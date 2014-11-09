@@ -64,7 +64,6 @@ public class BoardManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		updateBlocksPosition();
         updateSelectedLine();
 
 		// mouse just released
@@ -74,7 +73,6 @@ public class BoardManager : MonoBehaviour {
 				foreach(Block block in selectedBlocks){
 					removeBlock(block);
 				}
-				//TODO with lerp later.
 				updateBlocksPosition();
 			}
             endSelection();
