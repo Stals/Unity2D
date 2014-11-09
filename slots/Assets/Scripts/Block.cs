@@ -51,6 +51,6 @@ public class Block : MonoBehaviour {
 
 	public void updatePosition()
 	{
-		transform.position = Game.Instance.getBoardManager ().getPosition (x, y);
+		transform.localPosition = Game.Instance.getBoardManager ().getPosition (x, y);
 	}
 }
