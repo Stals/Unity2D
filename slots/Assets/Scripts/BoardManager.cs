@@ -241,4 +241,9 @@ public class BoardManager : MonoBehaviour {
     {
         return block.isSelected();
     }
+
+    public int getSelectedCount()
+    {
+        return selectedBlocks.Count;
+    }
 }

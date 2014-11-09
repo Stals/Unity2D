@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
-	
+    float perBlock = 0.25f;
+    float money = 100;
+
     int[] lines = new int[] {1, 2, 3, 4, 5, 6, 7, 8 , 9};
     int[] bets = new int[] {1, 2, 3, 4, 5, 10, 25, 50 , 100, 200, 300, 400, 500, 1000, 1250, 1500};
 
@@ -32,9 +34,14 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        moneyLabel.text = string.Format("Money: {0}", money);
+
         currentLinesLabel.text = getCurrentLines().ToString();
         currentBetLabel.text = getCurrentBet().ToString();
         totalBetLabel.text = getTotalBet().ToString();
+
+        float baseMoney = Game.Instance.getBoardManager().getSelectedCount() * perBlock;
+        currentPrizeLabel.text = string.Format("{0} x {1} = {2}", baseMoney, getCurrentBet(), baseMoney * getCurrentBet());
 	}
 
     public int getCurrentBet()
