@@ -121,6 +121,50 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public void onBlockTrigger(Block _block){
-		selectedBlocks.Add (_block);
+		if (sameColorAsPrevious (_block) &&
+			nearPrevious (_block)) {
+
+				selectedBlocks.Add (_block);
+		}
+
+		// При наведении, добавлять только если тотже цвет или там пусто!!!!!
+		// Добавлять только если вокруг предведущий.
 	}
+
+	Block getLastSelectedBlock()
+	{
+		if (selectedBlocks.Count == 0) {
+			return null;
+		} else {
+			return selectedBlocks [selectedBlocks.Count - 1];
+		}
+	}
+
+	bool sameColorAsPrevious(Block block)
+	{
+        Block lastBlock = getLastSelectedBlock();
+        if (lastBlock == null)
+        {
+            return true;
+        } else
+        {
+            // TODO replace with real stuff
+            return true;
+        }
+	}
+
+	bool nearPrevious(Block block)
+	{
+        Block lastBlock = getLastSelectedBlock();
+        if (lastBlock == null)
+        {
+            return true;
+        } else
+        {
+            bool xOK = Mathf.Abs(lastBlock.x - block.x) <= 1;
+            bool yOK = Mathf.Abs(lastBlock.y - block.y) <= 1;
+            return xOK && yOK;
+        }
+	}
+
 }
