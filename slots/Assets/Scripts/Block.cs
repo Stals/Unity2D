@@ -25,12 +25,12 @@ public class Block : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Vector2 newPos;
+        /*Vector2 newPos;
 
         newPos.x = Mathf.Lerp(transform.localPosition.x, targetPosition.x, Time.deltaTime * 8f);
         newPos.y = Mathf.Lerp(transform.localPosition.y, targetPosition.y, Time.deltaTime * 8f);
 
-        transform.localPosition = newPos;
+        transform.localPosition = newPos;*/
 
 
 		if (isMouseOver ()) {
@@ -63,7 +63,16 @@ public class Block : MonoBehaviour {
 
 	public void updatePosition()
 	{
-        targetPosition = Game.Instance.getBoardManager ().getPosition (x, y);
+        //gameObject.MoveTo(Game.Instance.getBoardManager ().getPosition (x, y), 0.5f, 0f, EaseType.easeInOutSine);
+
+        /*iTween.MoveTo(gameObject, iTween.Hash("position", Game.Instance.getBoardManager ().getPosition (x, y),
+                                              "time", 0.3f, "delay", 0f, "islocal", true, 
+                                              "easetype", "easeInOutSine"));*/
+
+        iTween.MoveTo(gameObject, iTween.Hash("position", Game.Instance.getBoardManager ().getPosition (x, y),
+                                              "time", 0.3f, "delay", 0f, "islocal", true, 
+                                              "easetype", "easeInQuad"));
+
 	}
 
     public string getImageName()
