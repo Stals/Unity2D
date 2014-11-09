@@ -152,7 +152,10 @@ public class BoardManager : MonoBehaviour {
         foreach(Transform child in transform) {
             iTween.Stop(child.gameObject);
             //Destroy(child.gameObject.GetComponent<iTween>());
-            Destroy(child.gameObject);
+            iTween.MoveBy(child.gameObject, iTween.Hash("amount", new Vector3(0, -3f, 0),
+                                                  "time", 0.3f, "delay", 0f, "islocal", true, 
+                                                  "easetype", "easeInQuad"));
+            Destroy(child.gameObject, 1f);
         }
     }
 
