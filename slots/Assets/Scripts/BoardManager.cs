@@ -31,6 +31,9 @@ public class BoardManager : MonoBehaviour {
 
     VectorLine line = null;
     Vector3[] lineVector;
+
+    float boardWidth;
+    float boardHeight;
     
     // Use this for initialization
 	void Start () {
@@ -38,7 +41,10 @@ public class BoardManager : MonoBehaviour {
 		objectWidth = size.x;
 		objectHeight = size.y;
 
-		selectedBlocks = new List<Block> ();
+        boardWidth = objectWidth * width + paddingX * (width - 1) - objectWidth;
+        boardHeight = objectHeight * height + paddingY * (height - 1) - objectHeight;
+        
+        selectedBlocks = new List<Block> ();
 
 		generator = new BoardGenerator (objectPrefabs.Count, width, height);
 		createBoard ();
@@ -48,12 +54,16 @@ public class BoardManager : MonoBehaviour {
         //line = new VectorLine("LineRenderer", lineVector, lineMaterial, 5.0f, Vectrosity.LineType.Continuous);
 
 		Game.Instance.setBoardManager (this);
+
+
+        //-4.5
+        gameObject.RotateBy(new Vector3(0, 0, -0.005f), 0.5f, 0, EaseType.easeInOutSine, LoopType.pingPong);
 	}
 
 
 	void positionBoard()
 	{
-        transform.position = new Vector3(-1.206132f, -0.8818362f, transform.position.z);
+        //transform.position = new Vector3(-1.206132f, -0.8818362f, transform.position.z);
 
         /*
         float boardWidth = objectWidth * width + paddingX * (width - 1) - objectWidth / 2f;
@@ -157,6 +167,7 @@ public class BoardManager : MonoBehaviour {
 				GameObject obj = (GameObject)Instantiate(objectPrefabs[id], Vector3.zero, Quaternion.identity);
 				obj.transform.parent = transform;
                 obj.transform.localPosition = getPosition(x, y);
+                obj.transform.localEulerAngles = new Vector3(0, 0, -4.5f);
 
 				Block block = obj.GetComponent<Block>();
 				block.setIDs(x, y);
@@ -166,15 +177,20 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public Vector3 getPosition(int x, int y){
-		float xPos = 0;
+        
+        float xPos = 0;
 		if(x != 0){
 			xPos = (objectWidth * x) + (paddingX * x);
 		}
+
+        xPos -= boardWidth / 2;
 
 		float yPos = 0;
 		if(y != 0){
 			yPos = (objectHeight * y) + (paddingY * y);
 		}
+
+        yPos -= boardHeight / 2;
 
 		return new Vector3(xPos, yPos, 0);
 	}
