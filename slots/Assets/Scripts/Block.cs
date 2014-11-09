@@ -15,7 +15,21 @@ public class Block : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         targetPosition = transform.position;
+
+        InvokeRepeating("updateRotation", 0.5f, 0.5f);
 	}
+
+    void updateRotation()
+    {
+        if (selected)
+        {
+            gameObject.RotateBy(new Vector3(0, 0, 1f), 0.3f, 0, EaseType.easeInOutSine);
+        } else
+        {
+            iTween.Stop(gameObject);
+            gameObject.RotateTo(new Vector3(0, 0, 0), 0.2f, 0);
+        }
+    }
 
 	public void setIDs(int _x, int _y)
 	{
@@ -81,22 +95,7 @@ public class Block : MonoBehaviour {
     }
 
     public void setSelected(bool _selected){
-        // start rotating if true
-        // 
-        if (_selected && !selected)
-        {
-            gameObject.RotateBy(new Vector3(0, 0, 2f), 0.5f, 0.5f, EaseType.linear, LoopType.loop);
-        }
-
-        if (!_selected && selected)
-        {
-            iTween.Stop(gameObject);
-            gameObject.RotateTo(new Vector3(0, 0, 0), 0.2f, 0);
-        }
-
         selected = _selected;
-
-
     }
 
     public bool isSelected()
