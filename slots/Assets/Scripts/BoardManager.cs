@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Vectrosity;
 
 public class BoardManager : MonoBehaviour {
 
@@ -25,7 +26,12 @@ public class BoardManager : MonoBehaviour {
 
 	Board currentBoard;
 
-	// Use this for initialization
+    [SerializeField]
+    Material lineMaterial;
+
+    VectorLine line;
+    
+    // Use this for initialization
 	void Start () {
 		Vector3 size = objectPrefabs [0].GetComponentInChildren<SpriteRenderer> ().bounds.size;
 		objectWidth = size.x;
@@ -36,6 +42,8 @@ public class BoardManager : MonoBehaviour {
 		generator = new BoardGenerator (objectPrefabs.Count, width, height);
 		createBoard ();
 		positionBoard ();
+
+        line = new VectorLine("LineRenderer", new Vector3[2], lineMaterial, 10.0f, Vectrosity.LineType.Continuous);
 
 		Game.Instance.setBoardManager (this);
 	}
@@ -52,6 +60,7 @@ public class BoardManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		updateBlocksPosition();
+        updateSelectedLine();
 
 		// mouse just released
 		if(Input.GetMouseButtonUp(0)){
@@ -62,9 +71,34 @@ public class BoardManager : MonoBehaviour {
 				//TODO with lerp later.
 				updateBlocksPosition();
 			}
-            selectedBlocks.Clear();
+            endSelection();
 		}
 	}
+
+    void endSelection()
+    {
+        foreach (Block block in selectedBlocks)
+        {
+            block.setSelected(false);
+        }
+        selectedBlocks.Clear();
+    }
+
+    void updateSelectedLine()
+    {
+        // TODO startRotating
+        /*
+        Vector3 startPoint = new Vector3(0.5f, 0.5f);
+        startPoint.z = -1;
+        Vector3 endPoint = new Vector3(2.5f, 2.5f);
+        endPoint.z = -1;
+        
+        line.points3 [0] = startPoint;
+        line.points3 [1] = endPoint;
+        
+        line.Draw3D (); // pass local transform?
+        */
+    }
 
 	void updateBlocksPosition()
 	{
@@ -125,6 +159,7 @@ public class BoardManager : MonoBehaviour {
 			nearPrevious (_block)) {
 
 				selectedBlocks.Add (_block);
+                _block.setSelected(true);
 		}
 
 		// При наведении, добавлять только если тотже цвет или там пусто!!!!!

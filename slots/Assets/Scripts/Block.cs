@@ -58,4 +58,10 @@ public class Block : MonoBehaviour {
     {
         return GetComponentInChildren<SpriteRenderer>().sprite.name;
     }
+
+    public void setSelected(bool selected){
+        // start rotating if true
+        // 
+
+    }
 }
