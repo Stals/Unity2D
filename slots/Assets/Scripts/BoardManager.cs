@@ -61,6 +61,7 @@ public class BoardManager : MonoBehaviour {
 				}
 				//TODO with lerp later.
 				updateBlocksPosition();
+                selectedBlocks.Clear();
 			}
 		}
 	}
