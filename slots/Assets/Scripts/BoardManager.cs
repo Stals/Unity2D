@@ -53,10 +53,13 @@ public class BoardManager : MonoBehaviour {
 
 	void positionBoard()
 	{
+        transform.position = new Vector3(-1.206132f, -0.8818362f, transform.position.z);
+
+        /*
         float boardWidth = objectWidth * width + paddingX * (width - 1) - objectWidth / 2f;
         float boardHeight = objectHeight * height + paddingY * (height - 1) - objectHeight / 2f;
 
-		transform.position = new Vector3( -boardWidth / 2f, -boardHeight / 2f, transform.position.z);
+		transform.position = new Vector3( -boardWidth / 2f, -boardHeight / 2f, transform.position.z);*/
 	}
 
 	// Update is called once per frame
