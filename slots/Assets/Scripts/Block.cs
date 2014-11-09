@@ -83,7 +83,20 @@ public class Block : MonoBehaviour {
     public void setSelected(bool _selected){
         // start rotating if true
         // 
+        if (_selected && !selected)
+        {
+            gameObject.RotateBy(new Vector3(0, 0, 2f), 0.5f, 0.5f, EaseType.linear, LoopType.loop);
+        }
+
+        if (!_selected && selected)
+        {
+            iTween.Stop(gameObject);
+            gameObject.RotateTo(new Vector3(0, 0, 0), 0.2f, 0);
+        }
+
         selected = _selected;
+
+
     }
 
     public bool isSelected()
