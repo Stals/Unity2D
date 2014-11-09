@@ -34,4 +34,14 @@ public class Game  {
 	{
 		return boardManager;
 	}
+
+    public void setGameManager(GameManager _manager)
+    {
+        gameManager = _manager;
+    }
+
+    public GameManager getGameManager()
+    {
+        return gameManager;
+    }
 }

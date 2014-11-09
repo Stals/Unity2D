@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Game.Instance.setGameManager(this);
+
         currentPrizeLabel.text = "";
 	}
 	
@@ -97,7 +99,16 @@ public class GameManager : MonoBehaviour {
 
     public void spin()
     {
-        Game.Instance.getBoardManager().clearBoard();
-        Game.Instance.getBoardManager().createBoard();
+        if (money >= getTotalBet())
+        {
+            money -= getTotalBet();
+            Game.Instance.getBoardManager().clearBoard();
+            Game.Instance.getBoardManager().createBoard();
+        }
+    }
+
+    public void onLineRemove(int blockCount)
+    {
+        money += blockCount * perBlock * getCurrentBet();
     }
 }

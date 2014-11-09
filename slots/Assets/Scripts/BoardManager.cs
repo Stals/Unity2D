@@ -70,6 +70,7 @@ public class BoardManager : MonoBehaviour {
 		// mouse just released
 		if(Input.GetMouseButtonUp(0)){
 			if(selectedBlocks.Count >= 3){
+                Game.Instance.getGameManager().onLineRemove(selectedBlocks.Count);
 				foreach(Block block in selectedBlocks){
 					removeBlock(block);
 				}
