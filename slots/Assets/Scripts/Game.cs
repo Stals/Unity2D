@@ -6,6 +6,8 @@ public class Game  {
 	private static Game instance;
 	private Game() {
         // create player
+        player = new Player(100);
+
 	}
 	public static Game Instance
 	{
@@ -21,6 +23,7 @@ public class Game  {
 
 	GameManager gameManager;
 	BoardManager boardManager;
+	Player player;
 
     /*public void init(GameManager _manager)
 	{
@@ -43,5 +46,9 @@ public class Game  {
     public GameManager getGameManager()
     {
         return gameManager;
+    }
+
+    public Player getPlayer(){
+    	return player;
     }
 }

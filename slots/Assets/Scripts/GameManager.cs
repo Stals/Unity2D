@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour {
     {
         if (money >= getTotalBet())
         {
-            money -= getTotalBet();
+            Game.Instance.getPlayer().substractMoney(getTotalBet());
             Game.Instance.getBoardManager().clearBoard();
             Game.Instance.getBoardManager().createBoard();
         }
@@ -109,6 +109,6 @@ public class GameManager : MonoBehaviour {
 
     public void onLineRemove(int blockCount)
     {
-        money += blockCount * perBlock * getCurrentBet();
+        Game.Instance.getPlayer().addMoney(blockCount * perBlock * getCurrentBet());
     }
 }
