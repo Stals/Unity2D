@@ -5,16 +5,16 @@ public class Player{
 		money = _money;
 	}
 
-	float getMoney()}
+	public float getMoney()
 	{
 		return money;
 	}
 
-	void substractMoney(float m){
+	public void substractMoney(float m){
 		money -= m;
 	}
 
-	void addMoney(float m){
+	public void addMoney(float m){
 		money += m;
 	}
 

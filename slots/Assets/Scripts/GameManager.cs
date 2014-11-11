@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
     float perBlock = 0.25f;
-    float money = 100;
 
     int[] lines = new int[] {1, 2, 3, 4, 5, 6, 7, 8 , 9};
     int[] bets = new int[] {1, 2, 3, 4, 5, 10, 25, 50 , 100, 200, 300, 400, 500, 1000, 1250, 1500};
@@ -27,16 +26,19 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     UILabel totalBetLabel;
 
+    Player player;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.setGameManager(this);
+        player = Game.Instance.getPlayer();
 
         currentPrizeLabel.text = "";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        moneyLabel.text = string.Format("Money: {0}", money);
+        moneyLabel.text = string.Format("Money: {0}", player.getMoney());
 
         currentLinesLabel.text = getCurrentLines().ToString();
         currentBetLabel.text = getCurrentBet().ToString();
@@ -99,7 +101,7 @@ public class GameManager : MonoBehaviour {
 
     public void spin()
     {
-        if (money >= getTotalBet())
+        if (player.getMoney() >= getTotalBet())
         {
             Game.Instance.getPlayer().substractMoney(getTotalBet());
             Game.Instance.getBoardManager().clearBoard();
