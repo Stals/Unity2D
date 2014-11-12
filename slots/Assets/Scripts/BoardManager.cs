@@ -6,7 +6,7 @@ using Vectrosity;
 public class BoardManager : MonoBehaviour {
 
 	int width = 8;
-	int height = 7;
+	int height = 6;
 
 	BoardGenerator generator;
 	
