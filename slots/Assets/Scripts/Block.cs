@@ -99,6 +99,12 @@ public class Block : MonoBehaviour {
             iTween.Stop(gameObject);
             gameObject.RotateTo(new Vector3(0, 0, 0), 0.2f, 0);
         }
+
+        if (_selected)
+        {
+            //audio.pitch = Random.Range(0.9f, 1.1f);
+            audio.Play();
+        }
         
         selected = _selected;
     }
