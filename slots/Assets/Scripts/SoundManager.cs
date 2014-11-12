@@ -6,6 +6,9 @@ public class SoundManager : MonoBehaviour {
     [SerializeField]
     AudioSource removeLine;
 
+    [SerializeField]
+    AudioSource click;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.setSoundManager(this);
@@ -19,5 +22,10 @@ public class SoundManager : MonoBehaviour {
     public void playRemoveLine()
     {
         removeLine.Play();
+    }
+
+    public void playClick()
+    {
+        click.Play();
     }
 }

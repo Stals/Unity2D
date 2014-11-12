@@ -814,6 +814,10 @@ MonoBehaviour:
     mMethodName: nextLines
     mParameters: []
     oneShot: 0
+  - mTarget: {fileID: 991133132}
+    mMethodName: playClick
+    mParameters: []
+    oneShot: 0
 --- !u!114 &332293432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,7 +2081,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: onClick.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2162,6 +2166,14 @@ Prefab:
     - target: {fileID: 11400000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: onClick.Array.data[0].mMethodName
       value: spin
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
+      propertyPath: onClick.Array.data[1].mTarget
+      value: 
+      objectReference: {fileID: 991133132}
+    - target: {fileID: 11400000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
+      propertyPath: onClick.Array.data[1].mMethodName
+      value: playClick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
@@ -2264,6 +2276,7 @@ GameObject:
   - 82: {fileID: 991133130}
   - 82: {fileID: 991133133}
   - 114: {fileID: 991133132}
+  - 82: {fileID: 991133134}
   m_Layer: 0
   m_Name: _soundManager
   m_TagString: Untagged
@@ -2353,6 +2366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   removeLine: {fileID: 991133133}
+  click: {fileID: 991133134}
 --- !u!82 &991133133
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2364,6 +2378,64 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 299675b7ae960456c84944ade00b92ed, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .800000012
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &991133134
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 991133129}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: f01068d2c08534495861460ac366c895, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2470,6 +2542,10 @@ MonoBehaviour:
   onClick:
   - mTarget: {fileID: 1713678766}
     mMethodName: spin
+    mParameters: []
+    oneShot: 0
+  - mTarget: {fileID: 991133132}
+    mMethodName: playClick
     mParameters: []
     oneShot: 0
 --- !u!114 &998196052
@@ -4645,6 +4721,10 @@ MonoBehaviour:
     mMethodName: prevBet
     mParameters: []
     oneShot: 0
+  - mTarget: {fileID: 991133132}
+    mMethodName: playClick
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1758093669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5693,6 +5773,10 @@ MonoBehaviour:
     mMethodName: prevLines
     mParameters: []
     oneShot: 0
+  - mTarget: {fileID: 991133132}
+    mMethodName: playClick
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1956436622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6017,6 +6101,10 @@ MonoBehaviour:
   onClick:
   - mTarget: {fileID: 1713678766}
     mMethodName: nextBet
+    mParameters: []
+    oneShot: 0
+  - mTarget: {fileID: 991133132}
+    mMethodName: playClick
     mParameters: []
     oneShot: 0
 --- !u!114 &2021304550
