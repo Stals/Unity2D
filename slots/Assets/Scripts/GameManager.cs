@@ -112,5 +112,6 @@ public class GameManager : MonoBehaviour {
     public void onLineRemove(int blockCount)
     {
         Game.Instance.getPlayer().addMoney(blockCount * perBlock * getCurrentBet());
+        Game.Instance.soundManager().playRemoveLine();
     }
 }
