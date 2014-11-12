@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: gui
+  m_Name: guiAtlas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,7 +24,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,34 +39,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: cac38a550efae40d6884d3e38ad1f087, type: 2}
+  material: {fileID: 2100000, guid: 8486842a5f65647e8bf79ce924a3e0f2, type: 2}
   mSprites:
-  - name: bg
+  - name: btn_hover
     x: 0
-    y: 316
-    width: 196
-    height: 196
-    borderLeft: 39
-    borderRight: 39
-    borderTop: 39
-    borderBottom: 39
-    paddingLeft: 3
-    paddingRight: 301
-    paddingTop: 6
-    paddingBottom: 298
-  - name: buttons
-    x: 0
-    y: 240
+    y: 10
     width: 64
-    height: 75
+    height: 24
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 32
-    paddingRight: 100
-    paddingTop: 57
-    paddingBottom: 64
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: btn_normal
+    x: 0
+    y: 35
+    width: 64
+    height: 24
+    borderLeft: 16
+    borderRight: 16
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: btn_pressed
+    x: 65
+    y: 35
+    width: 64
+    height: 24
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: panel
+    x: 0
+    y: 60
+    width: 196
+    height: 196
+    borderLeft: 45
+    borderRight: 45
+    borderTop: 45
+    borderBottom: 45
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: scroll_down
+    x: 197
+    y: 226
+    width: 30
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: scroll_up
+    x: 197
+    y: 195
+    width: 30
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0
