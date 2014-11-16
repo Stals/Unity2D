@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour {
 
     Player player;
 
+    int currentBet = 0;
+    int linesLeft = 10;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.setGameManager(this);
@@ -45,7 +48,7 @@ public class GameManager : MonoBehaviour {
         totalBetLabel.text = getTotalBet().ToString();
 
         float baseMoney = Game.Instance.getBoardManager().getSelectedCount() * perBlock;
-        currentPrizeLabel.text = string.Format("{0} x {1} = {2}", getCurrentBet(), baseMoney, baseMoney * getCurrentBet());
+        currentPrizeLabel.text = string.Format("{0} x {1} = {2}", currentBet, baseMoney, baseMoney * currentBet);
 	}
 
     public int getCurrentBet()
@@ -103,6 +106,9 @@ public class GameManager : MonoBehaviour {
     {
         if (player.getMoney() >= getTotalBet())
         {
+            currentBet = getCurrentBet();
+            linesLeft = getCurrentLines();
+
             Game.Instance.getPlayer().substractMoney(getTotalBet());
             Game.Instance.getBoardManager().clearBoard();
             Game.Instance.getBoardManager().createNewBoard = true;
@@ -111,7 +117,7 @@ public class GameManager : MonoBehaviour {
 
     public void onLineRemove(int blockCount)
     {
-        Game.Instance.getPlayer().addMoney(blockCount * perBlock * getCurrentBet());
+        Game.Instance.getPlayer().addMoney(blockCount * perBlock * currentBet);
         Game.Instance.soundManager().playRemoveLine();
     }
 }
