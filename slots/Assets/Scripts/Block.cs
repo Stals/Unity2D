@@ -10,8 +10,6 @@ public class Block : MonoBehaviour {
 
     bool selected = false;
 
-    Vector3 targetPosition;
-
 	// Use this for initialization
 	void Start () {
         targetPosition = transform.position;

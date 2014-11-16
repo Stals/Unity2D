@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
         {
             Game.Instance.getPlayer().substractMoney(getTotalBet());
             Game.Instance.getBoardManager().clearBoard();
-            Game.Instance.getBoardManager().createBoard();
+            Game.Instance.getBoardManager().createNewBoard = true;
         }
     }
 

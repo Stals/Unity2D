@@ -37,6 +37,8 @@ public class BoardManager : MonoBehaviour {
 
     float boardWidth;
     float boardHeight;
+
+    public bool createNewBoard = false;
     
     // Use this for initialization
 	void Start () {
@@ -85,6 +87,16 @@ public class BoardManager : MonoBehaviour {
 			}
             endSelection();
 		}
+
+        if(createNewBoard){
+
+            float rotation = gameObject.transform.localEulerAngles.z;
+            float delta = 0.001f;
+            if(((rotation - 1.8f) < delta) || (rotation < delta)) {
+                createBoard();
+                createNewBoard = false;
+            }
+        }
 	}
 
     void endSelection()

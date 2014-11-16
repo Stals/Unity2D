@@ -4533,6 +4533,7 @@ MonoBehaviour:
   paddingX: .0250000004
   paddingY: .0250000004
   lineMaterial: {fileID: 2100000, guid: 24f81247b7f4ba008c1f60db15693055, type: 2}
+  createNewBoard: 0
 --- !u!4 &1795328276
 Transform:
   m_ObjectHideFlags: 0
