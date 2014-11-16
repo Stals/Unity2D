@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
-    float perBlock = 0.25f;
+    float perBlock = 0.125f;
 
     int[] lines = new int[] {1, 2, 3, 4, 5, 6, 7, 8 , 9};
     int[] bets = new int[] {1, 2, 3, 4, 5, 10, 25, 50 , 100, 200, 300, 400, 500, 1000, 1250, 1500};
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour {
         totalBetLabel.text = getTotalBet().ToString();
         linesLeftLabel.text = linesLeft.ToString();
 
-        float baseMoney = Game.Instance.getBoardManager().getSelectedCount() * perBlock;
+        float baseMoney = countMultipier( Game.Instance.getBoardManager().getSelectedCount() );
         currentPrizeLabel.text = string.Format("{0} x {1} = {2}", currentBet, baseMoney, baseMoney * currentBet);
 	}
 
@@ -124,8 +124,17 @@ public class GameManager : MonoBehaviour {
     public void onLineRemove(int blockCount)
     {
         --linesLeft;
-        Game.Instance.getPlayer().addMoney(blockCount * perBlock * currentBet);
+        Game.Instance.getPlayer().addMoney(countMultipier(blockCount) * currentBet);
         Game.Instance.soundManager().playRemoveLine();
+    }
+
+    public float countMultipier(int blockCount)
+    {
+        if(blockCount > 0){
+            return perBlock * Mathf.Pow(2, blockCount - 1);
+        }else{
+            return 0;
+        }
     }
 
     public bool canRemoveLine()
