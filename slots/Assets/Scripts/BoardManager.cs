@@ -78,12 +78,16 @@ public class BoardManager : MonoBehaviour {
 
 		// mouse just released
 		if(Input.GetMouseButtonUp(0)){
-			if(selectedBlocks.Count >= 3){
-                Game.Instance.getGameManager().onLineRemove(selectedBlocks.Count);
-				foreach(Block block in selectedBlocks){
-					removeBlock(block);
-				}
-				updateBlocksPosition();
+			if((selectedBlocks.Count >= 3)){
+                if(Game.Instance.getGameManager().canRemoveLine()){
+                    Game.Instance.getGameManager().onLineRemove(selectedBlocks.Count);
+    				foreach(Block block in selectedBlocks){
+    					removeBlock(block);
+    				}
+    				updateBlocksPosition();
+                }else{
+                    // ErrorHandler.noLinesLeft();
+                }
 			}
             endSelection();
 		}

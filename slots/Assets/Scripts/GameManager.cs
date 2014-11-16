@@ -26,10 +26,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     UILabel totalBetLabel;
 
+    [SerializeField]
+    UILabel linesLeftLabel;
+
     Player player;
 
     int currentBet = 0;
-    int linesLeft = 10;
+    int linesLeft = 9;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour {
         currentLinesLabel.text = getCurrentLines().ToString();
         currentBetLabel.text = getCurrentBet().ToString();
         totalBetLabel.text = getTotalBet().ToString();
+        linesLeftLabel.text = linesLeft.ToString();
 
         float baseMoney = Game.Instance.getBoardManager().getSelectedCount() * perBlock;
         currentPrizeLabel.text = string.Format("{0} x {1} = {2}", currentBet, baseMoney, baseMoney * currentBet);
@@ -112,12 +116,20 @@ public class GameManager : MonoBehaviour {
             Game.Instance.getPlayer().substractMoney(getTotalBet());
             Game.Instance.getBoardManager().clearBoard();
             Game.Instance.getBoardManager().createNewBoard = true;
+        }else{
+            // ErrorHandler.notEnoughMoney()
         }
     }
 
     public void onLineRemove(int blockCount)
     {
+        --linesLeft;
         Game.Instance.getPlayer().addMoney(blockCount * perBlock * currentBet);
         Game.Instance.soundManager().playRemoveLine();
+    }
+
+    public bool canRemoveLine()
+    {
+        return linesLeft > 0;
     }
 }
