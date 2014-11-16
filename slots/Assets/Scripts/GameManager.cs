@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     UILabel linesLeftLabel;
 
+    [SerializeField]
+    GameJoltAPIManager GJManager;
+
     Player player;
 
     int currentBet = 0;
@@ -126,6 +129,8 @@ public class GameManager : MonoBehaviour {
         --linesLeft;
         Game.Instance.getPlayer().addMoney(countMultipier(blockCount) * currentBet);
         Game.Instance.soundManager().playRemoveLine();
+
+        GJManager.GenerateHighscores(Game.Instance.getPlayer().getMoney());
     }
 
     public float countMultipier(int blockCount)
