@@ -12,8 +12,6 @@ public class Block : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        targetPosition = transform.position;
-
         InvokeRepeating("updateRotation", 0.5f, 0.5f);
 	}
 
