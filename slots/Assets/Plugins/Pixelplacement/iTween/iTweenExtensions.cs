@@ -979,6 +979,9 @@ public static class iTweenExtensions
 	public static void RotateBy(this GameObject go,Vector3 amount,float time,float delay,EaseType easeType){
 		iTween.RotateBy(go,iTween.Hash("amount",amount,"time",time,"delay",delay,"easeType",easeType.ToString()));
 	}
+	public static void RotateBy(this GameObject go,Vector3 amount,float time,float delay,EaseType easeType,bool isLocal){
+		iTween.RotateBy(go,iTween.Hash("amount",amount,"time",time,"delay",delay,"easeType",easeType.ToString(), "islocal", isLocal));
+	}
 	
 	/// <summary>
 	/// Multiplies supplied values by 360 and rotates a GameObject by calculated amount over time.
@@ -1000,6 +1003,10 @@ public static class iTweenExtensions
 	/// </param>
 	public static void RotateBy(this GameObject go,Vector3 amount,float time,float delay,EaseType easeType,LoopType loopType){
 		iTween.RotateBy(go,iTween.Hash("amount",amount,"time",time,"delay",delay,"easeType",easeType.ToString(),"looptype",loopType.ToString()));
+	}
+
+	public static void RotateBy(this GameObject go,Vector3 amount,float time,float delay,EaseType easeType,LoopType loopType,bool isLocal){
+		iTween.RotateBy(go,iTween.Hash("amount",amount,"time",time,"delay",delay,"easeType",easeType.ToString(),"looptype",loopType.ToString(), "islocal", isLocal));
 	}
 	
 	/// <summary>

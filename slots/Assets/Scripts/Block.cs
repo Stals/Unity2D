@@ -23,10 +23,10 @@ public class Block : MonoBehaviour {
     {
         if (selected)
         {
-            gameObject.RotateBy(new Vector3(0, 0, 1f), 0.3f, 0, EaseType.easeInOutSine);
+            gameObject.RotateBy(new Vector3(0, 0, 1f), 0.3f, 0, EaseType.easeInOutSine, true);
         } else
         {
-            gameObject.RotateBy(new Vector3(0, 0, 0.025f), 0.5f, 0, EaseType.easeInOutSine, LoopType.pingPong);
+            gameObject.RotateBy(new Vector3(0, 0, 0.025f), 0.5f, 0, EaseType.easeInOutSine, LoopType.pingPong, true);
         }
     }
 
@@ -98,6 +98,7 @@ public class Block : MonoBehaviour {
         {
             iTween.Stop(gameObject);
             gameObject.RotateTo(new Vector3(0, 0, 0), 0.2f, 0);
+            //transform.localEulerAngles = new Vector3(0, 0, 4.5f);
         }
 
         if (_selected)
