@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour {
             Game.Instance.getBoardManager().clearBoard();
             Game.Instance.getBoardManager().createNewBoard = true;
         }else{
-            // ErrorHandler.notEnoughMoney()
+            Game.errorHandler().notEnoughMoney();
         }
     }
 

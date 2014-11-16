@@ -24,6 +24,8 @@ public class Game  {
 	GameManager gameManager;
 	BoardManager boardManager;
     SoundManager _soundManager;
+    ErrorHandler _errorHandler;
+
 	Player player;
 
     /*public void init(GameManager _manager)
@@ -57,6 +59,15 @@ public class Game  {
     public SoundManager soundManager()
     {
         return _soundManager;
+    }
+
+    public void setErrorHandler(ErrorHandler handler){
+    	_errorHandler = handler;
+    }
+
+    static public ErrorHandler errorHandler()
+    {
+    	return Instance._errorHandler;
     }
 
     public Player getPlayer(){

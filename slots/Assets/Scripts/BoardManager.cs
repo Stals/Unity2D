@@ -86,7 +86,7 @@ public class BoardManager : MonoBehaviour {
     				}
     				updateBlocksPosition();
                 }else{
-                    // ErrorHandler.noLinesLeft();
+                    Game.errorHandler().noLinesLeft();
                 }
 			}
             endSelection();
