@@ -73,3 +73,20 @@ public abstract class EnemyControllerBase : EntityController {
         this.InitializeEnemy(((EnemyViewModel)(viewModel)));
     }
 }
+
+public abstract class BulletControllerBase : Controller {
+    
+    public abstract void InitializeBullet(BulletViewModel bullet);
+    
+    public override ViewModel CreateEmpty() {
+        return new BulletViewModel(this);
+    }
+    
+    public virtual BulletViewModel CreateBullet() {
+        return ((BulletViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        this.InitializeBullet(((BulletViewModel)(viewModel)));
+    }
+}

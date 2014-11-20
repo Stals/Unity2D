@@ -270,3 +270,74 @@ public partial class EnemyViewModel : EnemyViewModelBase {
         base.FillCommands(list);;
     }
 }
+
+[DiagramInfoAttribute("Game")]
+public class BulletViewModelBase : ViewModel {
+    
+    public P<Single> _speedProperty;
+    
+    public BulletViewModelBase(BulletControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public BulletViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+        _speedProperty = new P<Single>(this, "speed");
+    }
+}
+
+public partial class BulletViewModel : BulletViewModelBase {
+    
+    public BulletViewModel(BulletControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public BulletViewModel() : 
+            base() {
+    }
+    
+    public virtual P<Single> speedProperty {
+        get {
+            return this._speedProperty;
+        }
+    }
+    
+    public virtual Single speed {
+        get {
+            return _speedProperty.Value;
+        }
+        set {
+            _speedProperty.Value = value;
+        }
+    }
+    
+    protected override void WireCommands(Controller controller) {
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+        stream.SerializeFloat("speed", this.speed);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+        		this.speed = stream.DeserializeFloat("speed");;
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+        list.Add(new ViewModelPropertyInfo(_speedProperty, false, false, false));
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+    }
+}

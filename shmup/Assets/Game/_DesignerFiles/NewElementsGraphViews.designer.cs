@@ -119,6 +119,38 @@ public abstract class EnemyViewBase : EntityViewBase {
     }
 }
 
+[DiagramInfoAttribute("Game")]
+public abstract class BulletViewBase : ViewBase {
+    
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Single _speed;
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(BulletViewModel);
+        }
+    }
+    
+    public BulletViewModel Bullet {
+        get {
+            return ((BulletViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<BulletController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        BulletViewModel bullet = ((BulletViewModel)(viewModel));
+        bullet.speed = this._speed;
+    }
+}
+
 public class PlayerViewViewBase : PlayerViewBase {
     
     public override ViewModel CreateModel() {
@@ -199,4 +231,32 @@ public class PlayerScoreViewViewBase : PlayerViewBase {
 }
 
 public partial class PlayerScoreView : PlayerScoreViewViewBase {
+}
+
+public class BulletViewViewBase : BulletViewBase {
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<BulletController>());
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class BulletView : BulletViewViewBase {
+}
+
+public class EnemyViewViewBase : EnemyViewBase {
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<EnemyController>());
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class EnemyView : EnemyViewViewBase {
 }

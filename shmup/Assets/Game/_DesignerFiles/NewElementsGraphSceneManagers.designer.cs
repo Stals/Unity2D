@@ -32,6 +32,8 @@ public class GameSceneManagerBase : SceneManager {
     
     private EnemyController _EnemyController;
     
+    private BulletController _BulletController;
+    
     public GameSceneManagerSettings _GameSceneManagerSettings = new GameSceneManagerSettings();
     
     [Inject()]
@@ -73,6 +75,19 @@ public class GameSceneManagerBase : SceneManager {
         }
     }
     
+    [Inject()]
+    public virtual BulletController BulletController {
+        get {
+            if ((this._BulletController == null)) {
+                this._BulletController = new BulletController() { Container = Container };
+            }
+            return this._BulletController;
+        }
+        set {
+            _BulletController = value;
+        }
+    }
+    
     // <summary>
     // This method is the first method to be invoked when the scene first loads. Anything registered here with 'Container' will effectively 
     // be injected on controllers, and instances defined on a subsystem.And example of this would be Container.RegisterInstance<IDataRepository>(new CodeRepository()). Then any property with 
@@ -83,6 +98,7 @@ public class GameSceneManagerBase : SceneManager {
         Container.RegisterController<PlayerController>(PlayerController);
         Container.RegisterController<EntityController>(EntityController);
         Container.RegisterController<EnemyController>(EnemyController);
+        Container.RegisterController<BulletController>(BulletController);
         this.Container.InjectAll();
     }
     
