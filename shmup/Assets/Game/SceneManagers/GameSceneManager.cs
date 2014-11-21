@@ -9,7 +9,7 @@ using UniRx;
 // The responsibility of this class is to manage the scenes Initialization, Loading, Transitioning, and Unloading.
 // </summary>
 public class GameSceneManager : GameSceneManagerBase {
-    
+
     // <summary>
     // This method is invoked exactly right before the Load method is invoked.
     // </summary>
