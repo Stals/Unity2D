@@ -16,5 +16,6 @@ public partial class BulletView {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		coll.GetComponent<EnemyView> ().ExecuteTakeDamage (1);
+        Destroy(this.gameObject);
 	}
 }
