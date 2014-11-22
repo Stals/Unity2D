@@ -18,6 +18,13 @@ public partial class PlayerView {
     public override void ShootExecuted() {
         base.ShootExecuted();
 
+        for (int i = 0; i < Player.bulletsPerShot; ++i) {
+            createBullet();
+        }
+    }
+
+    void createBullet()
+    {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
         bullet.transform.localEulerAngles = new Vector3(0, 0, UnityEngine.Random.Range(-spread, spread));
         bullet.GetComponent<BulletView>().player = this;

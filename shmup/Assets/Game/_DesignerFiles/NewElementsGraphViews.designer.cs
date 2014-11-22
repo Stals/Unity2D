@@ -43,6 +43,10 @@ public abstract class PlayerViewBase : EntityViewBase {
     [UnityEngine.HideInInspector()]
     public Single _spawnChance;
     
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _bulletsPerShot;
+    
     public override System.Type ViewModelType {
         get {
             return typeof(PlayerViewModel);
@@ -71,6 +75,7 @@ public abstract class PlayerViewBase : EntityViewBase {
         player.canShoot = this._canShoot;
         player.shotDelay = this._shotDelay;
         player.spawnChance = this._spawnChance;
+        player.bulletsPerShot = this._bulletsPerShot;
     }
     
     public virtual void ExecuteAddMultiplayerPart() {

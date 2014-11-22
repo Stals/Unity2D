@@ -34,6 +34,8 @@ public class PlayerViewModelBase : EntityViewModel {
     
     public P<Single> _spawnChanceProperty;
     
+    public P<Int32> _bulletsPerShotProperty;
+    
     public P<Boolean> _isLowestMultiplierProperty;
     
     protected CommandWithSender<PlayerViewModel> _AddMultiplayerPart;
@@ -63,6 +65,7 @@ public class PlayerViewModelBase : EntityViewModel {
         _canShootProperty = new P<Boolean>(this, "canShoot");
         _shotDelayProperty = new P<Int32>(this, "shotDelay");
         _spawnChanceProperty = new P<Single>(this, "spawnChance");
+        _bulletsPerShotProperty = new P<Int32>(this, "bulletsPerShot");
         _isLowestMultiplierProperty = new P<Boolean>(this, "isLowestMultiplier");
         this.ResetisLowestMultiplier();
     }
@@ -198,6 +201,21 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual P<Int32> bulletsPerShotProperty {
+        get {
+            return this._bulletsPerShotProperty;
+        }
+    }
+    
+    public virtual Int32 bulletsPerShot {
+        get {
+            return _bulletsPerShotProperty.Value;
+        }
+        set {
+            _bulletsPerShotProperty.Value = value;
+        }
+    }
+    
     public virtual P<Boolean> isLowestMultiplierProperty {
         get {
             return this._isLowestMultiplierProperty;
@@ -277,6 +295,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         stream.SerializeBool("canShoot", this.canShoot);
         stream.SerializeInt("shotDelay", this.shotDelay);
         stream.SerializeFloat("spawnChance", this.spawnChance);
+        stream.SerializeInt("bulletsPerShot", this.bulletsPerShot);
     }
     
     public override void Read(ISerializerStream stream) {
@@ -288,6 +307,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         		this.canShoot = stream.DeserializeBool("canShoot");;
         		this.shotDelay = stream.DeserializeInt("shotDelay");;
         		this.spawnChance = stream.DeserializeFloat("spawnChance");;
+        		this.bulletsPerShot = stream.DeserializeInt("bulletsPerShot");;
     }
     
     public override void Unbind() {
@@ -303,6 +323,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelPropertyInfo(_canShootProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_shotDelayProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_spawnChanceProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_bulletsPerShotProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_isLowestMultiplierProperty, false, false, false, true));
     }
     
