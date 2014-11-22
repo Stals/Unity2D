@@ -41,6 +41,9 @@ public abstract class PlayerControllerBase : EntityController {
     
     public virtual void AddMoney(PlayerViewModel player, Int32 arg) {
     }
+    
+    public virtual void onProgressBarEmpty(PlayerViewModel player) {
+    }
 }
 
 public abstract class EntityControllerBase : Controller {

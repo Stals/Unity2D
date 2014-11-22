@@ -25,4 +25,19 @@ public class PlayerController : PlayerControllerBase {
 		}
 		base.AddMultiplayerPart (player);
 	}
+
+    public override void onProgressBarEmpty(PlayerViewModel player)
+    {
+        if (player.parts != 0) {
+            player.parts = 0;
+
+            //if (player.multiplayer != 1)
+            //{
+                player.multiplayer -= 1;
+            //}
+        }
+        base.onProgressBarEmpty(player);
+    }
+
+
 }

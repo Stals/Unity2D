@@ -74,6 +74,10 @@ public abstract class PlayerViewBase : EntityViewBase {
     public virtual void ExecuteAddMoney(Int32 arg) {
         this.ExecuteCommand(Player.AddMoney, arg);
     }
+    
+    public virtual void ExecuteonProgressBarEmpty() {
+        this.ExecuteCommand(Player.onProgressBarEmpty);
+    }
 }
 
 [DiagramInfoAttribute("Game")]

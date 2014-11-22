@@ -18,6 +18,8 @@ using UnityEngine;
 [DiagramInfoAttribute("Game")]
 public class PlayerViewModelBase : EntityViewModel {
     
+    private IDisposable _isLowestMultiplierDisposable;
+    
     public P<Int32> _scoreProperty;
     
     public P<Int32> _multiplayerProperty;
@@ -28,11 +30,15 @@ public class PlayerViewModelBase : EntityViewModel {
     
     public P<Single> _movementSpeedProperty;
     
+    public P<Boolean> _isLowestMultiplierProperty;
+    
     protected CommandWithSender<PlayerViewModel> _AddMultiplayerPart;
     
     protected CommandWithSenderAndArgument<PlayerViewModel, Int32> _AddScore;
     
     protected CommandWithSenderAndArgument<PlayerViewModel, Int32> _AddMoney;
+    
+    protected CommandWithSender<PlayerViewModel> _onProgressBarEmpty;
     
     public PlayerViewModelBase(PlayerControllerBase controller, bool initialize = true) : 
             base(controller, initialize) {
@@ -49,6 +55,23 @@ public class PlayerViewModelBase : EntityViewModel {
         _partsProperty = new P<Int32>(this, "parts");
         _moneyProperty = new P<Int32>(this, "money");
         _movementSpeedProperty = new P<Single>(this, "movementSpeed");
+        _isLowestMultiplierProperty = new P<Boolean>(this, "isLowestMultiplier");
+        this.ResetisLowestMultiplier();
+    }
+    
+    public virtual void ResetisLowestMultiplier() {
+        if (_isLowestMultiplierDisposable != null) _isLowestMultiplierDisposable.Dispose();
+        _isLowestMultiplierDisposable = _isLowestMultiplierProperty.ToComputed( ComputeisLowestMultiplier, this.GetisLowestMultiplierDependents().ToArray() ).DisposeWith(this);
+    }
+    
+    public virtual Boolean ComputeisLowestMultiplier() {
+        return default(Boolean);
+    }
+    
+    public virtual IEnumerable<IObservableProperty> GetisLowestMultiplierDependents() {
+        yield return _partsProperty;
+        yield return _multiplayerProperty;
+        yield break;
     }
 }
 
@@ -137,6 +160,21 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual P<Boolean> isLowestMultiplierProperty {
+        get {
+            return this._isLowestMultiplierProperty;
+        }
+    }
+    
+    public virtual Boolean isLowestMultiplier {
+        get {
+            return _isLowestMultiplierProperty.Value;
+        }
+        set {
+            _isLowestMultiplierProperty.Value = value;
+        }
+    }
+    
     public virtual CommandWithSender<PlayerViewModel> AddMultiplayerPart {
         get {
             return _AddMultiplayerPart;
@@ -164,12 +202,22 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual CommandWithSender<PlayerViewModel> onProgressBarEmpty {
+        get {
+            return _onProgressBarEmpty;
+        }
+        set {
+            _onProgressBarEmpty = value;
+        }
+    }
+    
     protected override void WireCommands(Controller controller) {
         base.WireCommands(controller);
         var player = controller as PlayerControllerBase;
         this.AddMultiplayerPart = new CommandWithSender<PlayerViewModel>(this, player.AddMultiplayerPart);
         this.AddScore = new CommandWithSenderAndArgument<PlayerViewModel, Int32>(this, player.AddScore);
         this.AddMoney = new CommandWithSenderAndArgument<PlayerViewModel, Int32>(this, player.AddMoney);
+        this.onProgressBarEmpty = new CommandWithSender<PlayerViewModel>(this, player.onProgressBarEmpty);
     }
     
     public override void Write(ISerializerStream stream) {
@@ -201,6 +249,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelPropertyInfo(_partsProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_moneyProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_movementSpeedProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_isLowestMultiplierProperty, false, false, false, true));
     }
     
     protected override void FillCommands(List<ViewModelCommandInfo> list) {
@@ -208,6 +257,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelCommandInfo("AddMultiplayerPart", AddMultiplayerPart) { ParameterType = typeof(void) });
         list.Add(new ViewModelCommandInfo("AddScore", AddScore) { ParameterType = typeof(Int32) });
         list.Add(new ViewModelCommandInfo("AddMoney", AddMoney) { ParameterType = typeof(Int32) });
+        list.Add(new ViewModelCommandInfo("onProgressBarEmpty", onProgressBarEmpty) { ParameterType = typeof(void) });
     }
 }
 
