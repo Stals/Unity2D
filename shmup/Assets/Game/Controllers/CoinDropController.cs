@@ -17,4 +17,11 @@ public class CoinDropController : CoinDropControllerBase {
         //arg.AddMoney(drop.amount);
         // TODO Player ����� onTrigger � ��� - �������� pickUp.
     }*/
+
+    public override void PickUp(DropViewModel drop)
+    {
+        base.PickUp(drop);
+
+        GameSceneManager.player.ExecuteAddMoney(drop.amount);
+    }
 }

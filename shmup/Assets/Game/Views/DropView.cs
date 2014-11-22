@@ -7,4 +7,10 @@ using UniRx;
 
 
 public partial class DropView {
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        ExecutePickUp();
+        Destroy(this.gameObject);
+    }
 }

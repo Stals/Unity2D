@@ -32,6 +32,8 @@ public class PlayerViewModelBase : EntityViewModel {
     
     public P<Int32> _shotDelayProperty;
     
+    public P<Single> _spawnChanceProperty;
+    
     public P<Boolean> _isLowestMultiplierProperty;
     
     protected CommandWithSender<PlayerViewModel> _AddMultiplayerPart;
@@ -60,6 +62,7 @@ public class PlayerViewModelBase : EntityViewModel {
         _moneyProperty = new P<Int32>(this, "money");
         _canShootProperty = new P<Boolean>(this, "canShoot");
         _shotDelayProperty = new P<Int32>(this, "shotDelay");
+        _spawnChanceProperty = new P<Single>(this, "spawnChance");
         _isLowestMultiplierProperty = new P<Boolean>(this, "isLowestMultiplier");
         this.ResetisLowestMultiplier();
     }
@@ -180,6 +183,21 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual P<Single> spawnChanceProperty {
+        get {
+            return this._spawnChanceProperty;
+        }
+    }
+    
+    public virtual Single spawnChance {
+        get {
+            return _spawnChanceProperty.Value;
+        }
+        set {
+            _spawnChanceProperty.Value = value;
+        }
+    }
+    
     public virtual P<Boolean> isLowestMultiplierProperty {
         get {
             return this._isLowestMultiplierProperty;
@@ -258,6 +276,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         stream.SerializeInt("money", this.money);
         stream.SerializeBool("canShoot", this.canShoot);
         stream.SerializeInt("shotDelay", this.shotDelay);
+        stream.SerializeFloat("spawnChance", this.spawnChance);
     }
     
     public override void Read(ISerializerStream stream) {
@@ -268,6 +287,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         		this.money = stream.DeserializeInt("money");;
         		this.canShoot = stream.DeserializeBool("canShoot");;
         		this.shotDelay = stream.DeserializeInt("shotDelay");;
+        		this.spawnChance = stream.DeserializeFloat("spawnChance");;
     }
     
     public override void Unbind() {
@@ -282,6 +302,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelPropertyInfo(_moneyProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_canShootProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_shotDelayProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_spawnChanceProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_isLowestMultiplierProperty, false, false, false, true));
     }
     
@@ -383,6 +404,8 @@ public partial class EntityViewModel : EntityViewModelBase {
 [DiagramInfoAttribute("Game")]
 public class EnemyViewModelBase : EntityViewModel {
     
+    public P<Int32> _spawnChanceProperty;
+    
     public EnemyViewModelBase(EnemyControllerBase controller, bool initialize = true) : 
             base(controller, initialize) {
     }
@@ -393,6 +416,7 @@ public class EnemyViewModelBase : EntityViewModel {
     
     public override void Bind() {
         base.Bind();
+        _spawnChanceProperty = new P<Int32>(this, "spawnChance");
     }
 }
 
@@ -406,16 +430,33 @@ public partial class EnemyViewModel : EnemyViewModelBase {
             base() {
     }
     
+    public virtual P<Int32> spawnChanceProperty {
+        get {
+            return this._spawnChanceProperty;
+        }
+    }
+    
+    public virtual Int32 spawnChance {
+        get {
+            return _spawnChanceProperty.Value;
+        }
+        set {
+            _spawnChanceProperty.Value = value;
+        }
+    }
+    
     protected override void WireCommands(Controller controller) {
         base.WireCommands(controller);
     }
     
     public override void Write(ISerializerStream stream) {
 		base.Write(stream);
+        stream.SerializeInt("spawnChance", this.spawnChance);
     }
     
     public override void Read(ISerializerStream stream) {
 		base.Read(stream);
+        		this.spawnChance = stream.DeserializeInt("spawnChance");;
     }
     
     public override void Unbind() {
@@ -424,6 +465,7 @@ public partial class EnemyViewModel : EnemyViewModelBase {
     
     protected override void FillProperties(List<ViewModelPropertyInfo> list) {
         base.FillProperties(list);;
+        list.Add(new ViewModelPropertyInfo(_spawnChanceProperty, false, false, false));
     }
     
     protected override void FillCommands(List<ViewModelCommandInfo> list) {

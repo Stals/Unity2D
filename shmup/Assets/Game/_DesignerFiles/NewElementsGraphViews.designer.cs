@@ -39,6 +39,10 @@ public abstract class PlayerViewBase : EntityViewBase {
     [UnityEngine.HideInInspector()]
     public Int32 _shotDelay;
     
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Single _spawnChance;
+    
     public override System.Type ViewModelType {
         get {
             return typeof(PlayerViewModel);
@@ -66,6 +70,7 @@ public abstract class PlayerViewBase : EntityViewBase {
         player.money = this._money;
         player.canShoot = this._canShoot;
         player.shotDelay = this._shotDelay;
+        player.spawnChance = this._spawnChance;
     }
     
     public virtual void ExecuteAddMultiplayerPart() {
@@ -128,6 +133,10 @@ public abstract class EntityViewBase : ViewBase {
 [DiagramInfoAttribute("Game")]
 public abstract class EnemyViewBase : EntityViewBase {
     
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _spawnChance;
+    
     public override System.Type ViewModelType {
         get {
             return typeof(EnemyViewModel);
@@ -149,6 +158,8 @@ public abstract class EnemyViewBase : EntityViewBase {
     
     protected override void InitializeViewModel(ViewModel viewModel) {
         base.InitializeViewModel(viewModel);
+        EnemyViewModel enemy = ((EnemyViewModel)(viewModel));
+        enemy.spawnChance = this._spawnChance;
     }
 }
 

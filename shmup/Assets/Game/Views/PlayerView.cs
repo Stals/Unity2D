@@ -6,7 +6,13 @@ using UnityEngine;
 using UniRx;
 
 
-public partial class PlayerView { 
+public partial class PlayerView {
+
+    [SerializeField]
+    GameObject bulletPrefab;
+
+    [SerializeField]
+    float spread = 30f;
 
     /// Invokes ShootExecuted when the Shoot command is executed.
     public override void ShootExecuted() {
@@ -17,16 +23,11 @@ public partial class PlayerView {
         bullet.GetComponent<BulletView>().player = this;
     }
 
-
-    [SerializeField]
-    GameObject bulletPrefab;
-
-    [SerializeField]
-    float spread = 30f;
-
     public override void Awake()
     {
         base.Awake();
+
+        GameSceneManager.player = this;
 
         gameObject.RotateBy(new Vector3(0, 0, 1f), 4f, 0f, EaseType.linear, LoopType.loop);
     }

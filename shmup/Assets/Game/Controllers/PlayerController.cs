@@ -53,5 +53,12 @@ public class PlayerController : PlayerControllerBase {
         });		
     }
 
+    public override void AddMoney(PlayerViewModel player, int arg)
+    {
+        base.AddMoney(player, arg);
+
+        player.money += (arg * player.multiplayer);
+    }
+
 
 }

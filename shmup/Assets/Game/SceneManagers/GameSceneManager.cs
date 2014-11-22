@@ -10,6 +10,10 @@ using UniRx;
 // </summary>
 public class GameSceneManager : GameSceneManagerBase {
 
+    public static PlayerView player;
+
+    public static WorldObject world;
+
     // <summary>
     // This method is invoked exactly right before the Load method is invoked.
     // </summary>

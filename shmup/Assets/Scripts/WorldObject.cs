@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WorldObject : MonoBehaviour {
 
@@ -17,8 +18,17 @@ public class WorldObject : MonoBehaviour {
 
     Transform _transform;
 
+    [SerializeField]
+    List<GameObject> coins;
+
+    [SerializeField]
+    List<float> coinsProb;
+
+
 	// Use this for initialization
 	void Start () {
+        GameSceneManager.world = this;
+
         _transform = transform;
 
         InvokeRepeating("SpawnEnemy", 1f, 0.5f);
@@ -47,5 +57,28 @@ public class WorldObject : MonoBehaviour {
 
         EnemyView enemyView = enemy.GetComponent<EnemyView>();
         enemyView.Enemy.movementSpeed += Random.Range(-enemySpeadSpread, enemySpeadSpread);
+    }
+
+    public GameObject randomCoin()
+    {
+        if (coins.Count != coinsProb.Count)
+        {
+            Debug.Log("ERROR: coins wrong size");
+        }
+
+        float p = UnityEngine.Random.Range(0, 1f);
+
+        float totalP = 0;
+        for (int i = 0; i < coins.Count; ++i)
+        {
+            totalP += coinsProb[i];
+            if (p < totalP)
+            {
+                return coins[i];
+            }
+        }
+
+        Debug.Log("Error randomCoin()");
+        return coins[0];
     }
 }
