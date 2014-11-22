@@ -34,6 +34,12 @@ public class GameSceneManagerBase : SceneManager {
     
     private BulletController _BulletController;
     
+    private DropController _DropController;
+    
+    private CoinDropController _CoinDropController;
+    
+    private MultiplierDropController _MultiplierDropController;
+    
     public GameSceneManagerSettings _GameSceneManagerSettings = new GameSceneManagerSettings();
     
     [Inject()]
@@ -88,6 +94,45 @@ public class GameSceneManagerBase : SceneManager {
         }
     }
     
+    [Inject()]
+    public virtual DropController DropController {
+        get {
+            if ((this._DropController == null)) {
+                this._DropController = new DropController() { Container = Container };
+            }
+            return this._DropController;
+        }
+        set {
+            _DropController = value;
+        }
+    }
+    
+    [Inject()]
+    public virtual CoinDropController CoinDropController {
+        get {
+            if ((this._CoinDropController == null)) {
+                this._CoinDropController = new CoinDropController() { Container = Container };
+            }
+            return this._CoinDropController;
+        }
+        set {
+            _CoinDropController = value;
+        }
+    }
+    
+    [Inject()]
+    public virtual MultiplierDropController MultiplierDropController {
+        get {
+            if ((this._MultiplierDropController == null)) {
+                this._MultiplierDropController = new MultiplierDropController() { Container = Container };
+            }
+            return this._MultiplierDropController;
+        }
+        set {
+            _MultiplierDropController = value;
+        }
+    }
+    
     // <summary>
     // This method is the first method to be invoked when the scene first loads. Anything registered here with 'Container' will effectively 
     // be injected on controllers, and instances defined on a subsystem.And example of this would be Container.RegisterInstance<IDataRepository>(new CodeRepository()). Then any property with 
@@ -99,6 +144,9 @@ public class GameSceneManagerBase : SceneManager {
         Container.RegisterController<EntityController>(EntityController);
         Container.RegisterController<EnemyController>(EnemyController);
         Container.RegisterController<BulletController>(BulletController);
+        Container.RegisterController<DropController>(DropController);
+        Container.RegisterController<CoinDropController>(CoinDropController);
+        Container.RegisterController<MultiplierDropController>(MultiplierDropController);
         this.Container.InjectAll();
     }
     

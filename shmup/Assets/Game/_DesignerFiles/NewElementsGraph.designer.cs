@@ -341,3 +341,176 @@ public partial class BulletViewModel : BulletViewModelBase {
         base.FillCommands(list);;
     }
 }
+
+[DiagramInfoAttribute("Game")]
+public class DropViewModelBase : ViewModel {
+    
+    public P<Int32> _amountProperty;
+    
+    public DropViewModelBase(DropControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public DropViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+        _amountProperty = new P<Int32>(this, "amount");
+    }
+}
+
+public partial class DropViewModel : DropViewModelBase {
+    
+    public DropViewModel(DropControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public DropViewModel() : 
+            base() {
+    }
+    
+    public virtual P<Int32> amountProperty {
+        get {
+            return this._amountProperty;
+        }
+    }
+    
+    public virtual Int32 amount {
+        get {
+            return _amountProperty.Value;
+        }
+        set {
+            _amountProperty.Value = value;
+        }
+    }
+    
+    protected override void WireCommands(Controller controller) {
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+        stream.SerializeInt("amount", this.amount);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+        		this.amount = stream.DeserializeInt("amount");;
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+        list.Add(new ViewModelPropertyInfo(_amountProperty, false, false, false));
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public class CoinDropViewModelBase : DropViewModel {
+    
+    public CoinDropViewModelBase(CoinDropControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public CoinDropViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class CoinDropViewModel : CoinDropViewModelBase {
+    
+    public CoinDropViewModel(CoinDropControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public CoinDropViewModel() : 
+            base() {
+    }
+    
+    protected override void WireCommands(Controller controller) {
+        base.WireCommands(controller);
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public class MultiplierDropViewModelBase : DropViewModel {
+    
+    public MultiplierDropViewModelBase(MultiplierDropControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public MultiplierDropViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class MultiplierDropViewModel : MultiplierDropViewModelBase {
+    
+    public MultiplierDropViewModel(MultiplierDropControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public MultiplierDropViewModel() : 
+            base() {
+    }
+    
+    protected override void WireCommands(Controller controller) {
+        base.WireCommands(controller);
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+    }
+}

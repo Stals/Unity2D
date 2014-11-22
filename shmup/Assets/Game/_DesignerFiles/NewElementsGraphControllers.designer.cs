@@ -90,3 +90,56 @@ public abstract class BulletControllerBase : Controller {
         this.InitializeBullet(((BulletViewModel)(viewModel)));
     }
 }
+
+public abstract class DropControllerBase : Controller {
+    
+    public abstract void InitializeDrop(DropViewModel drop);
+    
+    public override ViewModel CreateEmpty() {
+        return new DropViewModel(this);
+    }
+    
+    public virtual DropViewModel CreateDrop() {
+        return ((DropViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        this.InitializeDrop(((DropViewModel)(viewModel)));
+    }
+}
+
+public abstract class CoinDropControllerBase : DropController {
+    
+    public abstract void InitializeCoinDrop(CoinDropViewModel coinDrop);
+    
+    public override ViewModel CreateEmpty() {
+        return new CoinDropViewModel(this);
+    }
+    
+    public virtual CoinDropViewModel CreateCoinDrop() {
+        return ((CoinDropViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        base.Initialize(viewModel);
+        this.InitializeCoinDrop(((CoinDropViewModel)(viewModel)));
+    }
+}
+
+public abstract class MultiplierDropControllerBase : DropController {
+    
+    public abstract void InitializeMultiplierDrop(MultiplierDropViewModel multiplierDrop);
+    
+    public override ViewModel CreateEmpty() {
+        return new MultiplierDropViewModel(this);
+    }
+    
+    public virtual MultiplierDropViewModel CreateMultiplierDrop() {
+        return ((MultiplierDropViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        base.Initialize(viewModel);
+        this.InitializeMultiplierDrop(((MultiplierDropViewModel)(viewModel)));
+    }
+}

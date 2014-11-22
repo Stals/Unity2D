@@ -151,6 +151,92 @@ public abstract class BulletViewBase : ViewBase {
     }
 }
 
+[DiagramInfoAttribute("Game")]
+public abstract class DropViewBase : ViewBase {
+    
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _amount;
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(DropViewModel);
+        }
+    }
+    
+    public DropViewModel Drop {
+        get {
+            return ((DropViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<DropController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        DropViewModel drop = ((DropViewModel)(viewModel));
+        drop.amount = this._amount;
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public abstract class CoinDropViewBase : DropViewBase {
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(CoinDropViewModel);
+        }
+    }
+    
+    public CoinDropViewModel CoinDrop {
+        get {
+            return ((CoinDropViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<CoinDropController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public abstract class MultiplierDropViewBase : DropViewBase {
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(MultiplierDropViewModel);
+        }
+    }
+    
+    public MultiplierDropViewModel MultiplierDrop {
+        get {
+            return ((MultiplierDropViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<MultiplierDropController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
 public class PlayerViewViewBase : PlayerViewBase {
     
     public override ViewModel CreateModel() {
