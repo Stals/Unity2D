@@ -42,4 +42,11 @@ public partial class EnemyView {
         newGo.transform.parent = GameSceneManager.world.transform;
     }
 
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.tag == "Player") {
+            coll.gameObject.GetComponent<PlayerView>().ExecuteTakeDamage(1);
+            Destroy(this.gameObject);
+        }
+    }
 }

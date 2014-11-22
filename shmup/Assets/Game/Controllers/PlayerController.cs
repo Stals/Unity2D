@@ -60,5 +60,11 @@ public class PlayerController : PlayerControllerBase {
         player.money += (arg * player.multiplayer);
     }
 
+    public override void TakeDamage(EntityViewModel entity, int arg)
+    {
+        base.TakeDamage(entity, arg);
 
+        // TODO find better way without breaking OOP stuff
+        GameSceneManager.player.Player.health -= arg;
+    }
 }
