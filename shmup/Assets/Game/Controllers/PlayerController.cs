@@ -14,16 +14,18 @@ public class PlayerController : PlayerControllerBase {
 
 	public override void AddMultiplayerPart (PlayerViewModel player)
 	{
+        base.AddMultiplayerPart(player);
 
 		++player.parts;
 
-		// TODO - do this after small delay
-
-		if(player.parts >= MAX_PARTS){
-			++player.multiplayer;
-			player.parts -= MAX_PARTS;
-		}
-		base.AddMultiplayerPart (player);
+        Observable.Timer(TimeSpan.FromMilliseconds(250)).Subscribe(l =>
+            {
+                if (player.parts >= MAX_PARTS)
+                {
+                    ++player.multiplayer;
+                    player.parts -= MAX_PARTS;
+                }
+            });		
 	}
 
     public override void onProgressBarEmpty(PlayerViewModel player)
