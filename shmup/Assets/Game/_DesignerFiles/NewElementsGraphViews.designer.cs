@@ -31,10 +31,6 @@ public abstract class PlayerViewBase : EntityViewBase {
     [UnityEngine.HideInInspector()]
     public Int32 _money;
     
-    [UFGroup("View Model Properties")]
-    [UnityEngine.HideInInspector()]
-    public Single _movementSpeed;
-    
     public override System.Type ViewModelType {
         get {
             return typeof(PlayerViewModel);
@@ -60,7 +56,6 @@ public abstract class PlayerViewBase : EntityViewBase {
         player.multiplayer = this._multiplayer;
         player.parts = this._parts;
         player.money = this._money;
-        player.movementSpeed = this._movementSpeed;
     }
     
     public virtual void ExecuteAddMultiplayerPart() {
@@ -83,6 +78,10 @@ public abstract class PlayerViewBase : EntityViewBase {
 [DiagramInfoAttribute("Game")]
 public abstract class EntityViewBase : ViewBase {
     
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Single _movementSpeed;
+    
     public override System.Type ViewModelType {
         get {
             return typeof(EntityViewModel);
@@ -103,6 +102,8 @@ public abstract class EntityViewBase : ViewBase {
     }
     
     protected override void InitializeViewModel(ViewModel viewModel) {
+        EntityViewModel entity = ((EntityViewModel)(viewModel));
+        entity.movementSpeed = this._movementSpeed;
     }
     
     public virtual void ExecuteTakeDamage(Int32 arg) {

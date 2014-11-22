@@ -6,7 +6,17 @@ using UnityEngine;
 using UniRx;
 
 
-public partial class EnemyView { 
+public partial class EnemyView {
+
+    void FixedUpdate()
+    {
+        transform.Translate(-Enemy.movementSpeed, 0, 0);
+
+        /*if (!renderer.isVisible)
+        {
+            Destroy(gameObject);
+        }*/
+    }
 
     /// Invokes TakeDamageExecuted when the TakeDamage command is executed.
     public override void TakeDamageExecuted() {

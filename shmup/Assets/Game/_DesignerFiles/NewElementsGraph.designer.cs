@@ -28,8 +28,6 @@ public class PlayerViewModelBase : EntityViewModel {
     
     public P<Int32> _moneyProperty;
     
-    public P<Single> _movementSpeedProperty;
-    
     public P<Boolean> _isLowestMultiplierProperty;
     
     protected CommandWithSender<PlayerViewModel> _AddMultiplayerPart;
@@ -54,7 +52,6 @@ public class PlayerViewModelBase : EntityViewModel {
         _multiplayerProperty = new P<Int32>(this, "multiplayer");
         _partsProperty = new P<Int32>(this, "parts");
         _moneyProperty = new P<Int32>(this, "money");
-        _movementSpeedProperty = new P<Single>(this, "movementSpeed");
         _isLowestMultiplierProperty = new P<Boolean>(this, "isLowestMultiplier");
         this.ResetisLowestMultiplier();
     }
@@ -145,21 +142,6 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
-    public virtual P<Single> movementSpeedProperty {
-        get {
-            return this._movementSpeedProperty;
-        }
-    }
-    
-    public virtual Single movementSpeed {
-        get {
-            return _movementSpeedProperty.Value;
-        }
-        set {
-            _movementSpeedProperty.Value = value;
-        }
-    }
-    
     public virtual P<Boolean> isLowestMultiplierProperty {
         get {
             return this._isLowestMultiplierProperty;
@@ -226,7 +208,6 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         stream.SerializeInt("multiplayer", this.multiplayer);
         stream.SerializeInt("parts", this.parts);
         stream.SerializeInt("money", this.money);
-        stream.SerializeFloat("movementSpeed", this.movementSpeed);
     }
     
     public override void Read(ISerializerStream stream) {
@@ -235,7 +216,6 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         		this.multiplayer = stream.DeserializeInt("multiplayer");;
         		this.parts = stream.DeserializeInt("parts");;
         		this.money = stream.DeserializeInt("money");;
-        		this.movementSpeed = stream.DeserializeFloat("movementSpeed");;
     }
     
     public override void Unbind() {
@@ -248,7 +228,6 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelPropertyInfo(_multiplayerProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_partsProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_moneyProperty, false, false, false));
-        list.Add(new ViewModelPropertyInfo(_movementSpeedProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_isLowestMultiplierProperty, false, false, false, true));
     }
     
@@ -264,6 +243,8 @@ public partial class PlayerViewModel : PlayerViewModelBase {
 [DiagramInfoAttribute("Game")]
 public class EntityViewModelBase : ViewModel {
     
+    public P<Single> _movementSpeedProperty;
+    
     protected CommandWithSenderAndArgument<EntityViewModel, Int32> _TakeDamage;
     
     public EntityViewModelBase(EntityControllerBase controller, bool initialize = true) : 
@@ -276,6 +257,7 @@ public class EntityViewModelBase : ViewModel {
     
     public override void Bind() {
         base.Bind();
+        _movementSpeedProperty = new P<Single>(this, "movementSpeed");
     }
 }
 
@@ -287,6 +269,21 @@ public partial class EntityViewModel : EntityViewModelBase {
     
     public EntityViewModel() : 
             base() {
+    }
+    
+    public virtual P<Single> movementSpeedProperty {
+        get {
+            return this._movementSpeedProperty;
+        }
+    }
+    
+    public virtual Single movementSpeed {
+        get {
+            return _movementSpeedProperty.Value;
+        }
+        set {
+            _movementSpeedProperty.Value = value;
+        }
     }
     
     public virtual CommandWithSenderAndArgument<EntityViewModel, Int32> TakeDamage {
@@ -305,10 +302,12 @@ public partial class EntityViewModel : EntityViewModelBase {
     
     public override void Write(ISerializerStream stream) {
 		base.Write(stream);
+        stream.SerializeFloat("movementSpeed", this.movementSpeed);
     }
     
     public override void Read(ISerializerStream stream) {
 		base.Read(stream);
+        		this.movementSpeed = stream.DeserializeFloat("movementSpeed");;
     }
     
     public override void Unbind() {
@@ -317,6 +316,7 @@ public partial class EntityViewModel : EntityViewModelBase {
     
     protected override void FillProperties(List<ViewModelPropertyInfo> list) {
         base.FillProperties(list);;
+        list.Add(new ViewModelPropertyInfo(_movementSpeedProperty, false, false, false));
     }
     
     protected override void FillCommands(List<ViewModelCommandInfo> list) {
