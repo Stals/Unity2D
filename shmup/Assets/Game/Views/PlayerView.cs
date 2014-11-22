@@ -11,6 +11,9 @@ public partial class PlayerView {
     [SerializeField]
     GameObject bulletPrefab;
 
+    [SerializeField]
+    float spread = 30f;
+
     public override void Awake()
     {
         base.Awake();
@@ -47,7 +50,7 @@ public partial class PlayerView {
     void shoot()
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
-        bullet.transform.localEulerAngles = new Vector3(0, 0, UnityEngine.Random.Range(-30f, 30f));
+        bullet.transform.localEulerAngles = new Vector3(0, 0, UnityEngine.Random.Range(-spread, spread));
         bullet.GetComponent<BulletView>().player = this;
     }
 }
