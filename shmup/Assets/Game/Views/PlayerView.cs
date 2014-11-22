@@ -8,35 +8,25 @@ using UniRx;
 
 public partial class PlayerView {
 
+    [SerializeField]
+    GameObject bulletPrefab;
+
     void FixedUpdate()
     {
         updateMovement();
 
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-
-        }*/
+            shoot();
+        }
     }
 
     void updateMovement()
     {
         Vector2 movementVector = new Vector2(0, 0);
 
-       /* if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            movementVector.x = -1;
-        }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            movementVector.x = 1;
-        }*/
-
         movementVector.x = Input.GetAxis("Horizontal");
         movementVector.y = Input.GetAxis("Vertical");
-        /*
-        Vector3 currentPos = transform.position;
-        transform.position = new Vector3(currentPos.x + (movementVector.x * Player.movementSpeed),
-                                         currentPos.y + (movementVector.y * Player.movementSpeed));*/
 
         Vector3 translationDirection = new Vector3(movementVector.x, movementVector.y, 0);
         translationDirection = Vector3.ClampMagnitude(translationDirection, 1);
@@ -47,4 +37,9 @@ public partial class PlayerView {
 
     }
 
+    void shoot()
+    {
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
+        bullet.transform.localEulerAngles = new Vector3(0, 0, UnityEngine.Random.Range(-30f, 30f));
+    }
 }

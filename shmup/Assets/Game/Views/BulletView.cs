@@ -11,7 +11,7 @@ public partial class BulletView {
 	}
 
 	void FixedUpdate(){
-		transform.position = new Vector3 (transform.position.x, transform.position.y + Bullet.speed);
+        transform.localPosition = new Vector3(transform.localPosition.x + Bullet.speed, transform.localPosition.y);
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
