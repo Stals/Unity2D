@@ -67,7 +67,6 @@ public class PlayerController : PlayerControllerBase {
         // TODO find better way without breaking OOP stuff
         GameSceneManager.player.Player.health -= arg;
 
-        //GameSceneManager.world.cameraShake.Shake(0.1f, 0.02f);
-        GameSceneManager.world.cameraShake.Shake(0.3f, 0.02f);
+        GameSceneManager.world.cameraShake.Shake(0.4f, 0.015f);
     }
 }

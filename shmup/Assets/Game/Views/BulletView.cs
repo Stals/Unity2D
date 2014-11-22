@@ -21,6 +21,8 @@ public partial class BulletView {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
+        GameSceneManager.world.cameraShake.Shake(0.1f, 0.02f);
+
         player.ExecuteAddMultiplayerPart();
 		coll.GetComponent<EnemyView> ().ExecuteTakeDamage (1);
         Destroy(this.gameObject);
