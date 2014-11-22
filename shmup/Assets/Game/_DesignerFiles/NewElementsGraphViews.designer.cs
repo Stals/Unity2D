@@ -430,3 +430,61 @@ public class DropViewViewBase : DropViewBase {
 
 public partial class DropView : DropViewViewBase {
 }
+
+public class PlayerMoneyViewViewBase : PlayerViewBase {
+    
+    [UFToggleGroup("AddMoney")]
+    [UnityEngine.HideInInspector()]
+    public bool _BindAddMoney = true;
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<PlayerController>());
+    }
+    
+    /// Invokes AddMoneyExecuted when the AddMoney command is executed.
+    public virtual void AddMoneyExecuted() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+        if (this._BindAddMoney) {
+            this.BindCommandExecuted(Player.AddMoney, AddMoneyExecuted);
+        }
+    }
+}
+
+public partial class PlayerMoneyView : PlayerMoneyViewViewBase {
+}
+
+public class CoinDropViewViewBase : DropView {
+    
+    public CoinDropViewModel CoinDrop {
+        get {
+            return ((CoinDropViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(CoinDropViewModel);
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<CoinDropController>());
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+public partial class CoinDropView : CoinDropViewViewBase {
+}
