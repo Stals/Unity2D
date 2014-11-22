@@ -15,6 +15,6 @@ public class CoinDropController : CoinDropControllerBase {
     {
         base.PickUp(drop, arg);
         //arg.AddMoney(drop.amount);
-        // TODO Player когда onTrigger с ней - вызывает pickUp.
+        // TODO Player пїЅпїЅпїЅпїЅпїЅ onTrigger пїЅ пїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ pickUp.
     }*/
 }

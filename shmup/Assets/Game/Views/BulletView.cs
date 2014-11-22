@@ -11,7 +11,6 @@ public partial class BulletView {
 	}
 
 	void FixedUpdate(){
-        //transform.localPosition = new Vector3(transform.localPosition.x + Bullet.speed, transform.localPosition.y);
         transform.Translate(Bullet.speed, 0, 0);
 
         if(!renderer.isVisible){

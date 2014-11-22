@@ -353,12 +353,23 @@ public partial class BulletView : BulletViewViewBase {
 
 public class EnemyViewViewBase : EnemyViewBase {
     
+    [UFToggleGroup("TakeDamage")]
+    [UnityEngine.HideInInspector()]
+    public bool _BindTakeDamage = true;
+    
     public override ViewModel CreateModel() {
         return this.RequestViewModel(GameManager.Container.Resolve<EnemyController>());
     }
     
+    /// Invokes TakeDamageExecuted when the TakeDamage command is executed.
+    public virtual void TakeDamageExecuted() {
+    }
+    
     public override void Bind() {
         base.Bind();
+        if (this._BindTakeDamage) {
+            this.BindCommandExecuted(Enemy.TakeDamage, TakeDamageExecuted);
+        }
     }
 }
 
