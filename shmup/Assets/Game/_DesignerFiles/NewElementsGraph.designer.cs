@@ -36,6 +36,8 @@ public class PlayerViewModelBase : EntityViewModel {
     
     public P<Int32> _bulletsPerShotProperty;
     
+    public P<Int32> _healthProperty;
+    
     public P<Boolean> _isLowestMultiplierProperty;
     
     protected CommandWithSender<PlayerViewModel> _AddMultiplayerPart;
@@ -66,6 +68,7 @@ public class PlayerViewModelBase : EntityViewModel {
         _shotDelayProperty = new P<Int32>(this, "shotDelay");
         _spawnChanceProperty = new P<Single>(this, "spawnChance");
         _bulletsPerShotProperty = new P<Int32>(this, "bulletsPerShot");
+        _healthProperty = new P<Int32>(this, "health");
         _isLowestMultiplierProperty = new P<Boolean>(this, "isLowestMultiplier");
         this.ResetisLowestMultiplier();
     }
@@ -216,6 +219,21 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual P<Int32> healthProperty {
+        get {
+            return this._healthProperty;
+        }
+    }
+    
+    public virtual Int32 health {
+        get {
+            return _healthProperty.Value;
+        }
+        set {
+            _healthProperty.Value = value;
+        }
+    }
+    
     public virtual P<Boolean> isLowestMultiplierProperty {
         get {
             return this._isLowestMultiplierProperty;
@@ -296,6 +314,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         stream.SerializeInt("shotDelay", this.shotDelay);
         stream.SerializeFloat("spawnChance", this.spawnChance);
         stream.SerializeInt("bulletsPerShot", this.bulletsPerShot);
+        stream.SerializeInt("health", this.health);
     }
     
     public override void Read(ISerializerStream stream) {
@@ -308,6 +327,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         		this.shotDelay = stream.DeserializeInt("shotDelay");;
         		this.spawnChance = stream.DeserializeFloat("spawnChance");;
         		this.bulletsPerShot = stream.DeserializeInt("bulletsPerShot");;
+        		this.health = stream.DeserializeInt("health");;
     }
     
     public override void Unbind() {
@@ -324,6 +344,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelPropertyInfo(_shotDelayProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_spawnChanceProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_bulletsPerShotProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_healthProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_isLowestMultiplierProperty, false, false, false, true));
     }
     

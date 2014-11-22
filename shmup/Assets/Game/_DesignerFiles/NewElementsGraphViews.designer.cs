@@ -47,6 +47,10 @@ public abstract class PlayerViewBase : EntityViewBase {
     [UnityEngine.HideInInspector()]
     public Int32 _bulletsPerShot;
     
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _health;
+    
     public override System.Type ViewModelType {
         get {
             return typeof(PlayerViewModel);
@@ -76,6 +80,7 @@ public abstract class PlayerViewBase : EntityViewBase {
         player.shotDelay = this._shotDelay;
         player.spawnChance = this._spawnChance;
         player.bulletsPerShot = this._bulletsPerShot;
+        player.health = this._health;
     }
     
     public virtual void ExecuteAddMultiplayerPart() {
@@ -492,4 +497,30 @@ public class CoinDropViewViewBase : DropView {
 }
 
 public partial class CoinDropView : CoinDropViewViewBase {
+}
+
+public class PlayerHealthViewViewBase : PlayerViewBase {
+    
+    [UFToggleGroup("health")]
+    [UnityEngine.HideInInspector()]
+    [UFRequireInstanceMethod("healthChanged")]
+    public bool _Bindhealth = true;
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<PlayerController>());
+    }
+    
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void healthChanged(Int32 value) {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+        if (this._Bindhealth) {
+            this.BindProperty(Player._healthProperty, this.healthChanged);
+        }
+    }
+}
+
+public partial class PlayerHealthView : PlayerHealthViewViewBase {
 }
