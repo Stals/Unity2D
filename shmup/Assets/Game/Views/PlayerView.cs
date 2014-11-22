@@ -11,6 +11,13 @@ public partial class PlayerView {
     [SerializeField]
     GameObject bulletPrefab;
 
+    public override void Awake()
+    {
+        base.Awake();
+
+        gameObject.RotateBy(new Vector3(0, 0, 1f), 4f, 0f, EaseType.linear, LoopType.loop);
+    }
+
     void FixedUpdate()
     {
         updateMovement();
