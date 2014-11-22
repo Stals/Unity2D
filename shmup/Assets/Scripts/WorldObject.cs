@@ -24,10 +24,13 @@ public class WorldObject : MonoBehaviour {
     [SerializeField]
     List<float> coinsProb;
 
+    public CameraShake cameraShake;
 
 	// Use this for initialization
 	void Start () {
         GameSceneManager.world = this;
+
+        cameraShake = Camera.main.gameObject.AddComponent("CameraShake") as CameraShake;
 
         _transform = transform;
 
