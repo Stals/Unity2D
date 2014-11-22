@@ -9,6 +9,12 @@ public class WorldObject : MonoBehaviour {
     [SerializeField]
     GameObject enemyPrefab;
 
+    [SerializeField]
+    float enemySpread = 20f;
+
+    [SerializeField]
+    float enemySpeadSpread = 0.025f;
+
     Transform _transform;
 
 	// Use this for initialization
@@ -36,5 +42,10 @@ public class WorldObject : MonoBehaviour {
 
         GameObject enemy = (GameObject)Instantiate(enemyPrefab, new Vector3(10f, UnityEngine.Random.Range(-halfHeight, halfHeight)), transform.rotation);
         enemy.transform.parent = transform;
+
+        enemy.transform.localEulerAngles = new Vector3(0, 0, Random.Range(-enemySpread, enemySpread));
+
+        EnemyView enemyView = enemy.GetComponent<EnemyView>();
+        enemyView.Enemy.movementSpeed += Random.Range(-enemySpeadSpread, enemySpeadSpread);
     }
 }
