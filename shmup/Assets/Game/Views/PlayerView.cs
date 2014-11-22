@@ -6,7 +6,17 @@ using UnityEngine;
 using UniRx;
 
 
-public partial class PlayerView {
+public partial class PlayerView { 
+
+    /// Invokes ShootExecuted when the Shoot command is executed.
+    public override void ShootExecuted() {
+        base.ShootExecuted();
+
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
+        bullet.transform.localEulerAngles = new Vector3(0, 0, UnityEngine.Random.Range(-spread, spread));
+        bullet.GetComponent<BulletView>().player = this;
+    }
+
 
     [SerializeField]
     GameObject bulletPrefab;
@@ -27,7 +37,10 @@ public partial class PlayerView {
 
         if (Input.GetKey(KeyCode.Space))
         {
-            shoot();
+            if (Player.canShoot)
+            {
+                ExecuteShoot();
+            }
         }
     }
 
@@ -45,12 +58,5 @@ public partial class PlayerView {
         transform.position = new Vector3(currentPos.x + (translationDirection.x * Player.movementSpeed),
                                          currentPos.y + (translationDirection.y * Player.movementSpeed));
 
-    }
-
-    void shoot()
-    {
-        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
-        bullet.transform.localEulerAngles = new Vector3(0, 0, UnityEngine.Random.Range(-spread, spread));
-        bullet.GetComponent<BulletView>().player = this;
     }
 }

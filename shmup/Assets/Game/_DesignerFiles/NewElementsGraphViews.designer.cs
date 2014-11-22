@@ -31,6 +31,14 @@ public abstract class PlayerViewBase : EntityViewBase {
     [UnityEngine.HideInInspector()]
     public Int32 _money;
     
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Boolean _canShoot;
+    
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _shotDelay;
+    
     public override System.Type ViewModelType {
         get {
             return typeof(PlayerViewModel);
@@ -56,6 +64,8 @@ public abstract class PlayerViewBase : EntityViewBase {
         player.multiplayer = this._multiplayer;
         player.parts = this._parts;
         player.money = this._money;
+        player.canShoot = this._canShoot;
+        player.shotDelay = this._shotDelay;
     }
     
     public virtual void ExecuteAddMultiplayerPart() {
@@ -72,6 +82,10 @@ public abstract class PlayerViewBase : EntityViewBase {
     
     public virtual void ExecuteonProgressBarEmpty() {
         this.ExecuteCommand(Player.onProgressBarEmpty);
+    }
+    
+    public virtual void ExecuteShoot() {
+        this.ExecuteCommand(Player.Shoot);
     }
 }
 
@@ -262,12 +276,23 @@ public abstract class MultiplierDropViewBase : DropViewBase {
 
 public class PlayerViewViewBase : PlayerViewBase {
     
+    [UFToggleGroup("Shoot")]
+    [UnityEngine.HideInInspector()]
+    public bool _BindShoot = true;
+    
     public override ViewModel CreateModel() {
         return this.RequestViewModel(GameManager.Container.Resolve<PlayerController>());
     }
     
+    /// Invokes ShootExecuted when the Shoot command is executed.
+    public virtual void ShootExecuted() {
+    }
+    
     public override void Bind() {
         base.Bind();
+        if (this._BindShoot) {
+            this.BindCommandExecuted(Player.Shoot, ShootExecuted);
+        }
     }
 }
 

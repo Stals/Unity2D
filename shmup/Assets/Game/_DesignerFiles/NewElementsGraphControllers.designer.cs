@@ -44,6 +44,9 @@ public abstract class PlayerControllerBase : EntityController {
     
     public virtual void onProgressBarEmpty(PlayerViewModel player) {
     }
+    
+    public virtual void Shoot(PlayerViewModel player) {
+    }
 }
 
 public abstract class EntityControllerBase : Controller {

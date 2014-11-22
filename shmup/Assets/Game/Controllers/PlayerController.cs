@@ -41,5 +41,17 @@ public class PlayerController : PlayerControllerBase {
         base.onProgressBarEmpty(player);
     }
 
+    public override void Shoot(PlayerViewModel player)
+    {
+        base.Shoot(player);
+
+        player.canShoot = false;
+
+        Observable.Timer(TimeSpan.FromMilliseconds(player.shotDelay)).Subscribe(l =>
+        {
+            player.canShoot = true;
+        });		
+    }
+
 
 }

@@ -28,6 +28,10 @@ public class PlayerViewModelBase : EntityViewModel {
     
     public P<Int32> _moneyProperty;
     
+    public P<Boolean> _canShootProperty;
+    
+    public P<Int32> _shotDelayProperty;
+    
     public P<Boolean> _isLowestMultiplierProperty;
     
     protected CommandWithSender<PlayerViewModel> _AddMultiplayerPart;
@@ -37,6 +41,8 @@ public class PlayerViewModelBase : EntityViewModel {
     protected CommandWithSenderAndArgument<PlayerViewModel, Int32> _AddMoney;
     
     protected CommandWithSender<PlayerViewModel> _onProgressBarEmpty;
+    
+    protected CommandWithSender<PlayerViewModel> _Shoot;
     
     public PlayerViewModelBase(PlayerControllerBase controller, bool initialize = true) : 
             base(controller, initialize) {
@@ -52,6 +58,8 @@ public class PlayerViewModelBase : EntityViewModel {
         _multiplayerProperty = new P<Int32>(this, "multiplayer");
         _partsProperty = new P<Int32>(this, "parts");
         _moneyProperty = new P<Int32>(this, "money");
+        _canShootProperty = new P<Boolean>(this, "canShoot");
+        _shotDelayProperty = new P<Int32>(this, "shotDelay");
         _isLowestMultiplierProperty = new P<Boolean>(this, "isLowestMultiplier");
         this.ResetisLowestMultiplier();
     }
@@ -142,6 +150,36 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual P<Boolean> canShootProperty {
+        get {
+            return this._canShootProperty;
+        }
+    }
+    
+    public virtual Boolean canShoot {
+        get {
+            return _canShootProperty.Value;
+        }
+        set {
+            _canShootProperty.Value = value;
+        }
+    }
+    
+    public virtual P<Int32> shotDelayProperty {
+        get {
+            return this._shotDelayProperty;
+        }
+    }
+    
+    public virtual Int32 shotDelay {
+        get {
+            return _shotDelayProperty.Value;
+        }
+        set {
+            _shotDelayProperty.Value = value;
+        }
+    }
+    
     public virtual P<Boolean> isLowestMultiplierProperty {
         get {
             return this._isLowestMultiplierProperty;
@@ -193,6 +231,15 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual CommandWithSender<PlayerViewModel> Shoot {
+        get {
+            return _Shoot;
+        }
+        set {
+            _Shoot = value;
+        }
+    }
+    
     protected override void WireCommands(Controller controller) {
         base.WireCommands(controller);
         var player = controller as PlayerControllerBase;
@@ -200,6 +247,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         this.AddScore = new CommandWithSenderAndArgument<PlayerViewModel, Int32>(this, player.AddScore);
         this.AddMoney = new CommandWithSenderAndArgument<PlayerViewModel, Int32>(this, player.AddMoney);
         this.onProgressBarEmpty = new CommandWithSender<PlayerViewModel>(this, player.onProgressBarEmpty);
+        this.Shoot = new CommandWithSender<PlayerViewModel>(this, player.Shoot);
     }
     
     public override void Write(ISerializerStream stream) {
@@ -208,6 +256,8 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         stream.SerializeInt("multiplayer", this.multiplayer);
         stream.SerializeInt("parts", this.parts);
         stream.SerializeInt("money", this.money);
+        stream.SerializeBool("canShoot", this.canShoot);
+        stream.SerializeInt("shotDelay", this.shotDelay);
     }
     
     public override void Read(ISerializerStream stream) {
@@ -216,6 +266,8 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         		this.multiplayer = stream.DeserializeInt("multiplayer");;
         		this.parts = stream.DeserializeInt("parts");;
         		this.money = stream.DeserializeInt("money");;
+        		this.canShoot = stream.DeserializeBool("canShoot");;
+        		this.shotDelay = stream.DeserializeInt("shotDelay");;
     }
     
     public override void Unbind() {
@@ -228,6 +280,8 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelPropertyInfo(_multiplayerProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_partsProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_moneyProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_canShootProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_shotDelayProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_isLowestMultiplierProperty, false, false, false, true));
     }
     
@@ -237,6 +291,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelCommandInfo("AddScore", AddScore) { ParameterType = typeof(Int32) });
         list.Add(new ViewModelCommandInfo("AddMoney", AddMoney) { ParameterType = typeof(Int32) });
         list.Add(new ViewModelCommandInfo("onProgressBarEmpty", onProgressBarEmpty) { ParameterType = typeof(void) });
+        list.Add(new ViewModelCommandInfo("Shoot", Shoot) { ParameterType = typeof(void) });
     }
 }
 
