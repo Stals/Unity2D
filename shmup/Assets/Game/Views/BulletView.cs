@@ -7,6 +7,8 @@ using UniRx;
 
 
 public partial class BulletView {
+    public PlayerView player;
+
 	void Start(){
 	}
 
@@ -19,6 +21,7 @@ public partial class BulletView {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
+        player.ExecuteAddMultiplayerPart();
 		coll.GetComponent<EnemyView> ().ExecuteTakeDamage (1);
         Destroy(this.gameObject);
 	}

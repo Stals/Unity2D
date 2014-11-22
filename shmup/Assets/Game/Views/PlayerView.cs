@@ -48,5 +48,6 @@ public partial class PlayerView {
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
         bullet.transform.localEulerAngles = new Vector3(0, 0, UnityEngine.Random.Range(-30f, 30f));
+        bullet.GetComponent<BulletView>().player = this;
     }
 }
