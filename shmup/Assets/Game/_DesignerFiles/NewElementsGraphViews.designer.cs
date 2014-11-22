@@ -27,6 +27,14 @@ public abstract class PlayerViewBase : EntityViewBase {
     [UnityEngine.HideInInspector()]
     public Int32 _parts;
     
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _money;
+    
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Single _movementSpeed;
+    
     public override System.Type ViewModelType {
         get {
             return typeof(PlayerViewModel);
@@ -51,6 +59,8 @@ public abstract class PlayerViewBase : EntityViewBase {
         PlayerViewModel player = ((PlayerViewModel)(viewModel));
         player.multiplayer = this._multiplayer;
         player.parts = this._parts;
+        player.money = this._money;
+        player.movementSpeed = this._movementSpeed;
     }
     
     public virtual void ExecuteAddMultiplayerPart() {
@@ -59,6 +69,10 @@ public abstract class PlayerViewBase : EntityViewBase {
     
     public virtual void ExecuteAddScore(Int32 arg) {
         this.ExecuteCommand(Player.AddScore, arg);
+    }
+    
+    public virtual void ExecuteAddMoney(Int32 arg) {
+        this.ExecuteCommand(Player.AddMoney, arg);
     }
 }
 
@@ -180,6 +194,10 @@ public abstract class DropViewBase : ViewBase {
     protected override void InitializeViewModel(ViewModel viewModel) {
         DropViewModel drop = ((DropViewModel)(viewModel));
         drop.amount = this._amount;
+    }
+    
+    public virtual void ExecutePickUp() {
+        this.ExecuteCommand(Drop.PickUp);
     }
 }
 
@@ -345,4 +363,18 @@ public class EnemyViewViewBase : EnemyViewBase {
 }
 
 public partial class EnemyView : EnemyViewViewBase {
+}
+
+public class DropViewViewBase : DropViewBase {
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<DropController>());
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class DropView : DropViewViewBase {
 }

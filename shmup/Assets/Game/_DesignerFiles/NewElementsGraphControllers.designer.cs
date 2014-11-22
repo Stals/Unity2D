@@ -38,6 +38,9 @@ public abstract class PlayerControllerBase : EntityController {
     
     public virtual void AddScore(PlayerViewModel player, Int32 arg) {
     }
+    
+    public virtual void AddMoney(PlayerViewModel player, Int32 arg) {
+    }
 }
 
 public abstract class EntityControllerBase : Controller {
@@ -105,6 +108,9 @@ public abstract class DropControllerBase : Controller {
     
     public override void Initialize(ViewModel viewModel) {
         this.InitializeDrop(((DropViewModel)(viewModel)));
+    }
+    
+    public virtual void PickUp(DropViewModel drop) {
     }
 }
 

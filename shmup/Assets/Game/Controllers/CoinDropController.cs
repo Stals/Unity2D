@@ -10,4 +10,11 @@ public class CoinDropController : CoinDropControllerBase {
     
     public override void InitializeCoinDrop(CoinDropViewModel coinDrop) {
     }
+
+   /* public override void PickUp(DropViewModel drop, PlayerViewModel arg)
+    {
+        base.PickUp(drop, arg);
+        //arg.AddMoney(drop.amount);
+        // TODO Player когда onTrigger с ней - вызывает pickUp.
+    }*/
 }

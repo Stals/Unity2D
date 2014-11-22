@@ -24,9 +24,15 @@ public class PlayerViewModelBase : EntityViewModel {
     
     public P<Int32> _partsProperty;
     
+    public P<Int32> _moneyProperty;
+    
+    public P<Single> _movementSpeedProperty;
+    
     protected CommandWithSender<PlayerViewModel> _AddMultiplayerPart;
     
     protected CommandWithSenderAndArgument<PlayerViewModel, Int32> _AddScore;
+    
+    protected CommandWithSenderAndArgument<PlayerViewModel, Int32> _AddMoney;
     
     public PlayerViewModelBase(PlayerControllerBase controller, bool initialize = true) : 
             base(controller, initialize) {
@@ -41,6 +47,8 @@ public class PlayerViewModelBase : EntityViewModel {
         _scoreProperty = new P<Int32>(this, "score");
         _multiplayerProperty = new P<Int32>(this, "multiplayer");
         _partsProperty = new P<Int32>(this, "parts");
+        _moneyProperty = new P<Int32>(this, "money");
+        _movementSpeedProperty = new P<Single>(this, "movementSpeed");
     }
 }
 
@@ -99,6 +107,36 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual P<Int32> moneyProperty {
+        get {
+            return this._moneyProperty;
+        }
+    }
+    
+    public virtual Int32 money {
+        get {
+            return _moneyProperty.Value;
+        }
+        set {
+            _moneyProperty.Value = value;
+        }
+    }
+    
+    public virtual P<Single> movementSpeedProperty {
+        get {
+            return this._movementSpeedProperty;
+        }
+    }
+    
+    public virtual Single movementSpeed {
+        get {
+            return _movementSpeedProperty.Value;
+        }
+        set {
+            _movementSpeedProperty.Value = value;
+        }
+    }
+    
     public virtual CommandWithSender<PlayerViewModel> AddMultiplayerPart {
         get {
             return _AddMultiplayerPart;
@@ -117,11 +155,21 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual CommandWithSenderAndArgument<PlayerViewModel, Int32> AddMoney {
+        get {
+            return _AddMoney;
+        }
+        set {
+            _AddMoney = value;
+        }
+    }
+    
     protected override void WireCommands(Controller controller) {
         base.WireCommands(controller);
         var player = controller as PlayerControllerBase;
         this.AddMultiplayerPart = new CommandWithSender<PlayerViewModel>(this, player.AddMultiplayerPart);
         this.AddScore = new CommandWithSenderAndArgument<PlayerViewModel, Int32>(this, player.AddScore);
+        this.AddMoney = new CommandWithSenderAndArgument<PlayerViewModel, Int32>(this, player.AddMoney);
     }
     
     public override void Write(ISerializerStream stream) {
@@ -129,6 +177,8 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         stream.SerializeInt("score", this.score);
         stream.SerializeInt("multiplayer", this.multiplayer);
         stream.SerializeInt("parts", this.parts);
+        stream.SerializeInt("money", this.money);
+        stream.SerializeFloat("movementSpeed", this.movementSpeed);
     }
     
     public override void Read(ISerializerStream stream) {
@@ -136,6 +186,8 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         		this.score = stream.DeserializeInt("score");;
         		this.multiplayer = stream.DeserializeInt("multiplayer");;
         		this.parts = stream.DeserializeInt("parts");;
+        		this.money = stream.DeserializeInt("money");;
+        		this.movementSpeed = stream.DeserializeFloat("movementSpeed");;
     }
     
     public override void Unbind() {
@@ -147,12 +199,15 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelPropertyInfo(_scoreProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_multiplayerProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_partsProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_moneyProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_movementSpeedProperty, false, false, false));
     }
     
     protected override void FillCommands(List<ViewModelCommandInfo> list) {
         base.FillCommands(list);;
         list.Add(new ViewModelCommandInfo("AddMultiplayerPart", AddMultiplayerPart) { ParameterType = typeof(void) });
         list.Add(new ViewModelCommandInfo("AddScore", AddScore) { ParameterType = typeof(Int32) });
+        list.Add(new ViewModelCommandInfo("AddMoney", AddMoney) { ParameterType = typeof(Int32) });
     }
 }
 
@@ -347,6 +402,8 @@ public class DropViewModelBase : ViewModel {
     
     public P<Int32> _amountProperty;
     
+    protected CommandWithSender<DropViewModel> _PickUp;
+    
     public DropViewModelBase(DropControllerBase controller, bool initialize = true) : 
             base(controller, initialize) {
     }
@@ -386,7 +443,18 @@ public partial class DropViewModel : DropViewModelBase {
         }
     }
     
+    public virtual CommandWithSender<DropViewModel> PickUp {
+        get {
+            return _PickUp;
+        }
+        set {
+            _PickUp = value;
+        }
+    }
+    
     protected override void WireCommands(Controller controller) {
+        var drop = controller as DropControllerBase;
+        this.PickUp = new CommandWithSender<DropViewModel>(this, drop.PickUp);
     }
     
     public override void Write(ISerializerStream stream) {
@@ -410,6 +478,7 @@ public partial class DropViewModel : DropViewModelBase {
     
     protected override void FillCommands(List<ViewModelCommandInfo> list) {
         base.FillCommands(list);;
+        list.Add(new ViewModelCommandInfo("PickUp", PickUp) { ParameterType = typeof(void) });
     }
 }
 
