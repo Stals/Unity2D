@@ -40,6 +40,16 @@ public class GameSceneManagerBase : SceneManager {
     
     private MultiplierDropController _MultiplierDropController;
     
+    private UpgradeController _UpgradeController;
+    
+    private HealthUpgradeController _HealthUpgradeController;
+    
+    private DropUpgradeController _DropUpgradeController;
+    
+    private FireElementController _FireElementController;
+    
+    private BulletUpgradeController _BulletUpgradeController;
+    
     public GameSceneManagerSettings _GameSceneManagerSettings = new GameSceneManagerSettings();
     
     [Inject()]
@@ -133,6 +143,71 @@ public class GameSceneManagerBase : SceneManager {
         }
     }
     
+    [Inject()]
+    public virtual UpgradeController UpgradeController {
+        get {
+            if ((this._UpgradeController == null)) {
+                this._UpgradeController = new UpgradeController() { Container = Container };
+            }
+            return this._UpgradeController;
+        }
+        set {
+            _UpgradeController = value;
+        }
+    }
+    
+    [Inject()]
+    public virtual HealthUpgradeController HealthUpgradeController {
+        get {
+            if ((this._HealthUpgradeController == null)) {
+                this._HealthUpgradeController = new HealthUpgradeController() { Container = Container };
+            }
+            return this._HealthUpgradeController;
+        }
+        set {
+            _HealthUpgradeController = value;
+        }
+    }
+    
+    [Inject()]
+    public virtual DropUpgradeController DropUpgradeController {
+        get {
+            if ((this._DropUpgradeController == null)) {
+                this._DropUpgradeController = new DropUpgradeController() { Container = Container };
+            }
+            return this._DropUpgradeController;
+        }
+        set {
+            _DropUpgradeController = value;
+        }
+    }
+    
+    [Inject()]
+    public virtual FireElementController FireElementController {
+        get {
+            if ((this._FireElementController == null)) {
+                this._FireElementController = new FireElementController() { Container = Container };
+            }
+            return this._FireElementController;
+        }
+        set {
+            _FireElementController = value;
+        }
+    }
+    
+    [Inject()]
+    public virtual BulletUpgradeController BulletUpgradeController {
+        get {
+            if ((this._BulletUpgradeController == null)) {
+                this._BulletUpgradeController = new BulletUpgradeController() { Container = Container };
+            }
+            return this._BulletUpgradeController;
+        }
+        set {
+            _BulletUpgradeController = value;
+        }
+    }
+    
     // <summary>
     // This method is the first method to be invoked when the scene first loads. Anything registered here with 'Container' will effectively 
     // be injected on controllers, and instances defined on a subsystem.And example of this would be Container.RegisterInstance<IDataRepository>(new CodeRepository()). Then any property with 
@@ -147,6 +222,11 @@ public class GameSceneManagerBase : SceneManager {
         Container.RegisterController<DropController>(DropController);
         Container.RegisterController<CoinDropController>(CoinDropController);
         Container.RegisterController<MultiplierDropController>(MultiplierDropController);
+        Container.RegisterController<UpgradeController>(UpgradeController);
+        Container.RegisterController<HealthUpgradeController>(HealthUpgradeController);
+        Container.RegisterController<DropUpgradeController>(DropUpgradeController);
+        Container.RegisterController<FireElementController>(FireElementController);
+        Container.RegisterController<BulletUpgradeController>(BulletUpgradeController);
         this.Container.InjectAll();
     }
     

@@ -295,6 +295,160 @@ public abstract class MultiplierDropViewBase : DropViewBase {
     }
 }
 
+[DiagramInfoAttribute("Game")]
+public abstract class UpgradeViewBase : ViewBase {
+    
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _level;
+    
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _basePrice;
+    
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Int32 _price;
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(UpgradeViewModel);
+        }
+    }
+    
+    public UpgradeViewModel Upgrade {
+        get {
+            return ((UpgradeViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<UpgradeController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        UpgradeViewModel upgrade = ((UpgradeViewModel)(viewModel));
+        upgrade.level = this._level;
+        upgrade.basePrice = this._basePrice;
+        upgrade.price = this._price;
+    }
+    
+    public virtual void ExecuteUpgrade() {
+        this.ExecuteCommand(Upgrade.Upgrade);
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public abstract class HealthUpgradeViewBase : UpgradeViewBase {
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(HealthUpgradeViewModel);
+        }
+    }
+    
+    public HealthUpgradeViewModel HealthUpgrade {
+        get {
+            return ((HealthUpgradeViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<HealthUpgradeController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public abstract class DropUpgradeViewBase : UpgradeViewBase {
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(DropUpgradeViewModel);
+        }
+    }
+    
+    public DropUpgradeViewModel DropUpgrade {
+        get {
+            return ((DropUpgradeViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<DropUpgradeController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public abstract class FireElementViewBase : UpgradeViewBase {
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(FireElementViewModel);
+        }
+    }
+    
+    public FireElementViewModel FireElement {
+        get {
+            return ((FireElementViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<FireElementController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public abstract class BulletUpgradeViewBase : UpgradeViewBase {
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(BulletUpgradeViewModel);
+        }
+    }
+    
+    public BulletUpgradeViewModel BulletUpgrade {
+        get {
+            return ((BulletUpgradeViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<BulletUpgradeController>());
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
 public class PlayerViewViewBase : PlayerViewBase {
     
     [UFToggleGroup("Shoot")]
@@ -523,4 +677,185 @@ public class PlayerHealthViewViewBase : PlayerViewBase {
 }
 
 public partial class PlayerHealthView : PlayerHealthViewViewBase {
+}
+
+public class UpgradeViewViewBase : UpgradeViewBase {
+    
+    [UFToggleGroup("price")]
+    [UnityEngine.HideInInspector()]
+    [UFRequireInstanceMethod("priceChanged")]
+    public bool _Bindprice = true;
+    
+    [UFToggleGroup("isEnough")]
+    [UnityEngine.HideInInspector()]
+    public bool _BindisEnough = true;
+    
+    [UFToggleGroup("basePrice")]
+    [UnityEngine.HideInInspector()]
+    [UFRequireInstanceMethod("basePriceChanged")]
+    public bool _BindbasePrice = true;
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<UpgradeController>());
+    }
+    
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void priceChanged(Int32 value) {
+    }
+    
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void isEnoughChanged(Boolean value) {
+    }
+    
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void basePriceChanged(Int32 value) {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+        if (this._Bindprice) {
+            this.BindProperty(Upgrade._priceProperty, this.priceChanged);
+        }
+        if (this._BindisEnough) {
+            this.BindProperty(Upgrade._isEnoughProperty, this.isEnoughChanged);
+        }
+        if (this._BindbasePrice) {
+            this.BindProperty(Upgrade._basePriceProperty, this.basePriceChanged);
+        }
+    }
+}
+
+public partial class UpgradeView : UpgradeViewViewBase {
+}
+
+public class HealthUpgradeViewViewBase : UpgradeView {
+    
+    public HealthUpgradeViewModel HealthUpgrade {
+        get {
+            return ((HealthUpgradeViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(HealthUpgradeViewModel);
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<HealthUpgradeController>());
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+public partial class HealthUpgradeView : HealthUpgradeViewViewBase {
+}
+
+public class DropUpgradeViewViewBase : UpgradeView {
+    
+    public DropUpgradeViewModel DropUpgrade {
+        get {
+            return ((DropUpgradeViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(DropUpgradeViewModel);
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<DropUpgradeController>());
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+public partial class DropUpgradeView : DropUpgradeViewViewBase {
+}
+
+public class FireElementViewViewBase : UpgradeView {
+    
+    public FireElementViewModel FireElement {
+        get {
+            return ((FireElementViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(FireElementViewModel);
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<FireElementController>());
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+public partial class FireElementView : FireElementViewViewBase {
+}
+
+public class BulletUpgradeViewViewBase : UpgradeView {
+    
+    public BulletUpgradeViewModel BulletUpgrade {
+        get {
+            return ((BulletUpgradeViewModel)(this.ViewModelObject));
+        }
+        set {
+            this.ViewModelObject = value;
+        }
+    }
+    
+    public override System.Type ViewModelType {
+        get {
+            return typeof(BulletUpgradeViewModel);
+        }
+    }
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<BulletUpgradeController>());
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+    
+    protected override void InitializeViewModel(ViewModel viewModel) {
+        base.InitializeViewModel(viewModel);
+    }
+}
+
+public partial class BulletUpgradeView : BulletUpgradeViewViewBase {
 }

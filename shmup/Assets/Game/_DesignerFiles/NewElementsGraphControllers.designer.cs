@@ -155,3 +155,95 @@ public abstract class MultiplierDropControllerBase : DropController {
         this.InitializeMultiplierDrop(((MultiplierDropViewModel)(viewModel)));
     }
 }
+
+public abstract class UpgradeControllerBase : Controller {
+    
+    public abstract void InitializeUpgrade(UpgradeViewModel upgrade);
+    
+    public override ViewModel CreateEmpty() {
+        return new UpgradeViewModel(this);
+    }
+    
+    public virtual UpgradeViewModel CreateUpgrade() {
+        return ((UpgradeViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        this.InitializeUpgrade(((UpgradeViewModel)(viewModel)));
+    }
+    
+    public virtual void Upgrade(UpgradeViewModel upgrade) {
+    }
+}
+
+public abstract class HealthUpgradeControllerBase : UpgradeController {
+    
+    public abstract void InitializeHealthUpgrade(HealthUpgradeViewModel healthUpgrade);
+    
+    public override ViewModel CreateEmpty() {
+        return new HealthUpgradeViewModel(this);
+    }
+    
+    public virtual HealthUpgradeViewModel CreateHealthUpgrade() {
+        return ((HealthUpgradeViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        base.Initialize(viewModel);
+        this.InitializeHealthUpgrade(((HealthUpgradeViewModel)(viewModel)));
+    }
+}
+
+public abstract class DropUpgradeControllerBase : UpgradeController {
+    
+    public abstract void InitializeDropUpgrade(DropUpgradeViewModel dropUpgrade);
+    
+    public override ViewModel CreateEmpty() {
+        return new DropUpgradeViewModel(this);
+    }
+    
+    public virtual DropUpgradeViewModel CreateDropUpgrade() {
+        return ((DropUpgradeViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        base.Initialize(viewModel);
+        this.InitializeDropUpgrade(((DropUpgradeViewModel)(viewModel)));
+    }
+}
+
+public abstract class FireElementControllerBase : UpgradeController {
+    
+    public abstract void InitializeFireElement(FireElementViewModel fireElement);
+    
+    public override ViewModel CreateEmpty() {
+        return new FireElementViewModel(this);
+    }
+    
+    public virtual FireElementViewModel CreateFireElement() {
+        return ((FireElementViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        base.Initialize(viewModel);
+        this.InitializeFireElement(((FireElementViewModel)(viewModel)));
+    }
+}
+
+public abstract class BulletUpgradeControllerBase : UpgradeController {
+    
+    public abstract void InitializeBulletUpgrade(BulletUpgradeViewModel bulletUpgrade);
+    
+    public override ViewModel CreateEmpty() {
+        return new BulletUpgradeViewModel(this);
+    }
+    
+    public virtual BulletUpgradeViewModel CreateBulletUpgrade() {
+        return ((BulletUpgradeViewModel)(this.Create()));
+    }
+    
+    public override void Initialize(ViewModel viewModel) {
+        base.Initialize(viewModel);
+        this.InitializeBulletUpgrade(((BulletUpgradeViewModel)(viewModel)));
+    }
+}

@@ -772,3 +772,370 @@ public partial class MultiplierDropViewModel : MultiplierDropViewModelBase {
         base.FillCommands(list);;
     }
 }
+
+[DiagramInfoAttribute("Game")]
+public class UpgradeViewModelBase : ViewModel {
+    
+    private IDisposable _isEnoughDisposable;
+    
+    public P<Int32> _levelProperty;
+    
+    public P<Int32> _basePriceProperty;
+    
+    public P<Int32> _priceProperty;
+    
+    public P<Boolean> _isEnoughProperty;
+    
+    protected CommandWithSender<UpgradeViewModel> _Upgrade;
+    
+    public UpgradeViewModelBase(UpgradeControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public UpgradeViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+        _levelProperty = new P<Int32>(this, "level");
+        _basePriceProperty = new P<Int32>(this, "basePrice");
+        _priceProperty = new P<Int32>(this, "price");
+        _isEnoughProperty = new P<Boolean>(this, "isEnough");
+        this.ResetisEnough();
+    }
+    
+    public virtual void ResetisEnough() {
+        if (_isEnoughDisposable != null) _isEnoughDisposable.Dispose();
+        _isEnoughDisposable = _isEnoughProperty.ToComputed( ComputeisEnough, this.GetisEnoughDependents().ToArray() ).DisposeWith(this);
+    }
+    
+    public virtual Boolean ComputeisEnough() {
+        return default(Boolean);
+    }
+    
+    public virtual IEnumerable<IObservableProperty> GetisEnoughDependents() {
+        yield return _priceProperty;
+        yield break;
+    }
+}
+
+public partial class UpgradeViewModel : UpgradeViewModelBase {
+    
+    public UpgradeViewModel(UpgradeControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public UpgradeViewModel() : 
+            base() {
+    }
+    
+    public virtual P<Int32> levelProperty {
+        get {
+            return this._levelProperty;
+        }
+    }
+    
+    public virtual Int32 level {
+        get {
+            return _levelProperty.Value;
+        }
+        set {
+            _levelProperty.Value = value;
+        }
+    }
+    
+    public virtual P<Int32> basePriceProperty {
+        get {
+            return this._basePriceProperty;
+        }
+    }
+    
+    public virtual Int32 basePrice {
+        get {
+            return _basePriceProperty.Value;
+        }
+        set {
+            _basePriceProperty.Value = value;
+        }
+    }
+    
+    public virtual P<Int32> priceProperty {
+        get {
+            return this._priceProperty;
+        }
+    }
+    
+    public virtual Int32 price {
+        get {
+            return _priceProperty.Value;
+        }
+        set {
+            _priceProperty.Value = value;
+        }
+    }
+    
+    public virtual P<Boolean> isEnoughProperty {
+        get {
+            return this._isEnoughProperty;
+        }
+    }
+    
+    public virtual Boolean isEnough {
+        get {
+            return _isEnoughProperty.Value;
+        }
+        set {
+            _isEnoughProperty.Value = value;
+        }
+    }
+    
+    public virtual CommandWithSender<UpgradeViewModel> Upgrade {
+        get {
+            return _Upgrade;
+        }
+        set {
+            _Upgrade = value;
+        }
+    }
+    
+    protected override void WireCommands(Controller controller) {
+        var upgrade = controller as UpgradeControllerBase;
+        this.Upgrade = new CommandWithSender<UpgradeViewModel>(this, upgrade.Upgrade);
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+        stream.SerializeInt("level", this.level);
+        stream.SerializeInt("basePrice", this.basePrice);
+        stream.SerializeInt("price", this.price);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+        		this.level = stream.DeserializeInt("level");;
+        		this.basePrice = stream.DeserializeInt("basePrice");;
+        		this.price = stream.DeserializeInt("price");;
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+        list.Add(new ViewModelPropertyInfo(_levelProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_basePriceProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_priceProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_isEnoughProperty, false, false, false, true));
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+        list.Add(new ViewModelCommandInfo("Upgrade", Upgrade) { ParameterType = typeof(void) });
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public class HealthUpgradeViewModelBase : UpgradeViewModel {
+    
+    public HealthUpgradeViewModelBase(HealthUpgradeControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public HealthUpgradeViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class HealthUpgradeViewModel : HealthUpgradeViewModelBase {
+    
+    public HealthUpgradeViewModel(HealthUpgradeControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public HealthUpgradeViewModel() : 
+            base() {
+    }
+    
+    protected override void WireCommands(Controller controller) {
+        base.WireCommands(controller);
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public class DropUpgradeViewModelBase : UpgradeViewModel {
+    
+    public DropUpgradeViewModelBase(DropUpgradeControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public DropUpgradeViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class DropUpgradeViewModel : DropUpgradeViewModelBase {
+    
+    public DropUpgradeViewModel(DropUpgradeControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public DropUpgradeViewModel() : 
+            base() {
+    }
+    
+    protected override void WireCommands(Controller controller) {
+        base.WireCommands(controller);
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public class FireElementViewModelBase : UpgradeViewModel {
+    
+    public FireElementViewModelBase(FireElementControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public FireElementViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class FireElementViewModel : FireElementViewModelBase {
+    
+    public FireElementViewModel(FireElementControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public FireElementViewModel() : 
+            base() {
+    }
+    
+    protected override void WireCommands(Controller controller) {
+        base.WireCommands(controller);
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+    }
+}
+
+[DiagramInfoAttribute("Game")]
+public class BulletUpgradeViewModelBase : UpgradeViewModel {
+    
+    public BulletUpgradeViewModelBase(BulletUpgradeControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public BulletUpgradeViewModelBase() : 
+            base() {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+    }
+}
+
+public partial class BulletUpgradeViewModel : BulletUpgradeViewModelBase {
+    
+    public BulletUpgradeViewModel(BulletUpgradeControllerBase controller, bool initialize = true) : 
+            base(controller, initialize) {
+    }
+    
+    public BulletUpgradeViewModel() : 
+            base() {
+    }
+    
+    protected override void WireCommands(Controller controller) {
+        base.WireCommands(controller);
+    }
+    
+    public override void Write(ISerializerStream stream) {
+		base.Write(stream);
+    }
+    
+    public override void Read(ISerializerStream stream) {
+		base.Read(stream);
+    }
+    
+    public override void Unbind() {
+        base.Unbind();
+    }
+    
+    protected override void FillProperties(List<ViewModelPropertyInfo> list) {
+        base.FillProperties(list);;
+    }
+    
+    protected override void FillCommands(List<ViewModelCommandInfo> list) {
+        base.FillCommands(list);;
+    }
+}
