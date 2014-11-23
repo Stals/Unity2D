@@ -10,6 +10,9 @@ public class GameOverManager : MonoBehaviour {
     [SerializeField]
     GameObject gameOverPanel;
 
+    [SerializeField]
+    GameJoltAPIManager GJManager;
+
 	// Use this for initialization
 	void Start () {
         GameSceneManager.gameOverManager = this;
@@ -28,6 +31,7 @@ public class GameOverManager : MonoBehaviour {
             NGUITools.SetActive(gameOverPanel, true);
             Time.timeScale = 0f;
         });
+        GJManager.GenerateHighscores(GameSceneManager.player.Player.score);
     }
 
     public void restartGame()
