@@ -30,14 +30,18 @@ public class PlayerController : PlayerControllerBase {
 
     public override void onProgressBarEmpty(PlayerViewModel player)
     {
-        if (player.parts != 0) {
-            player.parts = 0;
-
-            //if (player.multiplayer != 1)
-            //{
+        if (player.multiplayer != 1)
+        {
+            if (player.parts == 0)
+            {
                 player.multiplayer -= 1;
-            //}
-        }
+            }
+        } 
+
+        player.parts = 0;
+
+
+
         base.onProgressBarEmpty(player);
     }
 
