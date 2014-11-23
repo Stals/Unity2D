@@ -24,6 +24,9 @@ public class WorldObject : MonoBehaviour {
     [SerializeField]
     List<float> coinsProb;
 
+    [SerializeField]
+    List<GameObject> patternPrefab;
+
     public CameraShake cameraShake;
 
 	// Use this for initialization
@@ -35,6 +38,7 @@ public class WorldObject : MonoBehaviour {
         _transform = transform;
 
         InvokeRepeating("SpawnEnemy", 1f, 0.5f);
+        InvokeRepeating("SpawnPattern", 1f, 5f);
 	}
 	
 	// Update is called once per frame
@@ -83,5 +87,20 @@ public class WorldObject : MonoBehaviour {
 
         Debug.Log("Error randomCoin()");
         return coins[0];
+    }
+
+    public GameObject RandomPattern()
+    {
+        int rndID = Random.Range(0, patternPrefab.Count - 1);
+        return patternPrefab[rndID];
+    }
+
+    public void SpawnPattern()
+    {
+        GameObject patternPrefab = RandomPattern();
+
+        GameObject pattern = (GameObject)Instantiate(patternPrefab);
+        pattern.transform.parent = transform;
+        pattern.SetActive(true);        
     }
 }
