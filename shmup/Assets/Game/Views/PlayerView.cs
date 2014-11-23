@@ -8,6 +8,14 @@ using UniRx;
 
 public partial class PlayerView { 
 
+    /// Invokes AddMoneyExecuted when the AddMoney command is executed.
+    public override void AddMoneyExecuted() {
+        base.AddMoneyExecuted();
+
+        audio.Play();
+    }
+ 
+
     /// Subscribes to the property and is notified anytime the value changes.
     public override void healthChanged(Int32 value) {
         base.healthChanged(value);

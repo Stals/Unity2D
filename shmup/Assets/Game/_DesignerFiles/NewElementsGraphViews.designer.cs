@@ -470,6 +470,10 @@ public class PlayerViewViewBase : PlayerViewBase {
     [UFRequireInstanceMethod("healthChanged")]
     public bool _Bindhealth = true;
     
+    [UFToggleGroup("AddMoney")]
+    [UnityEngine.HideInInspector()]
+    public bool _BindAddMoney = true;
+    
     public override ViewModel CreateModel() {
         return this.RequestViewModel(GameManager.Container.Resolve<PlayerController>());
     }
@@ -486,6 +490,10 @@ public class PlayerViewViewBase : PlayerViewBase {
     public virtual void healthChanged(Int32 value) {
     }
     
+    /// Invokes AddMoneyExecuted when the AddMoney command is executed.
+    public virtual void AddMoneyExecuted() {
+    }
+    
     public override void Bind() {
         base.Bind();
         if (this._BindShoot) {
@@ -496,6 +504,9 @@ public class PlayerViewViewBase : PlayerViewBase {
         }
         if (this._Bindhealth) {
             this.BindProperty(Player._healthProperty, this.healthChanged);
+        }
+        if (this._BindAddMoney) {
+            this.BindCommandExecuted(Player.AddMoney, AddMoneyExecuted);
         }
     }
 }
@@ -612,12 +623,23 @@ public partial class EnemyView : EnemyViewViewBase {
 
 public class DropViewViewBase : DropViewBase {
     
+    [UFToggleGroup("PickUp")]
+    [UnityEngine.HideInInspector()]
+    public bool _BindPickUp = true;
+    
     public override ViewModel CreateModel() {
         return this.RequestViewModel(GameManager.Container.Resolve<DropController>());
     }
     
+    /// Invokes PickUpExecuted when the PickUp command is executed.
+    public virtual void PickUpExecuted() {
+    }
+    
     public override void Bind() {
         base.Bind();
+        if (this._BindPickUp) {
+            this.BindCommandExecuted(Drop.PickUp, PickUpExecuted);
+        }
     }
 }
 
