@@ -9,6 +9,22 @@ using UniRx;
 public partial class PlayerView { 
 
     /// Subscribes to the property and is notified anytime the value changes.
+    public override void healthChanged(Int32 value) {
+        base.healthChanged(value);
+
+        if (value <= 0) {
+            SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+            Player.IsInvurnalable = false;
+            renderer.enabled = false;
+        }
+    }
+
+    bool isPlayerDead()
+    {
+        return Player.health <= 0;
+    }
+
+    /// Subscribes to the property and is notified anytime the value changes.
     public override void IsInvurnalableChanged(Boolean value) {
         base.IsInvurnalableChanged(value);
         SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
@@ -17,12 +33,20 @@ public partial class PlayerView {
         {
             Observable.Interval(TimeSpan.FromMilliseconds(150)).Subscribe(l =>
             {
-                renderer.enabled = !renderer.enabled;
+                // dirty hack
+                if (!isPlayerDead())
+                {
+                    renderer.enabled = !renderer.enabled;
+                }
+                else {
+                    renderer.enabled = false;
+                }
+               
             }).DisposeWhenChanged(Player.IsInvurnalableProperty);
         }
         else
         {
-            renderer.enabled = true;
+            renderer.enabled = !isPlayerDead();
         }
 
     }
@@ -67,6 +91,11 @@ public partial class PlayerView {
 
     void FixedUpdate()
     {
+        if (Player.health == 0)
+        {
+            return;
+        }
+
         updateMovement();
 
         if (Input.GetKey(KeyCode.Space))

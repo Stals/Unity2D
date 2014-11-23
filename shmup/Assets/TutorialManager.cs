@@ -62,8 +62,8 @@ public class TutorialManager : MonoBehaviour {
             case 0: return 3000;
             case 1: return 4000;
             case 2: return 4000;
-            case 3: return 4000;
-            case 4: return 6000;
+            case 3: return 6000;
+            case 4: return 2000;
             default: return 100;
         }
     }   

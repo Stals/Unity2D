@@ -465,6 +465,11 @@ public class PlayerViewViewBase : PlayerViewBase {
     [UFRequireInstanceMethod("IsInvurnalableChanged")]
     public bool _BindIsInvurnalable = true;
     
+    [UFToggleGroup("health")]
+    [UnityEngine.HideInInspector()]
+    [UFRequireInstanceMethod("healthChanged")]
+    public bool _Bindhealth = true;
+    
     public override ViewModel CreateModel() {
         return this.RequestViewModel(GameManager.Container.Resolve<PlayerController>());
     }
@@ -477,6 +482,10 @@ public class PlayerViewViewBase : PlayerViewBase {
     public virtual void IsInvurnalableChanged(Boolean value) {
     }
     
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void healthChanged(Int32 value) {
+    }
+    
     public override void Bind() {
         base.Bind();
         if (this._BindShoot) {
@@ -484,6 +493,9 @@ public class PlayerViewViewBase : PlayerViewBase {
         }
         if (this._BindIsInvurnalable) {
             this.BindProperty(Player._IsInvurnalableProperty, this.IsInvurnalableChanged);
+        }
+        if (this._Bindhealth) {
+            this.BindProperty(Player._healthProperty, this.healthChanged);
         }
     }
 }

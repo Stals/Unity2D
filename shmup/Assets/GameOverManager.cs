@@ -23,7 +23,7 @@ public class GameOverManager : MonoBehaviour {
     public void showGameOver()
     {
 
-            Observable.Timer(TimeSpan.FromMilliseconds(500)).Subscribe(l =>
+            Observable.Timer(TimeSpan.FromMilliseconds(1500)).Subscribe(l =>
         {
             NGUITools.SetActive(gameOverPanel, true);
             Time.timeScale = 0f;

@@ -39,6 +39,8 @@ public partial class UpgradeView {
 
         priceLabel = GetComponentInChildren<UILabel>();
         button = GetComponent<UIButton>();
+
+        button.isEnabled = false;
     }
 
     public void purchase()
