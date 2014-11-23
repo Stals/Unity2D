@@ -5,7 +5,17 @@ using System.Collections.Generic;
 public class WorldObject : MonoBehaviour {
 
     [SerializeField]
+    ParallaxScroll parralax;
+
+    [SerializeField]
     float speed = 0.02f;
+
+    [SerializeField]
+    float SpeedIncreaseDelay = 1f;
+
+    [SerializeField]
+    float SpeedIncreaseAmount = 0.005f;
+
 
     [SerializeField]
     GameObject enemyPrefab;
@@ -37,6 +47,8 @@ public class WorldObject : MonoBehaviour {
 
         _transform = transform;
 
+        InvokeRepeating("IncreaseSpeed", SpeedIncreaseDelay, SpeedIncreaseDelay);
+
         InvokeRepeating("SpawnEnemy", 1f, 0.5f);
         InvokeRepeating("SpawnPattern", 1f, 5f);
 	}
@@ -45,6 +57,14 @@ public class WorldObject : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void IncreaseSpeed()
+    {
+        speed += SpeedIncreaseAmount;
+
+        parralax.speed_1 = speed * 4;
+        parralax.speed_2 = speed * 8;
+    }
 
     void FixedUpdate()
     {
