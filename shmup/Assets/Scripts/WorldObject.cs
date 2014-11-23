@@ -16,6 +16,11 @@ public class WorldObject : MonoBehaviour {
     [SerializeField]
     float SpeedIncreaseAmount = 0.005f;
 
+    [SerializeField]
+    float SpawnPatternDelay = 5f;
+
+    [SerializeField]
+    float SpawnEnemyDelay = 0.5f;
 
     [SerializeField]
     GameObject enemyPrefab;
@@ -39,6 +44,8 @@ public class WorldObject : MonoBehaviour {
 
     public CameraShake cameraShake;
 
+    public float scaleVar = 0.01f;
+
 	// Use this for initialization
 	void Start () {
         GameSceneManager.world = this;
@@ -49,8 +56,10 @@ public class WorldObject : MonoBehaviour {
 
         InvokeRepeating("IncreaseSpeed", SpeedIncreaseDelay, SpeedIncreaseDelay);
 
-        InvokeRepeating("SpawnEnemy", 1f, 0.5f);
-        InvokeRepeating("SpawnPattern", 1f, 5f);
+        Invoke("SpawnEnemy", 1f);
+
+        //nvokeRepeating("SpawnPattern", 1f, 5f);
+        Invoke("SpawnPattern", 5f);
 	}
 	
 	// Update is called once per frame
@@ -60,6 +69,8 @@ public class WorldObject : MonoBehaviour {
 
     void IncreaseSpeed()
     {
+        scaleVar += 0.01f;
+
         speed += SpeedIncreaseAmount;
 
         parralax.speed_1 = speed * 4;
@@ -84,6 +95,8 @@ public class WorldObject : MonoBehaviour {
 
         EnemyView enemyView = enemy.GetComponent<EnemyView>();
         enemyView.Enemy.movementSpeed += Random.Range(-enemySpeadSpread, enemySpeadSpread);
+
+        Invoke("SpawnEnemy", SpawnEnemyDelay - (scaleVar / 5));
     }
 
     public GameObject randomCoin()
@@ -120,7 +133,11 @@ public class WorldObject : MonoBehaviour {
         GameObject patternPrefab = RandomPattern();
 
         GameObject pattern = (GameObject)Instantiate(patternPrefab);
+        // 5 units per 0.12 speed
+        pattern.transform.position = new Vector3((speed / 0.12f) * 5f, 0, 0);
         pattern.transform.parent = transform;
         pattern.SetActive(true);        
+
+        Invoke("SpawnPattern", SpawnPatternDelay - scaleVar);
     }
 }
