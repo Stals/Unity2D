@@ -145,7 +145,7 @@ public abstract class EnemyViewBase : EntityViewBase {
     
     [UFGroup("View Model Properties")]
     [UnityEngine.HideInInspector()]
-    public Int32 _spawnChance;
+    public Single _spawnChance;
     
     public override System.Type ViewModelType {
         get {

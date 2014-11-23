@@ -446,7 +446,7 @@ public partial class EntityViewModel : EntityViewModelBase {
 [DiagramInfoAttribute("Game")]
 public class EnemyViewModelBase : EntityViewModel {
     
-    public P<Int32> _spawnChanceProperty;
+    public P<Single> _spawnChanceProperty;
     
     public EnemyViewModelBase(EnemyControllerBase controller, bool initialize = true) : 
             base(controller, initialize) {
@@ -458,7 +458,7 @@ public class EnemyViewModelBase : EntityViewModel {
     
     public override void Bind() {
         base.Bind();
-        _spawnChanceProperty = new P<Int32>(this, "spawnChance");
+        _spawnChanceProperty = new P<Single>(this, "spawnChance");
     }
 }
 
@@ -472,13 +472,13 @@ public partial class EnemyViewModel : EnemyViewModelBase {
             base() {
     }
     
-    public virtual P<Int32> spawnChanceProperty {
+    public virtual P<Single> spawnChanceProperty {
         get {
             return this._spawnChanceProperty;
         }
     }
     
-    public virtual Int32 spawnChance {
+    public virtual Single spawnChance {
         get {
             return _spawnChanceProperty.Value;
         }
@@ -493,12 +493,12 @@ public partial class EnemyViewModel : EnemyViewModelBase {
     
     public override void Write(ISerializerStream stream) {
 		base.Write(stream);
-        stream.SerializeInt("spawnChance", this.spawnChance);
+        stream.SerializeFloat("spawnChance", this.spawnChance);
     }
     
     public override void Read(ISerializerStream stream) {
 		base.Read(stream);
-        		this.spawnChance = stream.DeserializeInt("spawnChance");;
+        		this.spawnChance = stream.DeserializeFloat("spawnChance");;
     }
     
     public override void Unbind() {
