@@ -91,7 +91,7 @@ public class WorldObject : MonoBehaviour {
 
     public GameObject RandomPattern()
     {
-        int rndID = Random.Range(0, patternPrefab.Count - 1);
+        int rndID = Random.Range(0, patternPrefab.Count);
         return patternPrefab[rndID];
     }
 
