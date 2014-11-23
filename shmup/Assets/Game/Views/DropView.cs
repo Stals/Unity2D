@@ -13,4 +13,15 @@ public partial class DropView {
         ExecutePickUp();
         Destroy(this.gameObject);
     }
+
+    //bool seen = false;
+    /*
+    void FixedUpdate()
+    {
+        if (renderer.isVisible)
+            seen = true;
+
+        if (seen && !renderer.isVisible)
+            Destroy(gameObject);
+    }*/
 }
