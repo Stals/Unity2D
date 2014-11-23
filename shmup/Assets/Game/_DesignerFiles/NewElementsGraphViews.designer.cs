@@ -849,3 +849,41 @@ public class BulletUpgradeViewViewBase : UpgradeView {
 
 public partial class BulletUpgradeView : BulletUpgradeViewViewBase {
 }
+
+public class PlayerResultsViewViewBase : PlayerViewBase {
+    
+    [UFToggleGroup("score")]
+    [UnityEngine.HideInInspector()]
+    [UFRequireInstanceMethod("scoreChanged")]
+    public bool _Bindscore = true;
+    
+    [UFToggleGroup("multiplayer")]
+    [UnityEngine.HideInInspector()]
+    [UFRequireInstanceMethod("multiplayerChanged")]
+    public bool _Bindmultiplayer = true;
+    
+    public override ViewModel CreateModel() {
+        return this.RequestViewModel(GameManager.Container.Resolve<PlayerController>());
+    }
+    
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void scoreChanged(Int32 value) {
+    }
+    
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void multiplayerChanged(Int32 value) {
+    }
+    
+    public override void Bind() {
+        base.Bind();
+        if (this._Bindscore) {
+            this.BindProperty(Player._scoreProperty, this.scoreChanged);
+        }
+        if (this._Bindmultiplayer) {
+            this.BindProperty(Player._multiplayerProperty, this.multiplayerChanged);
+        }
+    }
+}
+
+public partial class PlayerResultsView : PlayerResultsViewViewBase {
+}

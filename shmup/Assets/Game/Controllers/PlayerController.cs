@@ -57,7 +57,10 @@ public class PlayerController : PlayerControllerBase {
     {
         base.AddMoney(player, arg);
 
-        player.money += (arg * player.multiplayer);
+        int addMoney = (arg * player.multiplayer);
+
+        player.money += addMoney;
+        player.score += addMoney;
     }
 
     public override void TakeDamage(EntityViewModel entity, int arg)
