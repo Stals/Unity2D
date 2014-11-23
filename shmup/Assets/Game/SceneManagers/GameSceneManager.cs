@@ -14,6 +14,8 @@ public class GameSceneManager : GameSceneManagerBase {
 
     public static WorldObject world;
 
+    public static GameOverManager gameOverManager;
+
     // <summary>
     // This method is invoked exactly right before the Load method is invoked.
     // </summary>

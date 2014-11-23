@@ -26,6 +26,13 @@ public partial class PlayerHealthView {
             NGUITools.Destroy(t.gameObject);
             --size;
         }
+
+
+        if (value == 0)
+        {
+            GameSceneManager.gameOverManager.showGameOver();
+            return;
+        }
     }
 
 
