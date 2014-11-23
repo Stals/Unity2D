@@ -18,14 +18,14 @@ public class PlayerController : PlayerControllerBase {
 
 		++player.parts;
 
-        Observable.Timer(TimeSpan.FromMilliseconds(250)).Subscribe(l =>
-            {
+        //Observable.Timer(TimeSpan.FromMilliseconds(250)).Subscribe(l =>
+         //   {
                 if (player.parts >= MAX_PARTS)
                 {
                     ++player.multiplayer;
                     player.parts -= MAX_PARTS;
                 }
-            });		
+            //});		
 	}
 
     public override void onProgressBarEmpty(PlayerViewModel player)
