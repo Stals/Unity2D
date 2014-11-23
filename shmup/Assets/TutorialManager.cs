@@ -39,7 +39,9 @@ public class TutorialManager : MonoBehaviour {
     void showPanel(int index){
         if (index != 0)
         {
-            NGUITools.SetActive(panels[index - 1], false);
+            GameObject go = panels[index - 1];
+            go.GetComponent<UITweener>().PlayReverse();
+            //NGUITools.SetActive(go, false);
         }
 
         if(index >= panels.Count){
@@ -48,12 +50,15 @@ public class TutorialManager : MonoBehaviour {
             return;
         }
 
-         NGUITools.SetActive(panels[index], true);
+        Observable.Timer(TimeSpan.FromMilliseconds(250)).Subscribe(i =>
+        {
+            NGUITools.SetActive(panels[index], true);
 
-         Observable.Timer(TimeSpan.FromMilliseconds(getTimeForIndex(index))).Subscribe(l =>
-         {
-             showPanel(index + 1);
-         }); 
+            Observable.Timer(TimeSpan.FromMilliseconds(getTimeForIndex(index))).Subscribe(l =>
+            {
+                showPanel(index + 1);
+            }); 
+        }); 
     }
 
     int getTimeForIndex(int index) {
