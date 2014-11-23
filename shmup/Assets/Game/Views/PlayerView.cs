@@ -16,6 +16,7 @@ public partial class PlayerView {
             SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
             Player.IsInvurnalable = false;
             renderer.enabled = false;
+            //gameObject.SetActive(false);
         }
     }
 
