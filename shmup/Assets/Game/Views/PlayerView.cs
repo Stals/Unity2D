@@ -61,6 +61,8 @@ public partial class PlayerView {
     [SerializeField]
     float recoil = 0.01f;
 
+    Vector2 prevVector = new Vector2(0, 0);
+
     /// Invokes ShootExecuted when the Shoot command is executed.
     public override void ShootExecuted() {
         base.ShootExecuted();
@@ -98,7 +100,7 @@ public partial class PlayerView {
 
         updateMovement();
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
             if (Player.canShoot)
             {
@@ -111,8 +113,41 @@ public partial class PlayerView {
     {
         Vector2 movementVector = new Vector2(0, 0);
 
+
+        /*if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+            movementVector.x = -1;
+        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            movementVector.x = 1;
+        }
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            movementVector.y = 1;
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            movementVector.y = -1;
+        }*/
+
         movementVector.x = Input.GetAxis("Horizontal");
         movementVector.y = Input.GetAxis("Vertical");
+
+        // if slowing down
+        if(Mathf.Abs(prevVector.x) > Mathf.Abs(movementVector.x)){
+            if(Mathf.Abs(movementVector.x) < 0.8f){
+                movementVector.x /= 3f;
+            }
+        }
+
+        if(Mathf.Abs(prevVector.y) > Mathf.Abs(movementVector.y)){
+            if(Mathf.Abs(movementVector.y) < 0.8f){
+                movementVector.y /= 3f;
+            }
+        }
+
+
+        prevVector = movementVector;
 
         Vector3 translationDirection = new Vector3(movementVector.x, movementVector.y, 0);
         translationDirection = Vector3.ClampMagnitude(translationDirection, 1);
