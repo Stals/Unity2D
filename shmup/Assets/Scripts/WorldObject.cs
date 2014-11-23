@@ -96,7 +96,7 @@ public class WorldObject : MonoBehaviour {
         EnemyView enemyView = enemy.GetComponent<EnemyView>();
         enemyView.Enemy.movementSpeed += Random.Range(-enemySpeadSpread, enemySpeadSpread);
 
-        Invoke("SpawnEnemy", SpawnEnemyDelay - (scaleVar / 5));
+        Invoke("SpawnEnemy", SpawnEnemyDelay - (scaleVar / 2));
     }
 
     public GameObject randomCoin()
