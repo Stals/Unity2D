@@ -36,4 +36,11 @@ public partial class UpgradeView {
 
         priceLabel = GetComponentInChildren<UILabel>();
     }
+
+    public void purchase()
+    {
+        if (Upgrade.isEnough) {
+            ExecuteUpgrade();
+        }
+    }
 }

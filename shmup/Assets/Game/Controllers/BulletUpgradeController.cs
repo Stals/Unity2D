@@ -10,4 +10,11 @@ public class BulletUpgradeController : BulletUpgradeControllerBase {
     
     public override void InitializeBulletUpgrade(BulletUpgradeViewModel bulletUpgrade) {
     }
+
+    public override void Upgrade(UpgradeViewModel upgrade)
+    {
+        base.Upgrade(upgrade);
+
+        GameSceneManager.player.Player.bulletsPerShot += 1;
+    }
 }

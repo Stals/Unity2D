@@ -597,22 +597,23 @@ public partial class DropView : DropViewViewBase {
 
 public class PlayerMoneyViewViewBase : PlayerViewBase {
     
-    [UFToggleGroup("AddMoney")]
+    [UFToggleGroup("money")]
     [UnityEngine.HideInInspector()]
-    public bool _BindAddMoney = true;
+    [UFRequireInstanceMethod("moneyChanged")]
+    public bool _Bindmoney = true;
     
     public override ViewModel CreateModel() {
         return this.RequestViewModel(GameManager.Container.Resolve<PlayerController>());
     }
     
-    /// Invokes AddMoneyExecuted when the AddMoney command is executed.
-    public virtual void AddMoneyExecuted() {
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void moneyChanged(Int32 value) {
     }
     
     public override void Bind() {
         base.Bind();
-        if (this._BindAddMoney) {
-            this.BindCommandExecuted(Player.AddMoney, AddMoneyExecuted);
+        if (this._Bindmoney) {
+            this.BindProperty(Player._moneyProperty, this.moneyChanged);
         }
     }
 }

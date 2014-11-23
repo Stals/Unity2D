@@ -8,14 +8,12 @@ using UniRx;
 
 public partial class PlayerMoneyView { 
 
-    /// Invokes AddMoneyExecuted when the AddMoney command is executed.
-    public override void AddMoneyExecuted() {
-        base.AddMoneyExecuted();
+    /// Subscribes to the property and is notified anytime the value changes.
+    public override void moneyChanged(Int32 value) {
+        base.moneyChanged(value);
 
-        // TODO interpolate
         money.text = Player.money.ToString();
     }
-
 
     [SerializeField]
     UILabel money;
