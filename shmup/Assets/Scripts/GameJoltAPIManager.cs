@@ -5,8 +5,8 @@ public class GameJoltAPIManager : MonoBehaviour
 {
     public int gameID = 20247;
     public string privateKey = "950cc59a8bd8314eacc06beebd64c0b5";
-    public string userName = "test";
-    public string userToken = "test950cc59a8bd8314eacc06beebd64c0b5";
+    public string userName;
+    public string userToken;
     public GJTrophy trophies;
     public static GameJoltAPIManager _selfRef;
 
