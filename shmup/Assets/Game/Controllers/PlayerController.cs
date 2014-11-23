@@ -9,24 +9,38 @@ public class PlayerController : PlayerControllerBase {
     
 	private const int MAX_PARTS = 5;
 
+    bool startedTimer = false;
+
     public override void InitializePlayer(PlayerViewModel player) {
     } 
 
 	public override void AddMultiplayerPart (PlayerViewModel player)
 	{
+        // means we dissposed it, by adding another part 
+        if (startedTimer) {
+            processParts(player);
+        }
+
         base.AddMultiplayerPart(player);
 
 		++player.parts;
 
-        //Observable.Timer(TimeSpan.FromMilliseconds(250)).Subscribe(l =>
-         //   {
-                if (player.parts >= MAX_PARTS)
-                {
-                    ++player.multiplayer;
-                    player.parts -= MAX_PARTS;
-                }
-            //});		
+        startedTimer = true;
+        Observable.Timer(TimeSpan.FromMilliseconds(250)).Subscribe(l =>
+            {
+                startedTimer = false;
+                processParts(player);
+            }).DisposeWhenChanged(player.partsProperty);		
 	}
+
+    void processParts(PlayerViewModel player)
+    {
+        if (player.parts >= MAX_PARTS)
+        {
+            ++player.multiplayer;
+            player.parts -= MAX_PARTS;
+        }
+    }
 
     public override void onProgressBarEmpty(PlayerViewModel player)
     {
