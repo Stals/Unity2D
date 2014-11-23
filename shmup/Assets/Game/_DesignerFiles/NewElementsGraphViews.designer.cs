@@ -51,6 +51,10 @@ public abstract class PlayerViewBase : EntityViewBase {
     [UnityEngine.HideInInspector()]
     public Int32 _health;
     
+    [UFGroup("View Model Properties")]
+    [UnityEngine.HideInInspector()]
+    public Boolean _IsInvurnalable;
+    
     public override System.Type ViewModelType {
         get {
             return typeof(PlayerViewModel);
@@ -81,6 +85,7 @@ public abstract class PlayerViewBase : EntityViewBase {
         player.spawnChance = this._spawnChance;
         player.bulletsPerShot = this._bulletsPerShot;
         player.health = this._health;
+        player.IsInvurnalable = this._IsInvurnalable;
     }
     
     public virtual void ExecuteAddMultiplayerPart() {
@@ -455,6 +460,11 @@ public class PlayerViewViewBase : PlayerViewBase {
     [UnityEngine.HideInInspector()]
     public bool _BindShoot = true;
     
+    [UFToggleGroup("IsInvurnalable")]
+    [UnityEngine.HideInInspector()]
+    [UFRequireInstanceMethod("IsInvurnalableChanged")]
+    public bool _BindIsInvurnalable = true;
+    
     public override ViewModel CreateModel() {
         return this.RequestViewModel(GameManager.Container.Resolve<PlayerController>());
     }
@@ -463,10 +473,17 @@ public class PlayerViewViewBase : PlayerViewBase {
     public virtual void ShootExecuted() {
     }
     
+    /// Subscribes to the property and is notified anytime the value changes.
+    public virtual void IsInvurnalableChanged(Boolean value) {
+    }
+    
     public override void Bind() {
         base.Bind();
         if (this._BindShoot) {
             this.BindCommandExecuted(Player.Shoot, ShootExecuted);
+        }
+        if (this._BindIsInvurnalable) {
+            this.BindProperty(Player._IsInvurnalableProperty, this.IsInvurnalableChanged);
         }
     }
 }

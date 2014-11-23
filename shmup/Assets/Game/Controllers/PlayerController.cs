@@ -67,9 +67,21 @@ public class PlayerController : PlayerControllerBase {
     {
         base.TakeDamage(entity, arg);
 
+        if(GameSceneManager.player.Player.IsInvurnalable){
+            return;
+        }
+
         // TODO find better way without breaking OOP stuff
         GameSceneManager.player.Player.health -= arg;
 
         GameSceneManager.world.cameraShake.Shake(0.4f, 0.015f);
+
+
+        GameSceneManager.player.Player.IsInvurnalable = true;
+        Observable.Timer(TimeSpan.FromMilliseconds(1000)).Subscribe(l =>
+        {
+            GameSceneManager.player.Player.IsInvurnalable = false;
+        });	
+        
     }
 }

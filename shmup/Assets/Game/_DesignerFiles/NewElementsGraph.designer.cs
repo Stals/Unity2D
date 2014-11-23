@@ -38,6 +38,8 @@ public class PlayerViewModelBase : EntityViewModel {
     
     public P<Int32> _healthProperty;
     
+    public P<Boolean> _IsInvurnalableProperty;
+    
     public P<Boolean> _isLowestMultiplierProperty;
     
     protected CommandWithSender<PlayerViewModel> _AddMultiplayerPart;
@@ -69,6 +71,7 @@ public class PlayerViewModelBase : EntityViewModel {
         _spawnChanceProperty = new P<Single>(this, "spawnChance");
         _bulletsPerShotProperty = new P<Int32>(this, "bulletsPerShot");
         _healthProperty = new P<Int32>(this, "health");
+        _IsInvurnalableProperty = new P<Boolean>(this, "IsInvurnalable");
         _isLowestMultiplierProperty = new P<Boolean>(this, "isLowestMultiplier");
         this.ResetisLowestMultiplier();
     }
@@ -234,6 +237,21 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         }
     }
     
+    public virtual P<Boolean> IsInvurnalableProperty {
+        get {
+            return this._IsInvurnalableProperty;
+        }
+    }
+    
+    public virtual Boolean IsInvurnalable {
+        get {
+            return _IsInvurnalableProperty.Value;
+        }
+        set {
+            _IsInvurnalableProperty.Value = value;
+        }
+    }
+    
     public virtual P<Boolean> isLowestMultiplierProperty {
         get {
             return this._isLowestMultiplierProperty;
@@ -315,6 +333,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         stream.SerializeFloat("spawnChance", this.spawnChance);
         stream.SerializeInt("bulletsPerShot", this.bulletsPerShot);
         stream.SerializeInt("health", this.health);
+        stream.SerializeBool("IsInvurnalable", this.IsInvurnalable);
     }
     
     public override void Read(ISerializerStream stream) {
@@ -328,6 +347,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         		this.spawnChance = stream.DeserializeFloat("spawnChance");;
         		this.bulletsPerShot = stream.DeserializeInt("bulletsPerShot");;
         		this.health = stream.DeserializeInt("health");;
+        		this.IsInvurnalable = stream.DeserializeBool("IsInvurnalable");;
     }
     
     public override void Unbind() {
@@ -345,6 +365,7 @@ public partial class PlayerViewModel : PlayerViewModelBase {
         list.Add(new ViewModelPropertyInfo(_spawnChanceProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_bulletsPerShotProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_healthProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_IsInvurnalableProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_isLowestMultiplierProperty, false, false, false, true));
     }
     

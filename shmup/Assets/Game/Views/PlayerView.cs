@@ -6,7 +6,27 @@ using UnityEngine;
 using UniRx;
 
 
-public partial class PlayerView {
+public partial class PlayerView { 
+
+    /// Subscribes to the property and is notified anytime the value changes.
+    public override void IsInvurnalableChanged(Boolean value) {
+        base.IsInvurnalableChanged(value);
+        SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+
+        if (value)
+        {
+            Observable.Interval(TimeSpan.FromMilliseconds(150)).Subscribe(l =>
+            {
+                renderer.enabled = !renderer.enabled;
+            }).DisposeWhenChanged(Player.IsInvurnalableProperty);
+        }
+        else
+        {
+            renderer.enabled = true;
+        }
+
+    }
+
 
     [SerializeField]
     GameObject bulletPrefab;
