@@ -8,6 +8,9 @@ using UniRx;
 
 public partial class EnemyView {
 
+    [SerializeField]
+    GameObject explosionPrefab;
+
 
     void FixedUpdate()
     {
@@ -27,7 +30,7 @@ public partial class EnemyView {
             spawn(GameSceneManager.world.randomCoin());
         }
 
-        Destroy(gameObject);
+        DestroySelf();
     }
 
     bool dropLoot()
@@ -46,7 +49,20 @@ public partial class EnemyView {
     {
         if (coll.tag == "Player") {
             coll.gameObject.GetComponent<PlayerView>().ExecuteTakeDamage(1);
-            Destroy(this.gameObject);
+            DestroySelf();
         }
+    }
+
+    void DestroySelf()
+    {
+        createExplosion();
+        Destroy(this.gameObject);
+    }
+
+    void createExplosion()
+    {
+        GameObject expl = (GameObject)(Instantiate(explosionPrefab,
+                                                   new Vector3(transform.position.x, transform.position.y, 0),
+                                                   transform.rotation));
     }
 }
