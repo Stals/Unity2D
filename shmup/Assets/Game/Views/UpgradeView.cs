@@ -23,12 +23,14 @@ public partial class UpgradeView {
     }
 
     UILabel priceLabel;
+    UIButton button;
 
     public override void Awake()
     {
         base.Awake();
 
         priceLabel = GetComponentInChildren<UILabel>();
+        button = GetComponent<UIButton>();
     }
 
     public void purchase()
@@ -41,5 +43,10 @@ public partial class UpgradeView {
     bool isEnough()
     {
         return GameSceneManager.player.Player.money >= Upgrade.price;
+    }
+
+    void FixedUpdate()
+    {
+        button.isEnabled = isEnough();
     }
 }
