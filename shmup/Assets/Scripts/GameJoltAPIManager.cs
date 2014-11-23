@@ -90,8 +90,11 @@ public class GameJoltAPIManager : MonoBehaviour
 
     public void GenerateHighscores(double highscore)
     {
-        GJAPI.Scores.Add(((int)highscore).ToString(), (uint)(highscore));
-        //GJAPI.Scores.AddCallback += _selfRef.OnAddRequestFinished;
+        if (!Application.isEditor)
+        {
+            GJAPI.Scores.Add(((int)highscore).ToString(), (uint)(highscore));
+            //GJAPI.Scores.AddCallback += _selfRef.OnAddRequestFinished;
+        }
     }
 
     private void OnAddRequestFinished(bool success)
