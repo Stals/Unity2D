@@ -8,6 +8,14 @@ using UniRx;
 
 public partial class UpgradeView { 
 
+    /// Invokes UpgradeExecuted when the Upgrade command is executed.
+    public override void UpgradeExecuted() {
+        base.UpgradeExecuted();
+
+        audio.Play();
+    }
+ 
+
     /// Subscribes to the property and is notified anytime the value changes.
     public override void basePriceChanged(Int32 value) {
         base.basePriceChanged(value);
@@ -49,4 +57,6 @@ public partial class UpgradeView {
     {
         button.isEnabled = isEnough();
     }
+
+  
 }

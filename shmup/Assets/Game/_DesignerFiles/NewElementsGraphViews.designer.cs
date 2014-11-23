@@ -709,6 +709,10 @@ public class UpgradeViewViewBase : UpgradeViewBase {
     [UFRequireInstanceMethod("basePriceChanged")]
     public bool _BindbasePrice = true;
     
+    [UFToggleGroup("Upgrade")]
+    [UnityEngine.HideInInspector()]
+    public bool _BindUpgrade = true;
+    
     public override ViewModel CreateModel() {
         return this.RequestViewModel(GameManager.Container.Resolve<UpgradeController>());
     }
@@ -721,6 +725,10 @@ public class UpgradeViewViewBase : UpgradeViewBase {
     public virtual void basePriceChanged(Int32 value) {
     }
     
+    /// Invokes UpgradeExecuted when the Upgrade command is executed.
+    public virtual void UpgradeExecuted() {
+    }
+    
     public override void Bind() {
         base.Bind();
         if (this._Bindprice) {
@@ -728,6 +736,9 @@ public class UpgradeViewViewBase : UpgradeViewBase {
         }
         if (this._BindbasePrice) {
             this.BindProperty(Upgrade._basePriceProperty, this.basePriceChanged);
+        }
+        if (this._BindUpgrade) {
+            this.BindCommandExecuted(Upgrade.Upgrade, UpgradeExecuted);
         }
     }
 }
