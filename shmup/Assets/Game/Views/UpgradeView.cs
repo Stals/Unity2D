@@ -22,12 +22,6 @@ public partial class UpgradeView {
         priceLabel.text = value.ToString();
     }
 
-    /// Subscribes to the property and is notified anytime the value changes.
-    public override void isEnoughChanged(Boolean value) {
-        base.isEnoughChanged(value);
-    }
-
-
     UILabel priceLabel;
 
     public override void Awake()
@@ -39,8 +33,13 @@ public partial class UpgradeView {
 
     public void purchase()
     {
-        if (Upgrade.isEnough) {
+        if (isEnough()) {
             ExecuteUpgrade();
         }
+    }
+
+    bool isEnough()
+    {
+        return GameSceneManager.player.Player.money >= Upgrade.price;
     }
 }

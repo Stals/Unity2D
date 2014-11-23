@@ -687,10 +687,6 @@ public class UpgradeViewViewBase : UpgradeViewBase {
     [UFRequireInstanceMethod("priceChanged")]
     public bool _Bindprice = true;
     
-    [UFToggleGroup("isEnough")]
-    [UnityEngine.HideInInspector()]
-    public bool _BindisEnough = true;
-    
     [UFToggleGroup("basePrice")]
     [UnityEngine.HideInInspector()]
     [UFRequireInstanceMethod("basePriceChanged")]
@@ -705,10 +701,6 @@ public class UpgradeViewViewBase : UpgradeViewBase {
     }
     
     /// Subscribes to the property and is notified anytime the value changes.
-    public virtual void isEnoughChanged(Boolean value) {
-    }
-    
-    /// Subscribes to the property and is notified anytime the value changes.
     public virtual void basePriceChanged(Int32 value) {
     }
     
@@ -716,9 +708,6 @@ public class UpgradeViewViewBase : UpgradeViewBase {
         base.Bind();
         if (this._Bindprice) {
             this.BindProperty(Upgrade._priceProperty, this.priceChanged);
-        }
-        if (this._BindisEnough) {
-            this.BindProperty(Upgrade._isEnoughProperty, this.isEnoughChanged);
         }
         if (this._BindbasePrice) {
             this.BindProperty(Upgrade._basePriceProperty, this.basePriceChanged);

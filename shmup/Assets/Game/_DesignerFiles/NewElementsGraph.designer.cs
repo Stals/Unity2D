@@ -776,15 +776,11 @@ public partial class MultiplierDropViewModel : MultiplierDropViewModelBase {
 [DiagramInfoAttribute("Game")]
 public class UpgradeViewModelBase : ViewModel {
     
-    private IDisposable _isEnoughDisposable;
-    
     public P<Int32> _levelProperty;
     
     public P<Int32> _basePriceProperty;
     
     public P<Int32> _priceProperty;
-    
-    public P<Boolean> _isEnoughProperty;
     
     protected CommandWithSender<UpgradeViewModel> _Upgrade;
     
@@ -801,22 +797,6 @@ public class UpgradeViewModelBase : ViewModel {
         _levelProperty = new P<Int32>(this, "level");
         _basePriceProperty = new P<Int32>(this, "basePrice");
         _priceProperty = new P<Int32>(this, "price");
-        _isEnoughProperty = new P<Boolean>(this, "isEnough");
-        this.ResetisEnough();
-    }
-    
-    public virtual void ResetisEnough() {
-        if (_isEnoughDisposable != null) _isEnoughDisposable.Dispose();
-        _isEnoughDisposable = _isEnoughProperty.ToComputed( ComputeisEnough, this.GetisEnoughDependents().ToArray() ).DisposeWith(this);
-    }
-    
-    public virtual Boolean ComputeisEnough() {
-        return default(Boolean);
-    }
-    
-    public virtual IEnumerable<IObservableProperty> GetisEnoughDependents() {
-        yield return _priceProperty;
-        yield break;
     }
 }
 
@@ -875,21 +855,6 @@ public partial class UpgradeViewModel : UpgradeViewModelBase {
         }
     }
     
-    public virtual P<Boolean> isEnoughProperty {
-        get {
-            return this._isEnoughProperty;
-        }
-    }
-    
-    public virtual Boolean isEnough {
-        get {
-            return _isEnoughProperty.Value;
-        }
-        set {
-            _isEnoughProperty.Value = value;
-        }
-    }
-    
     public virtual CommandWithSender<UpgradeViewModel> Upgrade {
         get {
             return _Upgrade;
@@ -927,7 +892,6 @@ public partial class UpgradeViewModel : UpgradeViewModelBase {
         list.Add(new ViewModelPropertyInfo(_levelProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_basePriceProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_priceProperty, false, false, false));
-        list.Add(new ViewModelPropertyInfo(_isEnoughProperty, false, false, false, true));
     }
     
     protected override void FillCommands(List<ViewModelCommandInfo> list) {
