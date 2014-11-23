@@ -13,6 +13,5 @@ public class EntityController : EntityControllerBase {
 
 	public override void TakeDamage (EntityViewModel entity, int arg)
 	{
-		Debug.Log("Took Damage");
 	}
 }

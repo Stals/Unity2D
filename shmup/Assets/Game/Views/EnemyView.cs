@@ -11,6 +11,7 @@ public partial class EnemyView {
     [SerializeField]
     GameObject explosionPrefab;
 
+    bool seen = false;  
 
     void FixedUpdate()
     {
@@ -20,6 +21,12 @@ public partial class EnemyView {
         {
             Destroy(gameObject);
         }*/
+
+        if (renderer.isVisible)
+            seen = true;
+
+        if (seen && !renderer.isVisible)
+            Destroy(gameObject);
     }
 
     /// Invokes TakeDamageExecuted when the TakeDamage command is executed.
