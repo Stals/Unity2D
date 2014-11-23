@@ -34,6 +34,9 @@ public partial class PlayerView {
     [SerializeField]
     float spread = 30f;
 
+    [SerializeField]
+    float recoil = 0.01f;
+
     /// Invokes ShootExecuted when the Shoot command is executed.
     public override void ShootExecuted() {
         base.ShootExecuted();
@@ -41,6 +44,9 @@ public partial class PlayerView {
         for (int i = 0; i < Player.bulletsPerShot; ++i) {
             createBullet();
         }
+
+        Vector3 currentPosition = transform.position;
+        transform.position = new Vector3(currentPosition.x - recoil, currentPosition.y);
     }
 
     void createBullet()
