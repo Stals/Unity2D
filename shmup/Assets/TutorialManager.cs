@@ -10,13 +10,19 @@ public class TutorialManager : MonoBehaviour {
     [SerializeField]
     List<GameObject> panels;
 
+    [SerializeField]
+    GameObject tutorialEnemies;
+
     public static bool isCompleted = false;
 
 	// Use this for initialization
 	void Start () {
+        GameSceneManager.tutorialManager = this;
+
         if (!isCompleted)
         {
             showPanel(0);
+            tutorialEnemies.SetActive(true);
         }
 	}
 
@@ -38,6 +44,7 @@ public class TutorialManager : MonoBehaviour {
 
         if(index >= panels.Count){
             isCompleted = true;
+            GameSceneManager.world.init(); // start actual game
             return;
         }
 

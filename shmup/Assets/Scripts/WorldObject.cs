@@ -54,14 +54,21 @@ public class WorldObject : MonoBehaviour {
 
         _transform = transform;
 
+        if (!isTutorial()) {
+            init(); 
+        } // else tutorial will call init()
+	}
+
+    public void init()
+    {
         InvokeRepeating("IncreaseSpeed", SpeedIncreaseDelay, SpeedIncreaseDelay);
 
         Invoke("SpawnEnemy", 1f);
 
         //nvokeRepeating("SpawnPattern", 1f, 5f);
         Invoke("SpawnPattern", 5f);
-	}
-	
+    }
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -139,5 +146,10 @@ public class WorldObject : MonoBehaviour {
         pattern.SetActive(true);        
 
         Invoke("SpawnPattern", SpawnPatternDelay - scaleVar);
+    }
+
+    bool isTutorial()
+    {
+        return !TutorialManager.isCompleted;
     }
 }

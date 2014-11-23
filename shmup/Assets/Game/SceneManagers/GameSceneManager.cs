@@ -16,6 +16,8 @@ public class GameSceneManager : GameSceneManagerBase {
 
     public static GameOverManager gameOverManager;
 
+    public static TutorialManager tutorialManager;
+
     // <summary>
     // This method is invoked exactly right before the Load method is invoked.
     // </summary>
