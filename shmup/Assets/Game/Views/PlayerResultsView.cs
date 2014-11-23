@@ -14,7 +14,7 @@ public partial class PlayerResultsView {
     [SerializeField]
     UILabel multiplierLabel;
 
-    int maxMultiplier = 0;
+    int maxMultiplier = 1;
 
     /// Subscribes to the property and is notified anytime the value changes.
     public override void scoreChanged(Int32 value) {
