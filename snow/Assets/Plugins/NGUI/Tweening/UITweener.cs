@@ -227,7 +227,7 @@ public abstract class UITweener : MonoBehaviour
 					for (int i = 0; i < mTemp.Count; ++i)
 					{
 						EventDelegate ed = mTemp[i];
-						if (ed != null) EventDelegate.Add(onFinished, ed, ed.oneShot);
+						if (ed != null && !ed.oneShot) EventDelegate.Add(onFinished, ed, ed.oneShot);
 					}
 					mTemp = null;
 				}
@@ -450,7 +450,16 @@ public abstract class UITweener : MonoBehaviour
 			}
 		}
 
-		if (comp == null) comp = go.AddComponent<T>();
+		if (comp == null)
+		{
+			comp = go.AddComponent<T>();
+
+			if (comp == null)
+			{
+				Debug.LogError("Unable to add " + typeof(T) + " to " + NGUITools.GetHierarchy(go), go);
+				return null;
+			}
+		}
 #endif
 		comp.mStarted = false;
 		comp.duration = duration;
@@ -461,12 +470,6 @@ public abstract class UITweener : MonoBehaviour
 		comp.eventReceiver = null;
 		comp.callWhenFinished = null;
 		comp.enabled = true;
-
-		if (duration <= 0f)
-		{
-			comp.Sample(1f, true);
-			comp.enabled = false;
-		}
 		return comp;
 	}
 

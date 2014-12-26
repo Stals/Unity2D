@@ -161,6 +161,7 @@ public class UIProgressBar : UIWidgetContainer
 		}
 		set
 		{
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 			if (mFG != null)
 			{
 				mFG.alpha = value;
@@ -186,6 +187,33 @@ public class UIProgressBar : UIWidgetContainer
 					else if (w.GetComponent<Collider2D>() != null) w.GetComponent<Collider2D>().enabled = w.alpha > 0.001f;
 				}
 			}
+#else
+			if (mFG != null)
+			{
+				mFG.alpha = value;
+				if (mFG.GetComponent<Collider>() != null) mFG.GetComponent<Collider>().enabled = mFG.alpha > 0.001f;
+				else if (mFG.GetComponent<Collider2D>() != null) mFG.GetComponent<Collider2D>().enabled = mFG.alpha > 0.001f;
+			}
+
+			if (mBG != null)
+			{
+				mBG.alpha = value;
+				if (mBG.GetComponent<Collider>() != null) mBG.GetComponent<Collider>().enabled = mBG.alpha > 0.001f;
+				else if (mBG.GetComponent<Collider2D>() != null) mBG.GetComponent<Collider2D>().enabled = mBG.alpha > 0.001f;
+			}
+
+			if (thumb != null)
+			{
+				UIWidget w = thumb.GetComponent<UIWidget>();
+				
+				if (w != null)
+				{
+					w.alpha = value;
+					if (w.GetComponent<Collider>() != null) w.GetComponent<Collider>().enabled = w.alpha > 0.001f;
+					else if (w.GetComponent<Collider2D>() != null) w.GetComponent<Collider2D>().enabled = w.alpha > 0.001f;
+				}
+			}
+#endif
 		}
 	}
 
@@ -349,6 +377,7 @@ public class UIProgressBar : UIWidgetContainer
 					mFG.drawRegion = isInverted ?
 						new Vector4(1f - value, 0f, 1f, 1f) :
 						new Vector4(0f, 0f, value, 1f);
+					mFG.enabled = value > 0.001f;
 				}
 			}
 			else if (sprite != null && sprite.type == UIBasicSprite.Type.Filled)
@@ -366,6 +395,7 @@ public class UIProgressBar : UIWidgetContainer
 				mFG.drawRegion = isInverted ?
 					new Vector4(0f, 1f - value, 1f, 1f) :
 					new Vector4(0f, 0f, 1f, value);
+				mFG.enabled = value > 0.001f;
 			}
 		}
 

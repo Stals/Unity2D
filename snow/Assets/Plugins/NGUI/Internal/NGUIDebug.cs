@@ -57,16 +57,17 @@ public class NGUIDebug : MonoBehaviour
 
 	static void LogString (string text)
 	{
+#if UNITY_EDITOR
+		Debug.Log(text);
+#else
 		if (Application.isPlaying)
 		{
 			if (mLines.Count > 20) mLines.RemoveAt(0);
 			mLines.Add(text);
 			CreateInstance();
 		}
-		else
-		{
-			Debug.Log(text);
-		}
+		else Debug.Log(text);
+#endif
 	}
 
 	/// <summary>
@@ -90,6 +91,12 @@ public class NGUIDebug : MonoBehaviour
 		}
 		LogString(text);
 	}
+
+	/// <summary>
+	/// Clear the logged text.
+	/// </summary>
+
+	static public void Clear () { mLines.Clear(); }
 
 	/// <summary>
 	/// Draw bounds immediately. Won't be remembered for the next frame.

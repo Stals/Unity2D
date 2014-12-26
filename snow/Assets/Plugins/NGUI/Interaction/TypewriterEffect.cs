@@ -85,7 +85,15 @@ public class TypewriterEffect : MonoBehaviour
 	/// Reset the typewriter effect to the beginning of the label.
 	/// </summary>
 
-	public void ResetToBeginning () { mReset = true; }
+	public void ResetToBeginning ()
+	{
+		Finish();
+		mReset = true;
+		mActive = true;
+		mNextChar = 0f;
+		mCurrentOffset = 0;
+		Update();
+	}
 
 	/// <summary>
 	/// Finish the typewriter operation and show all the text right away.
@@ -138,6 +146,9 @@ public class TypewriterEffect : MonoBehaviour
 			// Automatically skip all symbols
 			while (NGUIText.ParseSymbol(mFullText, ref mCurrentOffset)) { }
 			++mCurrentOffset;
+
+			// Reached the end? We're done.
+			if (mCurrentOffset > mFullText.Length) break;
 
 			// Periods and end-of-line characters should pause for a longer time.
 			float delay = 1f / charsPerSecond;

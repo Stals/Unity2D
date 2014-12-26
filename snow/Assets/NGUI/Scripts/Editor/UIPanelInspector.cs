@@ -71,6 +71,15 @@ public class UIPanelInspector : UIRectEditor
 
 	public void OnSceneGUI ()
 	{
+		if (Selection.objects.Length > 1) return;
+
+		UICamera cam = UICamera.FindCameraForLayer(mPanel.gameObject.layer);
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
+		if (cam == null || !cam.cachedCamera.isOrthoGraphic) return;
+#else
+		if (cam == null || !cam.cachedCamera.orthographic) return;
+#endif
+
 		NGUIEditorTools.HideMoveTool(true);
 		if (!UIWidget.showHandles) return;
 
@@ -247,8 +256,8 @@ public class UIPanelInspector : UIRectEditor
 				}
 				else if (mAllowSelection)
 				{
-					BetterList<UIWidget> widgets = NGUIEditorTools.SceneViewRaycast(e.mousePosition);
-					if (widgets.size > 0) Selection.activeGameObject = widgets[0].gameObject;
+					List<UIWidget> widgets = NGUIEditorTools.SceneViewRaycast(e.mousePosition);
+					if (widgets.Count > 0) Selection.activeGameObject = widgets[0].gameObject;
 				}
 				mAllowSelection = true;
 			}
@@ -429,7 +438,7 @@ public class UIPanelInspector : UIRectEditor
 
 		int matchingDepths = 0;
 
-		for (int i = 0; i < UIPanel.list.size; ++i)
+		for (int i = 0, imax = UIPanel.list.Count; i < imax; ++i)
 		{
 			UIPanel p = UIPanel.list[i];
 			if (p != null && mPanel.depth == p.depth)
@@ -510,6 +519,22 @@ public class UIPanelInspector : UIRectEditor
 					mPanel.clipSoftness = soft;
 					EditorUtility.SetDirty(mPanel);
 				}
+			}
+			else if (mPanel.clipping == UIDrawCall.Clipping.TextureMask)
+			{
+				NGUIEditorTools.SetLabelWidth(0f);
+				GUILayout.Space(-90f);
+				Texture2D tex = (Texture2D)EditorGUILayout.ObjectField(mPanel.clipTexture,
+					typeof(Texture2D), false, GUILayout.Width(70f), GUILayout.Height(70f));
+				GUILayout.Space(20f);
+
+				if (mPanel.clipTexture != tex)
+				{
+					NGUIEditorTools.RegisterUndo("Clipping Change", mPanel);
+					mPanel.clipTexture = tex;
+					EditorUtility.SetDirty(mPanel);
+				}
+				NGUIEditorTools.SetLabelWidth(80f);
 			}
 		}
 
@@ -595,8 +620,15 @@ public class UIPanelInspector : UIRectEditor
 			}
 
 			GUILayout.BeginHorizontal();
-			bool off = EditorGUILayout.Toggle("Offset", mPanel.anchorOffset, GUILayout.Width(100f));
+			NGUIEditorTools.DrawProperty("Padding", serializedObject, "softBorderPadding", GUILayout.Width(100f));
+			GUILayout.Label("Soft border pads content", GUILayout.MinWidth(20f));
+			GUILayout.EndHorizontal();
+
+			GUILayout.BeginHorizontal();
+			EditorGUI.BeginDisabledGroup(mPanel.GetComponent<UIRoot>() != null);
+			bool off = EditorGUILayout.Toggle("Offset", mPanel.anchorOffset && mPanel.GetComponent<UIRoot>() == null, GUILayout.Width(100f));
 			GUILayout.Label("Offset anchors by position", GUILayout.MinWidth(20f));
+			EditorGUI.EndDisabledGroup();
 			GUILayout.EndHorizontal();
 
 			if (mPanel.anchorOffset != off)

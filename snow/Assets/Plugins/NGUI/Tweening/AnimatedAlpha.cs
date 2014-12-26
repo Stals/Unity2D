@@ -12,9 +12,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class AnimatedAlpha : MonoBehaviour
 {
-#if !UNITY_3_5
 	[Range(0f, 1f)]
-#endif
 	public float alpha = 1f;
 
 	UIWidget mWidget;

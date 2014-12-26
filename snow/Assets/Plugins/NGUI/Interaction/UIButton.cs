@@ -88,7 +88,11 @@ public class UIButton : UIButtonColor
 		get
 		{
 			if (!enabled) return false;
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 			Collider col = collider;
+#else
+			Collider col = gameObject.GetComponent<Collider>();
+#endif
 			if (col && col.enabled) return true;
 			Collider2D c2d = GetComponent<Collider2D>();
 			return (c2d && c2d.enabled);
@@ -97,8 +101,11 @@ public class UIButton : UIButtonColor
 		{
 			if (isEnabled != value)
 			{
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				Collider col = collider;
-
+#else
+				Collider col = gameObject.GetComponent<Collider>();
+#endif
 				if (col != null)
 				{
 					col.enabled = value;
@@ -132,6 +139,7 @@ public class UIButton : UIButtonColor
 		}
 		set
 		{
+			if (!mInitDone) OnInit();
 			if (mSprite != null && !string.IsNullOrEmpty(mNormalSprite) && mNormalSprite == mSprite.spriteName)
 			{
 				mNormalSprite = value;
@@ -159,6 +167,7 @@ public class UIButton : UIButtonColor
 		}
 		set
 		{
+			if (!mInitDone) OnInit();
 			if (mSprite2D != null && mNormalSprite2D == mSprite2D.sprite2D)
 			{
 				mNormalSprite2D = value;
@@ -263,7 +272,7 @@ public class UIButton : UIButtonColor
 			switch (state)
 			{
 				case State.Normal: SetSprite(mNormalSprite); break;
-				case State.Hover: SetSprite(hoverSprite); break;
+				case State.Hover: SetSprite(string.IsNullOrEmpty(hoverSprite) ? mNormalSprite : hoverSprite); break;
 				case State.Pressed: SetSprite(pressedSprite); break;
 				case State.Disabled: SetSprite(disabledSprite); break;
 			}
@@ -273,7 +282,7 @@ public class UIButton : UIButtonColor
 			switch (state)
 			{
 				case State.Normal: SetSprite(mNormalSprite2D); break;
-				case State.Hover: SetSprite(hoverSprite2D); break;
+				case State.Hover: SetSprite(hoverSprite2D == null ? mNormalSprite2D : hoverSprite2D); break;
 				case State.Pressed: SetSprite(pressedSprite2D); break;
 				case State.Disabled: SetSprite(disabledSprite2D); break;
 			}

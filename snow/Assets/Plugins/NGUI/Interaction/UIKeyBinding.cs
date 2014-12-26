@@ -16,6 +16,7 @@ public class UIKeyBinding : MonoBehaviour
 	{
 		PressAndClick,
 		Select,
+		All,
 	}
 
 	public enum Modifier
@@ -52,7 +53,7 @@ public class UIKeyBinding : MonoBehaviour
 	/// If we're bound to an input field, subscribe to its Submit notification.
 	/// </summary>
 
-	void Start ()
+	protected virtual void Start ()
 	{
 		UIInput input = GetComponent<UIInput>();
 		mIsInput = (input != null);
@@ -63,13 +64,13 @@ public class UIKeyBinding : MonoBehaviour
 	/// Ignore the KeyUp message if the input field "ate" it.
 	/// </summary>
 
-	void OnSubmit () { if (UICamera.currentKey == keyCode && IsModifierActive()) mIgnoreUp = true; }
+	protected virtual void OnSubmit () { if (UICamera.currentKey == keyCode && IsModifierActive()) mIgnoreUp = true; }
 
 	/// <summary>
 	/// Convenience function that checks whether the required modifier key is active.
 	/// </summary>
 
-	bool IsModifierActive ()
+	protected virtual bool IsModifierActive ()
 	{
 		if (modifier == Modifier.None) return true;
 
@@ -95,11 +96,11 @@ public class UIKeyBinding : MonoBehaviour
 	/// Process the key binding.
 	/// </summary>
 
-	void Update ()
+	protected virtual void Update ()
 	{
 		if (keyCode == KeyCode.None || !IsModifierActive()) return;
 
-		if (action == Action.PressAndClick)
+		if (action == Action.PressAndClick || action == Action.All)
 		{
 			if (UICamera.inputHasFocus) return;
 
@@ -110,22 +111,23 @@ public class UIKeyBinding : MonoBehaviour
 			if (Input.GetKeyDown(keyCode))
 			{
 				mPress = true;
-				UICamera.Notify(gameObject, "OnPress", true);
+				OnBindingPress(true);
 			}
 
 			if (Input.GetKeyUp(keyCode))
 			{
-				UICamera.Notify(gameObject, "OnPress", false);
+				OnBindingPress(false);
 
 				if (mPress)
 				{
-					UICamera.Notify(gameObject, "OnClick", null);
+					OnBindingClick();
 					mPress = false;
 				}
 			}
 			UICamera.currentTouch.current = null;
 		}
-		else if (action == Action.Select)
+
+		if (action == Action.Select || action == Action.All)
 		{
 			if (Input.GetKeyUp(keyCode))
 			{
@@ -144,4 +146,7 @@ public class UIKeyBinding : MonoBehaviour
 			}
 		}
 	}
+
+	protected virtual void OnBindingPress (bool pressed) { UICamera.Notify(gameObject, "OnPress", pressed); }
+	protected virtual void OnBindingClick () { UICamera.Notify(gameObject, "OnClick", null); }
 }

@@ -1,7 +1,7 @@
 ----------------------------------------------
             NGUI: Next-Gen UI kit
  Copyright © 2011-2014 Tasharen Entertainment
-            Version 3.6.7
+            Version 3.7.7
     http://www.tasharen.com/?page_id=197
             support@tasharen.com
 ----------------------------------------------
@@ -54,6 +54,129 @@ and it will not be included in the build of your game. It's only used in the edi
 -----------------
  Version History
 -----------------
+
+3.7.7
+- Fix for the drop-down list appearing in the wrong place in some situations.
+- You can now choose to merge loaded localization data with existing one. Useful for patching games.
+- Added a user-contributed outline8 type label effect.
+- Cleaned up new warnings shown in Unity 5.
+- Fixes for dynamic font rendering in Unity 5 (underline/strikethrough).
+
+3.7.6
+- FIX: Unity 5.0 compilation and functionality compatibility fixes.
+- FIX: Work-around for a Unity bug in 4.5.5p3 and p4 (OnValidate not affected by script execution order).
+- FIX: Potential work-around for touch events sending mouse events.
+- FIX: NGUI texture import will now use automatic true color instead of ARGB32.
+- FIX: UIEventTrigger's OnDrag was mistakenly calling the onDragOut callback.
+
+3.7.5
+- NEW: UISavedOption now works with progress bars as well.
+- NEW: MathiasSoeholm's implementation for Labels with float spacing.
+- FIX: UIPopupList opened manually will now close automatically without requiring selection to be set.
+- FIX: UICamera will now use proper 'events go to colliders' flag from the first UICamera.
+- FIX: Unity 5 compilation tweaks.
+- FIX: Flash compilation fixes.
+
+3.7.4
+- FIX: UIInput no longer uses OnGUI unless you actually select the input field first (eliminates GC alloc).
+- FIX: UIEventTrigger's OnDragStart/OnDragEnd shouldn't have had parameters.
+- FIX: UIDragObject should now work properly with a constrained type UIRoot.
+- FIX: Key/controller interaction wasn't quite correct with sliders/scroll bars.
+- FIX: UIDragObject will now snap to pixels after the movement completes.
+
+3.7.3
+- NEW: New clipping option on panels: Texture Mask. Any texture with alpha will work (think round minimap etc).
+- NEW: UICamera now has an option for whether events go to colliders or rigidbodies.
+- NEW: Added Cell Alignment field to the UITable letting you change the content's alignment.
+- NEW: UIGrid now has a "cell snap" arrangement type for when you simply want to have widgets snap as you drag them.
+- NEW: 2D Sprites now have a "pixel size" property.
+- FIX: Pre-defined texture preview for the Prefab Tool wasn't quite working right.
+- FIX: UIPanel now always force-disables the "offset" option if it's on the UIRoot.
+- FIX: Handles will now automatically hide when multi-editing widgets, allowing you to use the transform move.
+
+3.7.2
+- NEW: You can now explicitly choose the panel used as a drag region for UIDragObject.
+- NEW: You can now specify a custom thumbnail texture for each item in the prefab toolbar.
+- NEW: TweenAlpha and TweenColor now work on Unity's SpriteRenderers.
+- NEW: Added UICamera.currentTouch.deltaTime (time since touch started).
+- FIX: UIGrid.Reposition should now work even without the component being started first.
+- FIX: Widgets with alpha 0 won't be selectable in the scene view anymore.
+- FIX: UIDragDropItem wasn't setting 'dragged' state properly if the item was cloned.
+- FIX: Alpha text encoding [Aa] style should no longer try to interpret non-hex characters.
+- FIX: Tweaks to how UICenterOnChild works and fixes to its paging functionality.
+- FIX: Minor fix to tween/play tween in regards to playing in reverse.
+- FIX: Bitmap labels now support thin spaces (U2009).
+- FIX: PropertyBinding now respects "editMode" flag properly.
+- FIX: Setting UILabel.material at run time on a dynamic font should now work as expected.
+- FIX: DX9 half pixel offset will now be ignored properly in /force OpenGL mode.
+- FIX: You should now be able to use the stylus on android devices.
+- DEL: UIInput.selectOnTab is now deprecated in favor of UIKeyNavigation (will auto-upgrade)
+
+3.7.1
+- NEW: Added generic delegates to UICamera you can subscribe to (onClick, onHover, etc) to replace the genericEventHandler.
+- NEW: Added a new option to UITexture and UI2DSprite to keep the original texture's aspect ratio.
+- NEW: Popup list items can now have arbitrary data associated with each entry.
+- NEW: You can now choose what kind of click will open the popup list.
+- NEW: New text symbol [c] will cause the text that follows it to ignore the label's color tint.
+- NEW: Added the missing OnDragStart and OnDragEnd to UIEventListener.
+- NEW: UICamera.onMouseMove notification.
+- FIX: UICamera will only send events to rigidbodies if there was no UIPanel present.
+- FIX: UIPanel will no longer use handles if the camera drawing it is not 2D.
+- FIX: Unity 4.3 compatibility.
+
+3.7.0
+- NEW: You can now set UIWidget.onRender to change material properties like in OnWillRenderObject.
+- NEW: Changing UITexture.mainTexture and shader is now super-quick if it's not batched.
+- NEW: UIRoot now has additional scaling constraints enabling new fill and fit modes.
+- NEW: Added the ability to ignore kerning information when making bitmap fonts.
+- NEW: NGUI's events sent via "3D" and "2D" event type UICameras will now go to the rigidbody instead of colliders.
+- NEW: UIKeyBinding now has a new setting "All" that will trigger both select and press/click logic.
+- NEW: UICamera.isOverUI, UICamera.currentTouch.isOverUI.
+- NEW: NGUI now uses the new rect transform tool instead of the move transform in Unity 4.6+.
+- NEW: UIPlaySound now has an OnEnable play option. For convenience.
+- NEW: UIEventListener now has OnTooltip.
+- NEW: TweenAlpha now works with renderers as well.
+- FIX: Removed code that was snapping draw call positions to pixels, allowing you animate panels smoothly.
+- FIX: Calling Reposition() on the grid and table now works even if its Start() hasn't executed.
+- FIX: Dynamic font baseline calculation work-around for some partial fonts.
+- FIX: Center On Child script got semi-broken in the last version.
+
+3.6.9
+- NEW: Added loop, play, pause and reset functionality to UI2DSpriteAnimation.
+- NEW: Added new automatic support for linear lighting.
+- NEW: Added a pivot point setting to UITable to match UIGrid.
+- NEW: Added warnings to UIAnchor and UIStretch components that inform the user about them being deprecated.
+- NEW: Property binding can now let you select properties that only have either get or set, depending on what's needed.
+- NEW: Added settable delegates to UICamera: GetKey, GetKeyDown, GetKeyUp, GetAxis.
+- NEW: UIRect has a new anchor update setting: OnStart. It will only update anchors once.
+- NEW: Panels have a new option to ignore soft border when constraining scroll view content.
+- FIX: Added alexkring's work-around for the rare "texture destroyed" issue in the Atlas Maker.
+- FIX: Dragging 2D UI elements into a scene with a 3D UI should no longer create many UI Roots.
+- FIX: Labels will now use the draw region, making them usable as the slider's foreground.
+- FIX: Localization with multi-line entries would skip the first word.
+- FIX: The layout system's anchors should now work even for 3D UIs.
+- FIX: UIWrapContent was not setting the restrict within panel flag correctly.
+- FIX: UILabel.GetWordAtPosition now works with line breaks properly.
+- FIX: Embedded URL retrieval code wasn't capping when it encountered a /url tag.
+- FIX: Embedded URL retrieval is now much more precise.
+- FIX: Mouse scroll wheel should again work with UICenterOnChild.
+- FIX: UILocalize will now change UIButton's normal sprite.
+- FIX: UIToggle transitions will now be instant if the value was changed while the toggle is disabled.
+- FIX: UIDragDropitem will now work with 2D colliders (thanks HanzaRu).
+- FIX: Bold can now be mixed with underline properly.
+- DEL: Removed the old "Shader Quality" script that was messing up the refractive atlas.
+
+3.6.8
+- NEW: UIWrapContent now has a range limit you can set for indices (such as -10 to 10).
+- NEW: Added Transform.OverlayPosition to make it easy to position widgets using 3D object positions.
+- FIX: Progress bars / sliders will no longer show the foreground if the value is 0.
+- FIX: Changing UI2DSprite.sprite2D will now immediately re-add the widget to the panel.
+- FIX: UIDragDropItem will now delay enabling the drag scroll view script (thanks, slumtrimpet!)
+- FIX: Re-added a hack-around for Adreno GPU crashes. Looks like Unity 4.5 did not fix the problem, despite the patch notes.
+- FIX: Seeing as BetterList is slower at sorting than List, some instances of BetterList were replaced with List.
+- FIX: UIPanel's option to cull widgets while the scroll view is being dragged is now on by default.
+- FIX: UIRoot now considers WP8 and BlackBerry to be mobile devices.
+- FIX: More tweaks for how camera's region gets calculated.
 
 3.6.7
 - NEW: Added a lookup table to the atlas in order to make GetSprite() faster.

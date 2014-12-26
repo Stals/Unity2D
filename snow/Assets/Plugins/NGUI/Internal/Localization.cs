@@ -29,6 +29,14 @@ using System.Collections.Generic;
 
 public static class Localization
 {
+	public delegate byte[] LoadFunction (string path);
+
+	/// <summary>
+	/// Want to have Localization loading be custom instead of just Resources.Load? Set this function.
+	/// </summary>
+
+	static public LoadFunction loadFunction;
+
 	/// <summary>
 	/// Whether the localization dictionary has been loaded.
 	/// </summary>
@@ -115,21 +123,36 @@ public static class Localization
 	static bool LoadDictionary (string value)
 	{
 		// Try to load the Localization CSV
-		TextAsset txt = localizationHasBeenSet ? null : Resources.Load("Localization", typeof(TextAsset)) as TextAsset;
-		localizationHasBeenSet = true;
+		byte[] bytes = null;
+
+		if (!localizationHasBeenSet)
+		{
+			if (loadFunction == null)
+			{
+				TextAsset asset = Resources.Load<TextAsset>("Localization");
+				if (asset != null) bytes = asset.bytes;
+			}
+			else bytes = loadFunction("Localization");
+			localizationHasBeenSet = true;
+		}
 
 		// Try to load the localization file
-		if (txt != null && LoadCSV(txt)) return true;
+		if (LoadCSV(bytes)) return true;
 
 		// If this point was reached, the localization file was not present
 		if (string.IsNullOrEmpty(value)) return false;
 
 		// Not a referenced asset -- try to load it dynamically
-		txt = Resources.Load(value, typeof(TextAsset)) as TextAsset;
-
-		if (txt != null)
+		if (loadFunction == null)
 		{
-			Load(txt);
+			TextAsset asset = Resources.Load<TextAsset>(value);
+			if (asset != null) bytes = asset.bytes;
+		}
+		else bytes = loadFunction(value);
+
+		if (bytes != null)
+		{
+			Set(value, bytes);
 			return true;
 		}
 		return false;
@@ -168,12 +191,35 @@ public static class Localization
 	}
 
 	/// <summary>
+	/// Set the localization data directly.
+	/// </summary>
+
+	static public void Set (string languageName, byte[] bytes)
+	{
+		ByteReader reader = new ByteReader(bytes);
+		Set(languageName, reader.ReadDictionary());
+	}
+
+	/// <summary>
 	/// Load the specified CSV file.
 	/// </summary>
 
-	static public bool LoadCSV (TextAsset asset)
+	static public bool LoadCSV (TextAsset asset, bool merge = false) { return LoadCSV(asset.bytes, asset, merge); }
+
+	/// <summary>
+	/// Load the specified CSV file.
+	/// </summary>
+
+	static public bool LoadCSV (byte[] bytes, bool merge = false) { return LoadCSV(bytes, null, merge); }
+
+	/// <summary>
+	/// Load the specified CSV file.
+	/// </summary>
+
+	static bool LoadCSV (byte[] bytes, TextAsset asset, bool merge = false)
 	{
-		ByteReader reader = new ByteReader(asset);
+		if (bytes == null) return false;
+		ByteReader reader = new ByteReader(bytes);
 
 		// The first line should contain "KEY", followed by languages.
 		BetterList<string> temp = reader.ReadCSV();
@@ -181,31 +227,22 @@ public static class Localization
 		// There must be at least two columns in a valid CSV file
 		if (temp.size < 2) return false;
 
-		// The first entry must be 'KEY', capitalized
+		// Clear the dictionary
+		if (!merge || temp.size - 1 != mLanguage.Length)
+		{
+			merge = false;
+			mDictionary.Clear();
+		}
+
 		temp[0] = "KEY";
-
-#if !UNITY_3_5
-		// Ensure that the first value is what we expect
-		if (!string.Equals(temp[0], "KEY"))
-		{
-			Debug.LogError("Invalid localization CSV file. The first value is expected to be 'KEY', followed by language columns.\n" +
-				"Instead found '" + temp[0] + "'", asset);
-			return false;
-		}
-		else
-#endif
-		{
-			mLanguages = new string[temp.size - 1];
-			for (int i = 0; i < mLanguages.Length; ++i)
-				mLanguages[i] = temp[i + 1];
-		}
-
-		mDictionary.Clear();
+		mLanguages = new string[temp.size - 1];
+		for (int i = 0; i < mLanguages.Length; ++i)
+			mLanguages[i] = temp[i + 1];
 
 		// Read the entire CSV file into memory
 		while (temp != null)
 		{
-			AddCSV(temp);
+			AddCSV(temp, !merge);
 			temp = reader.ReadCSV();
 		}
 		return true;
@@ -245,19 +282,30 @@ public static class Localization
 	/// Helper function that adds a single line from a CSV file to the localization list.
 	/// </summary>
 
-	static void AddCSV (BetterList<string> values)
+	static void AddCSV (BetterList<string> values, bool warnOnDuplicate = true)
 	{
 		if (values.size < 2) return;
+		string key = values[0];
+		if (string.IsNullOrEmpty(key)) return;
+
 		string[] temp = new string[values.size - 1];
 		for (int i = 1; i < values.size; ++i) temp[i - 1] = values[i];
-		
-		try
+
+		if (mDictionary.ContainsKey(key))
 		{
-			mDictionary.Add(values[0], temp);
+			mDictionary[key] = temp;
+			if (warnOnDuplicate) Debug.LogWarning("Localization key '" + key + "' is already present");
 		}
-		catch (System.Exception ex)
+		else
 		{
-			Debug.LogError("Unable to add '" + values[0] + "' to the Localization dictionary.\n" + ex.Message);
+			try
+			{
+				mDictionary.Add(key, temp);
+			}
+			catch (System.Exception ex)
+			{
+				Debug.LogError("Unable to add '" + key + "' to the Localization dictionary.\n" + ex.Message);
+			}
 		}
 	}
 
@@ -309,6 +357,12 @@ public static class Localization
 #endif
 		return key;
 	}
+
+	/// <summary>
+	/// Localize the specified value and format it.
+	/// </summary>
+
+	static public string Format (string key, params object[] parameters) { return string.Format(Get(key), parameters); }
 
 	[System.Obsolete("Localization is now always active. You no longer need to check this property.")]
 	static public bool isActive { get { return true; } }

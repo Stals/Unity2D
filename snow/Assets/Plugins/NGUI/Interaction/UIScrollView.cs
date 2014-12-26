@@ -349,32 +349,36 @@ public class UIScrollView : MonoBehaviour
 		}
 	}
 
-	void OnEnable () { list.Add(this); }
-	void OnDisable () { list.Remove(this); }
+	[System.NonSerialized] bool mStarted = false;
 
-	/// <summary>
-	/// Set the initial drag value and register the listener delegates.
-	/// </summary>
-
-	protected virtual void Start ()
+	void OnEnable ()
 	{
-		//UpdatePosition();
+		list.Add(this);
+		if (mStarted && Application.isPlaying) CheckScrollbars();
+	}
 
-		if (Application.isPlaying)
+	void Start ()
+	{
+		mStarted = true;
+		if (Application.isPlaying) CheckScrollbars();
+	}
+
+	void CheckScrollbars ()
+	{
+		if (horizontalScrollBar != null)
 		{
-			if (horizontalScrollBar != null)
-			{
-				EventDelegate.Add(horizontalScrollBar.onChange, OnScrollBar);
-				horizontalScrollBar.alpha = ((showScrollBars == ShowCondition.Always) || shouldMoveHorizontally) ? 1f : 0f;
-			}
+			EventDelegate.Add(horizontalScrollBar.onChange, OnScrollBar);
+			horizontalScrollBar.alpha = ((showScrollBars == ShowCondition.Always) || shouldMoveHorizontally) ? 1f : 0f;
+		}
 
-			if (verticalScrollBar != null)
-			{
-				EventDelegate.Add(verticalScrollBar.onChange, OnScrollBar);
-				verticalScrollBar.alpha = ((showScrollBars == ShowCondition.Always) || shouldMoveVertically) ? 1f : 0f;
-			}
+		if (verticalScrollBar != null)
+		{
+			EventDelegate.Add(verticalScrollBar.onChange, OnScrollBar);
+			verticalScrollBar.alpha = ((showScrollBars == ShowCondition.Always) || shouldMoveVertically) ? 1f : 0f;
 		}
 	}
+
+	void OnDisable () { list.Remove(this); }
 
 	/// <summary>
 	/// Restrict the scroll view's contents to be within the scroll view's bounds.
@@ -706,6 +710,8 @@ public class UIScrollView : MonoBehaviour
 
 	public void Press (bool pressed)
 	{
+		if (UICamera.currentScheme == UICamera.ControlScheme.Controller) return;
+
 		if (smoothDragStart && pressed)
 		{
 			mDragStarted = false;
@@ -746,15 +752,29 @@ public class UIScrollView : MonoBehaviour
 				v.x = Mathf.Round(v.x);
 				v.y = Mathf.Round(v.y);
 				mTrans.localPosition = v;
+
+				if (!smoothDragStart)
+				{
+					mDragStarted = true;
+					mDragStartOffset = Vector2.zero;
+					if (onDragStarted != null) onDragStarted();
+				}
 			}
 			else
 			{
-				if (restrictWithinPanel && mPanel.clipping != UIDrawCall.Clipping.None)
-					RestrictWithinBounds(dragEffect == DragEffect.None, canMoveHorizontally, canMoveVertically);
+				if (centerOnChild != null)
+				{
+					centerOnChild.Recenter();
+				}
+				else
+				{
+					if (restrictWithinPanel && mPanel.clipping != UIDrawCall.Clipping.None)
+						RestrictWithinBounds(dragEffect == DragEffect.None, canMoveHorizontally, canMoveVertically);
 
-				if (onDragFinished != null) onDragFinished();
-				if (!mShouldMove && onStoppedMoving != null)
-					onStoppedMoving();
+					if (mDragStarted && onDragFinished != null) onDragFinished();
+					if (!mShouldMove && onStoppedMoving != null)
+						onStoppedMoving();
+				}
 			}
 		}
 	}
@@ -765,6 +785,8 @@ public class UIScrollView : MonoBehaviour
 
 	public void Drag ()
 	{
+		if (UICamera.currentScheme == UICamera.ControlScheme.Controller) return;
+
 		if (enabled && NGUITools.GetActive(gameObject) && mShouldMove)
 		{
 			if (mDragID == -10) mDragID = UICamera.currentTouchID;
@@ -850,6 +872,9 @@ public class UIScrollView : MonoBehaviour
 		}
 	}
 
+	[HideInInspector]
+	public UICenterOnChild centerOnChild = null;
+
 	/// <summary>
 	/// If the object should support the scroll wheel, do it.
 	/// </summary>
@@ -859,7 +884,7 @@ public class UIScrollView : MonoBehaviour
 		if (enabled && NGUITools.GetActive(gameObject) && scrollWheelFactor != 0f)
 		{
 			DisableSpring();
-			mShouldMove = shouldMove;
+			mShouldMove |= shouldMove;
 			if (Mathf.Sign(mScroll) != Mathf.Sign(delta)) mScroll = 0f;
 			mScroll += delta * scrollWheelFactor;
 		}
@@ -928,7 +953,6 @@ public class UIScrollView : MonoBehaviour
 						mScroll * customMovement.x * 0.05f,
 						mScroll * customMovement.y * 0.05f, 0f));
 				}
-
 				mScroll = NGUIMath.SpringLerp(mScroll, 0f, 20f, delta);
 
 				// Move the scroll view
@@ -937,7 +961,21 @@ public class UIScrollView : MonoBehaviour
 
 				// Restrict the contents to be within the scroll view's bounds
 				if (restrictWithinPanel && mPanel.clipping != UIDrawCall.Clipping.None)
-					RestrictWithinBounds(false, canMoveHorizontally, canMoveVertically);
+				{
+					if (NGUITools.GetActive(centerOnChild))
+					{
+						if (centerOnChild.nextPageThreshold != 0f)
+						{
+							mMomentum = Vector3.zero;
+							mScroll = 0f;
+						}
+						else centerOnChild.Recenter();
+					}
+					else
+					{
+						RestrictWithinBounds(false, canMoveHorizontally, canMoveVertically);
+					}
+				}
 
 				if (onMomentumMove != null)
 					onMomentumMove();

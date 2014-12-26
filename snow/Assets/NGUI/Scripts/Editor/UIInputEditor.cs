@@ -3,7 +3,7 @@
 // Copyright © 2011-2014 Tasharen Entertainment
 //----------------------------------------------
 
-#if UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_BLACKBERRY
+#if UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_WP_8_1 || UNITY_BLACKBERRY
 #define MOBILE
 #endif
 
@@ -57,7 +57,9 @@ public class UIInputEditor : UIWidgetContainerEditor
 			NGUIEditorTools.DrawPaddedProperty("Mobile Keyboard", serializedObject, "keyboardType");
 			NGUIEditorTools.DrawPaddedProperty("  Hide Input", serializedObject, "hideInput");
 			NGUIEditorTools.DrawPaddedProperty(serializedObject, "onReturnKey");
-			NGUIEditorTools.DrawProperty(serializedObject, "selectOnTab");
+
+			// Deprecated, use UIKeyNavigation instead.
+			//NGUIEditorTools.DrawProperty(serializedObject, "selectOnTab");
 
 			SerializedProperty sp = serializedObject.FindProperty("characterLimit");
 

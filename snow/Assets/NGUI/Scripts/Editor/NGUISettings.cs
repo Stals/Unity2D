@@ -304,6 +304,12 @@ public class NGUISettings
 		set { SetInt("NGUI Font Size", value); }
 	}
 
+	static public bool fontKerning
+	{
+		get { return GetBool("NGUI Font Kerning", true); }
+		set { SetBool("NGUI Font Kerning", value); }
+	}
+
 	static public FontStyle fontStyle
 	{
 		get { return GetEnum("NGUI Font Style", FontStyle.Normal); }
@@ -388,6 +394,7 @@ public class NGUISettings
 		set { SetString("NGUI Chars", value); }
 	}
 
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 	static public string pathToFreeType
 	{
 		get
@@ -399,6 +406,19 @@ public class NGUISettings
 		}
 		set { SetString("NGUI FreeType", value); }
 	}
+#else
+	static public string pathToFreeType
+	{
+		get
+		{
+			string path = Application.dataPath;
+			if (Application.platform == RuntimePlatform.WindowsEditor) path += "/NGUI/Editor/FreeType64.dll";
+			else path += "/NGUI/Editor/FreeType64.dylib";
+			return GetString("NGUI FreeType64", path);
+		}
+		set { SetString("NGUI FreeType64", value); }
+	}
+#endif
 
 	static public string searchField
 	{
@@ -580,6 +600,9 @@ public class NGUISettings
 		SetInt("Font Size", lbl.fontSize);
 		SetEnum("Font Style", lbl.fontStyle);
 		SetEnum("Overflow", lbl.overflowMethod);
+		SetBool("UseFloatSpacing", lbl.useFloatSpacing);
+		SetFloat("FloatSpacingX", lbl.floatSpacingX);
+		SetFloat("FloatSpacingY", lbl.floatSpacingY);
 		SetInt("SpacingX", lbl.spacingX);
 		SetInt("SpacingY", lbl.spacingY);
 		SetInt("MaxLines", lbl.maxLineCount);
@@ -609,6 +632,7 @@ public class NGUISettings
 		sp.centerType = GetEnum<UISprite.AdvancedType>("Center Type", UISprite.AdvancedType.Sliced);
 		sp.fillAmount = GetFloat("Fill", sp.fillAmount);
 		sp.fillDirection = GetEnum<UISprite.FillDirection>("FDir", sp.fillDirection);
+		NGUITools.SetDirty(sp);
 	}
 
 	/// <summary>
@@ -637,6 +661,9 @@ public class NGUISettings
 		}
 
 		lbl.overflowMethod = GetEnum<UILabel.Overflow>("Overflow", lbl.overflowMethod);
+		lbl.useFloatSpacing = GetBool("UseFloatSpacing", lbl.useFloatSpacing);
+		lbl.floatSpacingX = GetFloat("FloatSpacingX", lbl.floatSpacingX);
+		lbl.floatSpacingY = GetFloat("FloatSpacingY", lbl.floatSpacingY);
 		lbl.spacingX = GetInt("SpacingX", lbl.spacingX);
 		lbl.spacingY = GetInt("SpacingY", lbl.spacingY);
 		lbl.maxLineCount = GetInt("MaxLines", lbl.maxLineCount);
@@ -650,5 +677,6 @@ public class NGUISettings
 		float x = GetFloat("Effect X", lbl.effectDistance.x);
 		float y = GetFloat("Effect Y", lbl.effectDistance.y);
 		lbl.effectDistance = new Vector2(x, y);
+		NGUITools.SetDirty(lbl);
 	}
 }
