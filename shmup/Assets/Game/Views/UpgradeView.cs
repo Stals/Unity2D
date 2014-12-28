@@ -61,7 +61,10 @@ public partial class UpgradeView {
     }
 
     public void hoverOn(){
-        UITooltip.ShowText(Upgrade.TooltipText);
+        var sprite = GetComponent<UISprite>();
+        var go = sprite.gameObject;
+
+        UITooltip.ShowText(Upgrade.TooltipText, go);
     }
 
     public void hoverOut()

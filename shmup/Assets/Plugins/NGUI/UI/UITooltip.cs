@@ -91,7 +91,8 @@ public class UITooltip : MonoBehaviour
 	/// Set the tooltip's text to the specified string.
 	/// </summary>
 
-	protected virtual void SetText (string tooltipText)
+
+	protected virtual void SetText (string tooltipText, Vector3 positionHint)
 	{
 		if (text != null && !string.IsNullOrEmpty(tooltipText))
 		{
@@ -99,7 +100,7 @@ public class UITooltip : MonoBehaviour
 			text.text = tooltipText;
 
 			// Orthographic camera positioning is trivial
-			mPos = Input.mousePosition;
+            mPos = positionHint;
 
 			Transform textTrans = text.transform;
 			Vector3 offset = textTrans.localPosition;
@@ -122,7 +123,7 @@ public class UITooltip : MonoBehaviour
 				background.height = Mathf.RoundToInt(mSize.y);
 			}
 
-			if (uiCamera != null)
+			/*if (uiCamera != null)
 			{
 				// Since the screen can be of different than expected size, we want to convert
 				// mouse coordinates to view space, then convert that to world position.
@@ -146,8 +147,8 @@ public class UITooltip : MonoBehaviour
 				mPos.x = Mathf.Round(mPos.x);
 				mPos.y = Mathf.Round(mPos.y);
 				mTrans.localPosition = mPos;
-			}
-			else
+			}*/
+            if (uiCamera == null)
 			{
 				// Don't let the tooltip leave the screen area
 				if (mPos.x + mSize.x > Screen.width) mPos.x = Screen.width - mSize.x;
@@ -165,11 +166,32 @@ public class UITooltip : MonoBehaviour
 	/// Show a tooltip with the specified text.
 	/// </summary>
 
-	static public void ShowText (string tooltipText)
+	static public void ShowText (string tooltipText, Vector3 positionHint)
 	{
 		if (mInstance != null)
 		{
-			mInstance.SetText(tooltipText);
+            mInstance.SetText(tooltipText, positionHint);
 		}
 	}
+
+    // Helper Methods
+
+    // ONLY WORKS FOR "FIXED SIZE" Style
+    static public void ShowText(string tooltipText, GameObject _go)
+    {
+       // Camera cam = NGUITools.FindCameraForLayer(_go.layer);
+
+        Vector3 pos = _go.transform.position;
+        int manualHeight = NGUITools.FindInParents<UIRoot>(_go).manualHeight;
+        pos.x *= (manualHeight / 2);
+        pos.y *= (manualHeight / 2);
+
+        ShowText(tooltipText, pos);
+    }
+
+    static public void ShowText(string tooltipText)
+    {
+        // pass mouse position as hint
+        ShowText(tooltipText, Input.mousePosition);
+    }
 }
