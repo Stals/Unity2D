@@ -148,6 +148,16 @@ public class UITooltip : MonoBehaviour
 				mPos.y = Mathf.Round(mPos.y);
 				mTrans.localPosition = mPos;
 			}*/
+
+        // TODO remove duplication if top one will be uncommented
+            // Update the absolute position and save the local one
+            mTrans.localPosition = mPos;
+            /*mPos = mTrans.localPosition;
+            mPos.x = Mathf.Round(mPos.x);
+            mPos.y = Mathf.Round(mPos.y);
+            mTrans.localPosition = mPos;
+        */
+        /*
             if (uiCamera == null)
 			{
 				// Don't let the tooltip leave the screen area
@@ -157,7 +167,7 @@ public class UITooltip : MonoBehaviour
 				// Simple calculation that assumes that the camera is of fixed size
 				mPos.x -= Screen.width * 0.5f;
 				mPos.y -= Screen.height * 0.5f;
-			}
+			}*/
 		}
 		else mTarget = 0f;
 	}
@@ -179,14 +189,15 @@ public class UITooltip : MonoBehaviour
     // ONLY WORKS FOR "FIXED SIZE" Style
     static public void ShowText(string tooltipText, GameObject _go)
     {
-       // Camera cam = NGUITools.FindCameraForLayer(_go.layer);
-
         Vector3 pos = _go.transform.position;
         int manualHeight = NGUITools.FindInParents<UIRoot>(_go).manualHeight;
         pos.x *= (manualHeight / 2);
         pos.y *= (manualHeight / 2);
 
         ShowText(tooltipText, pos);
+
+        //Camera cam = NGUITools.FindCameraForLayer(_go.layer);
+        //ShowText(tooltipText, cam.WorldToScreenPoint(cam.ViewportToWorldPoint(_go.transform.position)));
     }
 
     static public void ShowText(string tooltipText)
