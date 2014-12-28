@@ -5,13 +5,21 @@ using System.Linq;
 using UniRx;
 using UnityEngine;
 
+
+
 public class TutorialManager : MonoBehaviour {
+
+    private int UPGRADES_TUTORIAL_INDEX = 3;
+    private int HINT_FADEOUT_TIME = 250;
 
     [SerializeField]
     List<GameObject> panels;
 
     [SerializeField]
     GameObject tutorialEnemies;
+
+    [SerializeField]
+    List<UpgradeView> upgradeButtons;
 
     public static bool isCompleted = false;
 
@@ -52,7 +60,7 @@ public class TutorialManager : MonoBehaviour {
 
         Observable.Timer(TimeSpan.FromMilliseconds(250)).Subscribe(i =>
         {
-            NGUITools.SetActive(panels[index], true);
+            setPanelActive(index);          
 
             Observable.Timer(TimeSpan.FromMilliseconds(getTimeForIndex(index))).Subscribe(l =>
             {
@@ -60,6 +68,38 @@ public class TutorialManager : MonoBehaviour {
             }); 
         }); 
     }
+
+    void setPanelActive(int index)
+    {
+        NGUITools.SetActive(panels[index], true);
+
+        if (index == UPGRADES_TUTORIAL_INDEX)
+        {
+            int time = getTimeForIndex(index);
+
+            int sections = upgradeButtons.Count;
+
+            for(int i = 0; i < sections; ++i ){
+                int singleDelay = (time / (sections + 1));
+                // Нужен так как иначе в Observable передастся последнее состояние i
+                int tmpIndex = i;
+                Observable.Timer(TimeSpan.FromMilliseconds(singleDelay * (i + 1))).Subscribe(l =>
+                {
+                    upgradeButtons[tmpIndex].hoverOn();
+
+                    Observable.Timer(TimeSpan.FromMilliseconds(singleDelay - HINT_FADEOUT_TIME)).Subscribe(p =>
+                    {
+                        upgradeButtons[tmpIndex].hoverOut();
+                    });
+
+                });
+                
+            }
+
+        }
+
+    }
+
 
     int getTimeForIndex(int index) {
         switch (index)
