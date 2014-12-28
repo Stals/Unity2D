@@ -6,4 +6,8 @@ using UnityEngine;
 
 
 public partial class DropUpgradeViewModel {
+    public override string ComputeTooltipText()
+    {
+        return "Drop\nChance";
+    }
 }

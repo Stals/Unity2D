@@ -6,4 +6,8 @@ using UnityEngine;
 
 
 public partial class BulletUpgradeViewModel {
+    public override string ComputeTooltipText()
+    {
+        return "Extra\nBullet";
+    }
 }

@@ -797,11 +797,15 @@ public partial class MultiplierDropViewModel : MultiplierDropViewModelBase {
 [DiagramInfoAttribute("Game")]
 public class UpgradeViewModelBase : ViewModel {
     
+    private IDisposable _TooltipTextDisposable;
+    
     public P<Int32> _levelProperty;
     
     public P<Int32> _basePriceProperty;
     
     public P<Int32> _priceProperty;
+    
+    public P<String> _TooltipTextProperty;
     
     protected CommandWithSender<UpgradeViewModel> _Upgrade;
     
@@ -818,6 +822,22 @@ public class UpgradeViewModelBase : ViewModel {
         _levelProperty = new P<Int32>(this, "level");
         _basePriceProperty = new P<Int32>(this, "basePrice");
         _priceProperty = new P<Int32>(this, "price");
+        _TooltipTextProperty = new P<String>(this, "TooltipText");
+        this.ResetTooltipText();
+    }
+    
+    public virtual void ResetTooltipText() {
+        if (_TooltipTextDisposable != null) _TooltipTextDisposable.Dispose();
+        _TooltipTextDisposable = _TooltipTextProperty.ToComputed( ComputeTooltipText, this.GetTooltipTextDependents().ToArray() ).DisposeWith(this);
+    }
+    
+    public virtual String ComputeTooltipText() {
+        return default(String);
+    }
+    
+    public virtual IEnumerable<IObservableProperty> GetTooltipTextDependents() {
+        yield return _basePriceProperty;
+        yield break;
     }
 }
 
@@ -876,6 +896,21 @@ public partial class UpgradeViewModel : UpgradeViewModelBase {
         }
     }
     
+    public virtual P<String> TooltipTextProperty {
+        get {
+            return this._TooltipTextProperty;
+        }
+    }
+    
+    public virtual String TooltipText {
+        get {
+            return _TooltipTextProperty.Value;
+        }
+        set {
+            _TooltipTextProperty.Value = value;
+        }
+    }
+    
     public virtual CommandWithSender<UpgradeViewModel> Upgrade {
         get {
             return _Upgrade;
@@ -913,6 +948,7 @@ public partial class UpgradeViewModel : UpgradeViewModelBase {
         list.Add(new ViewModelPropertyInfo(_levelProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_basePriceProperty, false, false, false));
         list.Add(new ViewModelPropertyInfo(_priceProperty, false, false, false));
+        list.Add(new ViewModelPropertyInfo(_TooltipTextProperty, false, false, false, true));
     }
     
     protected override void FillCommands(List<ViewModelCommandInfo> list) {

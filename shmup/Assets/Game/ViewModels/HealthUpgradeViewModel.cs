@@ -5,5 +5,9 @@ using System.Linq;
 using UnityEngine;
 
 
-public partial class HealthUpgradeViewModel { 
+public partial class HealthUpgradeViewModel {
+    public override string ComputeTooltipText()
+    {
+        return "Extra\nLife";
+    }
 }

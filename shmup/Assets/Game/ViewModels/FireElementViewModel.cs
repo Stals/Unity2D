@@ -6,4 +6,8 @@ using UnityEngine;
 
 
 public partial class FireElementViewModel {
+    public override string ComputeTooltipText()
+    {
+        return "Fire\nRate";
+    }
 }

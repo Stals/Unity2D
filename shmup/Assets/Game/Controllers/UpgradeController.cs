@@ -21,4 +21,5 @@ public class UpgradeController : UpgradeControllerBase {
 
         upgrade.price = upgrade.price * 2;
     }
+   
 }

@@ -60,5 +60,12 @@ public partial class UpgradeView {
         button.isEnabled = isEnough();
     }
 
-  
+    public void hoverOn(){
+        UITooltip.ShowText(Upgrade.TooltipText);
+    }
+
+    public void hoverOut()
+    {
+        UITooltip.ShowText(null);
+    }
 }
