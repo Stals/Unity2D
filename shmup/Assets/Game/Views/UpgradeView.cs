@@ -71,4 +71,16 @@ public partial class UpgradeView {
     {
         UITooltip.ShowText(null);
     }
+
+
+    void OnTooltip(bool val) {
+        if (val)
+        {
+            hoverOn();
+        }
+        else {
+            hoverOut();
+        }
+    }
+
 }
