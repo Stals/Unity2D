@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using System.Collections;
 
 public class GameJoltAPIManager : MonoBehaviour
@@ -27,12 +27,10 @@ public class GameJoltAPIManager : MonoBehaviour
     }*/
 
     void Awake () {
-        if (!Application.isEditor)
-        {
-            DontDestroyOnLoad(gameObject);
-            GJAPI.Init(gameID, privateKey);
-            GJAPIHelper.Users.GetFromWeb(OnGetFromWeb);
-        }
+         DontDestroyOnLoad ( gameObject );
+         GJAPI.Init ( gameID, privateKey );
+         GJAPIHelper.Users.GetFromWeb(OnGetFromWeb);
+
     }
     void Start()
     {
@@ -90,11 +88,8 @@ public class GameJoltAPIManager : MonoBehaviour
 
     public void GenerateHighscores(double highscore)
     {
-        if (!Application.isEditor)
-        {
-            GJAPI.Scores.Add(((int)highscore).ToString(), (uint)(highscore));
-            //GJAPI.Scores.AddCallback += _selfRef.OnAddRequestFinished;
-        }
+        GJAPI.Scores.Add(((int)highscore).ToString(), (uint)(highscore));
+        //GJAPI.Scores.AddCallback += _selfRef.OnAddRequestFinished;
     }
 
     private void OnAddRequestFinished(bool success)
