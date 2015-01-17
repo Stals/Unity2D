@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     float anglePerSecond = 1;
 
+    Vector2 prevVector = new Vector2(0, 0);
+
 	// Use this for initialization
 	void Start () {
 	
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        updateMovement();
         updateWeaponAngle();
     }
 
@@ -65,5 +68,41 @@ public class PlayerController : MonoBehaviour {
         Vector3 angle = Vector3.zero;
         angle.z = Mathf.Atan2(deltaY, deltaX) * (180 / Mathf.PI);
         return angle;
+    }
+
+    void updateMovement()
+    {
+        Vector2 movementVector = new Vector2(0, 0);
+
+        movementVector.x = Input.GetAxis("Horizontal");
+        movementVector.y = Input.GetAxis("Vertical");
+
+        // if slowing down
+        if (Mathf.Abs(prevVector.x) > Mathf.Abs(movementVector.x))
+        {
+            if (Mathf.Abs(movementVector.x) < 0.8f)
+            {
+                movementVector.x /= 3f;
+            }
+        }
+
+        if (Mathf.Abs(prevVector.y) > Mathf.Abs(movementVector.y))
+        {
+            if (Mathf.Abs(movementVector.y) < 0.8f)
+            {
+                movementVector.y /= 3f;
+            }
+        }
+
+
+        prevVector = movementVector;
+
+        Vector3 translationDirection = new Vector3(movementVector.x, movementVector.y, 0);
+        translationDirection = Vector3.ClampMagnitude(translationDirection, 1);
+
+        Vector3 currentPos = transform.position;
+        transform.position = new Vector3(currentPos.x + (translationDirection.x * 0.1f),
+                                         currentPos.y + (translationDirection.y * 0.1f));
+
     }
 }
