@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour {
 
     Vector2 prevVector = new Vector2(0, 0);
 
+    [SerializeField]
+    bool useGamepad = true;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -24,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate()
     {
         updateMovement();
+
         updateWeaponAngle();
     }
 
@@ -42,9 +46,6 @@ public class PlayerController : MonoBehaviour {
 
     float getAngleDelta(float dAngle1, float dAngle2)
     {
-
-
-
         float delta = Mathf.Max(dAngle1, dAngle2) - Mathf.Min(dAngle1, dAngle2);
         if (180 < delta) {
           delta = 360 - delta;
@@ -52,12 +53,19 @@ public class PlayerController : MonoBehaviour {
         }
         delta = Mathf.Abs(delta);
 
-        Debug.Log("1" + dAngle1 + " 2 " + dAngle2 + " d " + delta);
-
         return delta;
     }
 
     Vector3 getNewWeaponAngle()
+    {
+        if (useGamepad) {
+            return getNewWeaponAngleGamepad();
+        }else{
+            return getNewWeaponAngleMouse();
+        }
+    }
+
+    Vector3 getNewWeaponAngleMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -67,6 +75,21 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 angle = Vector3.zero;
         angle.z = Mathf.Atan2(deltaY, deltaX) * (180 / Mathf.PI);
+        return angle;
+    }
+
+    Vector3 getNewWeaponAngleGamepad()
+    {
+        float rotationX = Input.GetAxis("Joy X");
+        float rotationY = - Input.GetAxis("Joy Y");
+
+        // do not move sword if stick released
+        if (rotationX == 0 && rotationY == 0) {
+            return weaponSlot.transform.localEulerAngles;
+        }
+
+        Vector3 angle = Vector3.zero;
+        angle.z = Mathf.Atan2(rotationY, rotationX) * (180 / Mathf.PI);
         return angle;
     }
 
