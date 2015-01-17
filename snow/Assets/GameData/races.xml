@@ -1,2 +1,3 @@
-<Race name="Icy Picks" img="001" type="sprint" reward="200" difficulty="1" />
-<Race name="Icy Picks B" img="002" type="endurance" reward="300" difficulty="1.5" />
+<Race name="Icy Picks" img="001" type="sprint" reward="200" difficulty="1" time="120" />
+<Race name="Icy Picks B" img="002" type="endurance" reward="300" difficulty="1.5" time="120" />
+<Race name="Rookie Champ #1" img="" type="champ" reward="1500" difficulty="2.5" time="120" />
