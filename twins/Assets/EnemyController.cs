@@ -12,4 +12,13 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void takeDamage()
+    {
+        Debug.Log("HIT");
+
+        var a = GetComponent<Animator>();
+        a.SetTrigger("TookDamage");
+    }
+
 }

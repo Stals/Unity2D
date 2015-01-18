@@ -7,7 +7,8 @@ public class WeaponController : MonoBehaviour {
     {
         if (coll.tag == "Enemy")
         {
-            Debug.Log("HIT!");
+            var enemy = coll.gameObject.GetComponent<EnemyController>();
+            enemy.takeDamage();            
         }
     }
 
