@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour {
     [SerializeField]
     int hp = 3;
 
+    [SerializeField]
+    float movementSpeed = 0.1f;
+
     Animator animator;
 
     GameObject target;
@@ -31,10 +34,17 @@ public class EnemyController : MonoBehaviour {
         transform.eulerAngles = new Vector3(0, 0, angleZ);
     }
 
+    void updatePosition()
+    {
+        transform.Translate(movementSpeed, 0, 0);
+    }
 	
 	// Update is called once per frame
 	void Update () {
         updateRotation();
+
+        // TODO: archers move only if not in range
+        updatePosition();
 	}
 
     public void takeDamage()

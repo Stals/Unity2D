@@ -13,7 +13,11 @@ small game to try mechanic:
     ☐ сабли - 2 оружия, каждое со своей стороны (крутиться это круто))
   ☐ enemies
     ☐ small with small hp (but multiple in pack)
+        speed: 0.065
+        hp: 2
     ☐ medium and few
+        speed: 0.4
+        hp: 3
     ☐ big and one
     ☐ archers
     ☐ every - without weapons for now
@@ -41,6 +45,7 @@ in order:
   ☐ // enemies hit screenshake should depend on weapon strength - as well as knock back
   ☐ shield on the back
   ☐ насколько отлетают противники зависит от их размера
+  ☐ need to add some effect before enemies shoot - so you can evade!!!!
 
 ideas:
   ☐ if you spin you get more damage
