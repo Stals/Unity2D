@@ -10,14 +10,31 @@ public class EnemyController : MonoBehaviour {
     int hp = 3;
 
     Animator animator;
+
+    GameObject target;
+
 	// Use this for initialization
+
 	void Start () {
-        animator = GetComponent<Animator>(); 
+        target = Game.Instance.getPlayer().gameObject;
+        updateRotation();
+
+        animator = GetComponent<Animator>();
 	}
+
+    void updateRotation()
+    {
+        Vector2 vectorL = target.transform.position - transform.position;
+
+        float angleZ = Mathf.Rad2Deg * (Mathf.Atan2(vectorL.y, vectorL.x));
+
+        transform.eulerAngles = new Vector3(0, 0, angleZ);
+    }
+
 	
 	// Update is called once per frame
 	void Update () {
-	
+        updateRotation();
 	}
 
     public void takeDamage()

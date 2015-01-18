@@ -22,6 +22,7 @@ public class Game
 
 
     MyGameManager manager;
+    PlayerController player;
 
     public void init(MyGameManager _manager)
     {
@@ -31,6 +32,16 @@ public class Game
     public MyGameManager getManager()
     {
         return manager;
+    }
+
+    public void setPlayer(PlayerController _player)
+    {
+        player = _player;
+    }
+
+    public PlayerController getPlayer()
+    {
+        return player;
     }
 
 

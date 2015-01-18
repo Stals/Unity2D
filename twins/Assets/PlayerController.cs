@@ -16,8 +16,15 @@ public class PlayerController : MonoBehaviour {
 
     WeaponTrail trail;
 
+    public void Awake()
+    {
+        Game.Instance.setPlayer(this);
+    }
+
 	// Use this for initialization
 	void Start () {
+
+
         trail = GetComponentInChildren<WeaponTrail>();
 	}
 	

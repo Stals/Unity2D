@@ -25,7 +25,7 @@ in order:
   ✔ enemy appy force depending on the where sruck @done (15-01-18 18:38)
   ✔ time.scale = 0 yeld wait for (howmuch) time.scale = 1 @done (15-01-18 18:59)
   ✔ cameraShake.Shake(0.1f, 0.02f); @done (15-01-18 21:07)
-  ☐ enemies die after n hits
+  ✔ enemies die after n hits @done (15-01-18 21:28)
   ☐ enemies move towards player
   ☐ enemies steering behaviour
   ☐ try trail effect
