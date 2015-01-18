@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour {
     [SerializeField]
     GameObject explosionPrefab;
 
+    [SerializeField]
+    int hp = 3;
+
     Animator animator;
 	// Use this for initialization
 	void Start () {
@@ -19,17 +22,30 @@ public class EnemyController : MonoBehaviour {
 
     public void takeDamage()
     {
-        Debug.Log("HIT");
-        animator.SetTrigger("TookDamage");
-
-        audio.pitch = Random.Range(0.8f, 1.2f);
-        audio.Play();
-
-        Game.Instance.getManager().sleepTime(20);
+        hp -= 1;
 
         // should depend on weapon strength - as well as knock back
         Game.Instance.getManager().cameraShake.Shake(0.025f, 0.01f);
 
+        if (hp <= 0)
+        {
+            Game.Instance.getManager().sleepTime(30);
+            DestroySelf();
+        }
+        else
+        {
+            excecuteDamageEffect();
+            animator.SetTrigger("TookDamage");
+        }
+
+    }
+
+    void excecuteDamageEffect()
+    {
+        audio.pitch = Random.Range(0.8f, 1.2f);
+        audio.Play();
+
+        Game.Instance.getManager().sleepTime(20);
     }
 
     void DestroySelf()

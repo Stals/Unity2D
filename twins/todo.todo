@@ -24,7 +24,7 @@ in order:
     ✔ via anidmation! @done (15-01-18 18:41)
   ✔ enemy appy force depending on the where sruck @done (15-01-18 18:38)
   ✔ time.scale = 0 yeld wait for (howmuch) time.scale = 1 @done (15-01-18 18:59)
-  ☐ cameraShake.Shake(0.1f, 0.02f);
+  ✔ cameraShake.Shake(0.1f, 0.02f); @done (15-01-18 21:07)
   ☐ enemies die after n hits
   ☐ enemies move towards player
   ☐ enemies steering behaviour
@@ -41,3 +41,7 @@ in order:
   ☐ // enemies hit screenshake should depend on weapon strength - as well as knock back
   ☐ shield on the back
   ☐ насколько отлетают противники зависит от их размера
+
+ideas:
+  ☐ if you spin you get more damage
+  ☐ after spining with a big weapon it moves you forward
