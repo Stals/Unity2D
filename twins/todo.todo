@@ -1,0 +1,34 @@
+small game to try mechanic:
+  ☐ enemies with steering behaviour
+  ☐ waves
+  ☐ different enemies types
+  ☐ you get new weapon each wave (later add choice or something, also better the same weapon)
+  ☐ make trail effect
+  ☐ make weapons
+    ☐ sword
+    ☐ dagger
+    ☐ pike
+    ☐ wreking ball
+    ☐ bow
+    ☐ сабли - 2 оружия, каждое со своей стороны (крутиться это круто))
+  ☐ enemies
+    ☐ small with small hp (but multiple in pack)
+    ☐ medium and few
+    ☐ big and one
+    ☐ archers
+    ☐ every - without weapons for now
+    ☐ 
+  ☐ money drop or something?
+in order:
+  ☐ enemies flash when hit
+  ☐ enemies dies
+  ☐ enemies move towards player
+  ☐ enemies steering behaviour
+  ☐ try trail effect
+    ☐ local position / rotation trail renderer
+    ☐ mb http://wiki.unity3d.com/index.php?title=OptimizedTrailRenderer
+    ☐ trails from here 
+        http://wiki.unity3d.com/index.php/Scripts/Effects
+  ☐ spawn waves
+  ☐ change weapon after wave
+  ☐ animation when the die?

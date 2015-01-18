@@ -11,17 +11,18 @@ public class PlayerController : MonoBehaviour {
 
     Vector2 prevVector = new Vector2(0, 0);
 
-    [SerializeField]
-    bool useGamepad = true;
+    bool useGamepad = false;
+
+    WeaponTrail trail;
 
 	// Use this for initialization
 	void Start () {
-	
+        trail = GetComponentInChildren<WeaponTrail>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 
     void FixedUpdate()
@@ -29,6 +30,10 @@ public class PlayerController : MonoBehaviour {
         updateMovement();
 
         updateWeaponAngle();
+
+
+        trail.Itterate(Time.deltaTime);
+        trail.UpdateTrail(Time.time, Time.deltaTime);
     }
 
     void updateWeaponAngle()
