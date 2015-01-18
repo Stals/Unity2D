@@ -86,6 +86,8 @@ public class EnemyController : MonoBehaviour {
         GameObject expl = (GameObject)(Instantiate(explosionPrefab,
                                                    new Vector3(transform.position.x, transform.position.y, 0),
                                                    transform.rotation));
+
+        expl.transform.localScale = transform.localScale * 4;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

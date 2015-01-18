@@ -30,23 +30,44 @@ in order:
   ✔ time.scale = 0 yeld wait for (howmuch) time.scale = 1 @done (15-01-18 18:59)
   ✔ cameraShake.Shake(0.1f, 0.02f); @done (15-01-18 21:07)
   ✔ enemies die after n hits @done (15-01-18 21:28)
-  ☐ enemies move towards player
-  ☐ enemies steering behaviour
+  ✔ enemies move towards player @done (15-01-18 22:07)
+  ☐ spawn waves
+    ☐ 3 group types inside object somewhere off screen in disabled state
+    ☐ spawn off screen
+  ☐ ranged wepon (that could be use by enemies)
+    ☐ draw
+      ☐ bow
+      ☐ arrow
+    ☐ shoot using mouse and R2
+  ☐ ranged enemies
+    ☐ move towards you before in range, but more (because other way the will always move a bit, some the need to move closer then they need to)
+    ☐ archers slowly retreat if you are comming closer
+      ☐ just Translate (-movementSpeed / 2) (is closer than x)
+  ☐ shield on the back
+  ☐ harder waves over time
+    ☐ waves spawn faster & faster
+    ☐ more packs per wave
+  ☐ enemies take damage depending on weapon @together1
+  ☐ improve enemies get hit apply force
+  ☐ change weapon after wave
   ☐ try trail effect
     ☐ local position / rotation trail renderer
     ☐ mb http://wiki.unity3d.com/index.php?title=OptimizedTrailRenderer
     ☐ trails from here 
         http://wiki.unity3d.com/index.php/Scripts/Effects
-  ☐ spawn waves
-  ☐ enemies take damage depending on weapon
-  ☐ improve enemies get hit apply force
-  ☐ change weapon after wave
-  ☐ animation when the die?
-  ☐ // enemies hit screenshake should depend on weapon strength - as well as knock back
-  ☐ shield on the back
-  ☐ насколько отлетают противники зависит от их размера
-  ☐ need to add some effect before enemies shoot - so you can evade!!!!
+  ✔ animation when the die? @done (15-01-18 22:08)
+  ☐ // enemies hit screenshake should depend on weapon strength - as well as knock back @together1
+  ☐ насколько отлетают противники зависит от их размера 
+  ☐ need to add some effect before enemies shoot - so you can evade!!!! 
+    ☐ bow flashing
+  ☐ weapon affects running speed (dagger the fastest, pike next) @together1
+  ☐ enemies steering behaviour (imporoved)
+    http://www.youtube.com/watch?v=WW1Tiaauxr8
+    http://gamedevelopment.tutsplus.com/tutorials/understanding-steering-behaviors-seek--gamedev-849
+    https://www.google.ru/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#newwindow=1&q=unity+steering+behaviours+2d
 
 ideas:
   ☐ if you spin you get more damage
   ☐ after spining with a big weapon it moves you forward
+  ☐ slice arrows? (with 2 weapon guy)
+  ☐ super cratebox mechanic for chaning weapons during combat?
