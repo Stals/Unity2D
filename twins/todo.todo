@@ -31,6 +31,8 @@ in order:
   ✔ cameraShake.Shake(0.1f, 0.02f); @done (15-01-18 21:07)
   ✔ enemies die after n hits @done (15-01-18 21:28)
   ✔ enemies move towards player @done (15-01-18 22:07)
+  ✔ enemy size @done (15-01-18 22:58)
+    ✔ this wil change scale & speed @done (15-01-18 22:58)
   ☐ spawn waves
     ☐ 3 group types inside object somewhere off screen in disabled state
     ☐ spawn off screen
@@ -47,6 +49,8 @@ in order:
   ☐ harder waves over time
     ☐ waves spawn faster & faster
     ☐ more packs per wave
+  ☐ enemy size - affect how mush apply force is applied
+  ☐ take damage + screenshake (how much - take from shoot upgr repeat)
   ☐ enemies take damage depending on weapon @together1
   ☐ improve enemies get hit apply force
   ☐ change weapon after wave
@@ -65,9 +69,19 @@ in order:
     http://www.youtube.com/watch?v=WW1Tiaauxr8
     http://gamedevelopment.tutsplus.com/tutorials/understanding-steering-behaviors-seek--gamedev-849
     https://www.google.ru/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#newwindow=1&q=unity+steering+behaviours+2d
+    ☐ small enemies going around the really big one, and go for you, when you get closer (so that you would need to lure part of them at a time) 
+
+find:
+  ☐ unity 2d background shader
 
 ideas:
   ☐ if you spin you get more damage
   ☐ after spining with a big weapon it moves you forward
   ☐ slice arrows? (with 2 weapon guy)
   ☐ super cratebox mechanic for chaning weapons during combat?
+  ☐ boss type
+      ☐ different color, have bigger hp
+  ☐ ai ideas
+    ☐ move to the back
+    ☐ try avoiding the weapon
+  ☐ changing sizeType changes them in sceene as well

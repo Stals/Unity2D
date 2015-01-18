@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+enum SizeType {
+    Small,
+    Normal,
+    Big    
+};
+
 public class EnemyController : MonoBehaviour {
 
     [SerializeField]
@@ -12,18 +18,47 @@ public class EnemyController : MonoBehaviour {
     [SerializeField]
     float movementSpeed = 0.1f;
 
+    [SerializeField]
+    SizeType sizeType;
+
     Animator animator;
 
     GameObject target;
 
+
+
 	// Use this for initialization
 
 	void Start () {
+        sizeInit();
+
         target = Game.Instance.getPlayer().gameObject;
         updateRotation();
 
         animator = GetComponent<Animator>();
 	}
+
+    void sizeInit()
+    {
+        switch (sizeType)
+        {
+            case SizeType.Small:
+                transform.localScale = (transform.localScale / 2);
+                hp /= 2;
+                movementSpeed = 0.065f;
+                break;
+
+            case SizeType.Big:
+                transform.localScale = (transform.localScale * 2);
+                hp *= 3;
+                movementSpeed = 0.015f;
+                break;
+
+            case SizeType.Normal:
+                movementSpeed = 0.04f;
+                break;
+        }
+    }
 
     void updateRotation()
     {
