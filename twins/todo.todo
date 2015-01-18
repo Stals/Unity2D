@@ -21,8 +21,10 @@ small game to try mechanic:
   ☐ money drop or something?
 in order:
   ✔ enemies flash when hit @done (15-01-18 18:38)
-    ☐ via animation!
+    ✔ via anidmation! @done (15-01-18 18:41)
   ✔ enemy appy force depending on the where sruck @done (15-01-18 18:38)
+  ✔ time.scale = 0 yeld wait for (howmuch) time.scale = 1 @done (15-01-18 18:59)
+  ☐ cameraShake.Shake(0.1f, 0.02f);
   ☐ enemies die after n hits
   ☐ enemies move towards player
   ☐ enemies steering behaviour
@@ -33,5 +35,7 @@ in order:
         http://wiki.unity3d.com/index.php/Scripts/Effects
   ☐ spawn waves
   ☐ enemies take damage depending on weapon
+  ☐ improve enemies get hit apply force
   ☐ change weapon after wave
   ☐ animation when the die?
+  ☐ // enemies hit screenshake should depend on weapon strength - as well as knock back

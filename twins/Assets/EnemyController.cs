@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 
+    [SerializeField]
+    GameObject explosionPrefab;
 
     Animator animator;
 	// Use this for initialization
@@ -24,6 +26,23 @@ public class EnemyController : MonoBehaviour {
         audio.Play();
 
         Game.Instance.getManager().sleepTime(20);
+
+        // should depend on weapon strength - as well as knock back
+        Game.Instance.getManager().cameraShake.Shake(0.025f, 0.01f);
+
+    }
+
+    void DestroySelf()
+    {
+        createExplosion();
+        Destroy(this.gameObject);
+    }
+
+    void createExplosion()
+    {
+        GameObject expl = (GameObject)(Instantiate(explosionPrefab,
+                                                   new Vector3(transform.position.x, transform.position.y, 0),
+                                                   transform.rotation));
     }
 
     void OnCollisionEnter2D(Collision2D collision)

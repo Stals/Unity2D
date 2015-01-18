@@ -3,9 +3,13 @@ using System.Collections;
 
 public class MyGameManager : MonoBehaviour {
 
+    public CameraShake cameraShake;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.init(this);
+
+        cameraShake = Camera.main.gameObject.AddComponent("CameraShake") as CameraShake;
 	}
 	
 	// Update is called once per frame
