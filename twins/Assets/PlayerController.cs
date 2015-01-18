@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 
     Vector2 prevVector = new Vector2(0, 0);
 
+    [SerializeField]
     bool useGamepad = false;
 
     WeaponTrail trail;

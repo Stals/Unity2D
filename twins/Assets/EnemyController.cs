@@ -20,8 +20,10 @@ public class EnemyController : MonoBehaviour {
         Debug.Log("HIT");
         animator.SetTrigger("TookDamage");
 
-        var g = GetComponent<Rigidbody2D>();
-        //g.AddForce()
+        audio.pitch = Random.Range(0.8f, 1.2f);
+        audio.Play();
+
+        Game.Instance.getManager().sleepTime(20);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
