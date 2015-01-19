@@ -33,9 +33,23 @@ in order:
   ✔ enemies move towards player @done (15-01-18 22:07)
   ✔ enemy size @done (15-01-18 22:58)
     ✔ this wil change scale & speed @done (15-01-18 22:58)
+  ☐ background!
   ☐ spawn waves
     ☐ 3 group types inside object somewhere off screen in disabled state
     ☐ spawn off screen
+    ☐ think about
+      ☐ do they spawn at the same time
+      ☐ do they spawn over time
+      ☐ do few patters spawn at the same time? 
+      ☐ how much every time, what is the delta time between. 
+        ☐ number of patterns per spawn   (----- every 4 waves, number of patterns per spawn increases. )
+        ☐ number of spawns per wave
+        ☐ delta time between spawns
+      ☐ does wave end then you killed every one, or it has its time as well ---- every one
+      ☐ do we give new weapon for every new wave and you need to adapt, or you collect boxes to get more poins? ---- every new wave
+      ☐ it will be both cool if
+        ☐ 1) severals packs come out at once
+        ☐ 2) pack spawn one after another with really short delay.
   ☐ ranged wepon (that could be use by enemies)
     ☐ draw
       ☐ bow
@@ -46,6 +60,7 @@ in order:
     ☐ archers slowly retreat if you are comming closer
       ☐ just Translate (-movementSpeed / 2) (is closer than x)
   ☐ shield on the back
+  ☐ spawn противника рандомного размера раз в заданое время?
   ☐ harder waves over time
     ☐ waves spawn faster & faster
     ☐ more packs per wave
@@ -70,7 +85,17 @@ in order:
     http://gamedevelopment.tutsplus.com/tutorials/understanding-steering-behaviors-seek--gamedev-849
     https://www.google.ru/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#newwindow=1&q=unity+steering+behaviours+2d
     ☐ small enemies going around the really big one, and go for you, when you get closer (so that you would need to lure part of them at a time) 
-
+  ☐ random number of normals become rangers?
+  ☐ random numebr of anything becomes boss monster
+  ☐ boss monsters (blue)
+    ☐ drop more, have more hp
+  ☐ upgrades, do you become more powerful?
+      ☐  i would like it to be outside, so that you can improve 
+      ☐ heath, 
+      ☐ speed, 
+      ☐ damage multiplier, 
+      ☐ money multiplier (by increasing starting difficulty?)
+      ☐ ability to start from wave N
 find:
   ☐ unity 2d background shader
 
@@ -85,3 +110,22 @@ ideas:
     ☐ move to the back
     ☐ try avoiding the weapon
   ☐ changing sizeType changes them in sceene as well
+  ☐ special waves
+     ☐ position dependant
+       ☐ around the screen, that come from all sides at once, and you need to go for one side and then move away @cool
+   ☐ ability to reflect arrows with daggers and double sabers @cool
+   ☐ спавн нормального противника раз в заданое время
+   ☐ противников должно заносить , тогда они могут быть быстрее (steering behaviour / seeking behaviour)
+       ☐ http://gamedevelopment.tutsplus.com/tutorials/understanding-steering-behaviors-seek--gamedev-849
+   ☐ weapn special ability (probably no)
+     ☐ pike - dash forward (without taking damage)
+     ☐ 
+
+ think:
+   ☐ why big one is a threat?
+     ☐ (you do not apply force to him, but you can easily run away so whats the point?)
+     ☐ some reason why you need to kill him not last while defending from archers ext, will be cool.
+        ☐ does he spawn enemies?
+          ☐ aka he will spawn a lot if you dont kill him fast
+          ☐ small ones?
+          ☐ with animation (i will spawn now - he increases in size for some time, and then spawns.)
