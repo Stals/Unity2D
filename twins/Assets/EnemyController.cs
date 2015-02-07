@@ -127,7 +127,7 @@ public class EnemyController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision enter");
+        //Debug.Log("collision enter");
     }
 
 }

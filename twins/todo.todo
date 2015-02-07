@@ -34,6 +34,7 @@ in order:
   ✔ enemy size @done (15-01-18 22:58)
     ✔ this wil change scale & speed @done (15-01-18 22:58)
   ☐ background!
+  ☐ enemies that dont follow you and just bounce around.
   ☐ spawn waves
     ☐ 3 group types inside object somewhere off screen in disabled state
     ☐ spawn off screen
@@ -50,7 +51,7 @@ in order:
       ☐ it will be both cool if
         ☐ 1) severals packs come out at once
         ☐ 2) pack spawn one after another with really short delay.
-  ☐ ranged wepon (that could be use by enemies)
+  ☐ ranged wepon (that could be use by enemies
     ☐ draw
       ☐ bow
       ☐ arrow
@@ -75,6 +76,8 @@ in order:
     ☐ trails from here 
         http://wiki.unity3d.com/index.php/Scripts/Effects
   ✔ animation when the die? @done (15-01-18 22:08)
+  ☐ enemy type
+    ☐ when killed spawn small ones that have cd&
   ☐ // enemies hit screenshake should depend on weapon strength - as well as knock back @together1
   ☐ насколько отлетают противники зависит от их размера 
   ☐ need to add some effect before enemies shoot - so you can evade!!!! 
@@ -100,6 +103,8 @@ find:
   ☐ unity 2d background shader
 
 ideas:
+  ☐ if your weapon is inside the enemy - you do damage every second (for example), but if you move it you hit every time it collides with an enemy
+  ☐ add risk reward - drop money that depawn
   ☐ if you spin you get more damage
   ☐ after spining with a big weapon it moves you forward
   ☐ slice arrows? (with 2 weapon guy)
