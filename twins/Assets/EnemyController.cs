@@ -7,6 +7,62 @@ enum SizeType {
     Big    
 };
 
+enum MovementBehaviourType {
+    Follow, // steering
+    Bounce, // bounces of walls
+    Ranged, // gets in range and shoots, slowly moves away if you approach
+    Evade //runs away (comes from back)
+};
+
+public class MovementBehaviour {
+
+    public MovementBehaviour(EnemyController enemy)
+    {
+        _self = enemy;
+        target = Game.Instance.getPlayer().gameObject;
+        _go = enemy.gameObject;
+    }
+
+    public virtual void updatePosition() { }
+    public virtual void updateRotation() { }
+
+    protected GameObject  _go;
+    protected GameObject target;
+    protected EnemyController _self;
+};
+
+public class BounceMovementBehaviour : MovementBehaviour
+{
+    public BounceMovementBehaviour(EnemyController enemy)
+        : base(enemy)
+    { }
+
+    public override void updatePosition() { }
+    public override void updateRotation() { }
+
+};
+
+public class FollowMovementBehaviour : MovementBehaviour
+{
+    public FollowMovementBehaviour(EnemyController enemy)
+        : base(enemy)
+    { }
+    public override void updatePosition() {
+        _go.transform.Translate(_self.movementSpeed, 0, 0);    
+    }
+
+    public override void updateRotation() {
+
+        Vector2 vectorL = target.transform.position - _go.transform.position;
+
+        float angleZ = Mathf.Rad2Deg * (Mathf.Atan2(vectorL.y, vectorL.x));
+
+        _go.transform.eulerAngles = new Vector3(0, 0, angleZ);
+    }
+
+};
+
+
 public class EnemyController : MonoBehaviour {
 
     [SerializeField]
@@ -16,27 +72,41 @@ public class EnemyController : MonoBehaviour {
     int hp = 3;
 
     [SerializeField]
-    float movementSpeed = 0.1f;
+    public float movementSpeed = 0.1f;
 
     [SerializeField]
     SizeType sizeType;
 
+    [SerializeField]
+    MovementBehaviourType movementType = MovementBehaviourType.Follow;
+
+    MovementBehaviour movementBehaviour;
+
     Animator animator;
-
-    GameObject target;
-
 
 
 	// Use this for initialization
 
 	void Start () {
+        movementInit();
         sizeInit();
 
-        target = Game.Instance.getPlayer().gameObject;
-        updateRotation();
+        movementBehaviour.updateRotation();
 
         animator = GetComponent<Animator>();
 	}
+
+    void movementInit()
+    {
+        switch(movementType){
+            case MovementBehaviourType.Follow:
+                movementBehaviour = new FollowMovementBehaviour(this);
+                break;
+            case MovementBehaviourType.Bounce:
+                movementBehaviour = new BounceMovementBehaviour(this);
+                break;
+        }
+    }
 
     void sizeInit()
     {
@@ -59,27 +129,13 @@ public class EnemyController : MonoBehaviour {
                 break;
         }
     }
-
-    void updateRotation()
-    {
-        Vector2 vectorL = target.transform.position - transform.position;
-
-        float angleZ = Mathf.Rad2Deg * (Mathf.Atan2(vectorL.y, vectorL.x));
-
-        transform.eulerAngles = new Vector3(0, 0, angleZ);
-    }
-
-    void updatePosition()
-    {
-        transform.Translate(movementSpeed, 0, 0);
-    }
 	
 	// Update is called once per frame
 	void Update () {
-        updateRotation();
+        movementBehaviour.updateRotation();
 
         // TODO: archers move only if not in range
-        updatePosition();
+        movementBehaviour.updatePosition();
 	}
 
     public void takeDamage()
@@ -95,7 +151,7 @@ public class EnemyController : MonoBehaviour {
 
 
             VectorGrid grid1 = UnityEngine.Object.FindObjectOfType<VectorGrid>();
-            grid1.AddGridForce(this.transform.position, 0.15f, 0.2f * (transform.localScale.x * 2) , Color.yellow, true);
+            grid1.AddGridForce(this.transform.position, 0.15f, 0.2f * (transform.localScale.x * 2) , GetComponent<SpriteRenderer>().color, true);
             
             DestroySelf();
         }

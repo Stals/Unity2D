@@ -33,11 +33,16 @@ in order:
   ✔ enemies move towards player @done (15-01-18 22:07)
   ✔ enemy size @done (15-01-18 22:58)
     ✔ this wil change scale & speed @done (15-01-18 22:58)
-  ☐ настройка грида
-      ☐ нужно сделать взрыв когда убиваешь, в зависимости от размеров
-      ☐ цвет наверное пока не стоит менять, хотя фиг знает, нада пробывать
-  ☐ background!
+  ✔ настройка грида @done (15-02-09 22:07)
+      ✔ нужно сделать взрыв когда убиваешь, в зависимости от размеров @done (15-02-09 22:07)
+      ✔ цвет наверное пока не стоит менять, хотя фиг знает, нада пробывать @done (15-02-09 22:07)
+  ✔ background! @done (15-02-09 22:07)
   ☐ enemies that dont follow you and just bounce around.
+      ☐ with different color
+      ☐ if collide with walls - change direction 
+        (side walls change y - top and bottow change x)
+      ☐ moves just diagonally, the thing is - it starts at random point - so moves randomly
+  ☐ tween rotation for bouncing enemy
   ☐ spawn waves
     ☐ 3 group types inside object somewhere off screen in disabled state
     ☐ spawn off screen
@@ -63,6 +68,10 @@ in order:
     ☐ move towards you before in range, but more (because other way the will always move a bit, some the need to move closer then they need to)
     ☐ archers slowly retreat if you are comming closer
       ☐ just Translate (-movementSpeed / 2) (is closer than x)
+    ☐ just triangles that shoot from the top? (not arrows.) 
+      ☐ how they telegraph?
+       ☐ blinking already used for damage
+       ☐ if they had an arrow - they could blink it. (using shader?)
   ☐ shield on the back
   ☐ spawn противника рандомного размера раз в заданое время?
   ☐ harder waves over time
@@ -80,7 +89,7 @@ in order:
         http://wiki.unity3d.com/index.php/Scripts/Effects
   ✔ animation when the die? @done (15-01-18 22:08)
   ☐ enemy type
-    ☐ when killed spawn small ones that have cd&
+    ☐ when killed spawn small ones that have cd (before moving)
   ☐ // enemies hit screenshake should depend on weapon strength - as well as knock back @together1
   ☐ насколько отлетают противники зависит от их размера 
   ☐ need to add some effect before enemies shoot - so you can evade!!!! 
@@ -139,3 +148,8 @@ ideas:
           ☐ aka he will spawn a lot if you dont kill him fast
           ☐ small ones?
           ☐ with animation (i will spawn now - he increases in size for some time, and then spawns.)
+   ☐ motivation for spinning sword around you
+       ☐ accumulitive damage for spinning without hitting enemies for dt
+       ☐ without lowering its speed
+       ☐ 
+   ☐ отдача от удара по противнику? меч отскакивает назад немного (В обратную сторону скорости)
