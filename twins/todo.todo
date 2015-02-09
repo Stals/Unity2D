@@ -33,6 +33,9 @@ in order:
   ✔ enemies move towards player @done (15-01-18 22:07)
   ✔ enemy size @done (15-01-18 22:58)
     ✔ this wil change scale & speed @done (15-01-18 22:58)
+  ☐ настройка грида
+      ☐ нужно сделать взрыв когда убиваешь, в зависимости от размеров
+      ☐ цвет наверное пока не стоит менять, хотя фиг знает, нада пробывать
   ☐ background!
   ☐ enemies that dont follow you and just bounce around.
   ☐ spawn waves
@@ -99,6 +102,8 @@ in order:
       ☐ damage multiplier, 
       ☐ money multiplier (by increasing starting difficulty?)
       ☐ ability to start from wave N
+  ☐ improve trails
+      https://www.assetstore.unity3d.com/en/#!/content/3810
 find:
   ☐ unity 2d background shader
 

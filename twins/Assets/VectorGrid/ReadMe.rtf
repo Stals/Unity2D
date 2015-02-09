@@ -1,0 +1,172 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue128;\red0\green0\blue255;}
+\paperw11900\paperh16840\vieww12000\viewh15260\viewkind0
+\deftab720
+\pard\pardeftab720\sl276\slmult1\sa200\qc
+
+\f0\fs40 \cf0 \ul \ulc0 Vector Grid
+\fs22 \ulnone \
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+\cf0 \
+
+\b\fs28 \ul Overview
+\b0\fs22 \ulnone \
+Thank you for purchasing the Vector Grid package! Vector Grid allows you to create a dynamic, futuristic-looking grid that will distort and undulate as it reacts to external forces from your game. Forces can also dynamically change the color of the grid, and you can scroll it indefinitely in any direction.\
+Each Vector Grid is made up of a rectangular grid of points, with each point connected by springs to its vertical and horizontal neighbors. When a point is moved from its starting position, it will drag its neightbours with it, thereby causing a cascading effect that causes the entire grid to dynamically deform. \
+In addition to this, certain points are also attached by springs to their starting position, causing them to naturally return to their default position provided no other forces are acting on them, which helps to maintain the overall shape of the grid .\
+\pard\pardeftab720\qj
+
+\b \cf0 \ul \ulc0 \
+
+\fs28 Support
+\b0\fs24 \ulnone \
+\
+If you have any problems, queries, or feature requests regarding this product, please do feel free to contact me - I will always take the time to reply to every question, and try to help you in whatever way I can. Email is generally the fastest way to contact me.\
+\
+Email: {\field{\*\fldinst{HYPERLINK "mailto:hughlowry@hotmail.com"}}{\fldrslt \cf2 \ul \ulc2 hughlowry@hotmail.com}}\
+Twitter: {\field{\*\fldinst{HYPERLINK "https://twitter.com/mr_square"}}{\fldrslt \cf3 \ul \ulc3 https://twitter.com/mr_square}} \
+Unity Forums Private Message: mrsquare\
+\
+Unity Asset Store reviews would be much appreciated if you feel that the package (and post-purchase support) has been of a suitable quality.
+\f1 \
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\f0\fs22 \cf0 \
+
+\b\fs28 \ul Creating a Vector Grid
+\fs22 \ulnone \
+
+\b0 To create a Vector Grid, simply go to the main Unity menu bar and choose GameObject->Create Other->Vector Grid->Vector Grid. Alternatively, you can attach a Vector Grid component to an existing GameObject using the Component->Vector Grid menu.\
+\
+
+\b\fs28 \ul Applying Forces
+\fs22 \
+
+\b0 \ulnone Forces can be applied using the VectorGrid.AddGridForce() functions. These functions requires a force position, force strength, and force radius - the force is applied to every grid point that falls within the sphere defined by the position and radius (with the force amount reducing linearly towards the edges of the sphere). \
+You can choose to provide either a float force value (in which case the force is treated as an omin-directional force emanating from the force centre) or as a vector (in which case each grid point is pushed in the direction defined by the vector). Forces can also (optionally) provide colour values, which will alter the color of all points that are within the force radius.\
+Forces can also be applied by attaching a VectorGridForce component to any GameObject, which will cause a force to be constantly applied to the associated VectorGrid from the GameObject's position.\
+Forces can produce different visual effects depending on whether they are applied on a 2D plane or not (ie. the Z position of the force is the same as that of the grid points). 2D forces cause grid points to 'bunch up' around the edge of the force radius, whereas 3D forces generally cause smoother waves as the points are also able to extend along the Z axis.\
+\
+
+\b\fs28 \ul Scrolling The Grid
+\fs22 \
+
+\b0 \ulnone Vector Grids can also be scrolled, allowing you to effectively create the illusion of an infinitely size Vector Grid. The code achieves this by recycling grid points from the opposite side of the grid to the direction in which it is being scrolled (ie. scrolling left will destroy grid points on the far right hand side, and vice versa). The advantage of this is that the code generates no garbage since no additional allocations are required once the initial grid has been configured. However, since there is no guarantee made that a grid point is not still on-screen when it is re-used, it is recommended to configure the grid to be larger than the visible screen space so that the user cannot see points being added or removed.\
+To scroll the grid, simply use the Scroll() function to scroll by a given distance. Alternatively, you can make use of the 'Tracked Camera' field in the inspector to automatically scroll the Grid  as your game camera moves.\
+Freshly generated rows/columns will have their colors reset, so you can dynamically modify the grid's Thick Line Spawn Color/Thin Line Spawn Color variables to create a grid that appears to change color as it scrolls.\
+\
+
+\b\fs28 \ul Performance
+\fs22 \
+
+\b0 \ulnone The Vector Grid code has been written with performance in mind, but ultimately the CPU cost will primarily be determined by the configuration of the grid that you are using. Bigger grids mean that the code needs to simulate more points and springs, and also that applied forces need to check over a larger array of points in order to determine which ones to affect. Reducing the grid dimensions should be your first port of call if you wish to improve performance. Also, be careful when using the Grid Smoothing Factor value, as this can drastically increase the number of triangles and vertices that the grid needs to render.\
+\
+
+\b\fs28 \ul Inspector Settings
+\b0 \ulnone \
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\b\fs22 \cf0 - Grid Width/Grid Height
+\i\b0 \
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\i0 \cf0 The dimensions of the grid\
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\b \cf0 - Grid Scale
+\i\b0 \
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\i0 \cf0 The horizontal/vertical spacing between grid points\
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\b \cf0 - Max Fog Distance/Max Fog Alpha Scale
+\b0 \
+When grid points move along the Z-axis they can optionally be faded out,  which causes 'holes' to appear in the grid around areas of high force. Max Fog Distance controls the distance at which this effect is the strongest, and Max Fog Alpha Scale controls how much the alpha value is altered at this distance (1 meaning no change, 0 meaning totally transparent).\
+
+\b - Two Way Fog
+\i\b0 \
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\i0 \cf0 By default, fog is only applied when grid points move downwards on the Z-axis, but you can optionally also fade them out when they move forwards along the axis.\
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\b \cf0 - Render Mode\
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\b0 \cf0 You can choose to render any Vector Grid as a plane rather than as a grid mesh, meaning that the applied material will be stretched to cover the entire mesh rather than being applied to each individual vertical/horizontal connector. This may prove useful if you wish to use a Vector Grid to simulate eg. a pool of water.\
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\b \cf0 - Vector Grid Point Mass
+\b0 \
+Controls how heavy each grid point is. Adjusting this will alter the behaviour of the springs\
+
+\b - Velocity Damping
+\b0 \
+This controls how much velocity each grid point loses every frame - ie. it controls the rate of deceleration. Lower values will cause grid points to continue moving for longer after a point is applied.\
+
+\b - Thick Line Spawn Color/Thin Line Spawn Color
+\b0 /
+\b Thick Line Width /Thin Line Width
+\b0 /
+\b Thick Line Spacing
+\b0 /
+\b Thick Line Spacing\
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\b0 \cf0 The grid can be set to spawn alternating thin and thick lines, with different colors and widths. These values control the starting color of the lines, their width, and how frequently thick lines appear vs. thin ones.\
+\pard\pardeftab720\sl276\slmult1\sa200\qj
+
+\b \cf0 - Spring Stiffness/Spring Damping 
+\b0 \
+Used to control the strength and oscillation damping of the springs that connect each grid point to its neighbors\
+
+\b - Edge Spring Stiffness/Edge Spring Damping 
+\b0 \
+Points around the edge of the grid are anchored to their starting position in order to preseve the outline of the grid. These values control the strength and oscillation damping of these springs.\
+
+\b - Clamp Edges
+\b0 \
+Optionally, you can set the points around the edge of the grid to be completely static, and unaffected by any force.\
+
+\b - Loose Spring Stiffness/Loose Spring Damping 
+\b0 \
+Loose springs are placed on certain grid points in order to anchor them to their starting positions. This means that they will naturally return to their starting position over time, and therefore maintain the overall shape of the grid. These values control the strength and oscillation damping of these springs.\
+
+\b - Loose Spring Interval
+\b0 \
+Controls how often loose springs are generated. eg. A value of 3 means that a loose spring will be placed at the intersection of every 3rd row and 3rd column. Altering this value can make the overall grid more or less stable.\
+
+\b - Rest Distance Scalar
+\b0 \
+Each spring tries to the two grid points attached to it at a certain distance from one another. By default, this is just the distance that they were before any forces were applied, but the Rest Distance Scalar value allows you to scale this down, effectively creating a more taut grid.\
+
+\b - Grid Smoothing Factor
+\b0 \
+Controls how many subdivisions are generated on the line connecting a grid point and its neighbor. The mesh rendering uses Catmull-Rom interpolation to generate curved lines connecting the points, resulting in smoother deformations at the expense of more vertices/triangles and CPU cost.\
+
+\b - Debug Draw
+\b0 \
+Turns on debug drawing - renders the mesh using basic debug lines.\
+
+\b - Calculate Normals
+\b0 \
+Turn this on if you need normals to be calculated for the mesh\
+
+\b - Tracked Camera
+\b0 \
+Assign a camera to this field and the mesh will automatically scroll to match the movement of the camera\
+
+\b - Parallax Scroll
+\b0 \
+When using a tracked camera, this value controls whether the grid will scroll faster or slower than the camera's movement, providing a parallax effect\
+
+\b - Allow Horizontal Scroll/Allow Vertical Scroll 
+\b0 \
+Allows you to disable horizontal or vertical scrolling if eg. you are using a tracked camera and only wish the grid to be able to scroll in a single direction.\
+
+\b - Enable Diagnostics
+\b0 \
+Enable update time diagnostics - displays some debug info about CPU usage in the scene view.\
+}

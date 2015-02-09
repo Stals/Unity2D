@@ -87,15 +87,23 @@ public class EnemyController : MonoBehaviour {
         hp -= 1;
 
         // should depend on weapon strength - as well as knock back
-        Game.Instance.getManager().cameraShake.Shake(0.025f, 0.01f);
+        Game.Instance.getManager().cameraShake.Shake(0.05f, 0.02f);
 
         if (hp <= 0)
         {
             Game.Instance.getManager().sleepTime(30);
+
+
+            VectorGrid grid1 = UnityEngine.Object.FindObjectOfType<VectorGrid>();
+            grid1.AddGridForce(this.transform.position, 0.15f, 0.2f * (transform.localScale.x * 2) , Color.yellow, true);
+            
             DestroySelf();
         }
         else
         {
+            VectorGrid grid1 = UnityEngine.Object.FindObjectOfType<VectorGrid>();
+            grid1.AddGridForce(this.transform.position, 0.05f, 0.2f * (transform.localScale.x * 2), Color.black, false);
+
             excecuteDamageEffect();
             animator.SetTrigger("TookDamage");
         }
@@ -108,6 +116,9 @@ public class EnemyController : MonoBehaviour {
         audio.Play();
 
         Game.Instance.getManager().sleepTime(20);
+
+
+
     }
 
     void DestroySelf()
