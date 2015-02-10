@@ -33,13 +33,43 @@ public class MovementBehaviour {
 
 public class BounceMovementBehaviour : MovementBehaviour
 {
+    private Vector3 directionVector;
+
     public BounceMovementBehaviour(EnemyController enemy)
         : base(enemy)
     {
         _go.RotateBy(new Vector3(0, 0, 0.5f), 1f, 0f, EaseType.linear, LoopType.loop);
+
+        float x = Random.Range(0, 2) == 0 ? -0.5f : 0.5f;
+        float y = Random.Range(0, 2) == 0 ? -0.5f : 0.5f;
+
+        directionVector = new Vector3(x, y);
     }
 
-    public override void updatePosition() { }
+    public override void updatePosition() 
+    {
+        float ScreenHeight = 2.0f * Camera.main.orthographicSize;
+        float ScreenWidth = ScreenHeight * Camera.main.aspect;
+
+        Vector3 goPosition = _go.transform.position;
+
+        //  Camera.main.getswc
+
+        if ((goPosition.x <= (-ScreenWidth / 2)) ||
+            (goPosition.x >= (ScreenWidth / 2)))
+        {
+            directionVector.x *= -1;
+        }
+
+        if ((goPosition.y <= (-ScreenHeight / 2)) ||
+            (goPosition.y >= (ScreenHeight / 2)))
+        {
+            directionVector.y *= -1;
+        }
+
+        
+        _go.transform.position = _go.transform.position + (directionVector * _self.movementSpeed);  
+    }
     public override void updateRotation() { }
 
 };
