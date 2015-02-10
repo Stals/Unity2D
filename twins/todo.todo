@@ -37,6 +37,8 @@ in order:
       ✔ нужно сделать взрыв когда убиваешь, в зависимости от размеров @done (15-02-09 22:07)
       ✔ цвет наверное пока не стоит менять, хотя фиг знает, нада пробывать @done (15-02-09 22:07)
   ✔ background! @done (15-02-09 22:07)
+  ☐ move weapon rotation speed to weapon
+  ☐ increase dagger speed
   ☐ enemies that dont follow you and just bounce around.
       ☐ with different color
       ✔ if collide with walls - change direction  @done (15-02-10 13:01)
@@ -68,6 +70,9 @@ in order:
       ☐ it will be both cool if
         ☐ 1) severals packs come out at once
         ☐ 2) pack spawn one after another with really short delay.
+  ☐ on new round start - play explosions 
+      ☐ 1) from player?
+      ☐ 2) from each spawed enemy
   ☐ ranged wepon (that could be use by enemies
     ☐ draw
       ☐ bow

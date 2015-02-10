@@ -10,6 +10,15 @@ public class WeaponSlotController : MonoBehaviour {
         
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            chooseRandomWeapon();
+        }
+
+    }
+
     public void Awake()
     {
         chooseRandomWeapon();
@@ -17,16 +26,22 @@ public class WeaponSlotController : MonoBehaviour {
 
     public void chooseRandomWeapon()
     {
-        // TODO exclude it from random, checking link, and re randoming
         if (currentWeapon) {
             currentWeapon.gameObject.SetActive(false);
         }
 
         WeaponController[] weapons = GetComponentsInChildren<WeaponController>(true);
 
-        int rndID = Random.Range(0, weapons.Length);
+        //exclude current weapon from random, checking link, and re randoming
+        WeaponController randomWeapon = null;
+        do
+        {
+            int rndID = Random.Range(0, weapons.Length);
+            randomWeapon = weapons[rndID];
+        } while (randomWeapon == currentWeapon);
 
-        weapons[rndID].gameObject.SetActive(true);
+        randomWeapon.gameObject.SetActive(true);
+        currentWeapon = randomWeapon;
     }
 
     public void updateWeaponAngle(float anglePerSecond, bool useGamepad)
