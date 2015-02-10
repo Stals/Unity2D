@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 
 
-        trail = GetComponentInChildren<WeaponTrail>();
+       // trail = GetComponentInChildren<WeaponTrail>();
 	}
 	
 	// Update is called once per frame
@@ -40,8 +40,8 @@ public class PlayerController : MonoBehaviour {
         updateWeaponAngle();
 
 
-        trail.Itterate(Time.deltaTime);
-        trail.UpdateTrail(Time.time, Time.deltaTime);
+       /* trail.Itterate(Time.deltaTime);
+        trail.UpdateTrail(Time.time, Time.deltaTime);*/
     }
 
     void updateWeaponAngle()

@@ -45,9 +45,12 @@ in order:
       ☐ size should effect when bounce happens
   ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
   ☐ Ranged enemy
+      ☐ противники стреляют в противника по кд.
+          используя ту штуку как в Shoot Upgrade REpeat/ чтобы таймер себе поставить?
       ☐ debug range + range inside (using vectrocity)
       ☐ shoot where you was
       ☐ they rotate towards you, but with interpolation, and shoot with cd
+      ☐ telegraph before shooting
   ☐ player hp and on damage effect
   ☐ spawn waves
     ☐ 3 group types inside object somewhere off screen in disabled state
