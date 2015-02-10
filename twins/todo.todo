@@ -37,8 +37,8 @@ in order:
       ✔ нужно сделать взрыв когда убиваешь, в зависимости от размеров @done (15-02-09 22:07)
       ✔ цвет наверное пока не стоит менять, хотя фиг знает, нада пробывать @done (15-02-09 22:07)
   ✔ background! @done (15-02-09 22:07)
-  ☐ move weapon rotation speed to weapon
-  ☐ increase dagger speed
+  ✔ move weapon rotation speed to weapon @done (15-02-10 20:35)
+  ✔ increase dagger speed @done (15-02-10 20:35)
   ☐ enemies that dont follow you and just bounce around.
       ☐ with different color
       ✔ if collide with walls - change direction  @done (15-02-10 13:01)
@@ -46,6 +46,7 @@ in order:
       ✔ moves just diagonally, the thing is - it starts at random point - so moves randomly @done (15-02-10 13:01)
       ☐ size should effect when bounce happens
   ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
+  ☐ UNLOCK WEAPONS By completeng N wave
   ☐ Ranged enemy
       ☐ противники стреляют в противника по кд.
           используя ту штуку как в Shoot Upgrade REpeat/ чтобы таймер себе поставить?
@@ -73,6 +74,9 @@ in order:
   ☐ on new round start - play explosions 
       ☐ 1) from player?
       ☐ 2) from each spawed enemy
+  ☐ ability to change damage for weapons
+    ☐ damage can be float (but i need to check for 0 with epslilon)
+    ☐ because damage multipliers will be 1.1 for example
   ☐ ranged wepon (that could be use by enemies
     ☐ draw
       ☐ bow
@@ -157,6 +161,8 @@ ideas:
    ☐ waves are random? 
        ☐ random from patterns or what?
    ☐ возможность делать паттерны которые спавняться после определенной волны только
+   ☐ UNLOCK WEAPON By completeng N wave
+
  think:
    ☐ why big one is a threat?
      ☐ (you do not apply force to him, but you can easily run away so whats the point?)
@@ -168,7 +174,7 @@ ideas:
    ☐ motivation for spinning sword around you
        ☐ accumulitive damage for spinning without hitting enemies for dt
        ☐ without lowering its speed
-       ☐ 
+       ☐ !!! show text (in top right) - 360° HIT! Damage x2
    ☐ отдача от удара по противнику? меч отскакивает назад немного (В обратную сторону скорости)
    ☐ музон добавить и эффекты на поле нужно чтобы были более частые
        ☐ возможно какое-то действие еще постоянно поле движет...
