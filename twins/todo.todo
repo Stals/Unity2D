@@ -46,13 +46,17 @@ in order:
       ✔ moves just diagonally, the thing is - it starts at random point - so moves randomly @done (15-02-10 13:01)
       ☐ size should effect when bounce happens
   ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
+  ☐ ability to change damage for weapons
+    ☐ damage can be float (but i need to check for 0 with epslilon)
+    ☐ because damage multipliers will be 1.1 for example
+  ☐ spinning a weapon adds multiplier
   ☐ Ranged enemy
       ☐ противники стреляют в противника по кд.
           используя ту штуку как в Shoot Upgrade REpeat/ чтобы таймер себе поставить?
       ☐ debug range + range inside (using vectrocity)
       ☐ shoot where you was
       ☐ they rotate towards you, but with interpolation, and shoot with cd
-      ☐ telegraph before shooting
+      ☐ telegraph before shooting  
   ☐ player hp and on damage effect
   ☐ spawn waves
     ☐ 3 group types inside object somewhere off screen in disabled state
@@ -73,9 +77,6 @@ in order:
   ☐ on new round start - play explosions 
       ☐ 1) from player?
       ☐ 2) from each spawed enemy
-  ☐ ability to change damage for weapons
-    ☐ damage can be float (but i need to check for 0 with epslilon)
-    ☐ because damage multipliers will be 1.1 for example
   ☐ ranged wepon (that could be use by enemies
     ☐ draw
       ☐ bow
