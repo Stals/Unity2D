@@ -46,7 +46,6 @@ in order:
       ✔ moves just diagonally, the thing is - it starts at random point - so moves randomly @done (15-02-10 13:01)
       ☐ size should effect when bounce happens
   ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
-  ☐ UNLOCK WEAPONS By completeng N wave
   ☐ Ranged enemy
       ☐ противники стреляют в противника по кд.
           используя ту штуку как в Shoot Upgrade REpeat/ чтобы таймер себе поставить?
@@ -82,6 +81,7 @@ in order:
       ☐ bow
       ☐ arrow
     ☐ shoot using mouse and R2
+  ☐ UNLOCK WEAPONS By completeng N wave
   ☐ ranged enemies
     ☐ move towards you before in range, but more (because other way the will always move a bit, some the need to move closer then they need to)
     ☐ archers slowly retreat if you are comming closer
@@ -164,6 +164,8 @@ ideas:
    ☐ UNLOCK WEAPON By completeng N wave
 
  think:
+   TOP PRIORITY:
+      ☐ how to spawn waves so that bouncing enemies will enter and not exit?
    ☐ why big one is a threat?
      ☐ (you do not apply force to him, but you can easily run away so whats the point?)
      ☐ some reason why you need to kill him not last while defending from archers ext, will be cool.
@@ -175,6 +177,7 @@ ideas:
        ☐ accumulitive damage for spinning without hitting enemies for dt
        ☐ without lowering its speed
        ☐ !!! show text (in top right) - 360° HIT! Damage x2
+         ☐ damage amount should increase effects (screenshake and vector grid, so that you feel when you strike harder)
    ☐ отдача от удара по противнику? меч отскакивает назад немного (В обратную сторону скорости)
    ☐ музон добавить и эффекты на поле нужно чтобы были более частые
        ☐ возможно какое-то действие еще постоянно поле движет...
