@@ -111,6 +111,7 @@ in order:
       ☐ damage multiplier, 
       ☐ money multiplier (by increasing starting difficulty?)
       ☐ ability to start from wave N
+      ☐ money притяжение
   ☐ improve trails
       https://www.assetstore.unity3d.com/en/#!/content/3810
 find:
@@ -118,7 +119,7 @@ find:
 
 ideas:
   ☐ if your weapon is inside the enemy - you do damage every second (for example), but if you move it you hit every time it collides with an enemy
-  ☐ add risk reward - drop money that depawn
+  ☐ add risk reward - drop money that despawn
   ☐ if you spin you get more damage
   ☐ after spining with a big weapon it moves you forward
   ☐ slice arrows? (with 2 weapon guy)
@@ -139,6 +140,8 @@ ideas:
    ☐ weapn special ability (probably no)
      ☐ pike - dash forward (without taking damage)
      ☐ 
+   ☐ waves are random? 
+       ☐ random from patterns or what?
 
  think:
    ☐ why big one is a threat?
@@ -153,3 +156,11 @@ ideas:
        ☐ without lowering its speed
        ☐ 
    ☐ отдача от удара по противнику? меч отскакивает назад немного (В обратную сторону скорости)
+   ☐ музон добавить и эффекты на поле нужно чтобы были более частые
+       ☐ возможно какое-то действие еще постоянно поле движет...
+
+ polish: 
+   ☐ надпись wave мигает когда скоро будет волна
+     ☐ возможно бар тоже
+   ☐ кол-во денег появляется только когда ты их подбираешь.
+   ☐ деньги притягиваются 

@@ -35,7 +35,9 @@ public class BounceMovementBehaviour : MovementBehaviour
 {
     public BounceMovementBehaviour(EnemyController enemy)
         : base(enemy)
-    { }
+    {
+        _go.RotateBy(new Vector3(0, 0, 0.5f), 1f, 0f, EaseType.linear, LoopType.loop);
+    }
 
     public override void updatePosition() { }
     public override void updateRotation() { }
