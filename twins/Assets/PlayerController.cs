@@ -6,9 +6,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     WeaponSlotController weaponSlot;
 
-    [SerializeField]
-    float anglePerSecond = 1;
-
     Vector2 prevVector = new Vector2(0, 0);
 
     [SerializeField]
@@ -37,7 +34,7 @@ public class PlayerController : MonoBehaviour {
     {
         updateMovement();
 
-        weaponSlot.updateWeaponAngle(anglePerSecond, useGamepad);
+        weaponSlot.updateWeaponAngle(useGamepad);
 
        /* trail.Itterate(Time.deltaTime);
         trail.UpdateTrail(Time.time, Time.deltaTime);*/

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class WeaponController : MonoBehaviour {
 
+    public float anglePerSecond = 15f;
               public float explosionStrength = 1.0f;
 
     void OnTriggerEnter2D(Collider2D coll)

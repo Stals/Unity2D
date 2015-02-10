@@ -44,12 +44,12 @@ public class WeaponSlotController : MonoBehaviour {
         currentWeapon = randomWeapon;
     }
 
-    public void updateWeaponAngle(float anglePerSecond, bool useGamepad)
+    public void updateWeaponAngle(bool useGamepad)
     {
         float newAngle = getNewWeaponAngle(useGamepad).z;
         float currentAngle = gameObject.transform.localEulerAngles.z;
 
-        float timeDelta = getAngleDelta(newAngle, currentAngle) / anglePerSecond;
+        float timeDelta = getAngleDelta(newAngle, currentAngle) / currentWeapon.anglePerSecond;
 
         Vector3 angle = Vector3.zero;
         angle.z = Mathf.LerpAngle(currentAngle, newAngle, 1f / timeDelta);
