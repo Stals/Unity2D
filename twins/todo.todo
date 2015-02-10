@@ -46,7 +46,8 @@ in order:
   ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
   ☐ Ranged enemy
       ☐ debug range + range inside (using vectrocity)
-        
+      ☐ shoot where you was
+      ☐ they rotate towards you, but with interpolation, and shoot with cd
   ☐ player hp and on damage effect
   ☐ spawn waves
     ☐ 3 group types inside object somewhere off screen in disabled state
@@ -168,4 +169,5 @@ ideas:
    ☐ надпись wave мигает когда скоро будет волна
      ☐ возможно бар тоже
    ☐ кол-во денег появляется только когда ты их подбираешь.
+     ☐ оно также по размеру скелится
    ☐ деньги притягиваются 
