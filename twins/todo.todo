@@ -82,7 +82,10 @@ in order:
       ☐ bow
       ☐ arrow
     ☐ shoot using mouse and R2
+    ☐ what CD? should i show it any where? or should it have really low cd - and just be one OP item? (like dagger is bad)
   ☐ UNLOCK WEAPONS By completeng N wave
+      ☐ label in the middle - "WEAPON" Unlocked
+      ☐ add unlock level and Name to each weapon
   ☐ ranged enemies
     ☐ move towards you before in range, but more (because other way the will always move a bit, some the need to move closer then they need to)
     ☐ archers slowly retreat if you are comming closer
@@ -167,10 +170,11 @@ ideas:
  think:
    TOP PRIORITY:
       ☐ how to spawn waves so that bouncing enemies will enter and not exit?
+      ☐ how ranged enemies (show) telegraph that they are about to shoot?
    ☐ why big one is a threat?
      ☐ (you do not apply force to him, but you can easily run away so whats the point?)
      ☐ some reason why you need to kill him not last while defending from archers ext, will be cool.
-        ☐ does he spawn enemies?
+        ☐ does he spawn enemies? (all the time on CD)
           ☐ aka he will spawn a lot if you dont kill him fast
           ☐ small ones?
           ☐ with animation (i will spawn now - he increases in size for some time, and then spawns.)
@@ -182,6 +186,7 @@ ideas:
    ☐ отдача от удара по противнику? меч отскакивает назад немного (В обратную сторону скорости)
    ☐ музон добавить и эффекты на поле нужно чтобы были более частые
        ☐ возможно какое-то действие еще постоянно поле движет...
+         ☐ взрыв поля по концу раунда?
 
  polish: 
    ☐ надпись wave мигает когда скоро будет волна
