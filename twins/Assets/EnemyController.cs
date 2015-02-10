@@ -54,15 +54,15 @@ public class BounceMovementBehaviour : MovementBehaviour
         Vector3 goPosition = _go.transform.position;
 
         //  Camera.main.getswc
-
-        if ((goPosition.x <= (-ScreenWidth / 2)) ||
-            (goPosition.x >= (ScreenWidth / 2)))
+        Vector3 goSize = _go.renderer.bounds.size; // TODO* _go.transform.localScale;
+        if ((goPosition.x - (goSize.x / 2) <= (-ScreenWidth / 2)) ||
+            (goPosition.x + (goSize.x / 2) >= (ScreenWidth / 2)))
         {
             directionVector.x *= -1;
         }
 
-        if ((goPosition.y <= (-ScreenHeight / 2)) ||
-            (goPosition.y >= (ScreenHeight / 2)))
+        if ((goPosition.y - (goSize.y / 2) <= (-ScreenHeight / 2)) ||
+            (goPosition.y + (goSize.y / 2) >= (ScreenHeight / 2)))
         {
             directionVector.y *= -1;
         }
@@ -115,6 +115,7 @@ public class EnemyController : MonoBehaviour {
     MovementBehaviour movementBehaviour;
 
     Animator animator;
+
 
 
 	// Use this for initialization

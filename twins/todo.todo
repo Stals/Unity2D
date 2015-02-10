@@ -39,10 +39,15 @@ in order:
   ✔ background! @done (15-02-09 22:07)
   ☐ enemies that dont follow you and just bounce around.
       ☐ with different color
-      ☐ if collide with walls - change direction 
+      ✔ if collide with walls - change direction  @done (15-02-10 13:01)
         (side walls change y - top and bottow change x)
-      ☐ moves just diagonally, the thing is - it starts at random point - so moves randomly
-  ☐ tween rotation for bouncing enemy
+      ✔ moves just diagonally, the thing is - it starts at random point - so moves randomly @done (15-02-10 13:01)
+      ☐ size should effect when bounce happens
+  ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
+  ☐ Ranged enemy
+      ☐ debug range + range inside (using vectrocity)
+        
+  ☐ player hp and on damage effect
   ☐ spawn waves
     ☐ 3 group types inside object somewhere off screen in disabled state
     ☐ spawn off screen
