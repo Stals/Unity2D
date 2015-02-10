@@ -3,6 +3,32 @@ using System.Collections;
 
 public class WeaponSlotController : MonoBehaviour {
 
+    WeaponController currentWeapon = null;
+
+    void Start()
+    {
+        
+    }
+
+    public void Awake()
+    {
+        chooseRandomWeapon();
+    }
+
+    public void chooseRandomWeapon()
+    {
+        // TODO exclude it from random, checking link, and re randoming
+        if (currentWeapon) {
+            currentWeapon.gameObject.SetActive(false);
+        }
+
+        WeaponController[] weapons = GetComponentsInChildren<WeaponController>(true);
+
+        int rndID = Random.Range(0, weapons.Length);
+
+        weapons[rndID].gameObject.SetActive(true);
+    }
+
     public void updateWeaponAngle(float anglePerSecond, bool useGamepad)
     {
         float newAngle = getNewWeaponAngle(useGamepad).z;
