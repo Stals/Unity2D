@@ -46,6 +46,7 @@ in order:
       ✔ moves just diagonally, the thing is - it starts at random point - so moves randomly @done (15-02-10 13:01)
       ☐ size should effect when bounce happens
   ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
+  ☐ ability to set starting direction of squares!
   ☐ меняем оружие при взрыве игрока когда кончается волна
       ☐ в улгу пишется описание
         ☐ longer, lower damage
@@ -88,9 +89,20 @@ in order:
            ☐ number of spawns should be bigger
            ☐ number of patters = float numbers (so that when it is 1.2, it will spawn +1 pattern every 5 spawns)
          ☐ !! q: if you kill them fast - you just wait?!
+         ☐ 2 pattern types
+             ☐ !!!! spawn in center (specifically set around the player screen to come from all sides)
+             ☐ spawn around at random
   ☐ on new round start - play explosions 
       ☐ 1) from player?
       ☐ 2) from each spawed enemy
+  ☐ player class with (синглтон)
+      ☐ maxWavesCompleted
+      ☐ this affects wepons
+        ☐ add wave reached cap to it.
+  ☐ pattern wave ограничение
+    ☐ некоторые сложные начинают спавниться только после
+    ☐ но есть и минимальная граница, чтобы супер простые не спавнились потом!
+      ☐ (если указан 0 то будут спавниться всегда)
   ☐ wrecking ball 
       ☐ add script to ball - that has MAX speed
       ☐ and adds friction ( * 0.8 for example, and higher)
@@ -160,6 +172,9 @@ in order:
 find:
   ☐ unity 2d background shader
 
+bug:
+  ☐ квадраты вылетают за, потому что потом у них потоянно туда обратно меняется x или y
+
 ideas:
   ☐ if your weapon is inside the enemy - you do damage every second (for example), but if you move it you hit every time it collides with an enemy
   ☐ add risk reward - drop money that despawn
@@ -187,6 +202,7 @@ ideas:
        ☐ random from patterns or what?
    ☐ возможность делать паттерны которые спавняться после определенной волны только
    ☐ UNLOCK WEAPON By completeng N wave
+   ☐ дохождение до волны 10 открывает двойные даггеры. и отрубает одинарные (их больше нельзя получить?!)
 
  think:
    TOP PRIORITY:
