@@ -46,10 +46,17 @@ in order:
       ✔ moves just diagonally, the thing is - it starts at random point - so moves randomly @done (15-02-10 13:01)
       ☐ size should effect when bounce happens
   ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
+  ☐ меняем оружие при взрыве игрока когда кончается волна
+      ☐ в улгу пишется описание
+        ☐ longer, lower damage
+        ☐ high damage, low range
   ☐ ability to change damage for weapons
     ☐ damage can be float (but i need to check for 0 with epslilon)
     ☐ because damage multipliers will be 1.1 for example
   ☐ spinning a weapon adds multiplier
+    ☐ if direction didn't change !!!
+    ☐  doen't affect bows or wricking ball?
+        ☐ should affter the ball i wish
   ☐ Ranged enemy
       ☐ противники стреляют в противника по кд.
           используя ту штуку как в Shoot Upgrade REpeat/ чтобы таймер себе поставить?
@@ -74,9 +81,19 @@ in order:
       ☐ it will be both cool if
         ☐ 1) severals packs come out at once
         ☐ 2) pack spawn one after another with really short delay.
+     ☐ short
+         ☐ time between waves is the same (but if you kill all, next wave spawns)
+         ☐ number of patterns per spawns and number of spawns, increases over time.
+         ☐ if number of spaws = 2. enemies will spawn at the very beggining and also in the middle
+           ☐ number of spawns should be bigger
+           ☐ number of patters = float numbers (so that when it is 1.2, it will spawn +1 pattern every 5 spawns)
+         ☐ !! q: if you kill them fast - you just wait?!
   ☐ on new round start - play explosions 
       ☐ 1) from player?
       ☐ 2) from each spawed enemy
+  ☐ wrecking ball 
+      ☐ add script to ball - that has MAX speed
+      ☐ and adds friction ( * 0.8 for example, and higher)
   ☐ ranged wepon (that could be use by enemies
     ☐ draw
       ☐ bow
@@ -134,6 +151,10 @@ in order:
       ☐ money multiplier (by increasing starting difficulty?)
       ☐ ability to start from wave N
       ☐ money притяжение
+      ☐ улучшение доступных оружий
+          ☐ +1 dagger
+          ☐ + shield for sword
+          ☐ bow shoots faster / fires two arrows one after another
   ☐ improve trails
       https://www.assetstore.unity3d.com/en/#!/content/3810
 find:
