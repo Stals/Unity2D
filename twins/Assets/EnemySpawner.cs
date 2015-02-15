@@ -6,6 +6,9 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField]
     NewWaveAnimationController newWaveAnimationController;
 
+    [SerializeField]
+    GameObject newWaveForcePosition;
+
     int currentWave = 1;
 
 	// Use this for initialization
@@ -24,5 +27,12 @@ public class EnemySpawner : MonoBehaviour {
 
         Game.Instance.getPlayer().weaponSlot.chooseRandomWeapon();
         newWaveAnimationController.showNewWave(currentWave);
+
+
+        MyGameManager manager = Game.Instance.getManager();
+        if (manager)
+        {
+            manager.grid.AddGridForce(newWaveForcePosition.transform.position, 0.15f, 0.5f, Color.green, false);
+        }        
     }
 }
