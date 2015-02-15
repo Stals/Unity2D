@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     [SerializeField]
-    WeaponSlotController weaponSlot;
+    public WeaponSlotController weaponSlot;
 
     Vector2 prevVector = new Vector2(0, 0);
 

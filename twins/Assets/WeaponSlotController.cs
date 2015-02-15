@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WeaponSlotController : MonoBehaviour {
 
-    WeaponController currentWeapon = null;
+    public WeaponController currentWeapon = null;
 
     void Start()
     {

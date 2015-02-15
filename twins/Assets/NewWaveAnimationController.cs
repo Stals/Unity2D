@@ -26,4 +26,11 @@ public class NewWaveAnimationController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void showNewWave(int wave)
+    {
+        waveNumber.text = "WAVE " + wave.ToString();
+        weaponName.text = "WEAPON: " + Game.Instance.getManager().playerController.weaponSlot.currentWeapon.name;
+        weaponDesr.text = Game.Instance.getManager().playerController.weaponSlot.currentWeapon.shortDescription;
+    }
 }
