@@ -4,7 +4,11 @@ using System.Collections;
 public class WeaponController : MonoBehaviour {
 
     public float anglePerSecond = 15f;
-              public float explosionStrength = 1.0f;
+    public float explosionStrength = 1.0f;
+
+    public string name = "no name";
+    public string shortDescription = "no description";
+
 
     void OnTriggerEnter2D(Collider2D coll)
     {

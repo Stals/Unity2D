@@ -162,6 +162,7 @@ in order:
       ☐ damage multiplier, 
       ☐ money multiplier (by increasing starting difficulty?)
       ☐ ability to start from wave N
+          ☐ only if you reached it once already
       ☐ money притяжение
       ☐ улучшение доступных оружий
           ☐ +1 dagger
@@ -203,7 +204,9 @@ ideas:
    ☐ возможность делать паттерны которые спавняться после определенной волны только
    ☐ UNLOCK WEAPON By completeng N wave
    ☐ дохождение до волны 10 открывает двойные даггеры. и отрубает одинарные (их больше нельзя получить?!)
-   ☐ если вращать оружие в сторону у него увеличивается angle per sec?
+   ☐ если вращать оружие в сторону у него увеличивается angle per sec?\
+   ☐ экран где крутятся все открытые оружие а остальных силуэты - и написано до какой волны нужно дойти чтобы его анлокнуть
+   ☐ после сообщение new weapon unlocked - тебе дают именно его
 
  think:
    TOP PRIORITY:
