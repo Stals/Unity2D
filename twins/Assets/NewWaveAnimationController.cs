@@ -40,5 +40,7 @@ public class NewWaveAnimationController : MonoBehaviour {
         foreach(UITweener tween in tweens){
             tween.Play();        
         }
+
+        audio.Play();
     }
 }
