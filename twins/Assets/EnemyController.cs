@@ -173,48 +173,36 @@ public class EnemyController : MonoBehaviour {
 
     public void takeDamage()
     {
-        hp -= 1;
-
-        
+        hp -= 1;        
 
         if (hp <= 0)
         {
-            Game.Instance.getManager().sleepTime(30);
-
-
-            VectorGrid grid1 = UnityEngine.Object.FindObjectOfType<VectorGrid>();
-            grid1.AddGridForce(this.transform.position, 0.15f, 0.2f * (transform.localScale.x * 2) , GetComponent<SpriteRenderer>().color, true);
-
-
-            // should depend on weapon strength - as well as knock back
-            Game.Instance.getManager().cameraShake.Shake(0.13f, 0.03f);
-
+            excecuteDamageEffect(true);
             DestroySelf();
         }
         else
         {
-            VectorGrid grid1 = UnityEngine.Object.FindObjectOfType<VectorGrid>();
-            grid1.AddGridForce(this.transform.position, 0.05f, 0.2f * (transform.localScale.x * 2), Color.black, false);
-
-
-            // should depend on weapon strength - as well as knock back
-            Game.Instance.getManager().cameraShake.Shake(0.05f, 0.02f);
-
-            excecuteDamageEffect();
+            excecuteDamageEffect(false);
             animator.SetTrigger("TookDamage");
         }
 
     }
 
-    void excecuteDamageEffect()
+    void excecuteDamageEffect(bool isKill)
     {
+        float effectMultiplier = isKill ? 3 : 1;
+
+
         audio.pitch = Random.Range(0.8f, 1.2f);
         audio.Play();
 
-        Game.Instance.getManager().sleepTime(20);
+        Game.Instance.getManager().sleepTime(isKill ? 30 : 20);
 
+        VectorGrid grid1 = UnityEngine.Object.FindObjectOfType<VectorGrid>();
+        grid1.AddGridForce(this.transform.position, 0.05f * effectMultiplier, 0.2f * (transform.localScale.x * 2), GetComponent<SpriteRenderer>().color, isKill);
 
-
+        // should depend on weapon strength - as well as knock back
+        Game.Instance.getManager().cameraShake.Shake(0.05f * effectMultiplier, 0.03f);
     }
 
     void DestroySelf()
