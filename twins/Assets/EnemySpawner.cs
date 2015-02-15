@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour {
 	
 	}
 
-    void onWaveEnded()
+    public void onWaveEnded()
     {
         ++currentWave;
 

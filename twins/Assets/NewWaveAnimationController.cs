@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NewWaveAnimationController : MonoBehaviour {
 
@@ -11,6 +12,9 @@ public class NewWaveAnimationController : MonoBehaviour {
 
     [SerializeField]
     UILabel weaponDesr;
+
+    [SerializeField]
+    List<UITweener> tweens;
 
     void Awake()
     {
@@ -32,5 +36,9 @@ public class NewWaveAnimationController : MonoBehaviour {
         waveNumber.text = "WAVE " + wave.ToString();
         weaponName.text = "WEAPON: " + Game.Instance.getManager().playerController.weaponSlot.currentWeapon.name;
         weaponDesr.text = Game.Instance.getManager().playerController.weaponSlot.currentWeapon.shortDescription;
+
+        foreach(UITweener tween in tweens){
+            tween.Play();        
+        }
     }
 }
