@@ -5,6 +5,12 @@ public class MyGameManager : MonoBehaviour {
 
     public CameraShake cameraShake;
 
+    [SerializeField]
+    public VectorGrid grid;
+
+    [SerializeField]
+    public PlayerController playerController;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.init(this);

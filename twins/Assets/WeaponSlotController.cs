@@ -42,6 +42,17 @@ public class WeaponSlotController : MonoBehaviour {
 
         randomWeapon.gameObject.SetActive(true);
         currentWeapon = randomWeapon;
+
+        playChangeWeaponAnimation();
+    }
+
+    public void playChangeWeaponAnimation()
+    {
+        MyGameManager manager = Game.Instance.getManager();
+        if (manager)
+        {
+            manager.grid.AddGridForce(manager.playerController.transform.position, 0.2f, 0.7f, Color.green, true);
+        }
     }
 
     public void updateWeaponAngle(bool useGamepad)
