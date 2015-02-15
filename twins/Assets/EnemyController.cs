@@ -175,8 +175,7 @@ public class EnemyController : MonoBehaviour {
     {
         hp -= 1;
 
-        // should depend on weapon strength - as well as knock back
-        Game.Instance.getManager().cameraShake.Shake(0.05f, 0.02f);
+        
 
         if (hp <= 0)
         {
@@ -185,13 +184,21 @@ public class EnemyController : MonoBehaviour {
 
             VectorGrid grid1 = UnityEngine.Object.FindObjectOfType<VectorGrid>();
             grid1.AddGridForce(this.transform.position, 0.15f, 0.2f * (transform.localScale.x * 2) , GetComponent<SpriteRenderer>().color, true);
-            
+
+
+            // should depend on weapon strength - as well as knock back
+            Game.Instance.getManager().cameraShake.Shake(0.13f, 0.03f);
+
             DestroySelf();
         }
         else
         {
             VectorGrid grid1 = UnityEngine.Object.FindObjectOfType<VectorGrid>();
             grid1.AddGridForce(this.transform.position, 0.05f, 0.2f * (transform.localScale.x * 2), Color.black, false);
+
+
+            // should depend on weapon strength - as well as knock back
+            Game.Instance.getManager().cameraShake.Shake(0.05f, 0.02f);
 
             excecuteDamageEffect();
             animator.SetTrigger("TookDamage");
