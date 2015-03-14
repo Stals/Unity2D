@@ -14,6 +14,6 @@ public class CameraManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // TODO interpolate?
-        transform.position = new Vector3(trackedGameObejct.transform.position.x / 7, trackedGameObejct.transform.position.y / 7, -10);
+        transform.position = new Vector3(trackedGameObejct.transform.position.x / 4, trackedGameObejct.transform.position.y / 5, -10);
 	}
 }
