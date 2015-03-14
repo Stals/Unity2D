@@ -1,3 +1,17 @@
+MAKE PLAYABLE FIRST - ADD STUFF LATER:
+  ☐ waves
+    ☐ when button press - spawn random group around
+  ☐ ranged enemies
+  ☐ damage boost for spinning
+    ☐ отображается несколько секунд твой последний
+    ☐ если ты еще кого-то ударил, то если размах был меньше - не отображается
+  ☐ money drpos (monsters have money depending on size and wave?)
+    ☐ later change to different money, for now just 1 coin without animations and without anything, and later add there
+  ☐ upgrades
+  ☐ weapon unlocks
+  ☐ shields
+  ☐ небольшое движение камеры в сторону, чтобы было действие на экране
+
 small game to try mechanic:
   ☐ enemies with steering behaviour
   ☐ waves
@@ -47,10 +61,11 @@ in order:
       ☐ size should effect when bounce happens
   ✔ tween rotation for bouncing enemy @done (15-02-10 13:00)
   ☐ ability to set starting direction of squares!
-  ☐ меняем оружие при взрыве игрока когда кончается волна
-      ☐ в улгу пишется описание
-        ☐ longer, lower damage
-        ☐ high damage, low range
+  ✔ меняем оружие при взрыве игрока когда кончается волна @done (15-03-14 16:49)
+      ✔ в улгу пишется описание @done (15-03-14 16:49)
+        ✔ longer, lower damage @done (15-03-14 16:49)
+        ✔ high damage, low range @done (15-03-14 16:49)
+  ☐ небольшое движение камеры в сторону, чтобы было действие на экране
   ☐ ability to change damage for weapons
     ☐ damage can be float (but i need to check for 0 with epslilon)
     ☐ because damage multipliers will be 1.1 for example
@@ -58,6 +73,9 @@ in order:
     ☐ if direction didn't change !!!
     ☐  doen't affect bows or wricking ball?
         ☐ should affter the ball i wish
+    ☐ checks every frame that your weapon is moving in the same direction, adding the total angle
+    ☐ 180 / 360 / 
+    ☐ не действует на даггер? (spinning does no effect)
   ☐ Ranged enemy
       ☐ противники стреляют в противника по кд.
           используя ту штуку как в Shoot Upgrade REpeat/ чтобы таймер себе поставить?
@@ -67,6 +85,9 @@ in order:
       ☐ telegraph before shooting  
   ☐ player hp and on damage effect
   ☐ spawn waves
+    ☐ new ..
+        на дальнейших волнах спавнит сразу несколько за раз - по принципу N = wave / 10
+        причем не заспавненый остаток накапливается! так что ты через 10 спавнов получишь +1 группу!
     ☐ 3 group types inside object somewhere off screen in disabled state
     ☐ spawn off screen
     ☐ think about
@@ -93,7 +114,7 @@ in order:
              ☐ !!!! spawn in center (specifically set around the player screen to come from all sides)
              ☐ spawn around at random
   ☐ on new round start - play explosions 
-      ☐ 1) from player?
+      ✔ 1) from player? @done (15-03-14 16:49)
       ☐ 2) from each spawed enemy
   ☐ player class with (синглтон)
       ☐ maxWavesCompleted
@@ -170,6 +191,9 @@ in order:
           ☐ bow shoots faster / fires two arrows one after another
   ☐ improve trails
       https://www.assetstore.unity3d.com/en/#!/content/3810
+  ☐ story 
+      And so you enter the ARENA to prove your worth.
+      Now go and show tham what you got... (into Fade._)
 find:
   ☐ unity 2d background shader
 
@@ -212,6 +236,7 @@ ideas:
    TOP PRIORITY:
       ☐ how to spawn waves so that bouncing enemies will enter and not exit?
       ☐ how ranged enemies (show) telegraph that they are about to shoot?
+      ☐ playfield looks empty - add moving objects that are bigger and not killable?
    ☐ why big one is a threat?
      ☐ (you do not apply force to him, but you can easily run away so whats the point?)
      ☐ some reason why you need to kill him not last while defending from archers ext, will be cool.
@@ -232,6 +257,14 @@ ideas:
      ☐ как в alien что-то там
      ☐ сначала для тебя красные типы редкие и оч сложные,
      ☐ а потом они постоянно на тебя валят, и ты за счет того что вкачивал дамаг можешь им противостоять
+   ☐ missions with gold rewards.
+     ☐ kill 50 with a wreking ball
+     ☐ get MAX spin 10 times
+     ☐ reach wave 15
+     ☐ kill 10 big enemies
+     ☐ deflect 100 bullets
+     ☐ play for 10 minutes
+     ☐ play 10 times
 
  polish: 
    ☐ надпись wave мигает когда скоро будет волна
