@@ -2,6 +2,12 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ waves
     ☐ when button press - spawn random group around
   ☐ ranged enemies
+    ☐   1) range to start shooting (if not in mode to follow player - )
+      ☐ &&  check if is rendered to start shooting - else - just go to player!!!!!!
+      ☐   spawn bullet with correct rotation and then just move depending on rotation (like in shmup!!!!)
+    ☐   2) range to be able to shoot
+    ☐ with animation
+       played before shooting - yeild?
   ☐ damage boost for spinning
     ☐ отображается несколько секунд твой последний
     ☐ если ты еще кого-то ударил, то если размах был меньше - не отображается
@@ -67,6 +73,10 @@ in order:
       ✔ в улгу пишется описание @done (15-03-14 16:49)
         ✔ longer, lower damage @done (15-03-14 16:49)
         ✔ high damage, low range @done (15-03-14 16:49)
+  ☐ enemy types
+      ☐ ездиет по линии и поворачивает в бок?
+      ☐ стреляет в 4 стороны (под, над и тд)
+      ☐ стреляет в 4 стороны по диагонали
   ☐ небольшое движение камеры в сторону, чтобы было действие на экране
   ☐ ability to change damage for weapons
     ☐ damage can be float (but i need to check for 0 with epslilon)
