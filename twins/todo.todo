@@ -19,7 +19,8 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ✔ небольшое движение камеры в сторону, чтобы было действие на экране @done (15-03-15 21:27)
   ☐ change ui
     http://opengameart.org/content/ui-pack-space-extension
-
+  ☐ show damage with range
+  ☐ add critical hits! - with flying text and increased effect & damage.  
 small game to try mechanic:
   ☐ enemies with steering behaviour
   ☐ waves
@@ -201,6 +202,7 @@ in order:
           ☐ +1 dagger
           ☐ + shield for sword
           ☐ bow shoots faster / fires two arrows one after another
+      ☐ increse critical chance
   ☐ improve trails
       https://www.assetstore.unity3d.com/en/#!/content/3810
   ☐ story 
