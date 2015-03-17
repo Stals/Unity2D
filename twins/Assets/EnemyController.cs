@@ -138,8 +138,9 @@ public class RangedMovementBehaviour : FollowMovementBehaviour
     public override void updateRotation() {
         base.updateRotation();
 
-        // if (currentState == state.Inrange)
-            //- shoot
+        if (currentState == state.Inrange) {
+            _self.shoot();
+        }
     }
 
     bool insideDistance(float distance) {
@@ -176,10 +177,17 @@ public class EnemyController : MonoBehaviour {
     Animator animator;
 
 
+    [SerializeField]
+    float bulletDelay = 2f;
+    float bulletDeltaTime = 0;
+
 
 	// Use this for initialization
 
 	void Start () {
+        // random shot delay
+        bulletDeltaTime = Random.Range(-1f, 0f);
+
         movementInit();
         sizeInit();
 
@@ -236,6 +244,11 @@ public class EnemyController : MonoBehaviour {
         movementBehaviour.updatePosition();
 	}
 
+    void FixedUpdate()
+    {
+        bulletDeltaTime += Time.deltaTime;
+    }
+
     public void takeDamage()
     {
         hp -= 1;        
@@ -288,6 +301,14 @@ public class EnemyController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("collision enter");
+    }
+
+    public void shoot()
+    {
+        if (bulletDeltaTime >= bulletDelay) {
+            GameObject bulletObject = (GameObject)(Instantiate(bulletPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation));
+            bulletDeltaTime = 0;
+        }
     }
 
 }
