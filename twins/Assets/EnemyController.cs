@@ -138,6 +138,9 @@ public class EnemyController : MonoBehaviour {
             case MovementBehaviourType.Bounce:
                 movementBehaviour = new BounceMovementBehaviour(this);
                 break;
+            default:
+                movementBehaviour = new MovementBehaviour(this);
+                break;
         }
     }
 
