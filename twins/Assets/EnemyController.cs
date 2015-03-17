@@ -26,6 +26,11 @@ public class MovementBehaviour {
     public virtual void updatePosition() { }
     public virtual void updateRotation() { }
 
+    public bool isVisible()
+    {
+        return _go.renderer.isVisible;
+    }
+
     protected GameObject  _go;
     protected GameObject target;
     protected EnemyController _self;
@@ -83,6 +88,7 @@ public class FollowMovementBehaviour : MovementBehaviour
         _go.transform.Translate(_self.movementSpeed, 0, 0);    
     }
 
+    // TODO update with delay
     public override void updateRotation() {
 
         Vector2 vectorL = target.transform.position - _go.transform.position;
@@ -93,6 +99,56 @@ public class FollowMovementBehaviour : MovementBehaviour
     }
 
 };
+
+public class RangedMovementBehaviour : FollowMovementBehaviour
+{
+    enum state
+    {
+        Chasing,
+        Inrange
+    };
+    state currentState;
+    float range = 7.5f;
+    float rangeDelta = 1.5f; // amount that enemy goes closer than range - to not move all the time
+
+    public RangedMovementBehaviour(EnemyController enemy)
+        : base(enemy)
+    {
+        currentState = state.Chasing;
+    }
+    public override void updatePosition() {
+
+        if (currentState == state.Inrange) {
+            if (!insideDistance(range)) {
+                currentState = state.Chasing;
+            }
+        }else if (currentState == state.Chasing) {
+            if (insideDistance(range - rangeDelta) && isVisible())
+            {
+                currentState = state.Inrange;
+            }
+            else
+            {
+                // only if not in range
+                base.updatePosition();
+            }
+        }
+    }
+
+    public override void updateRotation() {
+        base.updateRotation();
+
+        // if (currentState == state.Inrange)
+            //- shoot
+    }
+
+    bool insideDistance(float distance) {
+        return Vector3.Distance(_self.transform.position, target.transform.position) <= distance;
+    }
+
+}
+
+
 
 
 public class EnemyController : MonoBehaviour {
@@ -137,6 +193,9 @@ public class EnemyController : MonoBehaviour {
                 break;
             case MovementBehaviourType.Bounce:
                 movementBehaviour = new BounceMovementBehaviour(this);
+                break;
+            case MovementBehaviourType.Ranged:
+                movementBehaviour = new RangedMovementBehaviour(this);
                 break;
             default:
                 movementBehaviour = new MovementBehaviour(this);
