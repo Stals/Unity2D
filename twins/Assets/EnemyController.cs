@@ -157,6 +157,9 @@ public class EnemyController : MonoBehaviour {
     GameObject explosionPrefab;
 
     [SerializeField]
+    GameObject bulletPrefab;
+
+    [SerializeField]
     int hp = 3;
 
     [SerializeField]
