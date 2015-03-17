@@ -2,12 +2,13 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ waves
     ☐ when button press - spawn random group around
   ☐ ranged enemies
-    ☐   1) range to start shooting (if not in mode to follow player - )
-      ☐ &&  check if is rendered to start shooting - else - just go to player!!!!!!
-      ☐   spawn bullet with correct rotation and then just move depending on rotation (like in shmup!!!!)
-    ☐   2) range to be able to shoot
-    ☐ with animation
+    ✔   1) range to start shooting (if not in mode to follow player - ) @done (15-03-18 00:07)
+      ✔ &&  check if is rendered to start shooting - else - just go to player!!!!!! @done (15-03-18 00:07)
+      ✔   spawn bullet with correct rotation and then just move depending on rotation (like in shmup!!!!) @done (15-03-18 00:07)
+    ✔   2) range to be able to shoot @done (15-03-18 00:07)
+    ☐ with animation!
        played before shooting - yeild?
+    ☐ add waves with ranged enemies
   ☐ damage boost for spinning
     ☐ отображается несколько секунд твой последний
     ☐ если ты еще кого-то ударил, то если размах был меньше - не отображается
