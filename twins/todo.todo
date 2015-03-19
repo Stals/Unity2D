@@ -9,12 +9,14 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
     ☐ with animation!
        played before shooting - yeild?
     ☐ add waves with ranged enemies
+  ☐ different weapons - different damage
   ☐ damage boost for spinning
     ☐ отображается несколько секунд твой последний
     ☐ если ты еще кого-то ударил, то если размах был меньше - не отображается
   ☐ money drpos (monsters have money depending on size and wave?)
     ☐ later change to different money, for now just 1 coin without animations and without anything, and later add there
   ☐ upgrades
+  ☐ 2 сабли
   ☐ weapon unlocks
   ☐ shields
   ✔ небольшое движение камеры в сторону, чтобы было действие на экране @done (15-03-15 21:27)
