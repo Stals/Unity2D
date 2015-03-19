@@ -7,9 +7,14 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
       ✔   spawn bullet with correct rotation and then just move depending on rotation (like in shmup!!!!) @done (15-03-18 00:07)
     ✔   2) range to be able to shoot @done (15-03-18 00:07)
     ☐ with animation!
+      if you damage him - you still need to notice!!!
+        mb inside slowly turns non transparent (or blinks 2 times before shooting)
+
        played before shooting - yeild?
     ☐ add waves with ranged enemies
   ☐ different weapons - different damage
+  ☐   players gets damaged
+  ☐ TODO size affects bullet damage  
   ☐ damage boost for spinning
     ☐ отображается несколько секунд твой последний
     ☐ если ты еще кого-то ударил, то если размах был меньше - не отображается
@@ -26,7 +31,8 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
     http://opengameart.org/content/ui-pack-space-extension
   ☐ show damage with range
   ☐ add critical hits! - with flying text and increased effect & damage.  
-  ☐ TODO update rotation with delay  
+  ☐ TODO update rotation with delay 
+
 small game to try mechanic:
   ☐ enemies with steering behaviour
   ☐ waves

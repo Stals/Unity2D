@@ -298,6 +298,8 @@ public class EnemyController : MonoBehaviour {
                                                                               transform.position.y + Random.Range(-spawnOffset, spawnOffset), 0),
                                                        transform.rotation));
                 //EnemyController enemy  = go.GetComponent<EnemyController>();
+
+                // TODO set movement type!
             }            
         }
 
@@ -324,6 +326,9 @@ public class EnemyController : MonoBehaviour {
         if (bulletDeltaTime >= bulletDelay) {
             GameObject bulletObject = (GameObject)(Instantiate(bulletPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation));
             bulletDeltaTime = 0;
+
+            //TODO size affects bullet damage
+            bulletObject.transform.localScale = transform.localScale * 2;
         }
     }
 
