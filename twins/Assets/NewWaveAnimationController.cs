@@ -38,7 +38,7 @@ public class NewWaveAnimationController : MonoBehaviour {
         weaponDesr.text = Game.Instance.getManager().playerController.weaponSlot.currentWeapon.shortDescription;
 
         foreach(UITweener tween in tweens){
-            tween.Play();        
+            tween.PlayForward();        
         }
 
         audio.Play();

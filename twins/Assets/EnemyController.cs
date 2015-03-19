@@ -161,6 +161,9 @@ public class EnemyController : MonoBehaviour {
     GameObject bulletPrefab;
 
     [SerializeField]
+    GameObject selfPrefab;
+
+    [SerializeField]
     int hp = 3;
 
     [SerializeField]
@@ -188,9 +191,9 @@ public class EnemyController : MonoBehaviour {
         // random shot delay
         bulletDeltaTime = Random.Range(-1f, 0f);
 
-        movementInit();
         sizeInit();
 
+        movementInit();
         movementBehaviour.updateRotation();
 
         animator = GetComponent<Animator>();
@@ -285,6 +288,19 @@ public class EnemyController : MonoBehaviour {
 
     void DestroySelf()
     {
+        if (sizeType == SizeType.Big) {
+            float spawnOffset = 0.5f;
+
+            for (int i = 0; i < 2; ++i)
+            {
+                UnityEngine.Object pPrefab = Resources.Load("Prefabs/Enemy");
+                GameObject go = (GameObject)(Instantiate(pPrefab, new Vector3(transform.position.x + Random.Range(-spawnOffset, spawnOffset),
+                                                                              transform.position.y + Random.Range(-spawnOffset, spawnOffset), 0),
+                                                       transform.rotation));
+                //EnemyController enemy  = go.GetComponent<EnemyController>();
+            }            
+        }
+
         createExplosion();
         Destroy(this.gameObject);
     }
