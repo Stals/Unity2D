@@ -299,6 +299,7 @@ public class EnemyController : MonoBehaviour {
         if (isCrit) {
             label.color = Color.red;
             label.effectStyle = UILabel.Effect.Outline;
+            label.fontSize = (int)(label.fontSize * 1.5);
         }
 
         /* MOVE TO CORRECT POSITION*/
