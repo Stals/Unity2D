@@ -24,6 +24,10 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ✔ 2 сабли @done (15-03-19 22:23)
   ☐ большие спавнят меньше тогоже типа
     ☐   add delay && they dont attack you for that time but you can attack them - 1 second?
+    ☐   spawn of the same type (ranged & stuff)
+          ☐ HOW?!  
+            ☐   Ranged enemy should be a preset (also a enum), as well as rotating enemy
+              ☐   and they should change images, colors & stuff
   ☐ weapon unlocks
   ☐ shields
   ✔ небольшое движение камеры в сторону, чтобы было действие на экране @done (15-03-15 21:27)

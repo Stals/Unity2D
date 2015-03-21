@@ -522,6 +522,12 @@ public static class iTweenExtensions
 	public static void MoveBy(this GameObject go,Vector3 amount,float time,float delay){
 		iTween.MoveBy(go,iTween.Hash("amount",amount,"time",time,"delay",delay));
 	}
+
+    public static void MoveBy(this GameObject go,Vector3 amount,float time,float delay, bool isLocal){
+        iTween.MoveBy(go, iTween.Hash("amount", amount, "time", time, "delay", delay, "islocal", isLocal));
+	}
+
+    
 	
 	/// <summary>
 	/// Adds the supplied coordinates to a GameObject's position.

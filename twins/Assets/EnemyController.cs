@@ -161,7 +161,7 @@ public class EnemyController : MonoBehaviour {
     GameObject bulletPrefab;
 
     [SerializeField]
-    GameObject selfPrefab;
+    GameObject damageGuiPrefab;
 
     [SerializeField]
     int hp = 3;
@@ -254,7 +254,10 @@ public class EnemyController : MonoBehaviour {
 
     public void takeDamage()
     {
-        hp -= 1;        
+        hp -= 1;
+
+
+        spawnTextDamage(Random.Range(1, 5));
 
         if (hp <= 0)
         {
@@ -284,6 +287,22 @@ public class EnemyController : MonoBehaviour {
 
         // should depend on weapon strength - as well as knock back
         Game.Instance.getManager().cameraShake.Shake(0.05f * effectMultiplier, 0.03f);
+    }
+
+    void spawnTextDamage(float damage) {
+        Camera gameCamera = NGUITools.FindCameraForLayer(gameObject.layer);       
+        Camera uiCamera = UICamera.mainCamera;
+
+
+        GameObject guiObject = NGUITools.AddChild(uiCamera.transform.parent.gameObject, damageGuiPrefab);
+        guiObject.GetComponentInChildren<UILabel>().text = damage.ToString();
+
+        /* MOVE TO CORRECT POSITION*/
+        // Get screen location of node
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+
+        // Move to node
+        guiObject.transform.position = uiCamera.ScreenToWorldPoint(screenPos);
     }
 
     void DestroySelf()
