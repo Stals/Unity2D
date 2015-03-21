@@ -13,12 +13,15 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
        played before shooting - yeild?
     ✔ add waves with ranged enemies @done (15-03-21 22:13)
   ☐ Хп (HP) противников зависит от волны!
-  ☐ different weapons - different damage
-  ☐ crits!
+  ✔ different weapons - different damage @done (15-03-21 23:18)
+  ☐ coins pickup
+    ☐ display
+      ☐ показывать только когда подбираешь - показывать сколько ты подбираешь!!!!
+  ✔ crits! @done (15-03-21 23:05)
       ☐ different size font, different color + outline?
   ✔ damage bounces of enemies? @done (15-03-21 19:09)
         ✔   spawn prefab with animation & somehow random it @done (15-03-21 19:09)
-  ☐   players gets damaged
+  ☐ players gets damaged
   ☐ TODO size affects bullet damage  
   ☐ damage boost for spinning
     ☐ отображается несколько секунд твой последний
