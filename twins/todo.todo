@@ -12,7 +12,10 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
 
        played before shooting - yeild?
     ☐ add waves with ranged enemies
+  ☐ Хп противников зависит от волны!
   ☐ different weapons - different damage
+  ✔ damage bounces of enemies? @done (15-03-21 19:09)
+        ✔   spawn prefab with animation & somehow random it @done (15-03-21 19:09)
   ☐   players gets damaged
   ☐ TODO size affects bullet damage  
   ☐ damage boost for spinning
@@ -28,6 +31,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
           ☐ HOW?!  
             ☐   Ranged enemy should be a preset (also a enum), as well as rotating enemy
               ☐   and they should change images, colors & stuff
+              ☐   also this code should be called in the editor - to represent the changes?
   ☐ weapon unlocks
   ☐ shields
   ✔ небольшое движение камеры в сторону, чтобы было действие на экране @done (15-03-15 21:27)
@@ -288,6 +292,7 @@ ideas:
      ☐ как в alien что-то там
      ☐ сначала для тебя красные типы редкие и оч сложные,
      ☐ а потом они постоянно на тебя валят, и ты за счет того что вкачивал дамаг можешь им противостоять
+   ☐ Хп противников зависит от волны!
    ☐ missions with gold rewards.
      ☐ kill 50 with a wreking ball
      ☐ get MAX spin 10 times
