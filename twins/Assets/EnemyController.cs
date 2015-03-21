@@ -252,10 +252,10 @@ public class EnemyController : MonoBehaviour {
         bulletDeltaTime += Time.deltaTime;
     }
 
-    public void takeDamage(float damage)
+    public void takeDamage(float damage, bool isCrit)
     {
         hp -= (int)damage;
-        spawnTextDamage((int)damage);
+        spawnTextDamage((int)damage, isCrit);
 
         if (hp <= 0)
         {
@@ -287,13 +287,19 @@ public class EnemyController : MonoBehaviour {
         Game.Instance.getManager().cameraShake.Shake(0.05f * effectMultiplier, 0.03f);
     }
 
-    void spawnTextDamage(float damage) {
+    void spawnTextDamage(float damage, bool isCrit) {
         Camera gameCamera = NGUITools.FindCameraForLayer(gameObject.layer);       
         Camera uiCamera = UICamera.mainCamera;
 
 
         GameObject guiObject = NGUITools.AddChild(uiCamera.transform.parent.gameObject, damageGuiPrefab);
-        guiObject.GetComponentInChildren<UILabel>().text = damage.ToString();
+        UILabel label = guiObject.GetComponentInChildren<UILabel>();
+        label.text = damage.ToString();
+
+        if (isCrit) {
+            label.color = Color.red;
+            label.effectStyle = UILabel.Effect.Outline;
+        }
 
         /* MOVE TO CORRECT POSITION*/
         // Get screen location of node

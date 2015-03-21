@@ -17,7 +17,13 @@ public class WeaponController : MonoBehaviour {
         if (coll.tag == "Enemy")
         {
             var enemy = coll.gameObject.GetComponent<EnemyController>();
-            enemy.takeDamage(getDamage());
+            float damage = getDamage();
+            bool isCrit = Random.Range(0, 100) < 5;
+            if (isCrit) {
+                damage *= 2;
+            }
+
+            enemy.takeDamage(damage, isCrit);
 
 
             Vector2 v = coll.transform.position - transform.position;
