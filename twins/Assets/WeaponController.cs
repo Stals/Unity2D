@@ -6,6 +6,8 @@ public class WeaponController : MonoBehaviour {
     public float anglePerSecond = 15f;
     public float explosionStrength = 1.0f;
 
+    public float baseDamage = 1f;
+
     public string name = "no name";
     public string shortDescription = "no description";
 
@@ -15,7 +17,7 @@ public class WeaponController : MonoBehaviour {
         if (coll.tag == "Enemy")
         {
             var enemy = coll.gameObject.GetComponent<EnemyController>();
-            enemy.takeDamage();
+            enemy.takeDamage(getDamage());
 
 
             Vector2 v = coll.transform.position - transform.position;
@@ -24,6 +26,12 @@ public class WeaponController : MonoBehaviour {
             coll.rigidbody2D.AddForce(forceVec, ForceMode2D.Impulse);
 
         }
+    }
+
+    // TODO задавать разброс для каждого оружия
+    public float getDamage()
+    {
+        return baseDamage + Random.Range(0, 2f);
     }
 
 	// Use this for initialization

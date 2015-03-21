@@ -229,7 +229,7 @@ public class EnemyController : MonoBehaviour {
 
             case SizeType.Big:
                 transform.localScale = (transform.localScale * 2);
-                hp *= 3;
+                hp =  (int)Mathf.Round(hp * 2.5f);
                 movementSpeed = 0.015f;
                 break;
 
@@ -252,12 +252,10 @@ public class EnemyController : MonoBehaviour {
         bulletDeltaTime += Time.deltaTime;
     }
 
-    public void takeDamage()
+    public void takeDamage(float damage)
     {
-        hp -= 1;
-
-
-        spawnTextDamage(Random.Range(1, 5));
+        hp -= (int)damage;
+        spawnTextDamage((int)damage);
 
         if (hp <= 0)
         {
