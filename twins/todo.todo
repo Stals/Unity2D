@@ -11,9 +11,11 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
         mb inside slowly turns non transparent (or blinks 2 times before shooting)
 
        played before shooting - yeild?
-    ☐ add waves with ranged enemies
-  ☐ Хп противников зависит от волны!
+    ✔ add waves with ranged enemies @done (15-03-21 22:13)
+  ☐ Хп (HP) противников зависит от волны!
   ☐ different weapons - different damage
+  ☐ crits!
+      ☐ different size font, different color + outline?
   ✔ damage bounces of enemies? @done (15-03-21 19:09)
         ✔   spawn prefab with animation & somehow random it @done (15-03-21 19:09)
   ☐   players gets damaged
