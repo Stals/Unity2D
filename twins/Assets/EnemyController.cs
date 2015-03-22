@@ -7,7 +7,7 @@ enum SizeType {
     Big    
 };
 
-enum MovementBehaviourType {
+public enum MovementBehaviourType {
     Follow, // steering
     Bounce, // bounces of walls
     Ranged, // gets in range and shoots, slowly moves away if you approach
@@ -173,7 +173,7 @@ public class EnemyController : MonoBehaviour {
     SizeType sizeType;
 
     [SerializeField]
-    MovementBehaviourType movementType = MovementBehaviourType.Follow;
+    public MovementBehaviourType movementType = MovementBehaviourType.Follow;
 
     MovementBehaviour movementBehaviour;
 

@@ -97,7 +97,10 @@ public class PlayerController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy") {
-            takeDamage(1);
+            if (collision.gameObject.GetComponent<EnemyController>().movementType != MovementBehaviourType.Ranged)
+            {
+                takeDamage(1);
+            }
         }
         else if (collision.gameObject.tag == "Bullet") {
             takeDamage(1);
