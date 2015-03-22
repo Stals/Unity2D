@@ -43,6 +43,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
             ☐   Ranged enemy should be a preset (also a enum), as well as rotating enemy
               ☐   and they should change images, colors & stuff
               ☐   also this code should be called in the editor - to represent the changes?
+  ☐ add tweens to weapon unlocks
   ☐ weapon unlocks & upgrades
     ☐ show what you get?
     ☐ + tiese when you die - 8 move waves until new weapon upgrade
@@ -69,6 +70,8 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ разные типы оружия имеют разный разброс
     ☐ wrecking ball max разюорс
   ✔ big ranged shoots - реже @done (15-03-22 16:00)
+  ✔ design game over screen @done (15-03-22 17:50)
+  ☐ design shop screen
 
 small game to try mechanic:
   ☐ enemies with steering behaviour
