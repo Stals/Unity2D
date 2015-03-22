@@ -82,6 +82,8 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ✔ design shop screen @done (15-03-22 20:58)
   ✔ ranged dont damage on touch @done (15-03-22 21:23)
   ☐ change style for items - unable to purchase
+  ☐ damage multiplier upgrade
+    ☐ умножает максимум - так что при рандоме и последующем округлении может получиться больше дамаг, what?
 
 small game to try mechanic:
   ☐ enemies with steering behaviour
