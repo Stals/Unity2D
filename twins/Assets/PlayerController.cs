@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     PlayerGuiController guiController;
 
     int money;
+    int currentHP;
 
     public void Awake()
     {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 
         guiController = GetComponent<PlayerGuiController>();
        // trail = GetComponentInChildren<WeaponTrail>();
+        currentHP = getMaxHP();
 	}
 	
 	// Update is called once per frame
@@ -85,5 +87,46 @@ public class PlayerController : MonoBehaviour {
     public void addMoney(int m) {
         money += m;
         guiController.addMoney(m);
+    }
+
+    public int getMaxHP()
+    {
+        return 4;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy") {
+            takeDamage(1);
+        }
+        else if (collision.gameObject.tag == "Bullet") {
+            takeDamage(1);
+            Destroy(collision.gameObject);
+        }
+
+        //Debug.Log("collision enter");
+    }
+
+    void playTakeDamageEffect()
+    {
+        Game.Instance.getManager().sleepTime(25);
+
+        // should depend on weapon strength - as well as knock back
+        Game.Instance.getManager().cameraShake.Shake(0.6f, 0.04f);
+
+        MyGameManager manager = Game.Instance.getManager();
+        if (manager)
+        {
+            manager.grid.AddGridForce(manager.playerController.transform.position, 0.2f, 0.7f, Color.green, true);
+        }
+        // TODO play sound
+        // TODO - force all enemies away (that are closer than N)
+    }
+
+    public void takeDamage(int damage) {
+        currentHP -= damage;
+        // TODO update UI
+        
+        playTakeDamageEffect();
     }
 }

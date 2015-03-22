@@ -27,6 +27,8 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
         ✔   spawn prefab with animation & somehow random it @done (15-03-21 19:09)
   ☐ players gets damaged
     ☐ взырыв и всех отталкивает от игрока!
+    ☐ sound
+    ☐ update ui
   ☐ player shield!
     ☐ clang sound!!!!!
   ☐ TODO size affects bullet damage  
@@ -338,7 +340,9 @@ ideas:
      ☐ play for 10 minutes
      ☐ play 10 times
 
- polish: 
+ polish:
+  ☐ анимация на отнятие хп
+    ☐ хп мигает пару раз и потом становится прозрачной уже
   ☐ анимация на прокачку
    ☐ WEAPON SUPER ABILITY
      ☐ sword - полукруг slice который много дамажит
