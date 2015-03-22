@@ -10,8 +10,6 @@ public class TextMover : MonoBehaviour {
         //widget = GetComponent<UIWidget>();
 
         gameObject.MoveBy(new Vector3(Random.Range(-0.25f, 0.25f), 0, 0), 2f, 0, true);
-
-        Destroy(gameObject, GetComponent<TweenAlpha>().duration);
 	}
 	
 	// Update is called once per frame

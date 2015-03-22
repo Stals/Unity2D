@@ -17,6 +17,10 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ coins pickup
     ☐ display
       ☐ показывать только когда подбираешь - показывать сколько ты подбираешь!!!!
+      ☐ пишет 150 (+5) и медленно перетекает на лево?
+        ☐ чтобы показывалось пока ты подбираешь - пока не делать
+  ☐ spawn money
+    ☐ using just one prefab - but with method that changes image & pickup radius? - not neccessary
   ✔ crits! @done (15-03-21 23:05)
       ☐ different size font, different color + outline?
   ✔ damage bounces of enemies? @done (15-03-21 19:09)
