@@ -52,6 +52,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ пули не заметны
   ☐ разные типы оружия имеют разный разброс
     ☐ wrecking ball max разюорс
+  ☐ big ranged shoots - реже
 
 small game to try mechanic:
   ☐ enemies with steering behaviour
@@ -315,6 +316,7 @@ ideas:
      ☐ play 10 times
 
  polish: 
+   ☐ текст крита мигает от красного к белому и обратно быстро?
    ☐ nearmiss?
      ☐ считаем расстояние до игрока, и если оно было < N а потом начало обратно увеличиваться - значит игрок задоджил, и нужно через задержку, в том месте написать nearmiss
    ☐ надпись wave мигает когда скоро будет волна

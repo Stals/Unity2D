@@ -231,6 +231,7 @@ public class EnemyController : MonoBehaviour {
                 transform.localScale = (transform.localScale * 2);
                 hp =  (int)Mathf.Round(hp * 2.5f);
                 movementSpeed = 0.015f;
+                bulletDelay *= 2;
                 break;
 
             case SizeType.Normal:
