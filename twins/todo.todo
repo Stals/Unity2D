@@ -84,6 +84,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ change style for items - unable to purchase
   ☐ damage multiplier upgrade
     ☐ умножает максимум - так что при рандоме и последующем округлении может получиться больше дамаг, what?
+  ☐ destroy all bullets when you get damaged?
 
 small game to try mechanic:
   ☐ enemies with steering behaviour

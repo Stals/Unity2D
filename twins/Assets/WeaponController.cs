@@ -28,7 +28,7 @@ public class WeaponController : MonoBehaviour {
 
             Vector2 v = coll.transform.position - transform.position;
 
-            Vector2 forceVec = v * explosionStrength;
+            Vector2 forceVec = v * explosionStrength; // TODO .normalized
             coll.rigidbody2D.AddForce(forceVec, ForceMode2D.Impulse);
 
         }

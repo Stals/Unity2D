@@ -124,6 +124,21 @@ public class PlayerController : MonoBehaviour {
         }
         // TODO play sound
         // TODO - force all enemies away (that are closer than N)
+
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemyGo in enemies) {
+            if (enemyGo.renderer.isVisible)
+            {
+
+                Vector2 v = enemyGo.transform.position - transform.position;
+                if (v.magnitude <= 1.5f)
+                {
+                    Vector2 forceVec = v.normalized * 8;
+                    enemyGo.rigidbody2D.AddForce(forceVec, ForceMode2D.Impulse);
+                }
+            }
+        
+        }
     }
 
     public void takeDamage(int damage) {
