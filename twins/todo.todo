@@ -14,13 +14,16 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
     ✔ add waves with ranged enemies @done (15-03-21 22:13)
   ☐ Хп (HP) противников зависит от волны!
   ✔ different weapons - different damage @done (15-03-21 23:18)
-  ☐ coins pickup
-    ☐ display
-      ☐ показывать только когда подбираешь - показывать сколько ты подбираешь!!!!
-      ☐ пишет 150 (+5) и медленно перетекает на лево?
-        ☐ чтобы показывалось пока ты подбираешь - пока не делать
+  ✔ coins pickup @done (15-03-22 21:29)
+    ✔ display @done (15-03-22 21:29)
+      ✔ показывать только когда подбираешь - показывать сколько ты подбираешь!!!! @done (15-03-22 21:29)
+      ✔ пишет 150 (+5) и медленно перетекает на лево? @done (15-03-22 21:29)
+        ✔ чтобы показывалось пока ты подбираешь - пока не делать @done (15-03-22 21:29)
   ☐ spawn money
     ☐ using just one prefab - but with method that changes image & pickup radius? - not neccessary
+  ☐ поправить спавн до краев карты
+    ☐ те которые вокруг нужно подвинуть
+    ☐ corner переставить
   ✔ crits! @done (15-03-21 23:05)
       ✔ different size font, different color + outline? @done (15-03-22 16:25)
   ✔ damage bounces of enemies? @done (15-03-21 19:09)
@@ -66,7 +69,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
       ☐ bow shoots 2 arrows
   ☐ shields
   ✔ небольшое движение камеры в сторону, чтобы было действие на экране @done (15-03-15 21:27)
-  ☐ change ui
+  ✔ change ui @done (15-03-22 21:33)
     http://opengameart.org/content/ui-pack-space-extension
   ☐ show damage with range
   ☐ add critical hits! - with flying text and increased effect & damage.  
