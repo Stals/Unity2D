@@ -26,6 +26,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ✔ damage bounces of enemies? @done (15-03-21 19:09)
         ✔   spawn prefab with animation & somehow random it @done (15-03-21 19:09)
   ☐ players gets damaged
+    ☐ взырыв и всех отталкивает от игрока!
   ☐ player shield!
     ☐ clang sound!!!!!
   ☐ TODO size affects bullet damage  
@@ -335,6 +336,11 @@ ideas:
      ☐ play 10 times
 
  polish: 
+   ☐ WEAPON SUPER ABILITY
+     ☐ sword - полукруг slice который много дамажит
+     ☐ pike- чардж вперед, критует и ты invurnalable
+     ☐ sabers - ты начинаешь крутиться и invurnalable
+     ☐ dagger - 100% крит на время
    ☐ текст крита мигает от красного к белому и обратно быстро?
    ☐ nearmiss?
      ☐ считаем расстояние до игрока, и если оно было < N а потом начало обратно увеличиваться - значит игрок задоджил, и нужно через задержку, в том месте написать nearmiss
