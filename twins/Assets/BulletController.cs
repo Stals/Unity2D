@@ -13,7 +13,9 @@ public class BulletController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (!renderer.isVisible) {
+            Destroy(gameObject);
+        }
 	}
 
     void FixedUpdate()
