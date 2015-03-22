@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour {
 
     void playTakeDamageEffect()
     {
-        Game.Instance.getManager().sleepTime(25);
+        Game.Instance.getManager().sleepTime(15);
 
         // should depend on weapon strength - as well as knock back
         Game.Instance.getManager().cameraShake.Shake(0.6f, 0.04f);
@@ -125,8 +125,10 @@ public class PlayerController : MonoBehaviour {
         // TODO play sound
         // TODO - force all enemies away (that are closer than N)
 
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemyGo in enemies) {
+        var enemies = GameObject.FindObjectsOfType(typeof(EnemyController));
+        foreach (EnemyController enemy in enemies)
+        {
+            GameObject enemyGo = enemy.gameObject;
             if (enemyGo.renderer.isVisible)
             {
 
