@@ -27,6 +27,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
         ✔   spawn prefab with animation & somehow random it @done (15-03-21 19:09)
   ☐ players gets damaged
     ☐ взырыв и всех отталкивает от игрока!
+      ☐ чем дальше тем слабее?
     ☐ sound
     ☐ update ui
   ☐ player shield!
