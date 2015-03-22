@@ -22,10 +22,12 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ spawn money
     ☐ using just one prefab - but with method that changes image & pickup radius? - not neccessary
   ✔ crits! @done (15-03-21 23:05)
-      ☐ different size font, different color + outline?
+      ✔ different size font, different color + outline? @done (15-03-22 16:25)
   ✔ damage bounces of enemies? @done (15-03-21 19:09)
         ✔   spawn prefab with animation & somehow random it @done (15-03-21 19:09)
   ☐ players gets damaged
+  ☐ player shield!
+    ☐ clang sound!!!!!
   ☐ TODO size affects bullet damage  
   ☐ damage boost for spinning
     ☐ отображается несколько секунд твой последний
@@ -41,7 +43,21 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
             ☐   Ranged enemy should be a preset (also a enum), as well as rotating enemy
               ☐   and they should change images, colors & stuff
               ☐   also this code should be called in the editor - to represent the changes?
-  ☐ weapon unlocks
+  ☐ weapon unlocks & upgrades
+    ☐ show what you get?
+    ☐ + tiese when you die - 8 move waves until new weapon upgrade
+      ☐ you start with just the sword
+      ☐ wave 5 - pike
+      ☐ wave 10 - dagger
+      ☐ wave 15 - wrecking ball
+      ☐ wave 20 - sabers
+      ☐ two handed sword
+      ☐ bow & arrow
+      upgrades - давать за что-то другое?! (дорогие за деньги? - не хотелось бы, я хотел бы чтобы щит играл роль с начала игры прям почти)
+      ☐  2 daggers
+      ☐ sword + shield
+      ☐ pike + shield
+      ☐ bow shoots 2 arrows
   ☐ shields
   ✔ небольшое движение камеры в сторону, чтобы было действие на экране @done (15-03-15 21:27)
   ☐ change ui
@@ -52,7 +68,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ пули не заметны
   ☐ разные типы оружия имеют разный разброс
     ☐ wrecking ball max разюорс
-  ☐ big ranged shoots - реже
+  ✔ big ranged shoots - реже @done (15-03-22 16:00)
 
 small game to try mechanic:
   ☐ enemies with steering behaviour
@@ -236,7 +252,7 @@ in order:
           ☐ + shield for sword
           ☐ bow shoots faster / fires two arrows one after another
       ☐ increse critical chance
-      ☐ 
+      ☐ money drop chance
   ☐ improve trails
       https://www.assetstore.unity3d.com/en/#!/content/3810
   ☐ story 
