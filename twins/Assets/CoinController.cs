@@ -23,7 +23,9 @@ public class CoinController : MonoBehaviour {
     {
         if (coll.tag == "Player")
         {
-            spawnGui(getAmount());
+            int amount = getAmount();
+            coll.gameObject.GetComponent<PlayerController>().addMoney(amount);
+            spawnGui(amount);
             // TODO give player
             Destroy(gameObject);
         }

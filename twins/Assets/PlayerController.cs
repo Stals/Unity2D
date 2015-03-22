@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(PlayerGuiController))]
 public class PlayerController : MonoBehaviour {
 
     [SerializeField]
@@ -12,6 +13,9 @@ public class PlayerController : MonoBehaviour {
     bool useGamepad = false;
 
     WeaponTrail trail;
+    PlayerGuiController guiController;
+
+    int money;
 
     public void Awake()
     {
@@ -21,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
+        guiController = GetComponent<PlayerGuiController>();
        // trail = GetComponentInChildren<WeaponTrail>();
 	}
 	
@@ -76,5 +80,10 @@ public class PlayerController : MonoBehaviour {
         transform.position = new Vector3(currentPos.x + (translationDirection.x * 0.1f),
                                          currentPos.y + (translationDirection.y * 0.1f));
 
+    }
+
+    public void addMoney(int m) {
+        money += m;
+        guiController.addMoney(m);
     }
 }
