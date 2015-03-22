@@ -55,6 +55,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
       ☐ wave 20 - sabers
       ☐ two handed sword
       ☐ bow & arrow
+      ☐ wave 20 - start from wave 10. / wave 30 - start from wave 20.!
       upgrades - давать за что-то другое?! (дорогие за деньги? - не хотелось бы, я хотел бы чтобы щит играл роль с начала игры прям почти)
       ☐  2 daggers
       ☐ sword + shield
@@ -72,7 +73,8 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
     ☐ wrecking ball max разюорс
   ✔ big ranged shoots - реже @done (15-03-22 16:00)
   ✔ design game over screen @done (15-03-22 17:50)
-  ☐ design shop screen
+  ✔ design shop screen @done (15-03-22 20:58)
+  ☐ change style for items - unable to purchase
 
 small game to try mechanic:
   ☐ enemies with steering behaviour
@@ -302,6 +304,7 @@ ideas:
 
  think:
    TOP PRIORITY:
+      ☐ wave 20 - start from wave 10. / wave 30 - start from wave 20.!
       ☐ how to spawn waves so that bouncing enemies will enter and not exit?
       ☐ how ranged enemies (show) telegraph that they are about to shoot?
       ☐ playfield looks empty - add moving objects that are bigger and not killable?
@@ -336,6 +339,7 @@ ideas:
      ☐ play 10 times
 
  polish: 
+  ☐ анимация на прокачку
    ☐ WEAPON SUPER ABILITY
      ☐ sword - полукруг slice который много дамажит
      ☐ pike- чардж вперед, критует и ты invurnalable
