@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+public enum CoinType{
+    Bronze,
+    Silver,
+    Gold
+};
 
 [RequireComponent(typeof(TweenAlpha))]
 public class CoinController : MonoBehaviour {
@@ -7,8 +14,7 @@ public class CoinController : MonoBehaviour {
     [SerializeField]
     GameObject guiMoneyPrefab;
 
-    [SerializeField]
-    int baseAmout = 1;
+    int baseAmount = 1;
 
     [SerializeField]
     float fadeDelay = 1;
@@ -17,12 +23,53 @@ public class CoinController : MonoBehaviour {
 	void Start () {
         GetComponent<TweenAlpha>().delay = fadeDelay;
         GetComponent<TweenAlpha>().PlayForward();
+
+        setType(CoinType.Gold);
+
+        // TODO apply random force - mb not here
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    public void setType(CoinType type) {
+        string imageName = "";
+        switch (type)
+        {
+            case CoinType.Bronze:
+                imageName = "bronze";
+                break;
+            case CoinType.Silver:
+                imageName = "silver";
+                break;
+            case CoinType.Gold:
+                imageName = "gold";
+                break;
+            default:
+                break;
+
+        }
+
+        baseAmount = getAmountForType(type);
+
+        Sprite s = Resources.Load("money/" + imageName, typeof(Sprite)) as Sprite;
+        GetComponent<SpriteRenderer>().sprite = s;
+    }
+
+    public static int getAmountForType(CoinType type) {
+        switch (type) { 
+            case CoinType.Bronze:
+                return 1;
+            case CoinType.Silver:
+                return 2;
+            case CoinType.Gold:
+                return 5;
+            default:
+                return 1;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
@@ -57,7 +104,7 @@ public class CoinController : MonoBehaviour {
     // TODO * for upgrades
     int getAmount()
     {
-        return baseAmout;
+        return baseAmount;
     }
 
     public void DestroySelf()
