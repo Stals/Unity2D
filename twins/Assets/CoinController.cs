@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(TweenAlpha))]
 public class CoinController : MonoBehaviour {
 
     [SerializeField]
@@ -9,9 +10,13 @@ public class CoinController : MonoBehaviour {
     [SerializeField]
     int baseAmout = 1;
 
+    [SerializeField]
+    float fadeDelay = 1;
+
 	// Use this for initialization
 	void Start () {
-	
+        GetComponent<TweenAlpha>().delay = fadeDelay;
+        GetComponent<TweenAlpha>().PlayForward();
 	}
 	
 	// Update is called once per frame
@@ -53,5 +58,10 @@ public class CoinController : MonoBehaviour {
     int getAmount()
     {
         return baseAmout;
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }
