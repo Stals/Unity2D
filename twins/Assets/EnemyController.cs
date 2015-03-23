@@ -185,6 +185,12 @@ public class EnemyController : MonoBehaviour {
     float bulletDeltaTime = 0;
 
 
+    [SerializeField]
+    [Range(0f, 1f)]
+    float moneyDropChance = 0;
+    [SerializeField]
+    float moneyDropSpread = 1f;
+
 	// Use this for initialization
 
 	void Start () {
@@ -327,7 +333,7 @@ public class EnemyController : MonoBehaviour {
                 // TODO set movement type!
             }            
         }
-
+        dropMoney();
         createExplosion();
         Destroy(this.gameObject);
     }
@@ -357,4 +363,24 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    void dropMoney()
+    {
+        int coins = System.Enum.GetValues(typeof(CoinType)).Length;
+
+        coins -= 1; // to not spawn gold for testing
+
+        if (Random.Range(0f, 1f) <= moneyDropChance) { 
+            for (int i = 0; i < 2 * (int)sizeType; ++i)
+            {
+                UnityEngine.Object pPrefab = Resources.Load("Prefabs/gold");
+                GameObject go = (GameObject)(Instantiate(pPrefab, new Vector3(transform.position.x,
+                                                                              transform.position.y, 0),
+                                                       transform.rotation));
+
+                go.GetComponent<CoinController>().setType((CoinType)Random.Range(0, coins));
+
+                go.MoveBy(new Vector2(Random.Range(-moneyDropSpread, moneyDropSpread), Random.Range(-moneyDropSpread, moneyDropSpread)), 0.5f, 0, EaseType.easeOutSine);
+            }
+        }
+    }
 }
