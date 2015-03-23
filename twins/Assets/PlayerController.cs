@@ -115,8 +115,8 @@ public class PlayerController : MonoBehaviour {
         Game.Instance.getManager().sleepTime(15);
 
         // should depend on weapon strength - as well as knock back
-        Game.Instance.getManager().cameraShake.Shake(0.6f, 0.04f);
-
+        Game.Instance.getManager().cameraShake.Shake(0.5f, 0.04f);
+            
         MyGameManager manager = Game.Instance.getManager();
         if (manager)
         {
