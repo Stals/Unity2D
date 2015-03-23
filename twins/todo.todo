@@ -92,7 +92,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ босс на апределенной волне - типо финиш - за что тебе дают дофига бабла по всему уровню. - а потом идет infinite mode дофармить апгрейды
   ☐ может пусть падает больше монеток а не каждая монетка больше дает?
 
-    
+
 tuning:
   ☐ less ranged enemies
   ☐ add bouncing
@@ -326,6 +326,10 @@ ideas:
 
  think:
    TOP PRIORITY:
+      ☐ 2 upgrades for money - drop change, drop amount?
+        ☐ probably bad - does the same thing
+        ☐ need to choose what is better!!!
+      ☐ boss
       ☐ wave 20 - start from wave 10. / wave 30 - start from wave 20.!
       ☐ how to spawn waves so that bouncing enemies will enter and not exit?
       ☐ how ranged enemies (show) telegraph that they are about to shoot?
@@ -361,7 +365,8 @@ ideas:
      ☐ play 10 times
 
  polish:
-   ☐ босс на апределенной волне - типо финиш - за что тебе дают дофига бабла по всему уровню. - а потом идет infinite mode дофармить апгрейды
+  ☐ player death animation
+  ☐ босс на апределенной волне - типо финиш - за что тебе дают дофига бабла по всему уровню. - а потом идет infinite mode дофармить апгрейды
   ☐  анимация появляения букв - http://www.youtube.com/watch?v=qkx0lkVvgwg
   ☐ анимация на отнятие хп
     ☐ хп мигает пару раз и потом становится прозрачной уже
