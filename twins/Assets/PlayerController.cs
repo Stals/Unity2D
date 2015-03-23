@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour {
         MyGameManager manager = Game.Instance.getManager();
         if (manager)
         {
-            manager.grid.AddGridForce(manager.playerController.transform.position, 0.2f, 0.7f, Color.green, true);
+            manager.grid.AddGridForce(manager.playerController.transform.position, 0.17f, 0.5f, Color.green, true);
         }
         // TODO play sound
         // TODO - force all enemies away (that are closer than N)

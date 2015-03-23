@@ -22,6 +22,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
         ✔ чтобы показывалось пока ты подбираешь - пока не делать @done (15-03-22 21:29)
   ☐ spawn money
     ☐ using just one prefab - but with method that changes image & pickup radius? - not neccessary
+    ☐ blink and dissapear (with iTween!)
   ☐  !  !!!!!!! найти способ не прекращать кручение если ты мышку всегда ведешь в одну и туже сторону
   ☐ поправить спавн до краев карты
     ☐ те которые вокруг нужно подвинуть
@@ -88,6 +89,13 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
     ☐ умножает максимум - так что при рандоме и последующем округлении может получиться больше дамаг, what?
   ☐ destroy all bullets when you get damaged?
   ☐  анимация движения оружия (как в hotline miaami) - в награде
+  ☐ босс на апределенной волне - типо финиш - за что тебе дают дофига бабла по всему уровню. - а потом идет infinite mode дофармить апгрейды
+
+tuning:
+  ☐ less ranged enemies
+  ☐ add bouncing
+  ☐ no small ranged enemies
+
 small game to try mechanic:
   ☐ enemies with steering behaviour
   ☐ waves
@@ -351,6 +359,7 @@ ideas:
      ☐ play 10 times
 
  polish:
+   ☐ босс на апределенной волне - типо финиш - за что тебе дают дофига бабла по всему уровню. - а потом идет infinite mode дофармить апгрейды
   ☐  анимация появляения букв - http://www.youtube.com/watch?v=qkx0lkVvgwg
   ☐ анимация на отнятие хп
     ☐ хп мигает пару раз и потом становится прозрачной уже
