@@ -4,7 +4,7 @@ using System.Collections;
 enum SizeType {
     Small,
     Normal,
-    Big    
+    Big   
 };
 
 public enum MovementBehaviourType {
@@ -363,14 +363,26 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    // just some bad code to test for now
     void dropMoney()
     {
         int coins = System.Enum.GetValues(typeof(CoinType)).Length;
 
         coins -= 1; // to not spawn gold for testing
 
-        if (Random.Range(0f, 1f) <= moneyDropChance) { 
-            for (int i = 0; i < 2 * (int)sizeType; ++i)
+
+
+        int times = 1;
+        if (sizeType == SizeType.Big) {
+            times = 8;
+        }
+        else if (sizeType == SizeType.Normal)
+        {
+            times = 2;
+        }
+
+        if (Random.Range(0f, 1f) <= moneyDropChance) {
+            for (int i = 0; i < times; ++i)
             {
                 UnityEngine.Object pPrefab = Resources.Load("Prefabs/gold");
                 GameObject go = (GameObject)(Instantiate(pPrefab, new Vector3(transform.position.x,
@@ -378,8 +390,9 @@ public class EnemyController : MonoBehaviour {
                                                        transform.rotation));
 
                 go.GetComponent<CoinController>().setType((CoinType)Random.Range(0, coins));
+                Vector2 by = new Vector2(Random.Range(-moneyDropSpread, moneyDropSpread), Random.Range(-moneyDropSpread, moneyDropSpread));
 
-                go.MoveBy(new Vector2(Random.Range(-moneyDropSpread, moneyDropSpread), Random.Range(-moneyDropSpread, moneyDropSpread)), 0.5f, 0, EaseType.easeOutSine);
+                go.MoveBy(by, by.magnitude * 1.8f, 0, EaseType.easeOutQuint);
             }
         }
     }
