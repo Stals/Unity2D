@@ -21,6 +21,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
         ✔ чтобы показывалось пока ты подбираешь - пока не делать @done (15-03-22 21:29)
   ☐ spawn money
     ☐ using just one prefab - but with method that changes image & pickup radius? - not neccessary
+  ☐  !  !!!!!!! найти способ не прекращать кручение если ты мышку всегда ведешь в одну и туже сторону
   ☐ поправить спавн до краев карты
     ☐ те которые вокруг нужно подвинуть
     ☐ corner переставить
