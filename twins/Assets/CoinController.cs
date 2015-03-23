@@ -24,8 +24,6 @@ public class CoinController : MonoBehaviour {
         GetComponent<TweenAlpha>().delay = fadeDelay;
         GetComponent<TweenAlpha>().PlayForward();
 
-        setType(CoinType.Gold);
-
         // TODO apply random force - mb not here
 	}
 	
