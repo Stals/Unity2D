@@ -86,7 +86,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ damage multiplier upgrade
     ☐ умножает максимум - так что при рандоме и последующем округлении может получиться больше дамаг, what?
   ☐ destroy all bullets when you get damaged?
-
+  ☐  анимация движения оружия (как в hotline miaami) - в награде
 small game to try mechanic:
   ☐ enemies with steering behaviour
   ☐ waves
@@ -350,6 +350,7 @@ ideas:
      ☐ play 10 times
 
  polish:
+  ☐  анимация появляения букв - http://www.youtube.com/watch?v=qkx0lkVvgwg
   ☐ анимация на отнятие хп
     ☐ хп мигает пару раз и потом становится прозрачной уже
   ☐ анимация на прокачку
