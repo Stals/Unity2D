@@ -5,6 +5,8 @@ public class WeaponSlotController : MonoBehaviour {
 
     public WeaponController currentWeapon = null;
 
+    float previouslyReturnedAngle = -1;
+
     void Start()
     {
         
@@ -85,15 +87,20 @@ public class WeaponSlotController : MonoBehaviour {
     {
         if (useGamepad)
         {
-            return getNewWeaponAngleGamepad();
+            previouslyReturnedAngle = getNewWeaponAngleGamepad();
         }
         else
         {
-            return getNewWeaponAngleMouse();
+            previouslyReturnedAngle = getNewWeaponAngleMouse();
         }
+
+        Vector3 angle = Vector3.zero;
+        angle.z = previouslyReturnedAngle;
+
+        return angle;
     }
 
-    Vector3 getNewWeaponAngleMouse()
+    float getNewWeaponAngleMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -101,12 +108,10 @@ public class WeaponSlotController : MonoBehaviour {
         float deltaY = mousePosition.y - transform.position.y;
         float deltaX = mousePosition.x - transform.position.x;
 
-        Vector3 angle = Vector3.zero;
-        angle.z = Mathf.Atan2(deltaY, deltaX) * (180 / Mathf.PI);
-        return angle;
+        return Mathf.Atan2(deltaY, deltaX) * (180 / Mathf.PI);
     }
 
-    Vector3 getNewWeaponAngleGamepad()
+    float getNewWeaponAngleGamepad()
     {
         float rotationX = Input.GetAxis("Joy X");
         float rotationY = -Input.GetAxis("Joy Y");
@@ -114,11 +119,9 @@ public class WeaponSlotController : MonoBehaviour {
         // do not move sword if stick released
         if (rotationX == 0 && rotationY == 0)
         {
-            return gameObject.transform.localEulerAngles;
+            return gameObject.transform.localEulerAngles.z;
         }
 
-        Vector3 angle = Vector3.zero;
-        angle.z = Mathf.Atan2(rotationY, rotationX) * (180 / Mathf.PI);
-        return angle;
+        return  Mathf.Atan2(rotationY, rotationX) * (180 / Mathf.PI);
     }
 }

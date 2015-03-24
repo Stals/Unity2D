@@ -14,6 +14,14 @@ public enum MovementBehaviourType {
     Evade //runs away (comes from back)
 };
 
+public enum BounceDirection {
+    Random,
+    TopLeft,
+    TopRight,
+    BottomLeft,
+    BottomRight
+};
+
 public class MovementBehaviour {
 
     public MovementBehaviour(EnemyController enemy)
@@ -45,10 +53,40 @@ public class BounceMovementBehaviour : MovementBehaviour
     {
         _go.RotateBy(new Vector3(0, 0, 0.5f), 1f, 0f, EaseType.linear, LoopType.loop);
 
-        float x = Random.Range(0, 2) == 0 ? -0.5f : 0.5f;
-        float y = Random.Range(0, 2) == 0 ? -0.5f : 0.5f;
+        directionVector = getDirection();
+    }
 
-        directionVector = new Vector3(x, y);
+    Vector2 getDirection()
+    {
+        float x = 0;
+        float y = 0;
+
+        switch (_self.bounceDirection)
+	    {
+		    case BounceDirection.Random:
+                x = Random.Range(0, 2) == 0 ? -0.5f : 0.5f;
+                y = Random.Range(0, 2) == 0 ? -0.5f : 0.5f;
+                break;
+            case BounceDirection.TopLeft:
+                x = -0.5f;
+                y = 0.5f;
+                break;
+            case BounceDirection.TopRight:
+                x = 0.5f;
+                y = -0.5f;
+                break;
+            case BounceDirection.BottomLeft:
+                x = -0.5f;
+                y = -0.5f;
+                break;
+            case BounceDirection.BottomRight:
+                x = 0.5f;
+                y = -0.5f;
+                break;
+            default:
+             break;
+	    }
+        return new Vector2(x, y);
     }
 
     public override void updatePosition() 
@@ -190,6 +228,9 @@ public class EnemyController : MonoBehaviour {
     float moneyDropChance = 0;
     [SerializeField]
     float moneyDropSpread = 1f;
+
+    [SerializeField]
+    public BounceDirection bounceDirection = BounceDirection.Random;
 
 	// Use this for initialization
 

@@ -1,4 +1,11 @@
 MAKE PLAYABLE FIRST - ADD STUFF LATER:
+  ☐ оказывать маленькие стрелочки - типо смотри - оттуда щас мобы придут.  
+          ☐   так как одновременно спавниться мало - это наверное норм
+  ☐ bouncing enemy patterns
+    ✔   create patterns @done (15-03-24 23:13)
+    ✔   add ability to set direction @done (15-03-24 23:13)
+    ☐   fix code when they start offscreen
+    ☐   change their image & color with code?
   ☐ redo weapon spinning
   ☐ set tpo playtestig on  tigsource forumns http://forums.tigsource.com/index.php?board=6.0
   ☐ waves
@@ -94,7 +101,7 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐ может пусть падает больше монеток а не каждая монетка больше дает?
   ☐  add particles https://www.assetstore.unity3d.com/en/#!/content/21308
     https://dl.dropboxusercontent.com/u/16485972/assetstore/geometryfxparticles/WebPlayerUpdate1.1/GeometryFXParticles.html
-
+  ☐   enemy shoot sound
 tuning:
   ☐ less ranged enemies
   ☐ add bouncing
@@ -329,6 +336,12 @@ ideas:
 
  think:
    TOP PRIORITY:
+      ☐ как тебя предупреждать о том что мобы выйдут там где ты стоишь?
+        ☐   можно сделать что если моб офскрин - он не может войти внутрь если ты близко
+        ☐   но тогда нужно чтобы если ты двигаешь экран в ту сторону - моба тоже двигало.
+        ☐   либо я говорю - avoid standing near the sides и тогда типо норм,
+        ☐   либо показывать маленькие стрелочки - типо смотри - оттуда щас мобы придут.
+          ☐   так как одновременно спавниться мало - это наверное норм
       ☐ 2 upgrades for money - drop change, drop amount?
         ☐ probably bad - does the same thing
         ☐ need to choose what is better!!!
