@@ -92,7 +92,8 @@ MAKE PLAYABLE FIRST - ADD STUFF LATER:
   ☐  анимация движения оружия (как в hotline miaami) - в награде
   ☐ босс на апределенной волне - типо финиш - за что тебе дают дофига бабла по всему уровню. - а потом идет infinite mode дофармить апгрейды
   ☐ может пусть падает больше монеток а не каждая монетка больше дает?
-
+  ☐  add particles https://www.assetstore.unity3d.com/en/#!/content/21308
+    https://dl.dropboxusercontent.com/u/16485972/assetstore/geometryfxparticles/WebPlayerUpdate1.1/GeometryFXParticles.html
 
 tuning:
   ☐ less ranged enemies
@@ -368,6 +369,7 @@ ideas:
 
  polish:
   ☐  add particles https://www.assetstore.unity3d.com/en/#!/content/21308
+    https://dl.dropboxusercontent.com/u/16485972/assetstore/geometryfxparticles/WebPlayerUpdate1.1/GeometryFXParticles.html
   ☐ sound for dropping gold
   ☐ striped background?
     ☐ like darken bg for gui
