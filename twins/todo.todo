@@ -1,4 +1,5 @@
 MAKE PLAYABLE FIRST - ADD STUFF LATER:
+  ☐ some patterns unlock after wave - for example ranged only after wave 10. (min, max) - to be able to make psimple atterns  for first waves.
   ☐ оказывать маленькие стрелочки - типо смотри - оттуда щас мобы придут.  
           ☐   так как одновременно спавниться мало - это наверное норм
   ☐ bouncing enemy patterns
@@ -336,6 +337,8 @@ ideas:
 
  think:
    TOP PRIORITY:
+      ☐ КАК  же спавнится  новые мобы если  ты убил всех кто умпел соспавниться? 
+         ☐ это не обязательно, если  на 15 волне тебе дадут старт с 5 например. Тогда тебе ене будет так просто убивать мобов - и тогда не будет такой проблемы
       ☐ power up drops
         ☐ invulnarability
         ☐ bonus damage
@@ -384,7 +387,9 @@ ideas:
      ☐ deflect 100 bullets
      ☐ play for 10 minutes
      ☐ play 10 times
-
+  ☐ прогрессия
+    ☐ max wave gives  new stuff
+    ☐ money gives upgrades
  polish:
   ☐ particles for purchase button (how if ui?)
       http://answers.unity3d.com/questions/577288/particle-system-rendering-behind-sprites.html
