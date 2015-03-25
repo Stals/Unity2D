@@ -1,4 +1,6 @@
 MAKE PLAYABLE FIRST - ADD STUFF LATER:
+  ☐ класс позволяющий задавать твины прямо на объекте - для начала только rotate - в котором прям выбирается и галочкой ставится isLocal - выбирается какой твин использовать и лупится ли он
+  ☐ добавить твин на получение оружия ротации - такойже. какой в  LUCK
   ☐ some patterns unlock after wave - for example ranged only after wave 10. (min, max) - to be able to make psimple atterns  for first waves.
   ☐ оказывать маленькие стрелочки - типо смотри - оттуда щас мобы придут.  
           ☐   так как одновременно спавниться мало - это наверное норм
