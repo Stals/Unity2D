@@ -60,6 +60,7 @@ public class BoardManager : MonoBehaviour {
         //gameObject.RotateBy(new Vector3(0, 0, -0.005f), 0.5f, 0, EaseType.easeInOutSine, LoopType.pingPong);
 
 		//InvokeRepeating("fillEmpty", 0.25f, 0.5f);
+		InvokeRepeating("updateRotation", 0.5f, 0.5f);
 	}
 
 
@@ -90,6 +91,19 @@ public class BoardManager : MonoBehaviour {
             }
         }
     }
+
+	void updateRotation()
+	{
+		for (int x = 0; x < width; ++x) {
+						for (int y = 0; y < height; ++y) {
+								BoardObject boardObject = currentBoard.at (x, y);
+				
+								if (boardObject.block != null) {
+					boardObject.block.updateRotation();
+								}
+						}
+				}
+            }
 
 	Block createBlockAt(int x, int y, int id){
 		GameObject obj = (GameObject)Instantiate(objectPrefabs[id], Vector3.zero, Quaternion.identity);

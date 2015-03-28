@@ -12,10 +12,10 @@ public class Block : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        InvokeRepeating("updateRotation", 0.5f, 0.5f);
+        //InvokeRepeating("updateRotation", 0.5f, 0.5f);
 	}
 
-    void updateRotation()
+    public void updateRotation()
     {
         if (selected)
         {
