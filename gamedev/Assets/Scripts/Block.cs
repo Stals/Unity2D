@@ -3,6 +3,12 @@ using System.Collections;
 
 public class Block : MonoBehaviour {
 
+	[SerializeField]
+	GameObject uiTarget;
+
+	[SerializeField]
+	GameObject fakeBlock;
+
 	bool isTriggered = false;
 
 	public int x;
@@ -115,4 +121,38 @@ public class Block : MonoBehaviour {
     {
         return selected;
     }
+
+	public void destroyBlock()
+	{
+        Camera gameCamera = NGUITools.FindCameraForLayer(gameObject.layer);
+        Camera uiCamera = UICamera.mainCamera;
+
+
+        GameObject guiObject = NGUITools.AddChild(uiCamera.transform.parent.gameObject, fakeBlock);
+        
+
+
+       /* UILabel label = guiObject.GetComponentInChildren<UILabel>();
+        label.text = amout.ToString();*/
+
+        /* MOVE TO CORRECT POSITION*/
+        // Get screen location of node
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+
+        // Move to node
+        guiObject.transform.position = uiCamera.ScreenToWorldPoint(screenPos);
+
+
+        // радиус окружности на которой находятся точки начала и коца
+        float r = (Vector3.Distance(guiObject.transform.position, uiTarget.transform.position) / 2);
+
+        Vector3 bezierPoint = new Vector3(Random.Range(-r, r), Random.Range(-r, r), 0);      
+
+        Vector3[] path = new Vector3[3] {guiObject.transform.position, bezierPoint,  uiTarget.transform.position};
+
+        guiObject.MoveTo(path, Random.Range(0.8f, 1.2f), Random.Range(0.05f, 0.15f), EaseType.linear);
+        guiObject.RotateBy(new Vector3(0, 0, 1f), 0.5f, 0, EaseType.easeInOutSine, LoopType.loop);
+
+		Destroy (this.gameObject);
+	}
 }

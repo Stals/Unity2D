@@ -213,7 +213,8 @@ public class BoardManager : MonoBehaviour {
 		// without a gameobject
 		// this movement should be put into Board class probably
 		currentBoard.removeAt (block.x, block.y);
-		Destroy (block.gameObject);
+
+        block.destroyBlock();
 	}
 
     public void clearBoard()
