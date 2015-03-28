@@ -1,0 +1,374 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"spa",
+				"spawned"
+			],
+			[
+				"draw",
+				"draw_gameover"
+			],
+			[
+				"upda",
+				"update_score"
+			],
+			[
+				"update",
+				"update_game"
+			],
+			[
+				"get",
+				"getYCoord"
+			],
+			[
+				"he",
+				"hex2"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/stals/Library/Application Support/Sublime Text 3/Packages/User/Plain text.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 162,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Block.cs",
+			"settings":
+			{
+				"buffer_size": 2914,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/GameManager.cs",
+			"settings":
+			{
+				"buffer_size": 2736,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/love.sublime-build",
+	"command_palette":
+	{
+		"height": 347.0,
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Disable Package"
+			],
+			[
+				"rename",
+				"OmniSharpSublime: Rename"
+			],
+			[
+				"renam",
+				"OmniSharpSublime: Rename"
+			],
+			[
+				"omni",
+				"OmniSharpSublime: Rename"
+			],
+			[
+				"love",
+				"Build: Love2D"
+			],
+			[
+				"lo",
+				"Build: Love2D"
+			],
+			[
+				"prefe",
+				"Preferences: Settings - User"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/stals/Unity2D/slots/Assets/Scripts"
+	],
+	"file_history":
+	[
+		"/Users/stals/dev/cocos2dx/UnderWater/extensions/s3eMopub/source/iphone/s3eMopub_platform.mm",
+		"/Users/stals/Desktop/logs/mopublog",
+		"/Users/stals/dev/cocos2dx/UnderWater/Resources/assets/lvl_01.xml",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/proj.marmalade/HelloCPP.mkb",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/Resources/assets/lvl_06.xml",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/Resources/assets/lvl_05.xml",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/Resources/assets/lvl_04.xml",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/cocos2dx-extensions/proj.marmalade/cocos2dx-ext.mkf",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/Resources/assets/lvl_03.xml",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/Resources/assets/lvl_02.xml",
+		"/Users/stals/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/Classes/GameLayer.cpp",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/Resources/assets/lvl_tutorial.xml",
+		"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/Resources/assets/lvl_01.xml",
+		"/Users/stals/dev/unity/minild53/minild53/Assets/data/buildings.xml",
+		"/Users/stals/Library/Application Support/Sublime Text 3/Packages/User/love.sublime-build",
+		"/Users/stals/Dropbox/A*_list.h",
+		"/Users/stals/Dropbox/A*_list.cpp",
+		"/Users/stals/Dropbox/A*_beforeremoving",
+		"/Users/stals/Dropbox/A*_improvements.cpp",
+		"/Users/stals/Dropbox/A*_test.cp",
+		"/Users/stals/Dropbox/A*_improvements.h"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/stals/dev/cocos2d-x-2.2.2/samples/Cpp/UnderWater/extensions/s3eMopub",
+			"/Users/stals/dev/cocos2d-x-2.2.2/CocosDenshion/ios"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"false",
+			"water_tile",
+			"mopub",
+			"showBaner",
+			"chartboost",
+			"Chartboost",
+			"physic",
+			"\" type=\"",
+			"coin_end",
+			"end_g",
+			"Bullet",
+			"playEffect",
+			"static_playEffect"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/stals/Library/Application Support/Sublime Text 3/Packages/User/Plain text.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 162,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								162,
+								162
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Block.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2914,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1608,
+								1608
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 781.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/GameManager.cs",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2736,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								895,
+								895
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 349.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 0.0
+	},
+	"project": "slots.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,19 @@
+If you're using Unity 4.0 - Unity 4.2, import the Vectrosity3_Unity4_0 package.
+
+If you're using Unity 4.3 - Unity 4.5, import the Vectrosity3_Unity4_3 package.
+
+You can also import the Vectrosity3Source package instead of either of the above packages, if you want to use the source code instead of a DLL. This is only recommended if you want to make modifications to the code. The source will work with Unity 4.0 and later.
+
+Note that you must only import ONE of the above packages!
+
+Any of the other packages (EditorScripts, Demos, TankZone) require one of the above packages to be imported first.
+
+-----
+
+If you're using Unity 4.6 or later, you should use the files in the Vectrosity 4 folder instead:
+
+If you want to use the DLL, import the Vectrosity4 package.
+
+If you want to use the source code, import the Vectrosity4Source package. This is only recommended if you want to make modifications to the code.
+
+Note that you must only import ONE of the above packages! Also, make sure you only use files in the Vectrosity 4 folder; none of the Vectrosity 3 files will work with Vectrosity 4.

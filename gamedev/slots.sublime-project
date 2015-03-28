@@ -1,0 +1,22 @@
+{
+	"folders":
+	[
+		{
+			"path": "Assets/Scripts",
+			"file_exclude_patterns":
+			[
+				"*.dll",
+				"*.meta"
+			]
+		},
+		{
+			"path": "Assets/Plugins",
+			"file_exclude_patterns":
+			[
+				"*.dll",
+				"*.meta"
+			]
+		}
+	],
+	"solution_file": "./slots-csharp.sln"
+}
