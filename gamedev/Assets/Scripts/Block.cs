@@ -150,8 +150,12 @@ public class Block : MonoBehaviour {
 
         Vector3[] path = new Vector3[3] {guiObject.transform.position, bezierPoint,  uiTarget.transform.position};
 
-        guiObject.MoveTo(path, Random.Range(0.8f, 1.2f), Random.Range(0.05f, 0.15f), EaseType.linear);
+        guiObject.MoveTo(path, Random.Range(0.8f, 1.2f), Random.Range(0.05f, 0.15f), EaseType.easeInSine);
         guiObject.RotateBy(new Vector3(0, 0, 1f), 0.5f, 0, EaseType.easeInOutSine, LoopType.loop);
+
+
+        guiObject.GetComponent<UISprite>().spriteName = GetComponentInChildren<SpriteRenderer>().sprite.name; ;
+        guiObject.GetComponent<UISprite>().MarkAsChanged();
 
 		Destroy (this.gameObject);
 	}

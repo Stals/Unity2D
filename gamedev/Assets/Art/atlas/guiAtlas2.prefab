@@ -43,19 +43,6 @@ MonoBehaviour:
   mSprites:
   - name: element_blue_rectangle
     x: 0
-    y: 158
-    width: 64
-    height: 32
-    borderLeft: 10
-    borderRight: 10
-    borderTop: 10
-    borderBottom: 10
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: element_green_rectangle
-    x: 0
     y: 224
     width: 64
     height: 32
@@ -67,22 +54,126 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: element_grey_rectangle
+  - name: element_blue_square
+    x: 0
+    y: 26
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_blue_square_glossy
     x: 0
     y: 92
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_green_rectangle
+    x: 65
+    y: 224
     width: 64
     height: 32
     borderLeft: 10
     borderRight: 10
     borderTop: 10
     borderBottom: 10
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_green_square
+    x: 195
+    y: 224
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_green_square_glossy
+    x: 98
+    y: 191
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_grey_rectangle
+    x: 130
+    y: 224
+    width: 64
+    height: 32
+    borderLeft: 10
+    borderRight: 10
+    borderTop: 10
+    borderBottom: 10
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_grey_square
+    x: 65
+    y: 158
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_grey_square_glossy
+    x: 131
+    y: 191
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_purple_cube_glossy
+    x: 65
+    y: 191
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
   - name: element_purple_rectangle
     x: 0
-    y: 59
+    y: 191
     width: 64
     height: 32
     borderLeft: 10
@@ -93,7 +184,59 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: element_purple_square
+    x: 164
+    y: 191
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: element_red_rectangle
+    x: 0
+    y: 158
+    width: 64
+    height: 32
+    borderLeft: 10
+    borderRight: 10
+    borderTop: 10
+    borderBottom: 10
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_red_square
+    x: 0
+    y: 59
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_red_square_glossy
+    x: 197
+    y: 191
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_yellow_rectangle
     x: 0
     y: 125
     width: 64
@@ -106,15 +249,28 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: element_yellow_rectangle
-    x: 0
-    y: 191
-    width: 64
+  - name: element_yellow_square
+    x: 65
+    y: 125
+    width: 32
     height: 32
-    borderLeft: 10
-    borderRight: 10
-    borderTop: 10
-    borderBottom: 10
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: element_yellow_square_glossy
+    x: 65
+    y: 92
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0

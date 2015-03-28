@@ -76,7 +76,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11429880, guid: 7ac19e631d87666429cf891f4974afae, type: 2}
-  mSpriteName: element_blue_rectangle
+  mSpriteName: element_green_rectangle
   mFillCenter: 1
 --- !u!1001 &100100000
 Prefab:
