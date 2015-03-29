@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205, y: 1, z: 0}
+  m_LocalPosition: {x: 204, y: 1, z: 0}
   m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
   m_Children: []
   m_Father: {fileID: 461896}
@@ -245,7 +245,7 @@ MonoBehaviour:
   mTrueTypeFont: {fileID: 12800000, guid: 3a06bafb9da99a942a0c4021b42cda1c, type: 3}
   mFont: {fileID: 0}
   mText: +20$
-  mFontSize: 20
+  mFontSize: 18
   mFontStyle: 0
   mAlignment: 0
   mEncoding: 1
@@ -254,7 +254,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mOverflow: 2
+  mOverflow: 0
   mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
