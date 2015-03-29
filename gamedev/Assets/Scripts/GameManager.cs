@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     UILabel weekCounterLabel;
 
+    [SerializeField]
+    ProgressController healthProgress;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.setGameManager(this);
@@ -143,6 +146,11 @@ public class GameManager : MonoBehaviour {
         if (hoursLeft <= 0) {
             currentWeek += 1;
             hoursLeft = getHoursLeftMax();
+
+            healthProgress.currentValue -= 5;
+            if (healthProgress.currentValue < 0) {
+                healthProgress.currentValue = 0;
+            }
 
             // TODO add week
             // - hp

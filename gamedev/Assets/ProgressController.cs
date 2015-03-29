@@ -4,7 +4,7 @@ using System.Collections;
 public class ProgressController : MonoBehaviour {
 
     [SerializeField]
-    protected int currentValue = 0;
+    public int currentValue = 0;
 
     [SerializeField]
     protected int maxValue = 100;

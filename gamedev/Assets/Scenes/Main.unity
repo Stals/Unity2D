@@ -4197,39 +4197,19 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 502
-  mHeight: 376
+  mHeight: 576
   mDepth: 3
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.42021275
+  aspectRatio: .871527791
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 3a06bafb9da99a942a0c4021b42cda1c, type: 3}
   mFont: {fileID: 0}
-  mText: 'Welcome!
-
-
-    In this game You spend time
-
-    by matching tiles.
-
-    That will improve sertain
-
-    aspects of your life or
-
-    allow you to work on the game
-
-
-    MAke the cooles game
-
-    And become Famous!
-
-
-    Good Luck!
-
-
-
-'
+  mText: "Welcome!\n\nIn This Game\nYou will spend hours\nby matching tiles.\n\nThis
+    will allow you to\nmaintain your health,\nimprove sertain aspects\nof your life
+    or\nallow you to work on the game\n\nMAke the cooles game\nAnd become Famous!\n\n\n\nThis
+    game has multiple ending \nso choose wisely!\nGood Luck!\n\n\n"
   mFontSize: 25
   mFontStyle: 0
   mAlignment: 0
@@ -9187,6 +9167,7 @@ MonoBehaviour:
   hoursLeft: 0
   leftHoursLabel: {fileID: 245910553}
   weekCounterLabel: {fileID: 229236273}
+  healthProgress: {fileID: 1017672126}
 --- !u!1 &1725031845
 GameObject:
   m_ObjectHideFlags: 0
