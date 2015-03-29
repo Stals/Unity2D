@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     UILabel leftHoursLabel;
 
+    int currentWeek = 1;
+
+    [SerializeField]
+    UILabel weekCounterLabel;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.setGameManager(this);
@@ -61,6 +66,7 @@ public class GameManager : MonoBehaviour {
 
 
         leftHoursLabel.text = (hoursLeft - Game.Instance.getBoardManager().getSelectedCount()).ToString();
+        weekCounterLabel.text = currentWeek.ToString();
         ///
 	}
 
@@ -134,7 +140,10 @@ public class GameManager : MonoBehaviour {
     {
         hoursLeft -= blockCount;
 
-        if (hoursLeft <= 0) { 
+        if (hoursLeft <= 0) {
+            currentWeek += 1;
+            hoursLeft = getHoursLeftMax();
+
             // TODO add week
             // - hp
             // give money
