@@ -70,7 +70,7 @@ public class GameProgressController : ProgressController {
     void showGameOver()
     {
         gameOverPanel.SetActive(true);
-        if (socialProgressController.currentLevel >= 3) { 
+        if (socialProgressController.currentLevel >= 4) { 
             successLabel.SetActive(true);
         }else{
             failLabel.SetActive(true);
