@@ -18,7 +18,7 @@ public class GameProgressController : ProgressController {
     [SerializeField]
     GameObject failLabel;
 
-    const int maxLevel = 2;
+    const int maxLevel = 6;
 
     static bool showedEnd = false;
 

@@ -10177,7 +10177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentValue: 0
-  maxValue: 3
+  maxValue: 60
   currentLevel: 1
   progressLabel: {fileID: 1445045385}
   levelLabel: {fileID: 1943389352}
