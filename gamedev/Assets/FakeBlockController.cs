@@ -3,6 +3,9 @@ using System.Collections;
 
 public class FakeBlockController : MonoBehaviour {
 
+    [SerializeField]
+    GameObject particleObject;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,6 +18,12 @@ public class FakeBlockController : MonoBehaviour {
 
     public void OnFinishAnimation()
     {
+        GameObject go = NGUITools.AddChild(transform.parent.gameObject, particleObject);
+        go.transform.localEulerAngles = transform.localEulerAngles;
+
+        go.transform.position = transform.position;
+
+
         // TODO add animation
         Destroy(this.gameObject);
     }

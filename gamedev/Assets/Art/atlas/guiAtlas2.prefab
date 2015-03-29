@@ -55,8 +55,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: element_blue_square
-    x: 0
-    y: 26
+    x: 195
+    y: 224
     width: 32
     height: 32
     borderLeft: 0
@@ -94,8 +94,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: element_green_square
-    x: 195
-    y: 224
+    x: 0
+    y: 59
     width: 32
     height: 32
     borderLeft: 0
@@ -107,8 +107,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: element_green_square_glossy
-    x: 98
-    y: 191
+    x: 0
+    y: 26
     width: 32
     height: 32
     borderLeft: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: element_grey_square
     x: 65
-    y: 158
+    y: 191
     width: 32
     height: 32
     borderLeft: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: element_grey_square_glossy
-    x: 131
+    x: 98
     y: 191
     width: 32
     height: 32
@@ -159,7 +159,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: element_purple_cube_glossy
-    x: 65
+    x: 131
     y: 191
     width: 32
     height: 32
@@ -211,8 +211,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: element_red_square
-    x: 0
-    y: 59
+    x: 197
+    y: 191
     width: 32
     height: 32
     borderLeft: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: element_red_square_glossy
-    x: 197
-    y: 191
+    x: 65
+    y: 158
     width: 32
     height: 32
     borderLeft: 0
@@ -267,6 +267,45 @@ MonoBehaviour:
     y: 92
     width: 32
     height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: particleCartoonStar
+    x: 239
+    y: 224
+    width: 10
+    height: 10
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: particleSmallStar
+    x: 228
+    y: 224
+    width: 10
+    height: 10
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: particleStar
+    x: 228
+    y: 235
+    width: 20
+    height: 21
     borderLeft: 0
     borderRight: 0
     borderTop: 0
