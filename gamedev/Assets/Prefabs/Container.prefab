@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentValue: 0
   maxValue: 100
+  progressLabel: {fileID: 11461900}
 --- !u!114 &11461890
 MonoBehaviour:
   m_ObjectHideFlags: 1

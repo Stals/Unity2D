@@ -11,6 +11,9 @@ public class ProgressController : MonoBehaviour {
 
     UISlider progressBar;
 
+    [SerializeField]
+    UILabel progressLabel;
+
 	// Use this for initialization
 	void Start () {
         progressBar = GetComponent<UISlider>();
@@ -20,6 +23,10 @@ public class ProgressController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         progressBar.value = Mathf.Lerp(progressBar.value, ((float)currentValue) / maxValue, Time.deltaTime * 5f);
+
+
+        progressLabel.text = string.Format("{0} / {1}", Mathf.Round(progressBar.value * maxValue), maxValue);
+         
 	}
 
     public void addBlock()
