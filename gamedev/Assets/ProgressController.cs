@@ -4,13 +4,13 @@ using System.Collections;
 public class ProgressController : MonoBehaviour {
 
     [SerializeField]
-    int currentValue = 0;
+    protected int currentValue = 0;
 
     [SerializeField]
-    int maxValue = 100;
+    protected int maxValue = 100;
 
     [SerializeField]
-    int currentLevel = 1;
+    public int currentLevel = 1;
 
     UISlider progressBar;
 
@@ -24,7 +24,8 @@ public class ProgressController : MonoBehaviour {
     GameObject levelupPanelPrefab;
 
 	// Use this for initialization
-	void Start () {
+    public virtual void Start()
+    {
         progressBar = GetComponent<UISlider>();
         progressBar.value = ((float)currentValue) / maxValue;
 
@@ -34,7 +35,7 @@ public class ProgressController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
         progressBar.value = Mathf.Lerp(progressBar.value, ((float)currentValue) / maxValue, Time.deltaTime * 5f);
         int dislayValue = (int)Mathf.Round(progressBar.value * maxValue);
         progressLabel.text = string.Format("{0} / {1}", dislayValue, maxValue);
@@ -54,14 +55,19 @@ public class ProgressController : MonoBehaviour {
 
                  progressBar.value = 0;
                  currentValue = 0;
-                 maxValue = (int)Mathf.Round(maxValue * 1.5f);
+                 setNewMaxValue();
              }
         }
 
        
 	}
 
-    public void addBlock()
+    public virtual  void setNewMaxValue()
+    {
+        maxValue = (int)Mathf.Round(maxValue * 1.5f);
+    }
+
+    public virtual void addBlock()
     {
         currentValue += 1;
     }
@@ -73,6 +79,9 @@ public class ProgressController : MonoBehaviour {
 
     void playLevelup()
     {
-        NGUITools.AddChild(transform.parent.gameObject, levelupPanelPrefab);
+       GameObject go = NGUITools.AddChild(transform.parent.gameObject, levelupPanelPrefab);
+       effectLevelup(go);
     }
+
+    protected virtual void effectLevelup(GameObject go) { }
 }

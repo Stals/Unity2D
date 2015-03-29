@@ -130,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 202.016174, y: 0, z: 0}
+  m_LocalPosition: {x: 202.016159, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461892}
@@ -142,8 +142,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -220, z: 0}
+  m_LocalScale: {x: 1.00015998, y: 1.00015998, z: 1.00015998}
   m_Children:
   - {fileID: 461892}
   - {fileID: 410922}
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentValue: 0
-  maxValue: 100
+  maxValue: 60
   currentLevel: 1
   progressLabel: {fileID: 11461900}
   levelLabel: {fileID: 11410922}
@@ -318,7 +318,7 @@ MonoBehaviour:
   thumb: {fileID: 0}
   mBG: {fileID: 11461890}
   mFG: {fileID: 11461894}
-  mValue: .5
+  mValue: 0
   mFill: 0
   numberOfSteps: 0
   onChange: []
@@ -374,7 +374,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11429880, guid: 7ac19e631d87666429cf891f4974afae, type: 2}
-  mSpriteName: element_red_rectangle
+  mSpriteName: element_blue_rectangle
   mFillCenter: 1
 --- !u!114 &11461896
 MonoBehaviour:
@@ -453,7 +453,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 3a06bafb9da99a942a0c4021b42cda1c, type: 3}
   mFont: {fileID: 0}
-  mText: HEALTH
+  mText: Game
   mFontSize: 25
   mFontStyle: 0
   mAlignment: 0
