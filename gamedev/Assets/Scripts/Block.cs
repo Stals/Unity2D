@@ -150,7 +150,7 @@ public class Block : MonoBehaviour {
 
         Vector3[] path = new Vector3[3] {guiObject.transform.position, bezierPoint,  uiTarget.transform.position};
 
-        float time = Random.Range(0.8f, 1.2f);
+        float time = Random.Range(0.8f, 1.5f);
         float delay = Random.Range(0.05f, 0.15f);
 
         guiObject.MoveTo(path, time, delay, EaseType.easeInSine);
@@ -160,6 +160,8 @@ public class Block : MonoBehaviour {
 
         guiObject.GetComponent<UISprite>().spriteName = GetComponentInChildren<SpriteRenderer>().sprite.name; ;
         guiObject.GetComponent<UISprite>().MarkAsChanged();
+
+        uiTarget.GetComponent<ProgressController>().Invoke("addBlock", time + delay);
 
 		Destroy (this.gameObject);
 	}

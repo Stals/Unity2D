@@ -417,6 +417,7 @@ GameObject:
   - 4: {fileID: 90810181}
   - 114: {fileID: 90810183}
   - 114: {fileID: 90810182}
+  - 114: {fileID: 90810184}
   m_Layer: 5
   m_Name: Control - Simple Progress Bar
   m_TagString: Untagged
@@ -511,6 +512,20 @@ MonoBehaviour:
   mAtlas: {fileID: 11429880, guid: 7ac19e631d87666429cf891f4974afae, type: 2}
   mSpriteName: element_grey_rectangle
   mFillCenter: 1
+--- !u!114 &90810184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11443138, guid: 37a6bd7cc033a474fb0da9920ea0adee,
+    type: 2}
+  m_PrefabInternal: {fileID: 285514001}
+  m_GameObject: {fileID: 90810180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66aebaa47163d5042b0aec11b3658fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentValue: 0
+  maxValue: 100
 --- !u!1 &127032407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1482,54 @@ MonoBehaviour:
   mAtlas: {fileID: 11400000, guid: 12b8883258cd04929a14a7c7a35f8a8f, type: 2}
   mSpriteName: scroll_down
   mFillCenter: 1
+--- !u!1001 &354533790
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1909211334}
+    m_Modifications:
+    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443138, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: currentValue
+      value: 50
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+  m_RootGameObject: {fileID: 1825075028}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &359290905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,7 +1625,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 161900, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 359560792}
@@ -1578,7 +1641,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 461900, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 359560791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 192, y: 0, z: 0}
@@ -1591,7 +1654,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11461900, guid: 37a6bd7cc033a474fb0da9920ea0adee,
     type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 359560791}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1709,6 +1772,7 @@ GameObject:
   - 4: {fileID: 410119305}
   - 114: {fileID: 410119307}
   - 114: {fileID: 410119306}
+  - 114: {fileID: 410119308}
   m_Layer: 5
   m_Name: Control - Simple Progress Bar
   m_TagString: Untagged
@@ -1803,6 +1867,20 @@ MonoBehaviour:
   mAtlas: {fileID: 11429880, guid: 7ac19e631d87666429cf891f4974afae, type: 2}
   mSpriteName: element_grey_rectangle
   mFillCenter: 1
+--- !u!114 &410119308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11443138, guid: 37a6bd7cc033a474fb0da9920ea0adee,
+    type: 2}
+  m_PrefabInternal: {fileID: 1869245304}
+  m_GameObject: {fileID: 410119304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66aebaa47163d5042b0aec11b3658fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentValue: 0
+  maxValue: 100
 --- !u!1 &468597909
 GameObject:
   m_ObjectHideFlags: 0
@@ -4104,12 +4182,13 @@ SpriteRenderer:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 161892, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1017672123}
   - 114: {fileID: 1017672125}
   - 114: {fileID: 1017672124}
+  - 114: {fileID: 1017672126}
   m_Layer: 5
   m_Name: Control - Simple Progress Bar
   m_TagString: Untagged
@@ -4121,7 +4200,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 461892, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1017672122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -202, y: 0, z: 0}
@@ -4135,7 +4214,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11461892, guid: 37a6bd7cc033a474fb0da9920ea0adee,
     type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1017672122}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -4158,7 +4237,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11461890, guid: 37a6bd7cc033a474fb0da9920ea0adee,
     type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1017672122}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -4204,6 +4283,20 @@ MonoBehaviour:
   mAtlas: {fileID: 11429880, guid: 7ac19e631d87666429cf891f4974afae, type: 2}
   mSpriteName: element_grey_rectangle
   mFillCenter: 1
+--- !u!114 &1017672126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11443138, guid: 37a6bd7cc033a474fb0da9920ea0adee,
+    type: 2}
+  m_PrefabInternal: {fileID: 354533790}
+  m_GameObject: {fileID: 1017672122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66aebaa47163d5042b0aec11b3658fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentValue: 50
+  maxValue: 100
 --- !u!1 &1026376897
 GameObject:
   m_ObjectHideFlags: 0
@@ -4878,6 +4971,7 @@ GameObject:
   - 4: {fileID: 1188464253}
   - 114: {fileID: 1188464255}
   - 114: {fileID: 1188464254}
+  - 114: {fileID: 1188464256}
   m_Layer: 5
   m_Name: Control - Simple Progress Bar
   m_TagString: Untagged
@@ -4972,6 +5066,20 @@ MonoBehaviour:
   mAtlas: {fileID: 11429880, guid: 7ac19e631d87666429cf891f4974afae, type: 2}
   mSpriteName: element_grey_rectangle
   mFillCenter: 1
+--- !u!114 &1188464256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11443138, guid: 37a6bd7cc033a474fb0da9920ea0adee,
+    type: 2}
+  m_PrefabInternal: {fileID: 2013665524}
+  m_GameObject: {fileID: 1188464252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66aebaa47163d5042b0aec11b3658fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentValue: 0
+  maxValue: 100
 --- !u!1 &1192662940
 GameObject:
   m_ObjectHideFlags: 0
@@ -7169,7 +7277,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 161898, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1607593907}
@@ -7185,7 +7293,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 461898, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1607593906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -189, y: 0, z: 0}
@@ -7198,7 +7306,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11461898, guid: 37a6bd7cc033a474fb0da9920ea0adee,
     type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1607593906}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -8523,78 +8631,6 @@ Transform:
   - {fileID: 579555426}
   m_Father: {fileID: 598851911}
   m_RootOrder: 5
---- !u!1001 &1817645376
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1909211334}
-    m_Modifications:
-    - target: {fileID: 11461892, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: onChange.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11461892, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: mValue
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11461892, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: onChange.Array.data[0].mTarget
-      value: 
-      objectReference: {fileID: 1607593908}
-    - target: {fileID: 11461892, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: onChange.Array.data[0].mMethodName
-      value: SetCurrentProgress
-      objectReference: {fileID: 0}
-    - target: {fileID: 11461890, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: mPivot
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 461892, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -202
-      objectReference: {fileID: 0}
-    - target: {fileID: 461894, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 202.016174
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_RootGameObject: {fileID: 1825075028}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &1820199880
 GameObject:
   m_ObjectHideFlags: 0
@@ -8649,7 +8685,7 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 161896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1825075029}
@@ -8665,7 +8701,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 461896, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1825075028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
@@ -8681,7 +8717,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11461896, guid: 37a6bd7cc033a474fb0da9920ea0adee,
     type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1825075028}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -8774,6 +8810,7 @@ GameObject:
   - 4: {fileID: 1860157311}
   - 114: {fileID: 1860157313}
   - 114: {fileID: 1860157312}
+  - 114: {fileID: 1860157314}
   m_Layer: 5
   m_Name: Control - Simple Progress Bar
   m_TagString: Untagged
@@ -8868,6 +8905,20 @@ MonoBehaviour:
   mAtlas: {fileID: 11429880, guid: 7ac19e631d87666429cf891f4974afae, type: 2}
   mSpriteName: element_grey_rectangle
   mFillCenter: 1
+--- !u!114 &1860157314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11443138, guid: 37a6bd7cc033a474fb0da9920ea0adee,
+    type: 2}
+  m_PrefabInternal: {fileID: 1422394197}
+  m_GameObject: {fileID: 1860157310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66aebaa47163d5042b0aec11b3658fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentValue: 0
+  maxValue: 100
 --- !u!1 &1868317147
 GameObject:
   m_ObjectHideFlags: 0
@@ -9275,7 +9326,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 161894, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1903880882}
@@ -9291,7 +9342,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 461894, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1903880881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 202.016174, y: 0, z: 0}
@@ -9304,7 +9355,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11461894, guid: 37a6bd7cc033a474fb0da9920ea0adee,
     type: 2}
-  m_PrefabInternal: {fileID: 1817645376}
+  m_PrefabInternal: {fileID: 354533790}
   m_GameObject: {fileID: 1903880881}
   m_Enabled: 1
   m_EditorHideFlags: 0
