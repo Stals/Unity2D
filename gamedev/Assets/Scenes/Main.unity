@@ -6992,7 +6992,7 @@ GameObject:
   - 4: {fileID: 1372495510}
   - 114: {fileID: 1372495511}
   m_Layer: 5
-  m_Name: Label
+  m_Name: MoneyLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9434,6 +9434,7 @@ MonoBehaviour:
   weekCounterLabel: {fileID: 229236273}
   healthProgress: {fileID: 1017672126}
   progressGrid: {fileID: 1909211333}
+  uiMoneyLabel: {fileID: 1372495511}
 --- !u!1 &1725031845
 GameObject:
   m_ObjectHideFlags: 0

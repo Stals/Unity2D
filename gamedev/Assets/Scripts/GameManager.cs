@@ -51,6 +51,14 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     GameObject progressGrid;
 
+
+    int currentMoney = 50;
+
+
+    [SerializeField]
+    UILabel uiMoneyLabel;
+
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.setGameManager(this);
@@ -59,6 +67,8 @@ public class GameManager : MonoBehaviour {
         currentPrizeLabel.text = "";
 
         hoursLeft = getHoursLeftMax();
+
+        uiMoneyLabel.text = currentMoney.ToString();
 	}
 
     int getHoursLeftMax()
@@ -74,6 +84,21 @@ public class GameManager : MonoBehaviour {
 
         return 40 + sum;
     }
+
+    int getMoneyPerWeek()
+    {
+        ProgressController[] progs = progressGrid.GetComponentsInChildren<ProgressController>();
+
+        int sum = 0;
+
+        for (int i = 0; i < progs.Length; ++i)
+        {
+            ProgressController prog = progs[i];
+            sum += prog.getEffectMoney();
+        }
+
+        return sum; 
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -82,6 +107,8 @@ public class GameManager : MonoBehaviour {
 
         leftHoursLabel.text = (hoursLeft - Game.Instance.getBoardManager().getSelectedCount()).ToString();
         weekCounterLabel.text = currentWeek.ToString();
+
+        uiMoneyLabel.text = Mathf.Lerp(float.Parse(uiMoneyLabel.text), currentMoney, Time.deltaTime * 5f).ToString("F2");
         ///
 	}
 
@@ -163,6 +190,8 @@ public class GameManager : MonoBehaviour {
             if (healthProgress.currentValue < 0) {
                 healthProgress.currentValue = 0;
             }
+            //currentMoney -= 50;
+            currentMoney += getMoneyPerWeek();
 
             // TODO add week
             // - hp
