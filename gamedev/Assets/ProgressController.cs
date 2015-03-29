@@ -126,6 +126,14 @@ public class ProgressController : MonoBehaviour {
             if (currentLevel >= 2) return -1;  
                   
         }
+        if (nameLabel.text == "Skill") {
+            if (currentLevel >= 5) return currentLevel - 2;
+            if (currentLevel >= 4) return 2;
+            if (currentLevel >= 3) return 1;
+            if (currentLevel >= 2) return 0;
+            return -1;
+        
+        }
 
         return 0;
     }
