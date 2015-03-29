@@ -111,32 +111,20 @@ public class ProgressController : MonoBehaviour {
 
     public int getEffectHours() {
         if (nameLabel.text == "HEALTH") {
-            if (currentValue >= 60) {
-                return 1;
-            }
-            if (currentValue >= 80)
-            {
-                return 3;
-            }
+            if (currentValue >= 95) return 5;
+            if (currentValue >= 80) return 3;
+            if (currentValue >= 60) return 1;            
 
-            if (currentValue >= 95)
-            {
-                return 5;
-            }
+            if (currentValue <= 10) return -5;
+            if (currentValue <= 25) return -2;
+            if (currentValue <= 40) return -1;
 
-            if (currentValue <= 40)
-            {
-                return -1;
-            }
-
-            if (currentValue <= 25)
-            {
-                return -2;
-            }
-            if (currentValue <= 10)
-            {
-                return -5;
-            }
+        } if (nameLabel.text == "Social") {
+            if (currentLevel >= 5) return -5;
+            if (currentLevel >= 4) return -4;
+            if (currentLevel >= 3) return -3;
+            if (currentLevel >= 2) return -1;  
+                  
         }
 
         return 0;
