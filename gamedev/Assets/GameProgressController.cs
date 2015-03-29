@@ -58,6 +58,7 @@ public class GameProgressController : ProgressController {
                                 maxValue = 60;
                 break;
             default:
+                maxValue = (int)(maxValue * 1.5f);
                 break;
         }
     }
