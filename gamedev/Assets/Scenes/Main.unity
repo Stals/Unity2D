@@ -533,6 +533,7 @@ MonoBehaviour:
   effectLabel: {fileID: 250346773}
   goodEffect: {r: .580392182, g: .749019623, b: .180392161, a: 1}
   badEffect: {r: .866666675, g: .0627451017, b: .0627451017, a: 1}
+  nameLabel: {fileID: 1725554667}
 --- !u!1 &125939380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,6 +2538,7 @@ MonoBehaviour:
   effectLabel: {fileID: 543494669}
   goodEffect: {r: .580392182, g: .749019623, b: .180392161, a: 1}
   badEffect: {r: .866666675, g: .0627451017, b: .0627451017, a: 1}
+  nameLabel: {fileID: 1580674804}
 --- !u!1 &468597909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5622,6 +5624,7 @@ MonoBehaviour:
   effectLabel: {fileID: 1607593908}
   goodEffect: {r: .580392182, g: .749019623, b: .180392161, a: 1}
   badEffect: {r: .866666675, g: .0627451017, b: .0627451017, a: 1}
+  nameLabel: {fileID: 177505949}
 --- !u!1 &1026376897
 GameObject:
   m_ObjectHideFlags: 0
@@ -6412,6 +6415,7 @@ MonoBehaviour:
   effectLabel: {fileID: 1946686559}
   goodEffect: {r: .580392182, g: .749019623, b: .180392161, a: 1}
   badEffect: {r: .866666675, g: .0627451017, b: .0627451017, a: 1}
+  nameLabel: {fileID: 1662698079}
 --- !u!1 &1192662940
 GameObject:
   m_ObjectHideFlags: 0
@@ -10784,9 +10788,10 @@ MonoBehaviour:
   progressLabel: {fileID: 1445045385}
   levelLabel: {fileID: 1943389352}
   levelupPanelPrefab: {fileID: 113480, guid: 280bfdd553d482a43819c9b6880d8ea3, type: 2}
-  effectLabel: {fileID: 0}
+  effectLabel: {fileID: 1943389352}
   goodEffect: {r: 0, g: 0, b: 0, a: 0}
   badEffect: {r: 0, g: 0, b: 0, a: 0}
+  nameLabel: {fileID: 1026376899}
   name: {fileID: 1026376899}
   socialProgressController: {fileID: 410119308}
   gameOverPanel: {fileID: 1642398136}

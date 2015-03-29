@@ -32,6 +32,9 @@ public class ProgressController : MonoBehaviour {
     [SerializeField]
     Color badEffect;
 
+    [SerializeField]
+    UILabel nameLabel;
+
 	// Use this for initialization
     public virtual void Start()
     {
@@ -68,7 +71,19 @@ public class ProgressController : MonoBehaviour {
              }
         }
 
-       
+        string effectString = getEffectString();
+        effectLabel.text = effectString;
+
+        if (effectLabel.text.Length > 0) {
+            if (effectString[0] == '+')
+            {
+                effectLabel.color = goodEffect;
+            }
+            else {
+                effectLabel.color = badEffect;
+            }
+        }
+
 	}
 
     public virtual  void setNewMaxValue()
@@ -93,4 +108,77 @@ public class ProgressController : MonoBehaviour {
     }
 
     protected virtual void effectLevelup(GameObject go) { }
+
+    public int getEffectHours() {
+        if (nameLabel.text == "HEALTH") {
+            if (currentValue >= 60) {
+                return 1;
+            }
+            if (currentValue >= 80)
+            {
+                return 3;
+            }
+
+            if (currentValue >= 95)
+            {
+                return 5;
+            }
+
+            if (currentValue <= 40)
+            {
+                return -1;
+            }
+
+            if (currentValue <= 25)
+            {
+                return -2;
+            }
+            if (currentValue <= 10)
+            {
+                return -5;
+            }
+        }
+
+        return 0;
+    }
+
+    public int getEffectSkill() {
+        return 0;
+    }
+
+    public int getEffectMoney()
+    {
+        return 0;
+    }
+
+    public string getEffectString()
+    {
+        int h = getEffectHours();
+        int skill = getEffectSkill();
+        int money = getEffectMoney();
+
+        if (h > 0) {
+            return string.Format("+{0}H", h);
+        }
+        if (h < 0)
+        {
+            return string.Format("{0}H", h);
+        }
+
+        if (money > 0)
+        {
+            return string.Format("+{0}$", h);
+        }
+        if (money < 0)
+        {
+            return string.Format("{0}$", h);
+        }
+
+
+   
+
+
+        return "";
+    }
+
 }

@@ -286,6 +286,7 @@ MonoBehaviour:
   effectLabel: {fileID: 11410922}
   goodEffect: {r: .580392182, g: .749019623, b: .180392161, a: 1}
   badEffect: {r: .866666675, g: .0627451017, b: .0627451017, a: 1}
+  nameLabel: {fileID: 11461898}
 --- !u!114 &11461890
 MonoBehaviour:
   m_ObjectHideFlags: 1
