@@ -23,6 +23,15 @@ public class ProgressController : MonoBehaviour {
     [SerializeField]
     GameObject levelupPanelPrefab;
 
+    [SerializeField]
+    UILabel effectLabel;
+
+    [SerializeField]
+    Color goodEffect;
+
+    [SerializeField]
+    Color badEffect;
+
 	// Use this for initialization
     public virtual void Start()
     {
