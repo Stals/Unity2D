@@ -164,5 +164,6 @@ public class Block : MonoBehaviour {
         uiTarget.GetComponent<ProgressController>().Invoke("addBlock", time + delay);
 
 		Destroy (this.gameObject);
+        //TODO finish sound
 	}
 }
