@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
 
     int currentMoney = 50;
 
-
+    float displayMoney = 0;
     [SerializeField]
     UILabel uiMoneyLabel;
 
@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour {
         hoursLeft = getHoursLeftMax();
 
         uiMoneyLabel.text = currentMoney.ToString();
+        displayMoney = currentMoney;
 	}
 
     int getHoursLeftMax()
@@ -108,7 +109,10 @@ public class GameManager : MonoBehaviour {
         leftHoursLabel.text = (hoursLeft - Game.Instance.getBoardManager().getSelectedCount()).ToString();
         weekCounterLabel.text = currentWeek.ToString();
 
-        uiMoneyLabel.text = Mathf.Lerp(float.Parse(uiMoneyLabel.text), currentMoney, Time.deltaTime * 5f).ToString("F2");
+
+        displayMoney = Mathf.Lerp(displayMoney, currentMoney, Time.deltaTime * 5f);
+
+        uiMoneyLabel.text = displayMoney.ToString("F2");
         ///
 	}
 
