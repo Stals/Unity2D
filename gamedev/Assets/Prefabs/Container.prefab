@@ -76,7 +76,7 @@ GameObject:
   - 4: {fileID: 461898}
   - 114: {fileID: 11461898}
   m_Layer: 5
-  m_Name: Label
+  m_Name: NameLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ GameObject:
   - 4: {fileID: 461900}
   - 114: {fileID: 11461900}
   m_Layer: 5
-  m_Name: Label
+  m_Name: ProgressLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
