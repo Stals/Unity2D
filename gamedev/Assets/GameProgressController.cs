@@ -6,15 +6,38 @@ public class GameProgressController : ProgressController {
     [SerializeField]
     UILabel name;
 
-    const int maxLevel = 6;
+    [SerializeField]
+    ProgressController socialProgressController;
+
+    [SerializeField]
+    GameObject gameOverPanel;
+
+    [SerializeField]
+    GameObject successLabel;
+
+    [SerializeField]
+    GameObject failLabel;
+
+    const int maxLevel = 2;
+
+    static bool showedEnd = false;
 
     void FixedUpdate()
     {
-        name.text = string.Format("GAME {0} / {1}", currentLevel, maxLevel -1);
+        
 
         if (currentLevel >= maxLevel)
         {
-            // TODO show gameover
+            name.text = string.Format("GAME {0}", currentLevel);
+
+            if (!showedEnd)
+            {
+                showGameOver();
+                showedEnd = true;
+            }
+        }
+        else {
+            name.text = string.Format("GAME {0} / {1}", currentLevel, maxLevel - 1);
         }
     }
 
@@ -41,6 +64,16 @@ public class GameProgressController : ProgressController {
 
     protected override void effectLevelup(GameObject go) {
         go.GetComponentInChildren<UILabel>().text = "GAME FINISHED!";
+    }
+
+    void showGameOver()
+    {
+        gameOverPanel.SetActive(true);
+        if (socialProgressController.currentLevel >= 3) { 
+            successLabel.SetActive(true);
+        }else{
+            failLabel.SetActive(true);
+        }
     }
 
 }
