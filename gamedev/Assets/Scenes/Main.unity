@@ -4983,7 +4983,7 @@ AudioSource:
   m_GameObject: {fileID: 991133129}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 3d65fedaa37c4024abd685724293c449, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0a59babff8e11484e9a4d77f4340f43b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .563000023
   m_Pitch: 1
@@ -11430,7 +11430,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 3.01999998
+  aspectRatio: 3.24000001
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 3a06bafb9da99a942a0c4021b42cda1c, type: 3}
   mFont: {fileID: 0}
