@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     ProgressController healthProgress;
 
+    [SerializeField]
+    GameObject progressGrid;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.setGameManager(this);
@@ -60,7 +63,16 @@ public class GameManager : MonoBehaviour {
 
     int getHoursLeftMax()
     {
-        return 40; // TODO + from different places
+        ProgressController[] progs = progressGrid.GetComponentsInChildren<ProgressController>();
+
+        int sum = 0;
+
+        for (int i = 0; i < progs.Length; ++i) {
+            ProgressController prog = progs[i];
+            sum += prog.getEffectHours();
+        }
+
+        return 40 + sum;
     }
 	
 	// Update is called once per frame

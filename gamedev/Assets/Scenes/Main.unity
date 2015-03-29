@@ -9421,6 +9421,7 @@ MonoBehaviour:
   leftHoursLabel: {fileID: 245910553}
   weekCounterLabel: {fileID: 229236273}
   healthProgress: {fileID: 1017672126}
+  progressGrid: {fileID: 1909211333}
 --- !u!1 &1725031845
 GameObject:
   m_ObjectHideFlags: 0
