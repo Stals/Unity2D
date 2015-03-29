@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 410922}
   - 114: {fileID: 11410922}
   m_Layer: 5
-  m_Name: Label
+  m_Name: LevelLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentValue: 0
   maxValue: 100
+  currentLevel: 1
   progressLabel: {fileID: 11461900}
+  levelLabel: {fileID: 11410922}
 --- !u!114 &11461890
 MonoBehaviour:
   m_ObjectHideFlags: 1
