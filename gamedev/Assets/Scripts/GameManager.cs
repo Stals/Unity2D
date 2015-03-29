@@ -34,25 +34,34 @@ public class GameManager : MonoBehaviour {
     int currentBet = 0;
     int linesLeft = 9;
 
+
+
+    public int hoursLeft;
+    [SerializeField]
+    UILabel leftHoursLabel;
+
 	// Use this for initialization
 	void Start () {
         Game.Instance.setGameManager(this);
         player = Game.Instance.getPlayer();
 
         currentPrizeLabel.text = "";
+
+        hoursLeft = getHoursLeftMax();
 	}
+
+    int getHoursLeftMax()
+    {
+        return 40; // TODO + from different places
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        moneyLabel.text = string.Format("Money: {0}", player.getMoney());
 
-        currentLinesLabel.text = getCurrentLines().ToString();
-        currentBetLabel.text = getCurrentBet().ToString();
-        totalBetLabel.text = getTotalBet().ToString();
-        linesLeftLabel.text = linesLeft.ToString();
 
-        float baseMoney = countMultipier( Game.Instance.getBoardManager().getSelectedCount() );
-        currentPrizeLabel.text = string.Format("{0} x {1} = {2}", currentBet, baseMoney, baseMoney * currentBet);
+
+        leftHoursLabel.text = (hoursLeft - Game.Instance.getBoardManager().getSelectedCount()).ToString();
+        ///
 	}
 
     public int getCurrentBet()
@@ -123,9 +132,13 @@ public class GameManager : MonoBehaviour {
 
     public void onLineRemove(int blockCount)
     {
-        --linesLeft;
-        Game.Instance.getPlayer().addMoney(countMultipier(blockCount) * currentBet);
-        Game.Instance.soundManager().playRemoveLine();
+        hoursLeft -= blockCount;
+
+        if (hoursLeft <= 0) { 
+            // TODO add week
+            // - hp
+            // give money
+        }
 
         //GJManager.GenerateHighscores(Game.Instance.getPlayer().getMoney());
     }

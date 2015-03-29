@@ -1259,7 +1259,7 @@ GameObject:
   - 4: {fileID: 245910552}
   - 114: {fileID: 245910553}
   m_Layer: 5
-  m_Name: Label
+  m_Name: HoursLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9093,6 +9093,7 @@ MonoBehaviour:
   moneyLabel: {fileID: 1595666314}
   totalBetLabel: {fileID: 1770562469}
   linesLeftLabel: {fileID: 1905123644}
+  leftHoursLabel: {fileID: 245910553}
 --- !u!1 &1725031845
 GameObject:
   m_ObjectHideFlags: 0
