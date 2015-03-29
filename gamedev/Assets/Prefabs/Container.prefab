@@ -253,6 +253,7 @@ MonoBehaviour:
   currentLevel: 1
   progressLabel: {fileID: 11461900}
   levelLabel: {fileID: 11410922}
+  levelupPanelPrefab: {fileID: 113480, guid: 280bfdd553d482a43819c9b6880d8ea3, type: 2}
 --- !u!114 &11461890
 MonoBehaviour:
   m_ObjectHideFlags: 1

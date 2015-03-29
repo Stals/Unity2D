@@ -20,6 +20,8 @@ public class ProgressController : MonoBehaviour {
     [SerializeField]
     UILabel levelLabel;
 
+    [SerializeField]
+    GameObject levelupPanelPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +48,8 @@ public class ProgressController : MonoBehaviour {
             {
                  currentLevel += 1;
                  // TODO play animation
+                 playLevelup();
+                    
                  // TODO update effects
 
                  progressBar.value = 0;
@@ -65,5 +69,10 @@ public class ProgressController : MonoBehaviour {
     bool isLevelupBar()
     {
         return currentLevel >= 1;
+    }
+
+    void playLevelup()
+    {
+        NGUITools.AddChild(transform.parent.gameObject, levelupPanelPrefab);
     }
 }
