@@ -136,6 +136,10 @@ public class ProgressController : MonoBehaviour {
 
     public int getEffectMoney()
     {
+        if (nameLabel.text == "Work")
+        {
+            return currentLevel * 50;
+        }
         return 0;
     }
 
@@ -155,11 +159,11 @@ public class ProgressController : MonoBehaviour {
 
         if (money > 0)
         {
-            return string.Format("+{0}$", h);
+            return string.Format("+{0}$", money);
         }
         if (money < 0)
         {
-            return string.Format("{0}$", h);
+            return string.Format("{0}$", money);
         }
 
 
