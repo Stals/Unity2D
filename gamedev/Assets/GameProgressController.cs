@@ -18,7 +18,7 @@ public class GameProgressController : ProgressController {
     [SerializeField]
     GameObject failLabel;
 
-    const int maxLevel = 6;
+    const int maxLevel = 9;
 
     static bool showedEnd = false;
 
@@ -46,16 +46,26 @@ public class GameProgressController : ProgressController {
         switch (currentLevel)
         {
             case 2:
-                maxValue = 20;
+                maxValue = 5;
                 break;
             case 3:
-                                maxValue = 25;
+                maxValue = 10;
                 break;
             case 4:
+                maxValue = 15;
+                break;
+
+            case 5:
+                maxValue = 20;
+                break;
+            case 6:
+                                maxValue = 25;
+                break;
+            case 7:
                                 maxValue = 30;
                 break;
-            case 5:
-                                maxValue = 60;
+            case 8:
+                                maxValue = 45;
                 break;
             default:
                 maxValue = (int)(maxValue * 1.5f);

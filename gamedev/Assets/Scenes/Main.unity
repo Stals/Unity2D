@@ -4605,6 +4605,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11410922, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11443138, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 37a6bd7cc033a474fb0da9920ea0adee, type: 2}
@@ -10177,7 +10181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentValue: 0
-  maxValue: 60
+  maxValue: 30
   currentLevel: 1
   progressLabel: {fileID: 1445045385}
   levelLabel: {fileID: 1943389352}
@@ -11093,7 +11097,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 957126803}
   m_GameObject: {fileID: 1943389350}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
