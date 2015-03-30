@@ -14,6 +14,7 @@ game design:
 	- and showing the combo will make it worse probably
 
 tutorial:
+-! after clicking on a tile - start spinning right away
 - show diagonals are possible
 - what (-h means)
 - how health works
