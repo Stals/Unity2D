@@ -1,5 +1,5 @@
 juice:
-	improvments:
+	improvements:
 	- when fake blocks spawn - first make them go bigger and then reduce in size
 	- screen shake when matching > 5 tiles (increasing with more you match)
 	- write how big combo is
