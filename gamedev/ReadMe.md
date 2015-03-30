@@ -1,7 +1,19 @@
-Игра была сделана для One Game a Month с темой Luck.
+juice:
+	improvments:
+	- when fake blocks spawn - first make them go bigger and then reduce in size
+	- screen shake when matching > 5 tiles (increasing with more you match)
+	- write how big combo is
+	- increase particle size
 
-Основная идея была в том что игрок выбирает такое кол-во линий сколько он думает что можно будет провести и что они будут выгодными.
-Но также важна еще и очередность потому что убирание некоторых блоков может либо улучшить/создать возможность для других линий либо наоборот помешать.
-Также целью было попробывать в деле iTween и побольше посмотреть на Vectrocity.
+	try:
+	- elastic for droping blocks
 
-Выигрыш считается по формуле 0.25 x bet, то есть 4 на одной линии = выигрыш возврашается.
+game design:
+- antisocial tiles or option to reduce social
+- add something to allow choice (currently you just match what you see)
+	- and showing the combo will make it worse probably
+
+tutorial:
+- show diagonals are possible
+- what (-h means)
+- how health works
