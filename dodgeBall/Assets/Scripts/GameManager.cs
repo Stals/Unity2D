@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 	Transform Ball;
 
 	void Start(){
-		Ball = (Transform)GameObject.FindGameObjectWithTag("Ball").transform;
+		//Ball = (Transform)GameObject.FindGameObjectWithTag("Ball").transform;
 
 	}
 
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
 			playerScore1 = 0;
 			playerScore2 = 0;
 
-			Ball.SendMessage("ResetBall");
+			//Ball.SendMessage("ResetBall");
 		}
 	}
 }
