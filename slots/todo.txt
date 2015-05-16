@@ -1,0 +1,67 @@
+-script with 
+	- array of prefabs
+	- board dymentions
+
+should separate interface from representation?
+
+That way it would probably be simpler with deselect an stuff
+
+
+I. generate board
+	NxM of anything that is passed in Array of gameObjects (without prob)
+II. draw what was generated
+III. allow line drawing on objects
+IV. remove what line was created
+V. let objects fall when elements are removed
+
+
+объетам как-то нужно знать куда они падают чтобы была возможность интерполировать
+
+http://unityplus.blogspot.ru/2014/05/match3-game-tutorial.html
+
+
+ Transform obj = (Transform)Instantiate(blocks[randomNumber].transform, new Vector3(x,y,0), Quaternion.identity);
+                obj.parent = transform;//
+
+                и на префаб закинуть скрипт block
+
+                и нужно их расположить в правельном месте - скорее всего это делает board manager
+
+
+                paddingи + высота и ширина картинки я 1 раз сохраняю и использую
+                для начала можно передаьт??
+
+
+BoardManager
+хранит list Block'ов которые сейчас в линии
+что позволит определить можно ли добавить следующий в этот список
+
+------
+пока тупо сделать добавление без возможности отнимания что чтобы они падали вниз 
+пока нез анимации
+и пока без отрисовки линии тех что выбраны
+
++ нужно определять потом что я вышел из объекта и обратно вошел
+
+
+----
+TODO!
+vectrocity рисвать selected текущий!
+Update()
+{
+	updateSelectedLine()
+}
+
+
+--
+взять из bejewlwd кол-во цветов и размер поля - примерно понять соотношение
+
+----
+При наведении, добавлять только если тотже цвет или там пусто!!!!!
+Добавлять только если вокруг предведущий.
+Условия в отдельные функции.!!
+
+//
+check if no more new combinations
+
+Принцип отмены:

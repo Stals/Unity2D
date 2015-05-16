@@ -1,0 +1,33 @@
+Spent some time looking at the assets like Playmaker and uFrame. From what i have read i don't thing i will use Playmaker much and it works poorly with git. But uFrame looks interesting for creating and managin overall architecture (http://www.youtube.com/watch?v=hHI3k4JbRAA). I will look into it more and maybe try it for the next game.
+Also found this list of nice unity stuff: https://github.com/RyanNielson/awesome-unity
+
+I also should try to find a solution how to work on the same scene with multiple people. I know some tips like making what you can a prefab and using "Save Project" to save all prefabs before pushing, but there is a problem. For example in "Linker" I used NGUI UIRoot as a prefab for all levels and so i could change, add gui without any problem while the other person was creating levels (with UIRoot in them). But because the top level object was a prefab i couldn't place prefab buttons that i could later changle all at once. 
+A level object also can not be a prefab because it uses other prefabs (that change a lot) as building blocks.
+I found this asset that could potentially solve the issue https://www.assetstore.unity3d.com/en/#!/content/17557.
+
+http://gamejolt.com/games/puzzle/luck/38231/
+Finished up the Luck game for OneGameAMonth challenge: added a background, replaced fonts. The game now uses the bet that player spinned with, I also synced board rotation with newly spawned blocks after the spin. Player can now only draw the number of lines he spinned with. Uploaded the game to GameJolt and added its API for highscores. Haven't added more effects and sounds but i guess i want to stard doing something else.
+
+
+
+TODO:
+-upload old games
+-gamejolt
+-dont allow to use more lines than was intended to
+
+google more
+unity multiple people on the scene best practicies
+
+Match 3 meets Slots.
+
+You can choose number of lines you want to play on the next board that is randomly generated when you press "SPIN". Also you set a "bet" for each line. You play by pressing on one block and then dragging to the block of the same color near it. You spent "Total Bet" to spin. If you draw a line of 4 blocks - you get your money back. (as shown in the top right corner)
+
+Just a small idea made for One Game a Month with theme Luck during #30daydev
+
+3 = 1
+
+(0.25 + 0.25 ) * 2
+0.125 * 2 = 2
+0.125 * (2 * 2) = 3
+
+0.125 * pow(2, selected - 1)
