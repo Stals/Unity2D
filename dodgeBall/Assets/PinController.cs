@@ -11,7 +11,6 @@ public class PinController : MonoBehaviour {
 
 	public bool isSelected()
 	{
-        return true;
 		return hasOwnerTouch();
 	}
 
