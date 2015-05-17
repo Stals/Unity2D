@@ -5,7 +5,7 @@ public class BezierHelper  {
 
 	public static GameObject moveTo(GameObject gameObject, GameObject uiTarget, GameObject prefab, float time, float delay){
 
-        Camera gameCamera = NGUITools.FindCameraForLayer(gameObject.layer);
+//        Camera gameCamera = NGUITools.FindCameraForLayer(gameObject.layer);
         Camera uiCamera = UICamera.mainCamera;
 
 

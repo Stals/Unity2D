@@ -146,3 +146,13 @@ Cmd: compileSnippet
   api=4 type=0 insize=3811 outsize=2997 kw=DIRECTIONAL ok=1
 Cmd: compileSnippet
   api=4 type=1 insize=3811 outsize=3118 kw=DIRECTIONAL ok=1
+Cmd: preprocess
+  insize=204 outsize=204 ok=1
+Cmd: preprocess
+  insize=309 outsize=309 ok=1
+Cmd: preprocess
+  insize=782 outsize=782 ok=1
+Cmd: preprocess
+  insize=427 outsize=427 ok=1
+Cmd: preprocess
+  insize=145 outsize=145 ok=1
