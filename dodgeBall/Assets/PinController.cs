@@ -4,7 +4,10 @@ using System.Collections;
 public class PinController : MonoBehaviour {
 
 	int currentTouchIDOwner = -1;
-	
+
+
+    [SerializeField]
+    GameObject selection;
 
 	public bool isSelected()
 	{
@@ -83,6 +86,6 @@ public class PinController : MonoBehaviour {
 
 	void setSelected(bool b)
 	{
-		// todo update visual
+        selection.SetActive(b);
 	}
 }
