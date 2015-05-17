@@ -1,4 +1,4 @@
 {
    "command" : "xbuild",
-   "args": ["dodgeBall.sln"]
+   "args": ["dodgeBall-csharp.sln"]
 }

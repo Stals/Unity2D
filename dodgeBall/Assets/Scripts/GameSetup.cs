@@ -29,11 +29,11 @@ public class GameSetup : MonoBehaviour {
 		rightWall.center = new Vector2(mainCam.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x + 0.5f, 0f);
 		
 		//Move the players to a fixed distance from the edges of the screen:
-		Vector2 player1Pos = new Vector2(mainCam.ScreenToWorldPoint (new Vector3 (75f, 0f, 0f)).x, Player1.position.y);
+		/*Vector2 player1Pos = new Vector2(mainCam.ScreenToWorldPoint (new Vector3 (75f, 0f, 0f)).x, Player1.position.y);
 		Player1.position = player1Pos;
 
 		Vector2 player2Pos = new Vector2(mainCam.ScreenToWorldPoint (new Vector3 (Screen.width -75f, 0f, 0f)).x, Player2.position.y);
-        Player2.position = player2Pos;
+        Player2.position = player2Pos;*/
 	}
 	
 	// Update is called once per frame
