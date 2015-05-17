@@ -26,9 +26,9 @@ public class BallControl : MonoBehaviour {
 		int rnd = Random.Range(0, 2);
 		
 		if(rnd == 0) {
-			rigidbody2D.AddForce(new Vector2(80, 10));
+			rigidbody2D.AddForce(new Vector2(10, 80));
 		} else {
-			rigidbody2D.AddForce(new Vector2(-80, -10));
+			rigidbody2D.AddForce(new Vector2(-10, -80));
 		}
 	}
 
