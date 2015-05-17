@@ -1,0 +1,13 @@
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/stals/Unity2D/dodgeBall/obj/Debug/Assembly-CSharp.dll
+/Users/stals/Unity2D/dodgeBall/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/UnityEngine.dll
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/UnityEditor.dll
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/Vectrosity.dll
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/Mono.Cecil.dll
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/nunit.framework.dll
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/Unity.DataContract.dll
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/ICSharpCode.NRefactory.dll

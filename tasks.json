@@ -1,0 +1,4 @@
+{
+   "command" : "xbuild",
+   "args": ["dodgeBall.sln"]
+}
