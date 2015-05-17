@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour {
     Material lineMaterial;
 
     VectorLine line = null;
+    
+    [SerializeField]
+    PhysicsMaterial2D linePhysicsMaterial;
 
 
 	// Use this for initialization
@@ -41,9 +44,15 @@ public class PlayerController : MonoBehaviour {
             points[1] = pin_2.transform.localPosition;
 
 
-            line = new VectorLine("LineRenderer", points, lineMaterial, 7.0f, Vectrosity.LineType.Continuous, Joins.Weld);
+            line = new VectorLine("LineRenderer", points, lineMaterial, 25.0f, Vectrosity.LineType.Continuous, Joins.Weld);
             line.collider = true;
             line.Draw3D();
+            
+            line.vectorObject.collider2D.sharedMaterial = linePhysicsMaterial;
+            Rigidbody2D r = line.vectorObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
+            r.gravityScale = 0f;
+            r.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            r.isKinematic = true;
             
         }
         else {

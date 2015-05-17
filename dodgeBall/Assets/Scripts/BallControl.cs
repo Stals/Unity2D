@@ -26,9 +26,9 @@ public class BallControl : MonoBehaviour {
 		int rnd = Random.Range(0, 2);
 		
 		if(rnd == 0) {
-			rigidbody2D.AddForce(new Vector2(10, 80));
+			rigidbody2D.AddForce(new Vector2(50, 10));
 		} else {
-			rigidbody2D.AddForce(new Vector2(-10, -80));
+			rigidbody2D.AddForce(new Vector2(-50, -10));
 		}
 	}
 
@@ -41,10 +41,14 @@ public class BallControl : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D colInfo) {
-		if(colInfo.collider.tag == "Player") {
+		/*if(colInfo.collider.tag == "Player") {
 			//rigidbody2D.velocity.y = rigidbody2D.velocity.y / 2 + colInfo.collider.rigidbody2D.velocity.y / 3;
-			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y / 2 + colInfo.collider.rigidbody2D.velocity.y / 3);
+			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x + , rigidbody2D.velocity.y / 2 + colInfo.collider.rigidbody2D.velocity.y / 3);
+		}*/
+		if(colInfo.collider.rigidbody2D != null){
+			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x + colInfo.collider.rigidbody2D.velocity.x, rigidbody2D.velocity.y / 2 + colInfo.collider.rigidbody2D.velocity.y / 3);
 		}
+		
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
 	}

@@ -11,7 +11,11 @@ public class PinController : MonoBehaviour {
 
 	public bool isSelected()
 	{
-		return hasOwnerTouch();
+		if( Application.isEditor){
+			return true;
+		}else{
+			return hasOwnerTouch();
+		}
 	}
 
 	// Use this for initialization
@@ -37,11 +41,18 @@ public class PinController : MonoBehaviour {
 	{
 		// check old touch
 		if(hasOwnerTouch()){
-			if(Input.GetTouch(currentTouchIDOwner).phase == TouchPhase.Ended)
-			{
-				setSelected(false);
-				currentTouchIDOwner = -1;
+			
+			for(int touchID = 0; touchID < Input.touchCount; ++touchID) {
+				Touch touch = Input.GetTouch(touchID);
+				if(touch.phase == TouchPhase.Ended &&
+				  touch.fingerId == currentTouchIDOwner )
+				{
+					setSelected(false);
+					currentTouchIDOwner = -1;
+				}
 			}
+			
+			
 		}
 
 		// check new touch
@@ -50,7 +61,7 @@ public class PinController : MonoBehaviour {
 
 			if(startedTouchingPin(touch)){
 				setSelected(true);
-				currentTouchIDOwner = touchID;
+				currentTouchIDOwner = touch.fingerId;
 			}
 		}
 	}
