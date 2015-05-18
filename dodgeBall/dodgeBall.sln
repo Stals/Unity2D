@@ -7,6 +7,8 @@ Project("{D663F691-6137-95A6-5AB8-43071B49854A}") = "dodgeBall", "Assembly-CShar
 EndProject
 Project("{D663F691-6137-95A6-5AB8-43071B49854A}") = "dodgeBall", "Assembly-CSharp-Editor.csproj", "{C5597DE2-D2C4-0023-A0CD-6B9032B40DE7}"
 EndProject
+Project("{D663F691-6137-95A6-5AB8-43071B49854A}") = "dodgeBall", "Assembly-UnityScript.unityproj", "{B37168DC-BE8F-6DA9-405F-85A345651502}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,11 +27,15 @@ Global
 		{C5597DE2-D2C4-0023-A0CD-6B9032B40DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5597DE2-D2C4-0023-A0CD-6B9032B40DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5597DE2-D2C4-0023-A0CD-6B9032B40DE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B37168DC-BE8F-6DA9-405F-85A345651502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37168DC-BE8F-6DA9-405F-85A345651502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37168DC-BE8F-6DA9-405F-85A345651502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37168DC-BE8F-6DA9-405F-85A345651502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																												GlobalSection(MonoDevelopProperties) = preSolution
+																																					GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

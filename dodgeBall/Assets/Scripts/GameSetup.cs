@@ -13,6 +13,7 @@ public class GameSetup : MonoBehaviour {
 	public Transform Player1;
 	public Transform Player2;
 
+
 	// Use this for initialization
 	void Start () {
 		//Move each wall to its edge location:
@@ -34,6 +35,8 @@ public class GameSetup : MonoBehaviour {
 
 		Vector2 player2Pos = new Vector2(mainCam.ScreenToWorldPoint (new Vector3 (Screen.width -75f, 0f, 0f)).x, Player2.position.y);
         Player2.position = player2Pos;*/
+		
+		
 	}
 	
 	// Update is called once per frame

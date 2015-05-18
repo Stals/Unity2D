@@ -9,10 +9,23 @@ public class GameManager : MonoBehaviour {
 	public GUISkin theSkin;
 
 	Transform Ball;
+	
+	[SerializeField]
+	BallSpawner ballSpawner;
+	
+	public static GameManager _this;
 
 	void Start(){
+		_this = this;
 		//Ball = (Transform)GameObject.FindGameObjectWithTag("Ball").transform;
+		SpawnBall();
 
+		InvokeRepeating("SpawnBall", 10f, 15f);
+	}
+
+	public static void SpawnBall()
+	{
+		_this.ballSpawner.SpawnBall();
 	}
 
 	public static void Score(string wallName) {

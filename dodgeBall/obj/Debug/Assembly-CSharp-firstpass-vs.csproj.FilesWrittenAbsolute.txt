@@ -9,3 +9,4 @@
 /Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/nunit.framework.dll
 /Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/Unity.DataContract.dll
 /Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/stals/Unity2D/dodgeBall/Temp/bin/Debug/UnityEngine.UI.dll
