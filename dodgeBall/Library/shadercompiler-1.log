@@ -1,3 +1,58 @@
-Base path: /Applications/Unity/Unity.app/Contents
-Pipe name: \\.\pipe\UnityShaderCompiler-1--1584213592
+Base path: D:/dev/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-1-164368
 Cmd: getPlatforms
+Cmd: preprocess
+  insize=238 outsize=238 ok=1
+Cmd: preprocess
+  insize=2438 outsize=909 ok=1
+Cmd: preprocess
+  insize=1653 outsize=525 ok=1
+Cmd: preprocess
+  insize=2433 outsize=511 ok=1
+Cmd: preprocess
+  insize=204 outsize=204 ok=1
+Cmd: preprocess
+  insize=309 outsize=309 ok=1
+Cmd: preprocess
+  insize=2060 outsize=511 ok=1
+Cmd: preprocess
+  insize=516 outsize=516 ok=1
+Cmd: preprocess
+  insize=2943 outsize=958 ok=1
+Cmd: preprocess
+  insize=2568 outsize=956 ok=1
+Cmd: preprocess
+  insize=782 outsize=782 ok=1
+Cmd: preprocess
+  insize=1552 outsize=893 ok=1
+Cmd: preprocess
+  insize=2813 outsize=910 ok=1
+Cmd: preprocess
+  insize=2029 outsize=956 ok=1
+Cmd: preprocess
+  insize=1508 outsize=511 ok=1
+Cmd: preprocess
+  error: 1 plat 12 at (100): Compiling shaders to OpenGL ES 2.0, Xbox 360, PS3, Flash or DX11 requires both vertex and fragment programs
+  insize=2780 outsize=1538 ok=1
+Cmd: preprocess
+  insize=427 outsize=427 ok=1
+Cmd: preprocess
+  insize=1889 outsize=909 ok=1
+Cmd: preprocess
+  insize=2580 outsize=527 ok=1
+Cmd: preprocess
+  insize=469 outsize=469 ok=1
+Cmd: preprocess
+  insize=145 outsize=145 ok=1
+Cmd: preprocess
+  insize=1532 outsize=900 ok=1
+Cmd: preprocess
+  insize=6248 outsize=3522 ok=1
+Cmd: preprocess
+  insize=1563 outsize=946 ok=1
+Cmd: preprocess
+  insize=1307 outsize=516 ok=1
+Cmd: preprocess
+  insize=2205 outsize=526 ok=1
+Cmd: preprocess
+  insize=1774 outsize=995 ok=1

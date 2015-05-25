@@ -6,8 +6,10 @@ public class BallControl : MonoBehaviour {
 	[SerializeField]
 	Color trailColor;
 
-    Vector2 startingSpeed = new Vector2(25, 10);
-	
+    Vector2 startingSpeed = new Vector2(0.7f, 0.3f);
+    float startingSpeedFactor = 7.5f;
+
+    float currentSpeedFactor;
 
 	// Use this for initialization
 	void Start() {
@@ -16,6 +18,8 @@ public class BallControl : MonoBehaviour {
 		
 		//StartCoroutine(StartDelaied());
 		StartDelaied(2);
+
+        currentSpeedFactor = startingSpeedFactor;
 	}
 
 	/*IEnumerator StartDelaied()
@@ -35,9 +39,9 @@ public class BallControl : MonoBehaviour {
 		int rnd = Random.Range(0, 2);
 		
 		if(rnd == 0) {
-            rigidbody2D.AddForce(startingSpeed);
+            rigidbody2D.rigidbody2D.velocity = startingSpeed * currentSpeedFactor;
 		} else {
-            rigidbody2D.AddForce(-startingSpeed);
+            rigidbody2D.rigidbody2D.velocity = -startingSpeed * currentSpeedFactor;
 		}
 	}
 
@@ -74,13 +78,19 @@ public class BallControl : MonoBehaviour {
 		 
 		а при колизии с падлом - но пока со всем - увеличивать ее скорость в несколько раз например
 		*/
-		
+
+        currentSpeedFactor += 0.2f;
+
 		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.Play();
 	}
 	
 	void FixedUpdate()
 	{
+        
+        rigidbody2D.rigidbody2D.velocity = (rigidbody2D.rigidbody2D.velocity.normalized * currentSpeedFactor);
+
+
 		/*float maxSpeed = 100f;
 		float slowFactor = 0.1f;
 		
