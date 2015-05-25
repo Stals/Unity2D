@@ -5,7 +5,8 @@ public class BallControl : MonoBehaviour {
 
 	[SerializeField]
 	Color trailColor;
-	
+
+    Vector2 startingSpeed = new Vector2(25, 10);
 	
 
 	// Use this for initialization
@@ -34,9 +35,9 @@ public class BallControl : MonoBehaviour {
 		int rnd = Random.Range(0, 2);
 		
 		if(rnd == 0) {
-			rigidbody2D.AddForce(new Vector2(50, 10));
+            rigidbody2D.AddForce(startingSpeed);
 		} else {
-			rigidbody2D.AddForce(new Vector2(-50, -10));
+            rigidbody2D.AddForce(-startingSpeed);
 		}
 	}
 
